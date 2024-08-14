@@ -6,3 +6,26 @@
 //
 
 import Foundation
+import SwiftUI
+
+struct Lemon: View {
+    @EnvironmentObject var coordinator: Coordinator
+
+    var body: some View {
+        VStack {
+            List {
+                Button(action: {
+                    coordinator.push(page: .banana)
+                }) {
+                    Text("🍌")
+                }
+            }
+            Spacer()
+        }
+        .navigationTitle("🍋")
+    }
+}
+
+#Preview {
+    Lemon()
+}

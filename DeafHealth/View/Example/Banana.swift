@@ -8,8 +8,26 @@
 import SwiftUI
 
 struct Banana: View {
+    @EnvironmentObject var coordinator: Coordinator
+    @State var fruits: [String: Page] = ["🍉": .watermelon, "🍍": .pineapple]
+
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        VStack {
+            List {
+                ForEach(fruits.keys.sorted(), id: \.self) { key in
+                    Button(action: {
+                        // Navigate to the corresponding page based on the key
+                        if let page = fruits[key] {
+                            coordinator.push(page: page)
+                        }
+                    }) {
+                        Text(key)
+                    }
+                }
+            }
+            Spacer()
+        }
+        .navigationTitle("🍌")
     }
 }
 

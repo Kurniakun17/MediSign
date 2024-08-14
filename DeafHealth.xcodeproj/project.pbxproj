@@ -11,6 +11,18 @@
 		F62EF9E32C6B27840025498E /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F62EF9E22C6B27840025498E /* ContentView.swift */; };
 		F62EF9E52C6B27850025498E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F62EF9E42C6B27850025498E /* Assets.xcassets */; };
 		F62EF9E82C6B27850025498E /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F62EF9E72C6B27850025498E /* Preview Assets.xcassets */; };
+		F62EF9F22C6B27D30025498E /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = F62EF9F12C6B27D30025498E /* User.swift */; };
+		F62EF9F42C6B293B0025498E /* Complaint.swift in Sources */ = {isa = PBXBuildFile; fileRef = F62EF9F32C6B293B0025498E /* Complaint.swift */; };
+		F62EF9F62C6B2B3D0025498E /* SymptomsDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = F62EF9F52C6B2B3D0025498E /* SymptomsDetail.swift */; };
+		F62EF9FB2C6B2BAF0025498E /* enums.swift in Sources */ = {isa = PBXBuildFile; fileRef = F62EF9FA2C6B2BAF0025498E /* enums.swift */; };
+		F62EF9FE2C6B2C010025498E /* LocalDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = F62EF9FD2C6B2C010025498E /* LocalDataSource.swift */; };
+		F62EFA002C6B2EB10025498E /* ComplaintViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F62EF9FF2C6B2EB10025498E /* ComplaintViewModel.swift */; };
+		F62EFA022C6B3C190025498E /* coordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = F62EFA012C6B3C190025498E /* coordinator.swift */; };
+		F62EFA062C6B3ECB0025498E /* Strawberry.swift in Sources */ = {isa = PBXBuildFile; fileRef = F62EFA052C6B3ECB0025498E /* Strawberry.swift */; };
+		F62EFA082C6B40D80025498E /* Lemon.swift in Sources */ = {isa = PBXBuildFile; fileRef = F62EFA072C6B40D80025498E /* Lemon.swift */; };
+		F62EFA0A2C6B41030025498E /* Watermelon.swift in Sources */ = {isa = PBXBuildFile; fileRef = F62EFA092C6B41030025498E /* Watermelon.swift */; };
+		F62EFA0C2C6B41450025498E /* Pineapple.swift in Sources */ = {isa = PBXBuildFile; fileRef = F62EFA0B2C6B41450025498E /* Pineapple.swift */; };
+		F62EFA0F2C6B41A00025498E /* Banana.swift in Sources */ = {isa = PBXBuildFile; fileRef = F62EFA0E2C6B41A00025498E /* Banana.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -19,6 +31,18 @@
 		F62EF9E22C6B27840025498E /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		F62EF9E42C6B27850025498E /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		F62EF9E72C6B27850025498E /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		F62EF9F12C6B27D30025498E /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		F62EF9F32C6B293B0025498E /* Complaint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Complaint.swift; sourceTree = "<group>"; };
+		F62EF9F52C6B2B3D0025498E /* SymptomsDetail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SymptomsDetail.swift; sourceTree = "<group>"; };
+		F62EF9FA2C6B2BAF0025498E /* enums.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = enums.swift; sourceTree = "<group>"; };
+		F62EF9FD2C6B2C010025498E /* LocalDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalDataSource.swift; sourceTree = "<group>"; };
+		F62EF9FF2C6B2EB10025498E /* ComplaintViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComplaintViewModel.swift; sourceTree = "<group>"; };
+		F62EFA012C6B3C190025498E /* coordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = coordinator.swift; sourceTree = "<group>"; };
+		F62EFA052C6B3ECB0025498E /* Strawberry.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Strawberry.swift; sourceTree = "<group>"; };
+		F62EFA072C6B40D80025498E /* Lemon.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Lemon.swift; sourceTree = "<group>"; };
+		F62EFA092C6B41030025498E /* Watermelon.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Watermelon.swift; sourceTree = "<group>"; };
+		F62EFA0B2C6B41450025498E /* Pineapple.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Pineapple.swift; sourceTree = "<group>"; };
+		F62EFA0E2C6B41A00025498E /* Banana.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Banana.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -51,6 +75,12 @@
 		F62EF9DF2C6B27840025498E /* DeafHealth */ = {
 			isa = PBXGroup;
 			children = (
+				F62EF9FC2C6B2BCC0025498E /* Data Source */,
+				F62EFA032C6B3C450025498E /* Coordinator */,
+				F62EF9EE2C6B27910025498E /* Model */,
+				F62EF9EF2C6B279B0025498E /* View Model */,
+				F62EF9F02C6B27AD0025498E /* View */,
+				F62EF9F92C6B2B720025498E /* enums */,
 				F62EF9E02C6B27840025498E /* DeafHealthApp.swift */,
 				F62EF9E22C6B27840025498E /* ContentView.swift */,
 				F62EF9E42C6B27850025498E /* Assets.xcassets */,
@@ -65,6 +95,68 @@
 				F62EF9E72C6B27850025498E /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		F62EF9EE2C6B27910025498E /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				F62EF9F12C6B27D30025498E /* User.swift */,
+				F62EF9F32C6B293B0025498E /* Complaint.swift */,
+				F62EF9F52C6B2B3D0025498E /* SymptomsDetail.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		F62EF9EF2C6B279B0025498E /* View Model */ = {
+			isa = PBXGroup;
+			children = (
+				F62EF9FF2C6B2EB10025498E /* ComplaintViewModel.swift */,
+			);
+			path = "View Model";
+			sourceTree = "<group>";
+		};
+		F62EF9F02C6B27AD0025498E /* View */ = {
+			isa = PBXGroup;
+			children = (
+				F62EFA042C6B3EB70025498E /* Example */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		F62EF9F92C6B2B720025498E /* enums */ = {
+			isa = PBXGroup;
+			children = (
+				F62EF9FA2C6B2BAF0025498E /* enums.swift */,
+			);
+			path = enums;
+			sourceTree = "<group>";
+		};
+		F62EF9FC2C6B2BCC0025498E /* Data Source */ = {
+			isa = PBXGroup;
+			children = (
+				F62EF9FD2C6B2C010025498E /* LocalDataSource.swift */,
+			);
+			path = "Data Source";
+			sourceTree = "<group>";
+		};
+		F62EFA032C6B3C450025498E /* Coordinator */ = {
+			isa = PBXGroup;
+			children = (
+				F62EFA012C6B3C190025498E /* coordinator.swift */,
+			);
+			path = Coordinator;
+			sourceTree = "<group>";
+		};
+		F62EFA042C6B3EB70025498E /* Example */ = {
+			isa = PBXGroup;
+			children = (
+				F62EFA052C6B3ECB0025498E /* Strawberry.swift */,
+				F62EFA072C6B40D80025498E /* Lemon.swift */,
+				F62EFA092C6B41030025498E /* Watermelon.swift */,
+				F62EFA0B2C6B41450025498E /* Pineapple.swift */,
+				F62EFA0E2C6B41A00025498E /* Banana.swift */,
+			);
+			path = Example;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -138,7 +230,19 @@
 			buildActionMask = 2147483647;
 			files = (
 				F62EF9E32C6B27840025498E /* ContentView.swift in Sources */,
+				F62EFA0A2C6B41030025498E /* Watermelon.swift in Sources */,
+				F62EF9F42C6B293B0025498E /* Complaint.swift in Sources */,
+				F62EFA062C6B3ECB0025498E /* Strawberry.swift in Sources */,
+				F62EFA082C6B40D80025498E /* Lemon.swift in Sources */,
+				F62EFA0C2C6B41450025498E /* Pineapple.swift in Sources */,
+				F62EFA0F2C6B41A00025498E /* Banana.swift in Sources */,
+				F62EFA002C6B2EB10025498E /* ComplaintViewModel.swift in Sources */,
 				F62EF9E12C6B27840025498E /* DeafHealthApp.swift in Sources */,
+				F62EF9F62C6B2B3D0025498E /* SymptomsDetail.swift in Sources */,
+				F62EFA022C6B3C190025498E /* coordinator.swift in Sources */,
+				F62EF9FB2C6B2BAF0025498E /* enums.swift in Sources */,
+				F62EF9F22C6B27D30025498E /* User.swift in Sources */,
+				F62EF9FE2C6B2C010025498E /* LocalDataSource.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

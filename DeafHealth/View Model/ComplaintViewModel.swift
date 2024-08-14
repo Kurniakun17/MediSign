@@ -9,7 +9,6 @@ import Foundation
 
 class ComplaintViewModel: ObservableObject {
     @Published var Complaints: [Complaint] = []
-
     private let dataSource: LocalDataSource
 
     init(datasource: LocalDataSource) {
@@ -18,10 +17,10 @@ class ComplaintViewModel: ObservableObject {
     }
 
     func add(complaint: Complaint) {
-        dataSource.addComplaint(complaint: complaint)
+        dataSource.add(complaint: complaint)
     }
 
     func delete(complaint: Complaint) {
-        dataSource.deleteComplaint(complaint: complaint)
+        dataSource.delete(complaint: complaint)
     }
 }

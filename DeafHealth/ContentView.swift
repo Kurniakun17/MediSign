@@ -8,14 +8,20 @@
 import SwiftUI
 
 struct ContentView: View {
+    @StateObject var complaintViewModel = ComplaintViewModel(datasource: .shared)
+    @StateObject private var coordinator = Coordinator()
+
     var body: some View {
-        VStack {
-            Image(systemName: "globe")
-                .imageScale(.large)
-                .foregroundStyle(.tint)
-            Text("Hello, world!")
+        NavigationStack(path: $coordinator.path
+        ) {
+            coordinator.build(page: .strawberry)
+                .navigationDestination(for: Page.self) {
+                    page in
+                    coordinator.build(page: page)
+                }
         }
-        .padding()
+        .environmentObject(coordinator)
+        .environmentObject(complaintViewModel)
     }
 }
 

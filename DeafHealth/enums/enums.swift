@@ -7,7 +7,7 @@
 
 import Foundation
 
-enum SymptomsType {
+enum SymptomsType: Codable {
     case demam
     case batuk
     case pusing
@@ -15,4 +15,9 @@ enum SymptomsType {
     case diare
     case sesakNafas
     case mualMuntah
+}
+
+enum Gender: Codable {
+    case male
+    case female
 }

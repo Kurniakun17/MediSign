@@ -20,4 +20,3 @@ class Complaint {
         self.date = date
     }
 }
-

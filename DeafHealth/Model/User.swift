@@ -8,17 +8,12 @@
 import Foundation
 import SwiftData
 
-enum Gender {
-    
-    case male
-}
-
 @Model
 class UserData {
     var name: String
     var age: String
     var gender: Gender
-    
+
     init(name: String, age: String, gender: Gender) {
         self.name = name
         self.age = age
