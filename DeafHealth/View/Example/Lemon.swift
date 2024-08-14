@@ -19,6 +19,10 @@ struct Lemon: View {
                 }) {
                     Text("🍌")
                 }
+
+                Button(action: { coordinator.present(fullScreenCover: .testFullScreenCover) }) {
+                    Text("Show Full Screen Cover")
+                }
             }
             Spacer()
         }

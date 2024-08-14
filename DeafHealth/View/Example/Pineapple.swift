@@ -9,20 +9,15 @@ import SwiftUI
 
 struct Pineapple: View {
     @EnvironmentObject var coordinator: Coordinator
-    @State var fruits: [String: Page] = ["🍉": .watermelon, "🍋": .lemon]
 
     var body: some View {
         VStack {
             List {
-                ForEach(fruits.keys.sorted(), id: \.self) { key in
-                    Button(action: {
-                        // Navigate to the corresponding page based on the key
-                        if let page = fruits[key] {
-                            coordinator.push(page: page)
-                        }
-                    }) {
-                        Text(key)
-                    }
+                Button(action: {
+                    print("hai")
+                    coordinator.present(sheet: .testSheet)
+                }) {
+                    Text("Show sheet")
                 }
             }
             Spacer()

@@ -8,28 +8,44 @@
 import Foundation
 import SwiftUI
 
-enum Page {
-//    case home
-//    case complaint
-//    case detailSymptoms
-//    case communcation
-//
+enum Page: String, Identifiable {
+    // MARK: Add Your Page Here
 
-    // MARK: Example Page
+    // MARK: Example Data
 
     case banana
     case lemon
     case watermelon
     case strawberry
     case pineapple
+
+    var id: String {
+        self.rawValue
+    }
 }
 
-enum Sheet {
-    case speechToText
+enum Sheet: String, Identifiable {
+    // MARK: Add Your Sheet Here
+
+    // MARK: Example Data
+
+    case testSheet
+
+    var id: String {
+        self.rawValue
+    }
 }
 
-enum FullScreenCover {
-    case testCover
+enum FullScreenCover: String, Identifiable {
+    // MARK: Add Your Full Screen Cover Here
+
+    // MARK: Example Data
+
+    case testFullScreenCover
+
+    var id: String {
+        self.rawValue
+    }
 }
 
 class Coordinator: ObservableObject {
@@ -61,19 +77,43 @@ class Coordinator: ObservableObject {
         self.path.removeLast(self.path.count)
     }
 
+    func pop() {
+        self.path.removeLast(1)
+    }
+
     @ViewBuilder
     func build(page: Page) -> some View {
         switch page {
-            case .banana:
-                Banana()
-            case .lemon:
-                Lemon()
-            case .strawberry:
-                Strawberry()
-            case .watermelon:
-                Watermelon()
-            case .pineapple:
-                Pineapple()
+        case .banana:
+            Banana()
+        case .lemon:
+            Lemon()
+        case .strawberry:
+            Strawberry()
+        case .watermelon:
+            Watermelon()
+        case .pineapple:
+            Pineapple()
+        }
+    }
+
+    @ViewBuilder
+    func build(sheet: Sheet) -> some View {
+        switch sheet {
+        case .testSheet:
+            NavigationStack {
+                TestSheet()
+            }
+        }
+    }
+
+    @ViewBuilder
+    func build(fullScreenCover: FullScreenCover) -> some View {
+        switch fullScreenCover {
+        case .testFullScreenCover:
+            NavigationStack {
+                TestFullScreenCover()
+            }
         }
     }
 }

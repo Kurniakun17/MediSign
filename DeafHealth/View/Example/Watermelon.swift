@@ -12,9 +12,9 @@ struct Watermelon: View {
         VStack {
             List {
                 Button(action: {
-                    coordinator.push(page: .lemon)
+                    coordinator.pop()
                 }) {
-                    Text("🍋")
+                    Text("🍓 > 🍋 > 🍌")
                 }
             }
             .navigationTitle("🍉")
