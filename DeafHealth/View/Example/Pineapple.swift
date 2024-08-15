@@ -14,7 +14,6 @@ struct Pineapple: View {
         VStack {
             List {
                 Button(action: {
-                    print("hai")
                     coordinator.present(sheet: .testSheet)
                 }) {
                     Text("Show sheet")
@@ -28,5 +27,5 @@ struct Pineapple: View {
 }
 
 #Preview {
-    Pineapple()
+   Pineapple()
 }
