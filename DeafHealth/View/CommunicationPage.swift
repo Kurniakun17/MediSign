@@ -5,63 +5,19 @@
 //  Created by Kurnia Kharisma Agung Samiadjie on 14/08/24.
 //
 
+import AVFoundation
 import SwiftUI
-
-enum Role: String, CaseIterable, Identifiable {
-    case user = "User"
-    case doctor = "Doctor"
-
-    var id: String { rawValue }
-}
-
-struct Message: Identifiable, Equatable {
-    var id = UUID()
-    var role: Role
-    var body: String
-
-    init(id: UUID = UUID(), role: Role, body: String) {
-        self.id = id
-        self.role = role
-        self.body = body
-    }
-}
 
 struct CommunicationPage: View {
     @State var messages: [Message] = [
         Message(role: .user, body: "Hai namaku kurnia "),
-//        Message(role: .user, body: "Hai namaku kurnia "),
-//        Message(role: .user, body: "Hai namaku kurnia "),
-//        Message(role: .user, body: "Hai namaku kurnia "),
-//        Message(role: .user, body: "Hai namaku kurnia "),
-//        Message(role: .user, body: "Hai namaku kurnia "),
-//        Message(role: .user, body: "Hai namaku kurnia "),
-//        Message(role: .user, body: "Hai namaku kurnia "),
-//        Message(role: .user, body: "Hai namaku kurnia "),
-//        Message(role: .user, body: "Hai namaku kurnia "),
-//        Message(role: .user, body: "Hai namaku kurnia "),
     ]
+
     @State var inputValue = ""
     @State var role: Role = .user
     @State var isRecording = false
     @StateObject var speechRecognizer = SpeechRecognizer()
-
-    func startRecording() {
-        isRecording = true
-        speechRecognizer.startTranscribe()
-
-        DispatchQueue.main.asyncAfter(deadline: .now() + 60) {
-            if isRecording {
-                stopRecording()
-            }
-        }
-    }
-
-    func stopRecording() {
-        isRecording = false
-        speechRecognizer.stopTranscribing()
-        inputValue = speechRecognizer.transcript
-        speechRecognizer.transcript = ""
-    }
+    @State private var speechSynthesizer: AVSpeechSynthesizer?
 
     var body: some View {
         VStack {
@@ -71,16 +27,21 @@ struct CommunicationPage: View {
                     VStack(spacing: 8) {
                         ForEach(messages, id: \.self.id) {
                             message in
-                            VStack(alignment: .trailing) {
-                                Text(message.body)
-                                    .padding()
-                                    .background(message.role == .user ? .green.opacity(0.3) : .blue.opacity(0.3))
-                                    .clipShape(RoundedRectangle(cornerRadius: 16))
+                            Button(action: {
+                                speak(text: message.body)
+                            }) {
+                                VStack(alignment: .trailing) {
+                                    Text(message.body)
+                                        .foregroundStyle(.black)
+                                        .padding()
+                                        .background(message.role == .user ? .green.opacity(0.3) : .blue.opacity(0.3))
+                                        .clipShape(RoundedRectangle(cornerRadius: 16))
+                                }
+                                .frame(maxWidth: .infinity, alignment: message.role == .user ? .trailing : .leading)
+                                .padding(.horizontal, 16)
+                                .transition(.move(edge: message.role == .user ? .trailing : .leading))
+                                .transition(.scale)
                             }
-                            .frame(maxWidth: .infinity, alignment: message.role == .user ? .trailing : .leading)
-                            .padding(.horizontal, 16)
-                            .transition(.move(edge: message.role == .user ? .trailing : .leading))
-                            .transition(.scale)
                         }
                     }
                     Color.clear
@@ -166,6 +127,32 @@ struct CommunicationPage: View {
             }
             .padding()
         }
+    }
+
+    func startRecording() {
+        isRecording = true
+        speechRecognizer.startTranscribe()
+
+        DispatchQueue.main.asyncAfter(deadline: .now() + 60) {
+            if isRecording {
+                stopRecording()
+            }
+        }
+    }
+
+    func stopRecording() {
+        isRecording = false
+        speechRecognizer.stopTranscribing()
+        inputValue = speechRecognizer.transcript
+        speechRecognizer.transcript = ""
+    }
+
+    func speak(text: String) {
+        let utterance = AVSpeechUtterance(string: text)
+        utterance.voice = AVSpeechSynthesisVoice(language: "id_ID")
+
+        speechSynthesizer = AVSpeechSynthesizer()
+        speechSynthesizer?.speak(utterance)
     }
 }
 

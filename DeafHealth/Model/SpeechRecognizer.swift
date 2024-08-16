@@ -5,6 +5,13 @@ import SwiftUI
 
 /// A helper for transcribing speech to text using SFSpeechRecognizer and AVAudioEngine.
 class SpeechRecognizer: ObservableObject {
+    @Published var transcript: String = ""
+
+    private var audioEngine: AVAudioEngine?
+    private var request: SFSpeechAudioBufferRecognitionRequest?
+    private var task: SFSpeechRecognitionTask?
+    private let recognizer: SFSpeechRecognizer?
+
     enum RecognizerError: Error {
         case nilRecognizer
         case notAuthorizedToRecognize
@@ -20,13 +27,6 @@ class SpeechRecognizer: ObservableObject {
             }
         }
     }
-    
-    @Published var transcript: String = ""
-
-    private var audioEngine: AVAudioEngine?
-    private var request: SFSpeechAudioBufferRecognitionRequest?
-    private var task: SFSpeechRecognitionTask?
-    private let recognizer: SFSpeechRecognizer?
 
     init() {
         recognizer = SFSpeechRecognizer(locale: Locale(identifier: "id_ID"))
@@ -51,7 +51,7 @@ class SpeechRecognizer: ObservableObject {
     deinit {
         reset()
     }
-    
+
     private func speak(_ message: String) {
         transcript = message
     }
@@ -65,7 +65,6 @@ class SpeechRecognizer: ObservableObject {
         }
         transcript = "<< \(errorMessage) >>"
     }
-
 
     func stopTranscribing() {
         reset()
@@ -151,5 +150,32 @@ extension AVAudioSession {
                 continuation.resume(returning: authorized)
             }
         }
+    }
+}
+
+@MainActor
+class SynthesizerViewModel: ObservableObject {
+    let speechSynthesizer: SpeechSynthesizerProviding
+
+    init(speechSynthesizer: SpeechSynthesizerProviding) {
+        self.speechSynthesizer = speechSynthesizer
+    }
+
+    func onTapSpeak(text: String) {
+        speechSynthesizer.speakText(text: text)
+    }
+}
+
+protocol SpeechSynthesizerProviding {
+    func speakText(text: String)
+}
+
+final class SpeechSynthesizer: SpeechSynthesizerProviding {
+    func speakText(text: String) {
+        print(text)
+        let utterance = AVSpeechUtterance(string: text)
+        utterance.voice = AVSpeechSynthesisVoice(language: "id_ID")
+        let synthesizer = AVSpeechSynthesizer()
+        synthesizer.speak(utterance)
     }
 }

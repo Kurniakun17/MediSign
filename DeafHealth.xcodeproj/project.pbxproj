@@ -27,6 +27,7 @@
 		F6A94FFD2C6C47AC00F45997 /* TestSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6A94FFC2C6C47AC00F45997 /* TestSheet.swift */; };
 		F6A94FFF2C6C486D00F45997 /* TestFullScreenCover.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6A94FFE2C6C486D00F45997 /* TestFullScreenCover.swift */; };
 		F6A950022C6C5C6700F45997 /* CommunicationPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6A950012C6C5C6700F45997 /* CommunicationPage.swift */; };
+		F6D07E402C6F79DB006113FB /* Message.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6D07E3F2C6F79DB006113FB /* Message.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -51,6 +52,7 @@
 		F6A94FFC2C6C47AC00F45997 /* TestSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestSheet.swift; sourceTree = "<group>"; };
 		F6A94FFE2C6C486D00F45997 /* TestFullScreenCover.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestFullScreenCover.swift; sourceTree = "<group>"; };
 		F6A950012C6C5C6700F45997 /* CommunicationPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommunicationPage.swift; sourceTree = "<group>"; };
+		F6D07E3F2C6F79DB006113FB /* Message.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Message.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -88,7 +90,7 @@
 				F62EF9EE2C6B27910025498E /* Model */,
 				F62EF9EF2C6B279B0025498E /* View Model */,
 				F62EF9F02C6B27AD0025498E /* View */,
-				F62EF9F92C6B2B720025498E /* enums */,
+				F62EF9F92C6B2B720025498E /* Utils */,
 				F62EF9E02C6B27840025498E /* DeafHealthApp.swift */,
 				F62EF9E22C6B27840025498E /* ContentView.swift */,
 				F62EF9E42C6B27850025498E /* Assets.xcassets */,
@@ -112,6 +114,7 @@
 				F62EF9F32C6B293B0025498E /* Complaint.swift */,
 				F62EF9F52C6B2B3D0025498E /* SymptomsDetail.swift */,
 				F6856F982C6F582B00574B7E /* SpeechRecognizer.swift */,
+				F6D07E3F2C6F79DB006113FB /* Message.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -133,12 +136,12 @@
 			path = View;
 			sourceTree = "<group>";
 		};
-		F62EF9F92C6B2B720025498E /* enums */ = {
+		F62EF9F92C6B2B720025498E /* Utils */ = {
 			isa = PBXGroup;
 			children = (
 				F62EF9FA2C6B2BAF0025498E /* enums.swift */,
 			);
-			path = enums;
+			path = Utils;
 			sourceTree = "<group>";
 		};
 		F62EF9FC2C6B2BCC0025498E /* Data Source */ = {
@@ -253,6 +256,7 @@
 				F62EF9F42C6B293B0025498E /* Complaint.swift in Sources */,
 				F6856F992C6F582B00574B7E /* SpeechRecognizer.swift in Sources */,
 				F62EFA062C6B3ECB0025498E /* Strawberry.swift in Sources */,
+				F6D07E402C6F79DB006113FB /* Message.swift in Sources */,
 				F62EFA082C6B40D80025498E /* Lemon.swift in Sources */,
 				F6A94FFD2C6C47AC00F45997 /* TestSheet.swift in Sources */,
 				F62EFA0C2C6B41450025498E /* Pineapple.swift in Sources */,
