@@ -18,6 +18,7 @@ enum Page: String, Identifiable {
     case watermelon
     case strawberry
     case pineapple
+    case communication
 
     var id: String {
         self.rawValue
@@ -94,12 +95,13 @@ class Coordinator: ObservableObject {
             Watermelon()
         case .pineapple:
             Pineapple()
+        case .communication:
+            CommunicationPage()
         }
     }
 
     @ViewBuilder
     func build(sheet: Sheet) -> some View {
-        
         switch sheet {
         case .testSheet:
             NavigationStack {

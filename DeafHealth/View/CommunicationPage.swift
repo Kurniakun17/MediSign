@@ -26,22 +26,42 @@ struct Message: Identifiable, Equatable {
     }
 }
 
-struct CommuncationPage: View {
+struct CommunicationPage: View {
     @State var messages: [Message] = [
         Message(role: .user, body: "Hai namaku kurnia "),
-        Message(role: .user, body: "Hai namaku kurnia "),
-        Message(role: .user, body: "Hai namaku kurnia "),
-        Message(role: .user, body: "Hai namaku kurnia "),
-        Message(role: .user, body: "Hai namaku kurnia "),
-        Message(role: .user, body: "Hai namaku kurnia "),
-        Message(role: .user, body: "Hai namaku kurnia "),
-        Message(role: .user, body: "Hai namaku kurnia "),
-        Message(role: .user, body: "Hai namaku kurnia "),
-        Message(role: .user, body: "Hai namaku kurnia "),
-        Message(role: .user, body: "Hai namaku kurnia "),
+//        Message(role: .user, body: "Hai namaku kurnia "),
+//        Message(role: .user, body: "Hai namaku kurnia "),
+//        Message(role: .user, body: "Hai namaku kurnia "),
+//        Message(role: .user, body: "Hai namaku kurnia "),
+//        Message(role: .user, body: "Hai namaku kurnia "),
+//        Message(role: .user, body: "Hai namaku kurnia "),
+//        Message(role: .user, body: "Hai namaku kurnia "),
+//        Message(role: .user, body: "Hai namaku kurnia "),
+//        Message(role: .user, body: "Hai namaku kurnia "),
+//        Message(role: .user, body: "Hai namaku kurnia "),
     ]
     @State var inputValue = ""
     @State var role: Role = .user
+    @State var isRecording = false
+    @StateObject var speechRecognizer = SpeechRecognizer()
+
+    func startRecording() {
+        isRecording = true
+        speechRecognizer.startTranscribe()
+
+        DispatchQueue.main.asyncAfter(deadline: .now() + 60) {
+            if isRecording {
+                stopRecording()
+            }
+        }
+    }
+
+    func stopRecording() {
+        isRecording = false
+        speechRecognizer.stopTranscribing()
+        inputValue = speechRecognizer.transcript
+        speechRecognizer.transcript = ""
+    }
 
     var body: some View {
         VStack {
@@ -78,39 +98,51 @@ struct CommuncationPage: View {
             Spacer()
 
             VStack(alignment: .leading, spacing: 12) {
-                HStack(spacing: 16) {
-                    Button(action: {
-                        role = .user
-                    }) {
-                        Text("User")
-                            .foregroundStyle(.white)
+                HStack {
+                    HStack(spacing: 16) {
+                        Button(action: {
+                            role = .user
+                        }) {
+                            Text("User")
+                                .foregroundStyle(.white)
+                        }
+                        .padding(8)
+                        .fontWeight(.semibold)
+                        .background(role == .user ? .green : .gray)
+                        .clipShape(RoundedRectangle(cornerRadius: 12))
+
+                        Button(action: {
+                            role = .doctor
+                        }) {
+                            Text("Doctor")
+                                .foregroundStyle(.white)
+                        }
+                        .padding(8)
+                        .fontWeight(.semibold)
+                        .background(role == .user ? .gray : .blue.opacity(0.8))
+                        .clipShape(RoundedRectangle(cornerRadius: 12))
                     }
-                    .padding(8)
-                    .fontWeight(.semibold)
-                    .background(role == .user ? .green : .gray)
-                    .clipShape(RoundedRectangle(cornerRadius: 12))
+
+                    Spacer()
 
                     Button(action: {
                         role = .doctor
+                        if isRecording {
+                            stopRecording()
+
+                        } else {
+                            startRecording()
+                        }
                     }) {
-                        Text("Doctor")
+                        Text(isRecording ? "Stop Recording" : "Record")
                             .foregroundStyle(.white)
+                            .padding(8)
+                            .background(isRecording ? .blue : .red)
+                            .fontWeight(.bold)
+                            .clipShape(RoundedRectangle(cornerRadius: 12))
                     }
-                    .padding(8)
-                    .fontWeight(.semibold)
-                    .background(role == .user ? .gray : .blue.opacity(0.8))
-                    .clipShape(RoundedRectangle(cornerRadius: 12))
                 }
 
-//                Picker("Select Role", selection: $role) {
-//                    ForEach(Role.allCases) { role in
-//                        Text(role.rawValue)
-//                            .tag(role)
-//                    }
-//                }
-//                .pickerStyle(SegmentedPickerStyle())
-//                .padding()
-//
                 HStack {
                     TextField("Message", text: $inputValue)
                         .padding()
@@ -138,5 +170,5 @@ struct CommuncationPage: View {
 }
 
 #Preview {
-    CommuncationPage()
+    CommunicationPage()
 }

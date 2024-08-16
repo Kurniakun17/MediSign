@@ -23,9 +23,10 @@
 		F62EFA0A2C6B41030025498E /* Watermelon.swift in Sources */ = {isa = PBXBuildFile; fileRef = F62EFA092C6B41030025498E /* Watermelon.swift */; };
 		F62EFA0C2C6B41450025498E /* Pineapple.swift in Sources */ = {isa = PBXBuildFile; fileRef = F62EFA0B2C6B41450025498E /* Pineapple.swift */; };
 		F62EFA0F2C6B41A00025498E /* Banana.swift in Sources */ = {isa = PBXBuildFile; fileRef = F62EFA0E2C6B41A00025498E /* Banana.swift */; };
+		F6856F992C6F582B00574B7E /* SpeechRecognizer.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6856F982C6F582B00574B7E /* SpeechRecognizer.swift */; };
 		F6A94FFD2C6C47AC00F45997 /* TestSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6A94FFC2C6C47AC00F45997 /* TestSheet.swift */; };
 		F6A94FFF2C6C486D00F45997 /* TestFullScreenCover.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6A94FFE2C6C486D00F45997 /* TestFullScreenCover.swift */; };
-		F6A950022C6C5C6700F45997 /* CommuncationPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6A950012C6C5C6700F45997 /* CommuncationPage.swift */; };
+		F6A950022C6C5C6700F45997 /* CommunicationPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6A950012C6C5C6700F45997 /* CommunicationPage.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -46,9 +47,10 @@
 		F62EFA092C6B41030025498E /* Watermelon.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Watermelon.swift; sourceTree = "<group>"; };
 		F62EFA0B2C6B41450025498E /* Pineapple.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Pineapple.swift; sourceTree = "<group>"; };
 		F62EFA0E2C6B41A00025498E /* Banana.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Banana.swift; sourceTree = "<group>"; };
+		F6856F982C6F582B00574B7E /* SpeechRecognizer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpeechRecognizer.swift; sourceTree = "<group>"; };
 		F6A94FFC2C6C47AC00F45997 /* TestSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestSheet.swift; sourceTree = "<group>"; };
 		F6A94FFE2C6C486D00F45997 /* TestFullScreenCover.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestFullScreenCover.swift; sourceTree = "<group>"; };
-		F6A950012C6C5C6700F45997 /* CommuncationPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommuncationPage.swift; sourceTree = "<group>"; };
+		F6A950012C6C5C6700F45997 /* CommunicationPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommunicationPage.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -109,6 +111,7 @@
 				F62EF9F12C6B27D30025498E /* User.swift */,
 				F62EF9F32C6B293B0025498E /* Complaint.swift */,
 				F62EF9F52C6B2B3D0025498E /* SymptomsDetail.swift */,
+				F6856F982C6F582B00574B7E /* SpeechRecognizer.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -125,7 +128,7 @@
 			isa = PBXGroup;
 			children = (
 				F62EFA042C6B3EB70025498E /* Example */,
-				F6A950012C6C5C6700F45997 /* CommuncationPage.swift */,
+				F6A950012C6C5C6700F45997 /* CommunicationPage.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -184,6 +187,8 @@
 			dependencies = (
 			);
 			name = DeafHealth;
+			packageProductDependencies = (
+			);
 			productName = DeafHealth;
 			productReference = F62EF9DD2C6B27840025498E /* DeafHealth.app */;
 			productType = "com.apple.product-type.application";
@@ -212,6 +217,9 @@
 				Base,
 			);
 			mainGroup = F62EF9D42C6B27840025498E;
+			packageReferences = (
+				F6856F952C6F509200574B7E /* XCRemoteSwiftPackageReference "SwiftUISpeechToText" */,
+			);
 			productRefGroup = F62EF9DE2C6B27840025498E /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -240,9 +248,10 @@
 			files = (
 				F6A94FFF2C6C486D00F45997 /* TestFullScreenCover.swift in Sources */,
 				F62EF9E32C6B27840025498E /* ContentView.swift in Sources */,
-				F6A950022C6C5C6700F45997 /* CommuncationPage.swift in Sources */,
+				F6A950022C6C5C6700F45997 /* CommunicationPage.swift in Sources */,
 				F62EFA0A2C6B41030025498E /* Watermelon.swift in Sources */,
 				F62EF9F42C6B293B0025498E /* Complaint.swift in Sources */,
+				F6856F992C6F582B00574B7E /* SpeechRecognizer.swift in Sources */,
 				F62EFA062C6B3ECB0025498E /* Strawberry.swift in Sources */,
 				F62EFA082C6B40D80025498E /* Lemon.swift in Sources */,
 				F6A94FFD2C6C47AC00F45997 /* TestSheet.swift in Sources */,
@@ -391,6 +400,8 @@
 				DEVELOPMENT_TEAM = 49V8Q5W76J;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSMicrophoneUsageDescription = "Access microphone to enable speech to text functionality ";
+				INFOPLIST_KEY_NSSpeechRecognitionUsageDescription = "Speech Recognition to translate doctor to text";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -420,6 +431,8 @@
 				DEVELOPMENT_TEAM = 49V8Q5W76J;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSMicrophoneUsageDescription = "Access microphone to enable speech to text functionality ";
+				INFOPLIST_KEY_NSSpeechRecognitionUsageDescription = "Speech Recognition to translate doctor to text";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -460,6 +473,17 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		F6856F952C6F509200574B7E /* XCRemoteSwiftPackageReference "SwiftUISpeechToText" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/pandashashwat97/SwiftUISpeechToText.git";
+			requirement = {
+				branch = main;
+				kind = branch;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
 	};
 	rootObject = F62EF9D52C6B27840025498E /* Project object */;
 }
