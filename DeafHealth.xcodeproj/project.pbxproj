@@ -7,6 +7,16 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		A2A0C5472C6F68B0002240E2 /* ComplaintView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2A0C5462C6F68B0002240E2 /* ComplaintView.swift */; };
+		A2A0C5492C6F6922002240E2 /* SelectBodyPartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2A0C5482C6F6922002240E2 /* SelectBodyPartView.swift */; };
+		A2A0C5512C6F69D6002240E2 /* SymptomStartTimeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2A0C5502C6F69D6002240E2 /* SymptomStartTimeView.swift */; };
+		A2A0C5532C6F69E1002240E2 /* SymptomSeverityView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2A0C5522C6F69E1002240E2 /* SymptomSeverityView.swift */; };
+		A2A0C5552C6F69ED002240E2 /* SymptomWorseningFactorsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2A0C5542C6F69ED002240E2 /* SymptomWorseningFactorsView.swift */; };
+		A2A0C5572C6F69FB002240E2 /* SymptomImprovementFactorsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2A0C5562C6F69FB002240E2 /* SymptomImprovementFactorsView.swift */; };
+		A2A0C5592C6F6A05002240E2 /* AdditionalComplaintsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2A0C5582C6F6A05002240E2 /* AdditionalComplaintsView.swift */; };
+		A2A0C55B2C6F6A15002240E2 /* PreviousConsultationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2A0C55A2C6F6A15002240E2 /* PreviousConsultationView.swift */; };
+		A2A0C55D2C6F6A1C002240E2 /* SummaryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2A0C55C2C6F6A1C002240E2 /* SummaryView.swift */; };
+		A2A0C55F2C709032002240E2 /* ComplaintFlowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2A0C55E2C709032002240E2 /* ComplaintFlowView.swift */; };
 		F62EF9E12C6B27840025498E /* DeafHealthApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = F62EF9E02C6B27840025498E /* DeafHealthApp.swift */; };
 		F62EF9E32C6B27840025498E /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F62EF9E22C6B27840025498E /* ContentView.swift */; };
 		F62EF9E52C6B27850025498E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F62EF9E42C6B27850025498E /* Assets.xcassets */; };
@@ -28,6 +38,16 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		A2A0C5462C6F68B0002240E2 /* ComplaintView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComplaintView.swift; sourceTree = "<group>"; };
+		A2A0C5482C6F6922002240E2 /* SelectBodyPartView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectBodyPartView.swift; sourceTree = "<group>"; };
+		A2A0C5502C6F69D6002240E2 /* SymptomStartTimeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SymptomStartTimeView.swift; sourceTree = "<group>"; };
+		A2A0C5522C6F69E1002240E2 /* SymptomSeverityView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SymptomSeverityView.swift; sourceTree = "<group>"; };
+		A2A0C5542C6F69ED002240E2 /* SymptomWorseningFactorsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SymptomWorseningFactorsView.swift; sourceTree = "<group>"; };
+		A2A0C5562C6F69FB002240E2 /* SymptomImprovementFactorsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SymptomImprovementFactorsView.swift; sourceTree = "<group>"; };
+		A2A0C5582C6F6A05002240E2 /* AdditionalComplaintsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdditionalComplaintsView.swift; sourceTree = "<group>"; };
+		A2A0C55A2C6F6A15002240E2 /* PreviousConsultationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreviousConsultationView.swift; sourceTree = "<group>"; };
+		A2A0C55C2C6F6A1C002240E2 /* SummaryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SummaryView.swift; sourceTree = "<group>"; };
+		A2A0C55E2C709032002240E2 /* ComplaintFlowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComplaintFlowView.swift; sourceTree = "<group>"; };
 		F62EF9DD2C6B27840025498E /* DeafHealth.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DeafHealth.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F62EF9E02C6B27840025498E /* DeafHealthApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeafHealthApp.swift; sourceTree = "<group>"; };
 		F62EF9E22C6B27840025498E /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -123,6 +143,16 @@
 			isa = PBXGroup;
 			children = (
 				F62EFA042C6B3EB70025498E /* Example */,
+				A2A0C5462C6F68B0002240E2 /* ComplaintView.swift */,
+				A2A0C5482C6F6922002240E2 /* SelectBodyPartView.swift */,
+				A2A0C5502C6F69D6002240E2 /* SymptomStartTimeView.swift */,
+				A2A0C5522C6F69E1002240E2 /* SymptomSeverityView.swift */,
+				A2A0C5542C6F69ED002240E2 /* SymptomWorseningFactorsView.swift */,
+				A2A0C5562C6F69FB002240E2 /* SymptomImprovementFactorsView.swift */,
+				A2A0C5582C6F6A05002240E2 /* AdditionalComplaintsView.swift */,
+				A2A0C55A2C6F6A15002240E2 /* PreviousConsultationView.swift */,
+				A2A0C55C2C6F6A1C002240E2 /* SummaryView.swift */,
+				A2A0C55E2C709032002240E2 /* ComplaintFlowView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -235,20 +265,30 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A2A0C5572C6F69FB002240E2 /* SymptomImprovementFactorsView.swift in Sources */,
 				F6A94FFF2C6C486D00F45997 /* TestFullScreenCover.swift in Sources */,
 				F62EF9E32C6B27840025498E /* ContentView.swift in Sources */,
 				F62EFA0A2C6B41030025498E /* Watermelon.swift in Sources */,
 				F62EF9F42C6B293B0025498E /* Complaint.swift in Sources */,
 				F62EFA062C6B3ECB0025498E /* Strawberry.swift in Sources */,
+				A2A0C5552C6F69ED002240E2 /* SymptomWorseningFactorsView.swift in Sources */,
 				F62EFA082C6B40D80025498E /* Lemon.swift in Sources */,
 				F6A94FFD2C6C47AC00F45997 /* TestSheet.swift in Sources */,
 				F62EFA0C2C6B41450025498E /* Pineapple.swift in Sources */,
 				F62EFA0F2C6B41A00025498E /* Banana.swift in Sources */,
+				A2A0C5472C6F68B0002240E2 /* ComplaintView.swift in Sources */,
+				A2A0C55F2C709032002240E2 /* ComplaintFlowView.swift in Sources */,
 				F62EFA002C6B2EB10025498E /* ComplaintViewModel.swift in Sources */,
+				A2A0C5532C6F69E1002240E2 /* SymptomSeverityView.swift in Sources */,
+				A2A0C5492C6F6922002240E2 /* SelectBodyPartView.swift in Sources */,
 				F62EF9E12C6B27840025498E /* DeafHealthApp.swift in Sources */,
+				A2A0C5512C6F69D6002240E2 /* SymptomStartTimeView.swift in Sources */,
 				F62EF9F62C6B2B3D0025498E /* SymptomsDetail.swift in Sources */,
 				F62EFA022C6B3C190025498E /* coordinator.swift in Sources */,
+				A2A0C5592C6F6A05002240E2 /* AdditionalComplaintsView.swift in Sources */,
+				A2A0C55B2C6F6A15002240E2 /* PreviousConsultationView.swift in Sources */,
 				F62EF9FB2C6B2BAF0025498E /* enums.swift in Sources */,
+				A2A0C55D2C6F6A1C002240E2 /* SummaryView.swift in Sources */,
 				F62EF9F22C6B27D30025498E /* User.swift in Sources */,
 				F62EF9FE2C6B2C010025498E /* LocalDataSource.swift in Sources */,
 			);

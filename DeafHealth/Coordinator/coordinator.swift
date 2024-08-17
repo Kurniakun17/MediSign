@@ -10,14 +10,16 @@ import SwiftUI
 
 enum Page: String, Identifiable {
     // MARK: Add Your Page Here
-
-    // MARK: Example Data
-
-    case banana
-    case lemon
-    case watermelon
-    case strawberry
-    case pineapple
+    
+    case mainComplaint
+    case selectBodyPart
+    case symptomStartTime
+    case symptomSeverity
+    case symptomWorseningFactors
+    case symptomImprovementFactors
+    case additionalComplaints
+    case previousConsultation
+    case summary
 
     var id: String {
         self.rawValue
@@ -84,16 +86,24 @@ class Coordinator: ObservableObject {
     @ViewBuilder
     func build(page: Page) -> some View {
         switch page {
-        case .banana:
-            Banana()
-        case .lemon:
-            Lemon()
-        case .strawberry:
-            Strawberry()
-        case .watermelon:
-            Watermelon()
-        case .pineapple:
-            Pineapple()
+        case .mainComplaint:
+            ComplaintView()
+        case .selectBodyPart:
+            SelectBodyPartView()
+        case .symptomStartTime:
+            SymptomStartTimeView()
+        case .symptomSeverity:
+            SymptomSeverityView()
+        case .symptomWorseningFactors:
+            SymptomWorseningFactorsView()
+        case .symptomImprovementFactors:
+            SymptomImprovementFactorsView()
+        case .additionalComplaints:
+            AdditionalComplaintsView()
+        case .previousConsultation:
+            PreviousConsultationView()
+        case .summary:
+            SummaryView()
         }
     }
 
