@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		9B16FFD62C721846001A4680 /* SymptomStartTimeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B16FFD52C721846001A4680 /* SymptomStartTimeViewModel.swift */; };
+		A255E0242C72045000274DF5 /* ConsultationMenuView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A255E0232C72045000274DF5 /* ConsultationMenuView.swift */; };
 		A2A0C5472C6F68B0002240E2 /* ComplaintView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2A0C5462C6F68B0002240E2 /* ComplaintView.swift */; };
 		A2A0C5492C6F6922002240E2 /* SelectBodyPartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2A0C5482C6F6922002240E2 /* SelectBodyPartView.swift */; };
 		A2A0C5512C6F69D6002240E2 /* SymptomStartTimeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2A0C5502C6F69D6002240E2 /* SymptomStartTimeView.swift */; };
@@ -39,7 +39,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		9B16FFD52C721846001A4680 /* SymptomStartTimeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SymptomStartTimeViewModel.swift; sourceTree = "<group>"; };
+		A255E0232C72045000274DF5 /* ConsultationMenuView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConsultationMenuView.swift; sourceTree = "<group>"; };
 		A2A0C5462C6F68B0002240E2 /* ComplaintView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComplaintView.swift; sourceTree = "<group>"; };
 		A2A0C5482C6F6922002240E2 /* SelectBodyPartView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectBodyPartView.swift; sourceTree = "<group>"; };
 		A2A0C5502C6F69D6002240E2 /* SymptomStartTimeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SymptomStartTimeView.swift; sourceTree = "<group>"; };
@@ -156,6 +156,7 @@
 				A2A0C55A2C6F6A15002240E2 /* PreviousConsultationView.swift */,
 				A2A0C55C2C6F6A1C002240E2 /* SummaryView.swift */,
 				A2A0C55E2C709032002240E2 /* ComplaintFlowView.swift */,
+				A255E0232C72045000274DF5 /* ConsultationMenuView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -284,7 +285,7 @@
 				F62EFA002C6B2EB10025498E /* ComplaintViewModel.swift in Sources */,
 				A2A0C5532C6F69E1002240E2 /* SymptomSeverityView.swift in Sources */,
 				A2A0C5492C6F6922002240E2 /* SelectBodyPartView.swift in Sources */,
-				9B16FFD62C721846001A4680 /* SymptomStartTimeViewModel.swift in Sources */,
+				A255E0242C72045000274DF5 /* ConsultationMenuView.swift in Sources */,
 				F62EF9E12C6B27840025498E /* DeafHealthApp.swift in Sources */,
 				A2A0C5512C6F69D6002240E2 /* SymptomStartTimeView.swift in Sources */,
 				F62EF9F62C6B2B3D0025498E /* SymptomsDetail.swift in Sources */,

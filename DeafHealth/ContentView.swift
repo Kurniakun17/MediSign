@@ -11,28 +11,27 @@ struct ContentView: View {
     @StateObject var complaintViewModel = ComplaintViewModel(datasource: .shared)
     @StateObject private var coordinator = Coordinator()
 
-    @State private var isPresentingComplaintFlow = false
-
     var body: some View {
-        VStack {
-            // Existing content of your homepage
-
-            Button("Tambah Keluhan") {
-                isPresentingComplaintFlow.toggle()
+        NavigationStack(path: $coordinator.path) {
+            VStack {
+                // Your main menu content
+                Button("Tambah Keluhan") {
+                    coordinator.push(page: .consultationMenuView)
+                }
+                .padding()
             }
-            .padding()
-            .buttonStyle(.borderedProminent)
-            .sheet(isPresented: $isPresentingComplaintFlow, onDismiss: {
-                // Perform any cleanup or state reset here
-                coordinator.popToRoot()
-            }) {
-                ComplaintFlowView()
-                    .environmentObject(coordinator)
-                    .environmentObject(complaintViewModel)
-                    .presentationDetents([.large])
-                    .presentationDragIndicator(.visible)
+            .navigationDestination(for: Page.self) { page in
+                coordinator.build(page: page)
+            }
+            .sheet(item: $coordinator.sheet) { sheet in
+                coordinator.build(sheet: sheet)
+            }
+            .fullScreenCover(item: $coordinator.fullScreenCover) { fullScreenCover in
+                coordinator.build(fullScreenCover: fullScreenCover)
             }
         }
+        .environmentObject(coordinator)
+        .environmentObject(complaintViewModel)
     }
 }
 

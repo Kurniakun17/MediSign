@@ -10,6 +10,10 @@ import SwiftUI
 struct SymptomStartTimeView: View {
     @EnvironmentObject var coordinator: Coordinator
     @Environment(\.dismiss) private var dismiss
+    @EnvironmentObject var complaintViewModel: ComplaintViewModel
+
+    @State private var selectedStartTime: String = ""
+    @State private var isAnswerProvided: Bool = false
 
     @State var viewModel: SymptomStartTimeViewModel = .init()
 
@@ -21,28 +25,27 @@ struct SymptomStartTimeView: View {
     var body: some View {
         VStack(spacing: 0) {
             ZStack {
-                // Progress bar centered in the view
                 SegmentedProgressBar(totalSteps: 8, currentStep: 3)
                     .padding(.horizontal)
 
                 HStack {
-                    // Custom back button
                     Button(action: {
-                        coordinator.pop() // Handle back navigation
+                        coordinator.popToRoot()
+                        coordinator.push(page: .consultationMenuView)
                     }) {
                         Image(systemName: "chevron.left")
-                            .foregroundColor(Color("black")) // Replace with your color
+                            .foregroundColor(Color("black"))
                     }
                     .padding(.leading)
 
-                    Spacer() // This spacer helps to align the progress bar centrally
+                    Spacer()
                 }
             }
             .padding(.top, 16)
             .padding(.bottom, 16)
 
             VStack(spacing: 0) {
-                Text("Kapan gejala mulai terasa?")
+                Text("Kapan gejala ini mulai terasa?")
                     .font(.title3)
                     .multilineTextAlignment(.center)
             }
@@ -92,6 +95,21 @@ struct SymptomStartTimeView: View {
 
             Spacer()
 
+            // Example start time selection
+            Button(action: {
+                selectedStartTime = "1 Hari yang Lalu"
+                isAnswerProvided = true
+                complaintViewModel.updateAnswer(for: 2, with: selectedStartTime)
+            }) {
+                Text("1 Hari yang Lalu")
+                    .padding()
+                    .background(Color.blue)
+                    .foregroundColor(.white)
+                    .cornerRadius(8)
+            }
+
+            Spacer()
+
             // Green overlay at the bottom with buttons
             VStack(spacing: 16) {
                 Text("Hasil Susun Keluhan")
@@ -101,25 +119,20 @@ struct SymptomStartTimeView: View {
                     .padding(.leading, 32)
                     .frame(maxWidth: .infinity, alignment: .leading)
 
-                HStack {
-                    Text("Halo Dokter. Saya merasakan gejala ini sejak ")
-                        + Text("\(selectedTime)").bold()
-                        + Text(".")
-                }
-                .font(.subheadline)
-                .padding(.bottom, 8)
-                .padding(.leading, 32)
-                .frame(maxWidth: .infinity, alignment: .leading)
+                Text(complaintViewModel.getSummary(for: 2))
+                    .font(.subheadline)
+                    .padding(.bottom, 8)
+                    .padding(.leading, 32)
+                    .frame(maxWidth: .infinity, alignment: .leading)
 
                 HStack(spacing: 16) {
                     Button("Kembali") {
-                        coordinator.pop()
+                        coordinator.pop() // Navigate back to ConsultationMenuView
                     }
                     .frame(maxWidth: .infinity)
                     .padding()
                     .background(Color("green"))
                     .cornerRadius(25)
-                    .frame(width: (UIScreen.main.bounds.width - 64) * 0.353)
                     .foregroundColor(Color("FFFFFF"))
 
                     Button("Lanjutkan") {
@@ -127,10 +140,10 @@ struct SymptomStartTimeView: View {
                     }
                     .frame(maxWidth: .infinity)
                     .padding()
-                    .background(Color("light-green-button"))
+                    .background(isAnswerProvided ? Color("light-green-button") : Color.gray)
                     .cornerRadius(25)
-                    .frame(width: (UIScreen.main.bounds.width - 64) * 0.647)
                     .foregroundColor(Color("FFFFFF"))
+                    .disabled(!isAnswerProvided)  // Disable the button if no answer is provided
                 }
                 .padding(.horizontal, 32)
             }
@@ -150,4 +163,6 @@ struct SymptomStartTimeView: View {
 
 #Preview {
     SymptomStartTimeView()
+        .environmentObject(Coordinator())
+        .environmentObject(ComplaintViewModel(datasource: LocalDataSource.shared))
 }

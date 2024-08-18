@@ -10,25 +10,28 @@ import SwiftUI
 struct SelectBodyPartView: View {
     @EnvironmentObject var coordinator: Coordinator
     @Environment(\.dismiss) private var dismiss
+    @EnvironmentObject var complaintViewModel: ComplaintViewModel
+
+    @State private var selectedBodyPart: String = ""
+    @State private var isAnswerProvided: Bool = false
 
     var body: some View {
         VStack(spacing: 0) {
             ZStack {
-                // Progress bar centered in the view
                 SegmentedProgressBar(totalSteps: 8, currentStep: 2)
-                    .padding(.horizontal)  // Ensure there's some padding around it
+                    .padding(.horizontal)
 
                 HStack {
-                    // Custom back button
                     Button(action: {
-                        coordinator.pop()  // Handle back navigation
+                        coordinator.popToRoot()
+                        coordinator.push(page: .consultationMenuView)
                     }) {
                         Image(systemName: "chevron.left")
-                            .foregroundColor(Color("black"))  // Replace with your color
+                            .foregroundColor(Color("black"))
                     }
-                    .padding(.leading, 25)
+                    .padding(.leading)
 
-                    Spacer()  // This spacer helps to align the progress bar centrally
+                    Spacer()
                 }
             }
             .padding(.top, 16)
@@ -44,6 +47,21 @@ struct SelectBodyPartView: View {
             }
             Spacer()
 
+            // Example body part selection
+            Button(action: {
+                selectedBodyPart = "Bahu Depan Bagian Kanan"
+                isAnswerProvided = true
+                complaintViewModel.updateAnswer(for: 1, with: selectedBodyPart)
+            }) {
+                Text("Bahu Depan Bagian Kanan")
+                    .padding()
+                    .background(Color.blue)
+                    .foregroundColor(.white)
+                    .cornerRadius(8)
+            }
+
+            Spacer()
+
             // Green overlay at the bottom with buttons
             VStack(spacing: 16) {
                 Text("Hasil Susun Keluhan")
@@ -53,7 +71,7 @@ struct SelectBodyPartView: View {
                     .padding(.leading, 32)
                     .frame(maxWidth: .infinity, alignment: .leading)
 
-                Text("Halo Dokter. Saya merasakan nyeri di _____.")
+                Text(complaintViewModel.getSummary(for: 1))
                     .font(.subheadline)
                     .padding(.bottom, 8)
                     .padding(.leading, 32)
@@ -61,13 +79,12 @@ struct SelectBodyPartView: View {
 
                 HStack(spacing: 16) {
                     Button("Kembali") {
-                        coordinator.pop()  // Go back to the previous view in the flow
+                        coordinator.pop() // Navigate back to ConsultationMenuView
                     }
                     .frame(maxWidth: .infinity)
                     .padding()
                     .background(Color("green"))
                     .cornerRadius(25)
-                    .frame(width: (UIScreen.main.bounds.width - 64) * 0.353)
                     .foregroundColor(Color("FFFFFF"))
 
                     Button("Lanjutkan") {
@@ -75,10 +92,10 @@ struct SelectBodyPartView: View {
                     }
                     .frame(maxWidth: .infinity)
                     .padding()
-                    .background(Color("light-green-button"))
+                    .background(isAnswerProvided ? Color("light-green-button") : Color.gray)
                     .cornerRadius(25)
-                    .frame(width: (UIScreen.main.bounds.width - 64) * 0.647)
                     .foregroundColor(Color("FFFFFF"))
+                    .disabled(!isAnswerProvided)  // Disable the button if no answer is provided
                 }
                 .padding(.horizontal, 32)
             }
@@ -92,10 +109,12 @@ struct SelectBodyPartView: View {
             .cornerRadius(25, corners: [.topLeft, .topRight])
         }
         .edgesIgnoringSafeArea(.bottom)
-        .navigationBarBackButtonHidden(true)  // Hide the default back button
+        .navigationBarBackButtonHidden(true)
     }
 }
 
 #Preview {
     SelectBodyPartView()
+        .environmentObject(Coordinator())
+        .environmentObject(ComplaintViewModel(datasource: LocalDataSource.shared))
 }

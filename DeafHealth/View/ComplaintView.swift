@@ -10,12 +10,31 @@ import SwiftUI
 struct ComplaintView: View {
     @EnvironmentObject var coordinator: Coordinator
     @Environment(\.dismiss) private var dismiss
+    @EnvironmentObject var complaintViewModel: ComplaintViewModel
+
+    @State private var selectedComplaint: String = ""
+    @State private var isAnswerProvided: Bool = false
 
     var body: some View {
         VStack(spacing: 0) {
-            SegmentedProgressBar(totalSteps: 8, currentStep: 1)
-                .padding(.top, 32)
-                .padding(.bottom, 16)
+            ZStack {
+                SegmentedProgressBar(totalSteps: 8, currentStep: 1)
+                    .padding(.horizontal)
+
+                HStack {
+                    Button(action: {
+                        coordinator.pop() // Navigate back to ConsultationMenuView
+                    }) {
+                        Image(systemName: "chevron.left")
+                            .foregroundColor(Color("black"))
+                    }
+                    .padding(.leading)
+
+                    Spacer()
+                }
+            }
+            .padding(.top, 16)
+            .padding(.bottom, 16)
 
             VStack(spacing: 0) {
                 Text("Apa keluhan utama yang")
@@ -27,6 +46,21 @@ struct ComplaintView: View {
             }
             Spacer()
 
+            // Example complaint selection
+            Button(action: {
+                selectedComplaint = "Nyeri"
+                isAnswerProvided = true
+                complaintViewModel.updateAnswer(for: 0, with: selectedComplaint)
+            }) {
+                Text("Nyeri")
+                    .padding()
+                    .background(Color.blue)
+                    .foregroundColor(.white)
+                    .cornerRadius(8)
+            }
+
+            Spacer()
+
             // Green overlay at the bottom with buttons
             VStack(spacing: 16) {
                 Text("Hasil Susun Keluhan")
@@ -36,7 +70,7 @@ struct ComplaintView: View {
                     .padding(.leading, 32)
                     .frame(maxWidth: .infinity, alignment: .leading)
 
-                Text("Halo Dokter. Saya merasakan _____.")
+                Text(complaintViewModel.getSummary(for: 0))
                     .font(.subheadline)
                     .padding(.bottom, 8)
                     .padding(.leading, 32)
@@ -44,13 +78,12 @@ struct ComplaintView: View {
 
                 HStack(spacing: 16) {
                     Button("Kembali") {
-                        dismiss()  // Dismisses the sheet and returns to the home view
+                        coordinator.pop() // Navigate back to ConsultationMenuView
                     }
                     .frame(maxWidth: .infinity)
                     .padding()
                     .background(Color("green"))
                     .cornerRadius(25)
-                    .frame(width: (UIScreen.main.bounds.width - 64) * 0.353)  // 1/4 of the available width (64 is the total horizontal padding)
                     .foregroundColor(Color("FFFFFF"))
 
                     Button("Lanjutkan") {
@@ -58,23 +91,24 @@ struct ComplaintView: View {
                     }
                     .frame(maxWidth: .infinity)
                     .padding()
-                    .background(Color("light-green-button"))
+                    .background(isAnswerProvided ? Color("light-green-button") : Color.gray)
                     .cornerRadius(25)
-                    .frame(width: (UIScreen.main.bounds.width - 64) * 0.647)  // 3/4 of the available width (64 is the total horizontal padding)
                     .foregroundColor(Color("FFFFFF"))
+                    .disabled(!isAnswerProvided)  // Disable the button if no answer is provided
                 }
-                .padding(.horizontal, 32)  // Matching the horizontal padding with the text above
+                .padding(.horizontal, 32)
             }
-            .padding(.top, 32)  // Add some padding at the top for visual spacing
-            .padding(.bottom, 32)  // Increase the padding at the bottom for height
+            .padding(.top, 32)
+            .padding(.bottom, 32)
             .background(
                 RoundedRectangle(cornerRadius: 20)
                     .fill(Color("light-green"))
                     .edgesIgnoringSafeArea(.bottom)
             )
-            .cornerRadius(25, corners: [.topLeft, .topRight])  // Rounded corners at the top left and right
+            .cornerRadius(25, corners: [.topLeft, .topRight])
         }
-        .edgesIgnoringSafeArea(.bottom)  // Ensure the overlay fully covers the bottom of the screen
+        .edgesIgnoringSafeArea(.bottom)
+        .navigationBarBackButtonHidden(true)
     }
 }
 
@@ -115,4 +149,6 @@ struct SegmentedProgressBar: View {
 
 #Preview {
     ComplaintView()
+        .environmentObject(Coordinator())
+        .environmentObject(ComplaintViewModel(datasource: LocalDataSource.shared))
 }

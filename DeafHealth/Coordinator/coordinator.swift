@@ -20,6 +20,7 @@ enum Page: String, Identifiable {
     case additionalComplaints
     case previousConsultation
     case summary
+    case consultationMenuView
 
     var id: String {
         self.rawValue
@@ -104,7 +105,10 @@ class Coordinator: ObservableObject {
             PreviousConsultationView()
         case .summary:
             SummaryView()
+        case .consultationMenuView:  // Add this case
+            ConsultationMenuView()
         }
+        
     }
 
     @ViewBuilder
