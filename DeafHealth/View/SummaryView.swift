@@ -11,62 +11,82 @@ struct SummaryView: View {
     @EnvironmentObject var coordinator: Coordinator
     @Environment(\.dismiss) private var dismiss
     @EnvironmentObject var complaintViewModel: ComplaintViewModel
-    
+
     @State private var showingSaveModal = false
     @State private var complaintName = ""
-    
+
     var body: some View {
-        ZStack {
+        VStack(spacing: 0) {
+
             VStack(spacing: 0) {
-                
-                VStack(spacing: 0) {
-                    Text("Ringkasan Keluhan")
-                        .font(.title3)
-                        .multilineTextAlignment(.center)
-                }
-                Spacer()
-                
-                // Summary details...
-                VStack(spacing: 16) {
-                    Text(complaintViewModel.complaintSummary)
-                        .font(.body)
-                        .padding()
-                        .multilineTextAlignment(.leading)
-                    
-                    HStack(spacing: 16) {
-                        Button("Simpan") {
-                            showingSaveModal = true
-                        }
-                        .frame(maxWidth: .infinity)
-                        .padding()
-                        .background(Color("green"))
-                        .cornerRadius(25)
-                        .foregroundColor(Color("FFFFFF"))
-                    }
-                    .padding(.horizontal, 32)
-                }
-                .padding(.top, 32)
-                .padding(.bottom, 32)
+                Text("Ringkasan Keluhan")
+                    .font(.title3)
+                    .multilineTextAlignment(.center)
             }
-            .edgesIgnoringSafeArea(.bottom)
-            .navigationBarBackButtonHidden(true)
-            
-            if showingSaveModal {
-                SaveComplaintAlert(
-                    complaintName: $complaintName,
-                    onSave: {
-                        complaintViewModel.saveComplaint()
-                        showingSaveModal = false
-                        coordinator.popToRoot()
-                    },
-                    onCancel: {
-                        showingSaveModal = false
+            Spacer()
+
+            // Summary details...
+            VStack(spacing: 16) {
+                Text(complaintViewModel.complaintSummary)
+                    .font(.body)
+                    .padding()
+                    .multilineTextAlignment(.leading)
+
+                HStack(spacing: 16) {
+                    Button("Simpan") {
+                        showingSaveModal = true
                     }
-                )
-                .transition(.opacity)
-                .animation(.easeInOut, value: showingSaveModal)
+                    .frame(maxWidth: .infinity)
+                    .padding()
+                    .background(Color("green"))
+                    .cornerRadius(25)
+                    .foregroundColor(Color("FFFFFF"))
+                }
+                .padding(.horizontal, 32)
+            }
+            .padding(.top, 32)
+            .padding(.bottom, 32)
+
+        }
+        .edgesIgnoringSafeArea(.bottom)
+        .navigationBarBackButtonHidden(true)
+        .sheet(isPresented: $showingSaveModal) {
+            SaveComplaintModal(complaintName: $complaintName) {
+                // Action for saving the complaint
+                complaintViewModel.saveComplaint()
+                dismiss()  // Save and go back to home view
             }
         }
+    }
+}
+
+struct SaveComplaintModal: View {
+    @Binding var complaintName: String
+    var onSave: () -> Void
+
+    var body: some View {
+        VStack(spacing: 20) {
+            Text("Simpan Keluhan")
+                .font(.title2)
+                .bold()
+
+            TextField("Nama Keluhan", text: $complaintName)
+                .textFieldStyle(RoundedBorderTextFieldStyle())
+                .padding()
+
+            Button("Simpan") {
+                onSave()
+            }
+            .frame(maxWidth: .infinity)
+            .padding()
+            .background(Color("green"))
+            .cornerRadius(25)
+            .foregroundColor(Color("FFFFFF"))
+            .padding(.horizontal, 32)
+
+            Spacer()
+        }
+        .padding()
     }
 }
 

@@ -23,7 +23,8 @@ struct SymptomWorseningFactorsView: View {
 
                 HStack {
                     Button(action: {
-                        coordinator.pop()
+                        coordinator.popToRoot()
+                        coordinator.push(page: .consultationMenuView)
                     }) {
                         Image(systemName: "chevron.left")
                             .foregroundColor(Color("black"))
@@ -45,7 +46,7 @@ struct SymptomWorseningFactorsView: View {
 
             // Example factor selection
             Button(action: {
-                selectedFactor = "stress"
+                selectedFactor = "Stress"
                 isAnswerProvided = true
                 complaintViewModel.updateAnswer(for: 4, with: selectedFactor)
             }) {
@@ -75,7 +76,7 @@ struct SymptomWorseningFactorsView: View {
 
                 HStack(spacing: 16) {
                     Button("Kembali") {
-                        coordinator.pop()
+                        coordinator.pop() // Navigate back to ConsultationMenuView
                     }
                     .frame(maxWidth: .infinity)
                     .padding()

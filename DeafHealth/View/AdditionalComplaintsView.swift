@@ -12,7 +12,7 @@ struct AdditionalComplaintsView: View {
     @Environment(\.dismiss) private var dismiss
     @EnvironmentObject var complaintViewModel: ComplaintViewModel
 
-    @State private var selectedAdditionalComplaint: String = ""
+    @State private var additionalComplaints: String = ""
     @State private var isAnswerProvided: Bool = false
 
     var body: some View {
@@ -23,7 +23,8 @@ struct AdditionalComplaintsView: View {
 
                 HStack {
                     Button(action: {
-                        coordinator.pop()
+                        coordinator.popToRoot()
+                        coordinator.push(page: .consultationMenuView)
                     }) {
                         Image(systemName: "chevron.left")
                             .foregroundColor(Color("black"))
@@ -37,24 +38,21 @@ struct AdditionalComplaintsView: View {
             .padding(.bottom, 16)
 
             VStack(spacing: 0) {
-                Text("Apakah terdapat keluhan lainnya?")
+                Text("Terdapat keluhan lain?")
                     .font(.title3)
                     .multilineTextAlignment(.center)
             }
             Spacer()
 
-            // Example additional complaint selection
-            Button(action: {
-                selectedAdditionalComplaint = "Tidak"
-                isAnswerProvided = true
-                complaintViewModel.updateAnswer(for: 6, with: selectedAdditionalComplaint)
-            }) {
-                Text("Tidak")
-                    .padding()
-                    .background(Color.blue)
-                    .foregroundColor(.white)
-                    .cornerRadius(8)
-            }
+            // Example additional complaints input
+            TextField("Masukkan keluhan tambahan", text: $additionalComplaints)
+                .padding()
+                .background(Color.gray.opacity(0.2))
+                .cornerRadius(8)
+                .onChange(of: additionalComplaints) { newValue in
+                    isAnswerProvided = !newValue.isEmpty
+                    complaintViewModel.updateAnswer(for: 6, with: additionalComplaints)
+                }
 
             Spacer()
 
@@ -75,7 +73,7 @@ struct AdditionalComplaintsView: View {
 
                 HStack(spacing: 16) {
                     Button("Kembali") {
-                        coordinator.pop()
+                        coordinator.pop() // Navigate back to ConsultationMenuView
                     }
                     .frame(maxWidth: .infinity)
                     .padding()
@@ -91,7 +89,7 @@ struct AdditionalComplaintsView: View {
                     .background(isAnswerProvided ? Color("light-green-button") : Color.gray)
                     .cornerRadius(25)
                     .foregroundColor(Color("FFFFFF"))
-                    .disabled(!isAnswerProvided)
+                    .disabled(!isAnswerProvided)  // Disable the button if no answer is provided
                 }
                 .padding(.horizontal, 32)
             }

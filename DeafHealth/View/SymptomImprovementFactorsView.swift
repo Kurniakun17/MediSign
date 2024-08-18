@@ -12,7 +12,7 @@ struct SymptomImprovementFactorsView: View {
     @Environment(\.dismiss) private var dismiss
     @EnvironmentObject var complaintViewModel: ComplaintViewModel
 
-    @State private var selectedFactor: String = ""
+    @State private var selectedImprovement: String = ""
     @State private var isAnswerProvided: Bool = false
 
     var body: some View {
@@ -23,7 +23,8 @@ struct SymptomImprovementFactorsView: View {
 
                 HStack {
                     Button(action: {
-                        coordinator.pop()
+                        coordinator.popToRoot()
+                        coordinator.push(page: .consultationMenuView)
                     }) {
                         Image(systemName: "chevron.left")
                             .foregroundColor(Color("black"))
@@ -43,11 +44,11 @@ struct SymptomImprovementFactorsView: View {
             }
             Spacer()
 
-            // Example factor selection
+            // Example improvement selection
             Button(action: {
-                selectedFactor = "istirahat"
+                selectedImprovement = "Istirahat"
                 isAnswerProvided = true
-                complaintViewModel.updateAnswer(for: 5, with: selectedFactor)
+                complaintViewModel.updateAnswer(for: 5, with: selectedImprovement)
             }) {
                 Text("Istirahat")
                     .padding()
@@ -75,7 +76,7 @@ struct SymptomImprovementFactorsView: View {
 
                 HStack(spacing: 16) {
                     Button("Kembali") {
-                        coordinator.pop()
+                        coordinator.pop() // Navigate back to ConsultationMenuView
                     }
                     .frame(maxWidth: .infinity)
                     .padding()

@@ -23,7 +23,8 @@ struct PreviousConsultationView: View {
 
                 HStack {
                     Button(action: {
-                        coordinator.pop()
+                        coordinator.popToRoot()
+                        coordinator.push(page: .consultationMenuView)
                     }) {
                         Image(systemName: "chevron.left")
                             .foregroundColor(Color("black"))
@@ -37,7 +38,7 @@ struct PreviousConsultationView: View {
             .padding(.bottom, 16)
 
             VStack(spacing: 0) {
-                Text("Apakah sudah pernah konsultasi ke dokter?")
+                Text("Pernah konsultasi ke dokter?")
                     .font(.title3)
                     .multilineTextAlignment(.center)
             }
@@ -75,7 +76,7 @@ struct PreviousConsultationView: View {
 
                 HStack(spacing: 16) {
                     Button("Kembali") {
-                        coordinator.pop()
+                        coordinator.pop() // Navigate back to ConsultationMenuView
                     }
                     .frame(maxWidth: .infinity)
                     .padding()
@@ -91,7 +92,7 @@ struct PreviousConsultationView: View {
                     .background(isAnswerProvided ? Color("light-green-button") : Color.gray)
                     .cornerRadius(25)
                     .foregroundColor(Color("FFFFFF"))
-                    .disabled(!isAnswerProvided)
+                    .disabled(!isAnswerProvided)  // Disable the button if no answer is provided
                 }
                 .padding(.horizontal, 32)
             }

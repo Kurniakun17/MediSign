@@ -49,19 +49,19 @@ class ComplaintViewModel: ObservableObject {
         }
 
         if currentQuestionIndex >= 4 {
-            summaryParts.append(" Gejalanya semakin parah ketika \(answers[4].isEmpty ? "_____" : answers[4]).")
+            summaryParts.append(" Gejalanya semakin parah ketika saya \(answers[4].isEmpty ? "_____" : answers[4]).")
         }
 
         if currentQuestionIndex >= 5 {
-            summaryParts.append(" Gejalanya semakin membaik ketika \(answers[5].isEmpty ? "_____" : answers[5]).")
+            summaryParts.append(" Gejalanya semakin membaik ketika saya \(answers[5].isEmpty ? "_____" : answers[5]).")
         }
 
         if currentQuestionIndex >= 6 {
-            summaryParts.append(" \(answers[6].isEmpty ? "_____" : answers[6]).")
+            summaryParts.append("Terdapat keluhan lain berupa \(answers[6].isEmpty ? "_____" : answers[6]).")
         }
 
         if currentQuestionIndex >= 7 {
-            summaryParts.append(" Pernah konsultasi ke dokter lain dan diberi obat yaitu \(answers[7].isEmpty ? "_____" : answers[7]).")
+            summaryParts.append("\(answers[7].isEmpty ? "_____" : answers[7]) pernah konsultasi ke dokter.")
         }
 
         // Return the summary up to the current question, plus a placeholder for the next unanswered part.

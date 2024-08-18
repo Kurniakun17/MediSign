@@ -23,7 +23,8 @@ struct SymptomSeverityView: View {
 
                 HStack {
                     Button(action: {
-                        coordinator.pop()
+                        coordinator.popToRoot()
+                        coordinator.push(page: .consultationMenuView)
                     }) {
                         Image(systemName: "chevron.left")
                             .foregroundColor(Color("black"))
@@ -49,7 +50,7 @@ struct SymptomSeverityView: View {
                 isAnswerProvided = true
                 complaintViewModel.updateAnswer(for: 3, with: selectedSeverity)
             }) {
-                Text("4 dari 10")
+                Text("4")
                     .padding()
                     .background(Color.blue)
                     .foregroundColor(.white)
@@ -75,7 +76,7 @@ struct SymptomSeverityView: View {
 
                 HStack(spacing: 16) {
                     Button("Kembali") {
-                        coordinator.pop()
+                        coordinator.pop() // Navigate back to ConsultationMenuView
                     }
                     .frame(maxWidth: .infinity)
                     .padding()

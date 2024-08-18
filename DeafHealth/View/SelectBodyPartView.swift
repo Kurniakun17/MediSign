@@ -23,7 +23,8 @@ struct SelectBodyPartView: View {
 
                 HStack {
                     Button(action: {
-                        coordinator.pop()
+                        coordinator.popToRoot()
+                        coordinator.push(page: .consultationMenuView)
                     }) {
                         Image(systemName: "chevron.left")
                             .foregroundColor(Color("black"))
@@ -48,7 +49,7 @@ struct SelectBodyPartView: View {
 
             // Example body part selection
             Button(action: {
-                selectedBodyPart = "bahu depan bagian kanan"
+                selectedBodyPart = "Bahu Depan Bagian Kanan"
                 isAnswerProvided = true
                 complaintViewModel.updateAnswer(for: 1, with: selectedBodyPart)
             }) {
@@ -78,7 +79,7 @@ struct SelectBodyPartView: View {
 
                 HStack(spacing: 16) {
                     Button("Kembali") {
-                        coordinator.pop()
+                        coordinator.pop() // Navigate back to ConsultationMenuView
                     }
                     .frame(maxWidth: .infinity)
                     .padding()

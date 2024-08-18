@@ -23,7 +23,8 @@ struct SymptomStartTimeView: View {
 
                 HStack {
                     Button(action: {
-                        coordinator.pop()
+                        coordinator.popToRoot()
+                        coordinator.push(page: .consultationMenuView)
                     }) {
                         Image(systemName: "chevron.left")
                             .foregroundColor(Color("black"))
@@ -45,7 +46,7 @@ struct SymptomStartTimeView: View {
 
             // Example start time selection
             Button(action: {
-                selectedStartTime = "1 hari yang lalu"
+                selectedStartTime = "1 Hari yang Lalu"
                 isAnswerProvided = true
                 complaintViewModel.updateAnswer(for: 2, with: selectedStartTime)
             }) {
@@ -75,7 +76,7 @@ struct SymptomStartTimeView: View {
 
                 HStack(spacing: 16) {
                     Button("Kembali") {
-                        coordinator.pop()
+                        coordinator.pop() // Navigate back to ConsultationMenuView
                     }
                     .frame(maxWidth: .infinity)
                     .padding()

@@ -22,7 +22,15 @@ struct ComplaintView: View {
                     .padding(.horizontal)
 
                 HStack {
-                    Spacer()  // Just a placeholder since this is the first view
+                    Button(action: {
+                        coordinator.pop() // Navigate back to ConsultationMenuView
+                    }) {
+                        Image(systemName: "chevron.left")
+                            .foregroundColor(Color("black"))
+                    }
+                    .padding(.leading)
+
+                    Spacer()
                 }
             }
             .padding(.top, 16)
@@ -70,7 +78,7 @@ struct ComplaintView: View {
 
                 HStack(spacing: 16) {
                     Button("Kembali") {
-                        dismiss()  // Go back to home view
+                        coordinator.pop() // Navigate back to ConsultationMenuView
                     }
                     .frame(maxWidth: .infinity)
                     .padding()
