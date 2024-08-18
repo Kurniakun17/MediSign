@@ -10,44 +10,112 @@ import SwiftUI
 struct SummaryView: View {
     @EnvironmentObject var coordinator: Coordinator
     @Environment(\.dismiss) private var dismiss
+    @EnvironmentObject var complaintViewModel: ComplaintViewModel
+    
+    @State private var showingSaveModal = false
+    @State private var complaintName = ""
+    
+    var body: some View {
+        ZStack {
+            VStack(spacing: 0) {
+                
+                VStack(spacing: 0) {
+                    Text("Ringkasan Keluhan")
+                        .font(.title3)
+                        .multilineTextAlignment(.center)
+                }
+                Spacer()
+                
+                // Summary details...
+                VStack(spacing: 16) {
+                    Text(complaintViewModel.complaintSummary)
+                        .font(.body)
+                        .padding()
+                        .multilineTextAlignment(.leading)
+                    
+                    HStack(spacing: 16) {
+                        Button("Simpan") {
+                            showingSaveModal = true
+                        }
+                        .frame(maxWidth: .infinity)
+                        .padding()
+                        .background(Color("green"))
+                        .cornerRadius(25)
+                        .foregroundColor(Color("FFFFFF"))
+                    }
+                    .padding(.horizontal, 32)
+                }
+                .padding(.top, 32)
+                .padding(.bottom, 32)
+            }
+            .edgesIgnoringSafeArea(.bottom)
+            .navigationBarBackButtonHidden(true)
+            
+            if showingSaveModal {
+                SaveComplaintAlert(
+                    complaintName: $complaintName,
+                    onSave: {
+                        complaintViewModel.saveComplaint()
+                        showingSaveModal = false
+                        coordinator.popToRoot()
+                    },
+                    onCancel: {
+                        showingSaveModal = false
+                    }
+                )
+                .transition(.opacity)
+                .animation(.easeInOut, value: showingSaveModal)
+            }
+        }
+    }
+}
+
+struct SaveComplaintAlert: View {
+    @Binding var complaintName: String
+    var onSave: () -> Void
+    var onCancel: () -> Void
 
     var body: some View {
-        VStack(spacing: 0) {
+        ZStack {
+            Color.black.opacity(0.4)
+                .edgesIgnoringSafeArea(.all)
 
-            VStack(spacing: 0) {
-                Text("Ringkasan Keluhan")
-                    .font(.title3)
-                    .multilineTextAlignment(.center)
-            }
-            Spacer()
-
-            // Summary details here...
             VStack(spacing: 16) {
+                Text("Simpan Keluhan")
+                    .font(.headline)
+                    .padding(.top, 16)
 
-                HStack(spacing: 16) {
-                    Button("Simpan") {
-                        //simpan
+                Text("Masukkan judul untuk keluhan ini")
+                    .font(.subheadline)
+                    .foregroundColor(.gray)
+
+                TextField("Judul Keluhan", text: $complaintName)
+                    .textFieldStyle(RoundedBorderTextFieldStyle())
+                    .padding(.horizontal)
+
+                Divider()
+
+                HStack {
+
+                    Button(action: {
+                        onSave()
+                    }) {
+                        Text("Simpan")
+                            .frame(maxWidth: .infinity)
                     }
-                    .frame(maxWidth: .infinity)
-                    .padding()
-                    .background(Color("green"))
-                    .cornerRadius(25)
-                    .frame(width: (UIScreen.main.bounds.width - 64))
-                    .foregroundColor(Color("FFFFFF"))
-
-                  
+                    .padding(.horizontal)
+                    .foregroundColor(.blue)
                 }
-                .padding(.horizontal, 32)
             }
-            .padding(.top, 32)
-            .padding(.bottom, 32)
-
+            .background(Color(.systemBackground))
+            .cornerRadius(12)
+            .frame(maxWidth: 300)
         }
-        .edgesIgnoringSafeArea(.bottom)
-        .navigationBarBackButtonHidden(true)
     }
 }
 
 #Preview {
     SummaryView()
+        .environmentObject(Coordinator())
+        .environmentObject(ComplaintViewModel(datasource: LocalDataSource.shared))
 }

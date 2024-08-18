@@ -10,25 +10,27 @@ import SwiftUI
 struct SymptomImprovementFactorsView: View {
     @EnvironmentObject var coordinator: Coordinator
     @Environment(\.dismiss) private var dismiss
+    @EnvironmentObject var complaintViewModel: ComplaintViewModel
+
+    @State private var selectedFactor: String = ""
+    @State private var isAnswerProvided: Bool = false
 
     var body: some View {
         VStack(spacing: 0) {
             ZStack {
-                // Progress bar centered in the view
                 SegmentedProgressBar(totalSteps: 8, currentStep: 6)
                     .padding(.horizontal)
 
                 HStack {
-                    // Custom back button
                     Button(action: {
-                        coordinator.pop()  // Handle back navigation
+                        coordinator.pop()
                     }) {
                         Image(systemName: "chevron.left")
-                            .foregroundColor(Color("black"))  // Replace with your color
+                            .foregroundColor(Color("black"))
                     }
                     .padding(.leading)
 
-                    Spacer()  // This spacer helps to align the progress bar centrally
+                    Spacer()
                 }
             }
             .padding(.top, 16)
@@ -41,6 +43,21 @@ struct SymptomImprovementFactorsView: View {
             }
             Spacer()
 
+            // Example factor selection
+            Button(action: {
+                selectedFactor = "istirahat"
+                isAnswerProvided = true
+                complaintViewModel.updateAnswer(for: 5, with: selectedFactor)
+            }) {
+                Text("Istirahat")
+                    .padding()
+                    .background(Color.blue)
+                    .foregroundColor(.white)
+                    .cornerRadius(8)
+            }
+
+            Spacer()
+
             // Green overlay at the bottom with buttons
             VStack(spacing: 16) {
                 Text("Hasil Susun Keluhan")
@@ -50,7 +67,7 @@ struct SymptomImprovementFactorsView: View {
                     .padding(.leading, 32)
                     .frame(maxWidth: .infinity, alignment: .leading)
 
-                Text("Gejalanya semakin membaik ketika _____.")
+                Text(complaintViewModel.getSummary(for: 5))
                     .font(.subheadline)
                     .padding(.bottom, 8)
                     .padding(.leading, 32)
@@ -64,7 +81,6 @@ struct SymptomImprovementFactorsView: View {
                     .padding()
                     .background(Color("green"))
                     .cornerRadius(25)
-                    .frame(width: (UIScreen.main.bounds.width - 64) * 0.353)
                     .foregroundColor(Color("FFFFFF"))
 
                     Button("Lanjutkan") {
@@ -72,10 +88,10 @@ struct SymptomImprovementFactorsView: View {
                     }
                     .frame(maxWidth: .infinity)
                     .padding()
-                    .background(Color("light-green-button"))
+                    .background(isAnswerProvided ? Color("light-green-button") : Color.gray)
                     .cornerRadius(25)
-                    .frame(width: (UIScreen.main.bounds.width - 64) * 0.647)
                     .foregroundColor(Color("FFFFFF"))
+                    .disabled(!isAnswerProvided)  // Disable the button if no answer is provided
                 }
                 .padding(.horizontal, 32)
             }
@@ -95,4 +111,6 @@ struct SymptomImprovementFactorsView: View {
 
 #Preview {
     SymptomImprovementFactorsView()
+        .environmentObject(Coordinator())
+        .environmentObject(ComplaintViewModel(datasource: LocalDataSource.shared))
 }

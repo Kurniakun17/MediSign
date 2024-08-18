@@ -12,11 +12,15 @@ import SwiftData
 class Complaint {
     var user: UserData
     var symptoms: [SymptomsDetail]
-    var date = Date()
+    var summary: String
+    var answers: [String]
+    var date: Date
 
-    init(user: UserData, symptoms: [SymptomsDetail], date: Date = Date()) {
+    init(user: UserData, symptoms: [SymptomsDetail], summary: String, answers: [String], date: Date = Date()) {
         self.user = user
         self.symptoms = symptoms
+        self.summary = summary
+        self.answers = answers
         self.date = date
     }
 }
