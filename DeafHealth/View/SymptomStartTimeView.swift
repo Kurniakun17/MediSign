@@ -15,8 +15,6 @@ struct SymptomStartTimeView: View {
     @State private var selectedStartTime: String = ""
     @State private var isAnswerProvided: Bool = false
 
-    @State var viewModel: SymptomStartTimeViewModel = .init()
-
     @State var isLainnyaSelected = false
 
     @State var selectedTime: String = "_____"
@@ -50,7 +48,7 @@ struct SymptomStartTimeView: View {
                     .multilineTextAlignment(.center)
             }
 
-            ForEach(viewModel.options) { option in
+            ForEach(complaintViewModel.startTimeOptions) { option in
                 VStack {
                     ZStack {
                         Text(option.title).font(Font.custom("SF Pro", size: 16)
@@ -62,9 +60,10 @@ struct SymptomStartTimeView: View {
                     .background(option.isSelected ? Color(red: 0.65, green: 0.76, blue: 0.64) : Color(red: 0.95, green: 0.95, blue: 0.95).opacity(0.95))
                     .cornerRadius(5)
                     .onTapGesture {
-                        viewModel.selectedOption(optionId: option.id)
+                        complaintViewModel.selectedOption(type: "time", optionId: option.id)
                         selectedTime = option.title.lowercased()
                         isLainnyaSelected = false
+                        complaintViewModel.updateAnswer(for: 2, with: selectedTime)
                     }
                 }.padding(.vertical, 3)
             }
@@ -80,7 +79,7 @@ struct SymptomStartTimeView: View {
                 .background(isLainnyaSelected ? Color(red: 0.65, green: 0.76, blue: 0.64) : Color(red: 0.95, green: 0.95, blue: 0.95).opacity(0.95))
                 .cornerRadius(5)
                 .onTapGesture {
-                    viewModel.selectedOption()
+                    complaintViewModel.selectedOption(type: "time")
                     isLainnyaSelected = true
                 }
 
@@ -89,6 +88,7 @@ struct SymptomStartTimeView: View {
                         .datePickerStyle(.compact)
                         .onChange(of: selectedDate) { newDate in
                             selectedTime = DateFormatter.localizedString(from: newDate, dateStyle: .medium, timeStyle: .none)
+                            complaintViewModel.updateAnswer(for: 2, with: selectedTime)
                         }
                 }
             }
@@ -99,7 +99,7 @@ struct SymptomStartTimeView: View {
             Button(action: {
                 selectedStartTime = "1 Hari yang Lalu"
                 isAnswerProvided = true
-                complaintViewModel.updateAnswer(for: 2, with: selectedStartTime)
+                complaintViewModel.updateAnswer(for: 2, with: selectedTime)
             }) {
                 Text("1 Hari yang Lalu")
                     .padding()
@@ -143,7 +143,7 @@ struct SymptomStartTimeView: View {
                     .background(isAnswerProvided ? Color("light-green-button") : Color.gray)
                     .cornerRadius(25)
                     .foregroundColor(Color("FFFFFF"))
-                    .disabled(!isAnswerProvided)  // Disable the button if no answer is provided
+                    .disabled(!isAnswerProvided) // Disable the button if no answer is provided
                 }
                 .padding(.horizontal, 32)
             }

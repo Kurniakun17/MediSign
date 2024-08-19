@@ -15,6 +15,8 @@ struct SymptomWorseningFactorsView: View {
     @State private var selectedFactor: String = ""
     @State private var isAnswerProvided: Bool = false
 
+    @State var isLainnyaSelected = false
+
     var body: some View {
         VStack(spacing: 0) {
             ZStack {
@@ -42,13 +44,58 @@ struct SymptomWorseningFactorsView: View {
                     .font(.title3)
                     .multilineTextAlignment(.center)
             }
+
+            ForEach(complaintViewModel.worseningOptions) { option in
+                VStack {
+                    ZStack {
+                        Text(option.title).font(Font.custom("SF Pro", size: 16)
+                            .weight(.medium))
+                            .foregroundColor(option.isSelected ? .white : .black)
+                    }
+                    .padding(.horizontal, 17)
+                    .padding(.vertical, 6)
+                    .background(option.isSelected ? Color(red: 0.65, green: 0.76, blue: 0.64) : Color(red: 0.95, green: 0.95, blue: 0.95).opacity(0.95))
+                    .cornerRadius(5)
+                    .onTapGesture {
+                        complaintViewModel.selectedOption(type: "worsening", optionId: option.id)
+                        selectedFactor = option.title.lowercased()
+                        isLainnyaSelected = false
+                        complaintViewModel.updateAnswer(for: 4, with: selectedFactor)
+                    }
+                }.padding(.vertical, 3)
+            }
+
+            HStack {
+                ZStack {
+                    Text("+ Lainnya").font(Font.custom("SF Pro", size: 16)
+                        .weight(.medium))
+                        .foregroundColor(isLainnyaSelected ? .white : .black)
+                }
+                .padding(.horizontal, 17)
+                .padding(.vertical, 6)
+                .background(isLainnyaSelected ? Color(red: 0.65, green: 0.76, blue: 0.64) : Color(red: 0.95, green: 0.95, blue: 0.95).opacity(0.95))
+                .cornerRadius(5)
+                .onTapGesture {
+                    complaintViewModel.selectedOption(type: "worsening")
+                    isLainnyaSelected = true
+                }
+
+                if isLainnyaSelected {
+                    TextField("Masukkan faktor yang memperparah", text: $selectedFactor)
+                        .padding()
+                        .cornerRadius(8)
+                        .onChange(of: selectedFactor) { newValue in
+                            isAnswerProvided = !newValue.isEmpty
+                            complaintViewModel.updateAnswer(for: 4, with: selectedFactor)
+                        }
+                }
+            }
             Spacer()
 
             // Example factor selection
             Button(action: {
                 selectedFactor = "Stress"
                 isAnswerProvided = true
-                complaintViewModel.updateAnswer(for: 4, with: selectedFactor)
             }) {
                 Text("Stress")
                     .padding()
@@ -92,7 +139,7 @@ struct SymptomWorseningFactorsView: View {
                     .background(isAnswerProvided ? Color("light-green-button") : Color.gray)
                     .cornerRadius(25)
                     .foregroundColor(Color("FFFFFF"))
-                    .disabled(!isAnswerProvided)  // Disable the button if no answer is provided
+                    .disabled(!isAnswerProvided) // Disable the button if no answer is provided
                 }
                 .padding(.horizontal, 32)
             }

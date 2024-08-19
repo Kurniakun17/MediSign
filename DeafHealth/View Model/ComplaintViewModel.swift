@@ -12,6 +12,36 @@ class ComplaintViewModel: ObservableObject {
     @Published private(set) var complaintSummary: String = "Halo Dokter. Saya merasakan _____." // Initial placeholder text
     @Published private(set) var answers: [String] = ["", "", "", "", "", "", "", ""]
 
+    var startTimeOptions: [Option] =
+        [
+            Option(title: "<24 jam yang lalu"),
+            Option(title: "1 hari yang lalu"),
+            Option(title: "2-3 hari yang lalu"),
+            Option(title: "1 minggu yang lalu"),
+            Option(title: "Lebih dari 1 minggu yang lalu"),
+        ]
+
+    var worseningOptions: [Option] =
+        [
+            Option(title: "Aktivitas fisik"),
+            Option(title: "Stress"),
+            Option(title: "Makanan atau minuman tertentu"),
+            Option(title: "Di suhu tertentu"),
+            Option(title: "Di waktu tertentu"),
+            Option(title: "Tidak tahu"),
+            Option(title: "Tidak ada"),
+        ]
+
+    var improvementOptions: [Option] =
+        [
+            Option(title: "Istirahat"),
+            Option(title: "Minum obat"),
+            Option(title: "Kompres panas/dingin"),
+            Option(title: "Konsumsi makanan/minuman tertentu"),
+            Option(title: "Tidak tahu"),
+            Option(title: "Tidak ada"),
+        ]
+
     private let dataSource: LocalDataSource
 
     init(datasource: LocalDataSource) {
@@ -86,4 +116,50 @@ class ComplaintViewModel: ObservableObject {
         )
         dataSource.add(complaint: complaint)
     }
+
+    func selectedOption(type: String) {
+        if type == "time" {
+            for index in startTimeOptions.indices {
+                startTimeOptions[index].isSelected = false
+            }
+        }
+
+        if type == "worsening" {
+            for index in worseningOptions.indices {
+                worseningOptions[index].isSelected = false
+            }
+        }
+
+        if type == "improvement" {
+            for index in improvementOptions.indices {
+                improvementOptions[index].isSelected = false
+            }
+        }
+    }
+
+    func selectedOption(type: String, optionId id: UUID) {
+        if type == "time" {
+            for index in startTimeOptions.indices {
+                startTimeOptions[index].isSelected = (startTimeOptions[index].id == id)
+            }
+        }
+
+        if type == "worsening" {
+            for index in worseningOptions.indices {
+                worseningOptions[index].isSelected = (worseningOptions[index].id == id)
+            }
+        }
+
+        if type == "improvement" {
+            for index in improvementOptions.indices {
+                improvementOptions[index].isSelected = (improvementOptions[index].id == id)
+            }
+        }
+    }
+}
+
+struct Option: Identifiable {
+    let id = UUID()
+    var title: String
+    var isSelected: Bool = false
 }

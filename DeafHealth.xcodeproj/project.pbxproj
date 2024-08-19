@@ -137,7 +137,6 @@
 			isa = PBXGroup;
 			children = (
 				F62EF9FF2C6B2EB10025498E /* ComplaintViewModel.swift */,
-				9B16FFD52C721846001A4680 /* SymptomStartTimeViewModel.swift */,
 			);
 			path = "View Model";
 			sourceTree = "<group>";

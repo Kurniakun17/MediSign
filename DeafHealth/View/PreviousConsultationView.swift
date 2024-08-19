@@ -14,6 +14,9 @@ struct PreviousConsultationView: View {
 
     @State private var selectedDoctorConsultation: String = ""
     @State private var isAnswerProvided: Bool = false
+    @State private var isPernah: Bool = false
+
+    @State var previousMed: String = ""
 
     var body: some View {
         VStack(spacing: 0) {
@@ -46,11 +49,31 @@ struct PreviousConsultationView: View {
 
             // Example doctor consultation selection
             Button(action: {
+                isPernah = true
                 selectedDoctorConsultation = "Ya"
                 isAnswerProvided = true
                 complaintViewModel.updateAnswer(for: 7, with: selectedDoctorConsultation)
             }) {
                 Text("Ya")
+                    .padding()
+                    .background(Color.blue)
+                    .foregroundColor(.white)
+                    .cornerRadius(8)
+            }
+
+            if isPernah {
+                TextField("Tambahkan obat yang diberikan di konsultasi sebelumnya", text: $previousMed)
+                    .onChange(of: previousMed) {
+                        complaintViewModel.updateAnswer(for: 7, with: previousMed)
+                    }
+            }
+
+            Button(action: {
+                selectedDoctorConsultation = "Tidak"
+                isAnswerProvided = true
+                complaintViewModel.updateAnswer(for: 7, with: selectedDoctorConsultation)
+            }) {
+                Text("Tidak")
                     .padding()
                     .background(Color.blue)
                     .foregroundColor(.white)
@@ -92,7 +115,7 @@ struct PreviousConsultationView: View {
                     .background(isAnswerProvided ? Color("light-green-button") : Color.gray)
                     .cornerRadius(25)
                     .foregroundColor(Color("FFFFFF"))
-                    .disabled(!isAnswerProvided)  // Disable the button if no answer is provided
+                    .disabled(!isAnswerProvided) // Disable the button if no answer is provided
                 }
                 .padding(.horizontal, 32)
             }

@@ -15,6 +15,9 @@ struct AdditionalComplaintsView: View {
     @State private var additionalComplaints: String = ""
     @State private var isAnswerProvided: Bool = false
 
+    @State private var selected: String = ""
+
+
     var body: some View {
         VStack(spacing: 0) {
             ZStack {
@@ -38,11 +41,13 @@ struct AdditionalComplaintsView: View {
             .padding(.bottom, 16)
 
             VStack(spacing: 0) {
-                Text("Terdapat keluhan lain?")
+                Text("Apakah terdapat keluhan lainnya?")
                     .font(.title3)
                     .multilineTextAlignment(.center)
             }
             Spacer()
+            
+            
 
             // Example additional complaints input
             TextField("Masukkan keluhan tambahan", text: $additionalComplaints)
@@ -89,7 +94,7 @@ struct AdditionalComplaintsView: View {
                     .background(isAnswerProvided ? Color("light-green-button") : Color.gray)
                     .cornerRadius(25)
                     .foregroundColor(Color("FFFFFF"))
-                    .disabled(!isAnswerProvided)  // Disable the button if no answer is provided
+                    .disabled(!isAnswerProvided) // Disable the button if no answer is provided
                 }
                 .padding(.horizontal, 32)
             }
