@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		9B0F1FEC2C74574200030F0C /* CustomSlider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B0F1FEB2C74574200030F0C /* CustomSlider.swift */; };
 		A255E0242C72045000274DF5 /* ConsultationMenuView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A255E0232C72045000274DF5 /* ConsultationMenuView.swift */; };
 		A2A0C5472C6F68B0002240E2 /* ComplaintView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2A0C5462C6F68B0002240E2 /* ComplaintView.swift */; };
 		A2A0C5492C6F6922002240E2 /* SelectBodyPartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2A0C5482C6F6922002240E2 /* SelectBodyPartView.swift */; };
@@ -39,6 +40,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		9B0F1FEB2C74574200030F0C /* CustomSlider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomSlider.swift; sourceTree = "<group>"; };
 		A255E0232C72045000274DF5 /* ConsultationMenuView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConsultationMenuView.swift; sourceTree = "<group>"; };
 		A2A0C5462C6F68B0002240E2 /* ComplaintView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComplaintView.swift; sourceTree = "<group>"; };
 		A2A0C5482C6F6922002240E2 /* SelectBodyPartView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectBodyPartView.swift; sourceTree = "<group>"; };
@@ -82,6 +84,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		9B0F1FED2C74575900030F0C /* Components */ = {
+			isa = PBXGroup;
+			children = (
+				9B0F1FEB2C74574200030F0C /* CustomSlider.swift */,
+			);
+			path = Components;
+			sourceTree = "<group>";
+		};
 		F62EF9D42C6B27840025498E = {
 			isa = PBXGroup;
 			children = (
@@ -144,6 +154,7 @@
 		F62EF9F02C6B27AD0025498E /* View */ = {
 			isa = PBXGroup;
 			children = (
+				9B0F1FED2C74575900030F0C /* Components */,
 				F62EFA042C6B3EB70025498E /* Example */,
 				A2A0C5462C6F68B0002240E2 /* ComplaintView.swift */,
 				A2A0C5482C6F6922002240E2 /* SelectBodyPartView.swift */,
@@ -283,6 +294,7 @@
 				A2A0C55F2C709032002240E2 /* ComplaintFlowView.swift in Sources */,
 				F62EFA002C6B2EB10025498E /* ComplaintViewModel.swift in Sources */,
 				A2A0C5532C6F69E1002240E2 /* SymptomSeverityView.swift in Sources */,
+				9B0F1FEC2C74574200030F0C /* CustomSlider.swift in Sources */,
 				A2A0C5492C6F6922002240E2 /* SelectBodyPartView.swift in Sources */,
 				A255E0242C72045000274DF5 /* ConsultationMenuView.swift in Sources */,
 				F62EF9E12C6B27840025498E /* DeafHealthApp.swift in Sources */,

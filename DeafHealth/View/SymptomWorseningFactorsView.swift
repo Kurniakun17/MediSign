@@ -8,152 +8,169 @@
 import SwiftUI
 
 struct SymptomWorseningFactorsView: View {
+    @FocusState private var isFocused: Bool
+
     @EnvironmentObject var coordinator: Coordinator
     @Environment(\.dismiss) private var dismiss
     @EnvironmentObject var complaintViewModel: ComplaintViewModel
 
-    @State private var selectedFactor: String = ""
+    @State private var selectedFactor: String = "_____"
+    @State private var factor: String = ""
     @State private var isAnswerProvided: Bool = false
+
+    @State private var isNotAvailable = false
 
     @State var isLainnyaSelected = false
 
     var body: some View {
         VStack(spacing: 0) {
             ZStack {
-                SegmentedProgressBar(totalSteps: 8, currentStep: 5)
-                    .padding(.horizontal)
-
                 HStack {
-                    Button(action: {
-                        coordinator.popToRoot()
-                        coordinator.push(page: .consultationMenuView)
-                    }) {
-                        Image(systemName: "chevron.left")
-                            .foregroundColor(Color("black"))
-                    }
-                    .padding(.leading)
-
                     Spacer()
+
+                    HStack {
+                        Text("4").bold().font(Font.custom("SF Pro Bold", size: 14)) + Text(" / 7 pertanyaan").font(Font.custom("SF Pro", size: 13))
+                    }
+                    .foregroundColor(.gray)
                 }
+                .padding(.horizontal, 22)
             }
             .padding(.top, 16)
             .padding(.bottom, 16)
 
-            VStack(spacing: 0) {
-                Text("Apa yang membuat gejala makin terasa?")
-                    .font(.title3)
-                    .multilineTextAlignment(.center)
-            }
-
-            ForEach(complaintViewModel.worseningOptions) { option in
-                VStack {
-                    ZStack {
-                        Text(option.title).font(Font.custom("SF Pro", size: 16)
-                            .weight(.medium))
-                            .foregroundColor(option.isSelected ? .white : .black)
-                    }
-                    .padding(.horizontal, 17)
-                    .padding(.vertical, 6)
-                    .background(option.isSelected ? Color(red: 0.65, green: 0.76, blue: 0.64) : Color(red: 0.95, green: 0.95, blue: 0.95).opacity(0.95))
-                    .cornerRadius(5)
-                    .onTapGesture {
-                        complaintViewModel.selectedOption(type: "worsening", optionId: option.id)
-                        selectedFactor = option.title.lowercased()
-                        isLainnyaSelected = false
-                        complaintViewModel.updateAnswer(for: 4, with: selectedFactor)
-                    }
-                }.padding(.vertical, 3)
-            }
-
             HStack {
-                ZStack {
-                    Text("+ Lainnya").font(Font.custom("SF Pro", size: 16)
-                        .weight(.medium))
-                        .foregroundColor(isLainnyaSelected ? .white : .black)
-                }
-                .padding(.horizontal, 17)
-                .padding(.vertical, 6)
-                .background(isLainnyaSelected ? Color(red: 0.65, green: 0.76, blue: 0.64) : Color(red: 0.95, green: 0.95, blue: 0.95).opacity(0.95))
-                .cornerRadius(5)
-                .onTapGesture {
-                    complaintViewModel.selectedOption(type: "worsening")
-                    isLainnyaSelected = true
-                }
+                Text("Gejala semakin memburuk ketika ").font(Font.custom("SF Pro", size: 20))
 
-                if isLainnyaSelected {
-                    TextField("Masukkan faktor yang memperparah", text: $selectedFactor)
-                        .padding()
-                        .cornerRadius(8)
-                        .onChange(of: selectedFactor) { newValue in
-                            isAnswerProvided = !newValue.isEmpty
-                            complaintViewModel.updateAnswer(for: 4, with: selectedFactor)
-                        }
+                    + Text("\(selectedFactor.lowercased())").bold().underline().foregroundColor(.darkGreen)
+
+                    + Text(".").font(Font.custom("SF Pro", size: 20))
+            }
+            .padding(.bottom, 8)
+            .multilineTextAlignment(.center)
+            .frame(maxWidth: 257, alignment: .center)
+
+            Spacer().frame(height: 54)
+
+            ZStack(alignment: .leading) {
+                TextEditor(text: $factor)
+                    .padding(EdgeInsets(top: 10, leading: 10, bottom: 10, trailing: 10))
+                    .frame(width: 360, height: 180)
+                    .background(Color.white)
+                    .cornerRadius(25)
+                    .focused($isFocused) // Bind the focus state
+                    .overlay(
+                        RoundedRectangle(cornerRadius: 25)
+                            .stroke(Color.gray, lineWidth: 1)
+                    )
+                    .onChange(of: factor) { newValue in
+                        selectedFactor = newValue
+                    }
+
+                if factor.isEmpty && !isFocused {
+                    Text("Tambahkan faktor yang memperburuk gejala")
+                        .foregroundColor(.gray)
+                        .padding(.horizontal, 16)
+                        .padding(.vertical, 12)
+                        .offset(x: 5, y: -62)
+                        .font(Font.custom("SF Pro Bold", size: 14))
+                        .multilineTextAlignment(.leading)
                 }
             }
+
             Spacer()
 
-            // Example factor selection
-            Button(action: {
-                selectedFactor = "Stress"
-                isAnswerProvided = true
-            }) {
-                Text("Stress")
-                    .padding()
-                    .background(Color.blue)
-                    .foregroundColor(.white)
-                    .cornerRadius(8)
-            }
-
-            Spacer()
-
-            // Green overlay at the bottom with buttons
-            VStack(spacing: 16) {
-                Text("Hasil Susun Keluhan")
-                    .font(.headline)
-                    .bold()
-                    .padding(.top, 8)
-                    .padding(.leading, 32)
-                    .frame(maxWidth: .infinity, alignment: .leading)
-
-                Text(complaintViewModel.getSummary(for: 4))
-                    .font(.subheadline)
-                    .padding(.bottom, 8)
-                    .padding(.leading, 32)
-                    .frame(maxWidth: .infinity, alignment: .leading)
-
-                HStack(spacing: 16) {
-                    Button("Kembali") {
-                        coordinator.pop() // Navigate back to ConsultationMenuView
+            ZStack(alignment: .top) {
+                VStack(alignment: .leading) {
+                    Text("Contoh (dan tidak terbatas pada) : ")
+                    HStack(alignment: .top) {
+                        Text("   •")
+                        Text("Aktivitas fisik")
                     }
-                    .frame(maxWidth: .infinity)
-                    .padding()
-                    .background(Color("green"))
-                    .cornerRadius(25)
-                    .foregroundColor(Color("FFFFFF"))
-
-                    Button("Lanjutkan") {
-                        coordinator.push(page: .symptomImprovementFactors)
+                    HStack(alignment: .top) {
+                        Text("   •")
+                        Text("Terpapar sesuatu (sebutkan)")
                     }
-                    .frame(maxWidth: .infinity)
-                    .padding()
-                    .background(isAnswerProvided ? Color("light-green-button") : Color.gray)
-                    .cornerRadius(25)
-                    .foregroundColor(Color("FFFFFF"))
-                    .disabled(!isAnswerProvided) // Disable the button if no answer is provided
+                    HStack(alignment: .top) {
+                        Text("   •")
+                        Text("Mengonsumsi makanan atau minuman tertentu (sebutkan)")
+                    }
+                    HStack(alignment: .top) {
+                        Text("   •")
+                        Text("Di suhu tertentu (sebutkan)")
+                    }
+                    HStack(alignment: .top) {
+                        Text("   •")
+                        Text("Di waktu tertentu (sebutkan)")
+                    }
+                    HStack(alignment: .top) {
+                        Text("   •")
+                        Text("Stress")
+                    }
+                    HStack(alignment: .top) {
+                        Text("   •")
+                        Text("Terlambat makan")
+                    }
+                    HStack(alignment: .top) {
+                        Text("   •")
+
+                        Text("Kurang istirahat")
+                    }
                 }
-                .padding(.horizontal, 32)
             }
-            .padding(.top, 32)
-            .padding(.bottom, 32)
-            .background(
-                RoundedRectangle(cornerRadius: 20)
-                    .fill(Color("light-green"))
-                    .edgesIgnoringSafeArea(.bottom)
-            )
-            .cornerRadius(25, corners: [.topLeft, .topRight])
+            .font(Font.custom("SF Pro Bold", size: 14))
+            .padding(.horizontal, 18)
+            .padding(.vertical, 14)
+            .frame(width: 360, alignment: .topLeading)
+            .background(Color(red: 0.97, green: 0.97, blue: 0.97))
+            .cornerRadius(25)
+            .foregroundColor(.gray)
         }
         .edgesIgnoringSafeArea(.bottom)
         .navigationBarBackButtonHidden(true)
+
+        Spacer().frame(height: 18)
+
+        HStack {
+            Button {
+                isAnswerProvided = true
+                isNotAvailable.toggle()
+            } label: {
+                if isNotAvailable {
+                    Rectangle()
+                        .foregroundColor(.blue)
+                        .frame(width: 15, height: 15)
+                        .cornerRadius(3)
+                        .overlay(
+                            RoundedRectangle(cornerRadius: 3)
+                                .inset(by: 0.5)
+                                .stroke(.black, lineWidth: 1)
+                        )
+                } else {
+                    Rectangle()
+                        .foregroundColor(.clear)
+                        .frame(width: 15, height: 15)
+                        .cornerRadius(3)
+                        .overlay(
+                            RoundedRectangle(cornerRadius: 3)
+                                .inset(by: 0.5)
+                                .stroke(.black, lineWidth: 1)
+                        )
+                }
+            }
+
+            Text("Tidak ada faktor yang memperburuk gejala").font(Font.custom("SF Pro Bold", size: 14))
+        }
+
+        Spacer().frame(height: 18)
+
+        Button("Lanjutkan") {
+            coordinator.push(page: .symptomWorseningFactors)
+        }
+        .frame(width: 363, height: 52)
+        .background(isAnswerProvided ? Color(red: 0.25, green: 0.48, blue: 0.68) : Color.gray)
+        .cornerRadius(25)
+        .foregroundColor(Color("FFFFFF"))
+        .disabled(!isAnswerProvided)
     }
 }
 

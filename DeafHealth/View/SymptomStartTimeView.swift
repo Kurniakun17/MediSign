@@ -12,149 +12,92 @@ struct SymptomStartTimeView: View {
     @Environment(\.dismiss) private var dismiss
     @EnvironmentObject var complaintViewModel: ComplaintViewModel
 
-    @State private var selectedStartTime: String = ""
+    @State private var selectedUnit: String = "_____"
     @State private var isAnswerProvided: Bool = false
 
-    @State var isLainnyaSelected = false
+    @State private var selectedNumber: String = "_"
 
-    @State var selectedTime: String = "_____"
-    @State var selectedDate: Date = .init()
+    @State var batasAtas: Int = 24
 
     var body: some View {
         VStack(spacing: 0) {
             ZStack {
-                SegmentedProgressBar(totalSteps: 8, currentStep: 3)
-                    .padding(.horizontal)
-
                 HStack {
-                    Button(action: {
-                        coordinator.popToRoot()
-                        coordinator.push(page: .consultationMenuView)
-                    }) {
-                        Image(systemName: "chevron.left")
-                            .foregroundColor(Color("black"))
-                    }
-                    .padding(.leading)
-
                     Spacer()
+
+                    HStack {
+                        Text("2").bold().font(Font.custom("SF Pro Bold", size: 14)) + Text(" / 7 pertanyaan").font(Font.custom("SF Pro", size: 13))
+                    }
+                    .foregroundColor(.gray)
                 }
+                .padding(.horizontal, 22)
             }
             .padding(.top, 16)
             .padding(.bottom, 16)
 
-            VStack(spacing: 0) {
-                Text("Kapan gejala ini mulai terasa?")
-                    .font(.title3)
-                    .multilineTextAlignment(.center)
-            }
-
-            ForEach(complaintViewModel.startTimeOptions) { option in
-                VStack {
-                    ZStack {
-                        Text(option.title).font(Font.custom("SF Pro", size: 16)
-                            .weight(.medium))
-                            .foregroundColor(option.isSelected ? .white : .black)
-                    }
-                    .padding(.horizontal, 17)
-                    .padding(.vertical, 6)
-                    .background(option.isSelected ? Color(red: 0.65, green: 0.76, blue: 0.64) : Color(red: 0.95, green: 0.95, blue: 0.95).opacity(0.95))
-                    .cornerRadius(5)
-                    .onTapGesture {
-                        complaintViewModel.selectedOption(type: "time", optionId: option.id)
-                        selectedTime = option.title.lowercased()
-                        isLainnyaSelected = false
-                        complaintViewModel.updateAnswer(for: 2, with: selectedTime)
-                    }
-                }.padding(.vertical, 3)
-            }
+            Spacer().frame(height: 147)
 
             HStack {
-                ZStack {
-                    Text("+ Lainnya").font(Font.custom("SF Pro", size: 16)
-                        .weight(.medium))
-                        .foregroundColor(isLainnyaSelected ? .white : .black)
+                Text("Saya merasakan gejala ini sejak ").font(Font.custom("SF Pro", size: 20))
+
+                    + Text("\(selectedNumber + " " + selectedUnit.lowercased())").bold().underline().foregroundColor(.darkGreen)
+
+                    + Text(" yang lalu.").font(Font.custom("SF Pro", size: 20))
+            }
+            .padding(.bottom, 8)
+            .multilineTextAlignment(.center)
+            .frame(maxWidth: 257, alignment: .center)
+
+            HStack {
+                Picker("Waktu", selection: $selectedNumber) {
+                    ForEach(1 ..< batasAtas, id: \.self) { time in
+                        Text("\(time)").tag("\(time)")
+                    }
                 }
-                .padding(.horizontal, 17)
-                .padding(.vertical, 6)
-                .background(isLainnyaSelected ? Color(red: 0.65, green: 0.76, blue: 0.64) : Color(red: 0.95, green: 0.95, blue: 0.95).opacity(0.95))
-                .cornerRadius(5)
-                .onTapGesture {
-                    complaintViewModel.selectedOption(type: "time")
-                    isLainnyaSelected = true
+                .pickerStyle(.wheel)
+                .frame(minWidth: 60)
+                .onChange(of: selectedNumber) {
+                    isAnswerProvided = true
+                    complaintViewModel.updateAnswer(for: 2, with: selectedNumber + " " + selectedUnit.lowercased())
                 }
 
-                if isLainnyaSelected {
-                    DatePicker("", selection: $selectedDate, displayedComponents: .date)
-                        .datePickerStyle(.compact)
-                        .onChange(of: selectedDate) { newDate in
-                            selectedTime = DateFormatter.localizedString(from: newDate, dateStyle: .medium, timeStyle: .none)
-                            complaintViewModel.updateAnswer(for: 2, with: selectedTime)
+                Picker("Unit", selection: $selectedUnit) {
+                    Text("Jam").tag("Jam")
+                    Text("Hari").tag("Hari")
+                    Text("Minggu").tag("Minggu")
+                    Text("Bulan").tag("Bulan")
+                    Text("Tahun").tag("Tahun")
+
+                }.pickerStyle(.wheel).frame(minWidth: 120)
+                    .onChange(of: selectedUnit) {
+                        isAnswerProvided = true
+
+                        if selectedUnit == "Jam" {
+                            batasAtas = 24
+                        } else if selectedUnit == "Hari" {
+                            batasAtas = 7
+                        } else if selectedUnit == "Minggu" {
+                            batasAtas = 4
+                        } else if selectedUnit == "Bulan" {
+                            batasAtas = 12
+                        } else if selectedUnit == "Tahun" {
+                            batasAtas = 10
                         }
-                }
-            }
 
-            Spacer()
-
-            // Example start time selection
-            Button(action: {
-                selectedStartTime = "1 Hari yang Lalu"
-                isAnswerProvided = true
-                complaintViewModel.updateAnswer(for: 2, with: selectedTime)
-            }) {
-                Text("1 Hari yang Lalu")
-                    .padding()
-                    .background(Color.blue)
-                    .foregroundColor(.white)
-                    .cornerRadius(8)
-            }
-
-            Spacer()
-
-            // Green overlay at the bottom with buttons
-            VStack(spacing: 16) {
-                Text("Hasil Susun Keluhan")
-                    .font(.headline)
-                    .bold()
-                    .padding(.top, 8)
-                    .padding(.leading, 32)
-                    .frame(maxWidth: .infinity, alignment: .leading)
-
-                Text(complaintViewModel.getSummary(for: 2))
-                    .font(.subheadline)
-                    .padding(.bottom, 8)
-                    .padding(.leading, 32)
-                    .frame(maxWidth: .infinity, alignment: .leading)
-
-                HStack(spacing: 16) {
-                    Button("Kembali") {
-                        coordinator.pop() // Navigate back to ConsultationMenuView
+                        complaintViewModel.updateAnswer(for: 2, with: selectedNumber + " " + selectedUnit.lowercased())
                     }
-                    .frame(maxWidth: .infinity)
-                    .padding()
-                    .background(Color("green"))
-                    .cornerRadius(25)
-                    .foregroundColor(Color("FFFFFF"))
+            }.padding(.horizontal, 110)
 
-                    Button("Lanjutkan") {
-                        coordinator.push(page: .symptomSeverity)
-                    }
-                    .frame(maxWidth: .infinity)
-                    .padding()
-                    .background(isAnswerProvided ? Color("light-green-button") : Color.gray)
-                    .cornerRadius(25)
-                    .foregroundColor(Color("FFFFFF"))
-                    .disabled(!isAnswerProvided) // Disable the button if no answer is provided
-                }
-                .padding(.horizontal, 32)
+            Spacer().frame(height: 250)
+
+            Button("Lanjutkan") {
+                coordinator.push(page: .symptomSeverity)
             }
-            .padding(.top, 32)
-            .padding(.bottom, 32)
-            .background(
-                RoundedRectangle(cornerRadius: 20)
-                    .fill(Color("light-green"))
-                    .edgesIgnoringSafeArea(.bottom)
-            )
-            .cornerRadius(25, corners: [.topLeft, .topRight])
+            .frame(width: 363, height: 52)
+            .background(isAnswerProvided ? Color(red: 0.25, green: 0.48, blue: 0.68) : Color.gray)
+            .cornerRadius(25)
+            .foregroundColor(Color("FFFFFF"))
+            .disabled(!isAnswerProvided)
         }
         .edgesIgnoringSafeArea(.bottom)
         .navigationBarBackButtonHidden(true)

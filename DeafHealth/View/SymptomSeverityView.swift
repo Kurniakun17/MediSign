@@ -12,41 +12,64 @@ struct SymptomSeverityView: View {
     @Environment(\.dismiss) private var dismiss
     @EnvironmentObject var complaintViewModel: ComplaintViewModel
 
-    @State private var selectedSeverity: String = ""
+    @State private var selectedSeverity: String = "__"
     @State private var isAnswerProvided: Bool = false
-    
+
     @State var sliderValue: Double = 1.0
     @State var sliderValue2: Double = 2.0
+
+    @State var status: String = "Rendah"
+    @State var description: String = "Hampir tidak terasa"
+
+    @State var warna: Color = .init(red: 0, green: 0.53, blue: 0.01)
 
     var body: some View {
         VStack(spacing: 0) {
             ZStack {
-                SegmentedProgressBar(totalSteps: 8, currentStep: 4)
-                    .padding(.horizontal)
-
                 HStack {
-                    Button(action: {
-                        coordinator.popToRoot()
-                        coordinator.push(page: .consultationMenuView)
-                    }) {
-                        Image(systemName: "chevron.left")
-                            .foregroundColor(Color("black"))
-                    }
-                    .padding(.leading)
-
                     Spacer()
+
+                    HStack {
+                        Text("3").bold().font(Font.custom("SF Pro Bold", size: 14)) + Text(" / 7 pertanyaan").font(Font.custom("SF Pro", size: 13))
+                    }
+                    .foregroundColor(.gray)
                 }
+                .padding(.horizontal, 22)
             }
             .padding(.top, 16)
             .padding(.bottom, 16)
 
-            VStack(spacing: 0) {
-                Text("Seberapa parah gejalanya?")
-                    .font(.title3)
-                    .multilineTextAlignment(.center)
+            Spacer().frame(height: 32)
+
+            HStack {
+                Text("Rasa sakitnya ").font(Font.custom("SF Pro", size: 20))
+
+                    + Text("\(selectedSeverity)").bold().underline().foregroundColor(.darkGreen)
+
+                    + Text(" dari 10.").font(Font.custom("SF Pro", size: 20))
             }
-            Spacer()
-            
+            .padding(.bottom, 8)
+            .multilineTextAlignment(.center)
+            .frame(maxWidth: 257, alignment: .center)
+
+            Spacer().frame(height: 18)
+
+            Text("\(status)").font(
+                Font.custom("SF Pro", size: 20)
+                    .weight(.bold)
+            )
+            .foregroundColor(warna)
+
+            Spacer().frame(height: 12)
+
+            Text("\(description)")
+                .font(Font.custom("SF Pro", size: 14))
+                .multilineTextAlignment(.center)
+                .foregroundColor(.black)
+                .frame(width: 290, height: 68, alignment: .top)
+
+            Spacer().frame(height: 20)
+
             CustomSlider(
                 value: $sliderValue,
                 range: 1 ... 10,
@@ -61,71 +84,158 @@ struct SymptomSeverityView: View {
                 maximumValueLabel: {
                     Text("10")
                         .font(.body).bold()
-                }
+                },
+                progressColor: warna
             )
             .accentColor(.blue)
-            .padding(.horizontal)
-
-            // Example severity selection
-            Button(action: {
-                selectedSeverity = "4"
+            .padding(.horizontal, 54)
+            .onChange(of: sliderValue) {
                 isAnswerProvided = true
-//                complaintViewModel.updateAnswer(for: 3, with: selectedSeverity)
-            }) {
-                Text("4")
-                    .padding()
-                    .background(Color.blue)
-                    .foregroundColor(.white)
-                    .cornerRadius(8)
-            }
+                selectedSeverity = sliderValue.formatted()
+                if sliderValue == 0 {
+                    status = ""
+                    description = "Tidak ada rasa sakit"
 
-            Spacer()
+                } else if sliderValue == 1 {
+                    status = "Rendah"
+                    warna = Color(red: 0.07, green: 0.61, blue: 0.48)
+                    description = "Hampir tidak terasa"
 
-            // Green overlay at the bottom with buttons
-            VStack(spacing: 16) {
-                Text("Hasil Susun Keluhan")
-                    .font(.headline)
-                    .bold()
-                    .padding(.top, 8)
-                    .padding(.leading, 32)
-                    .frame(maxWidth: .infinity, alignment: .leading)
+                } else if sliderValue == 2 {
+                    status = "Rendah"
+                    warna = Color(red: 0.4, green: 0.62, blue: 0.33)
+                    description = "Tidak nyaman"
 
-                Text(complaintViewModel.getSummary(for: 3))
-                    .font(.subheadline)
-                    .padding(.bottom, 8)
-                    .padding(.leading, 32)
-                    .frame(maxWidth: .infinity, alignment: .leading)
+                } else if sliderValue == 3 {
+                    status = "Rendah"
+                    warna = Color(red: 0.54, green: 0.62, blue: 0.26)
+                    description = "Bisa ditoleransi"
 
-                HStack(spacing: 16) {
-                    Button("Kembali") {
-                        coordinator.pop() // Navigate back to ConsultationMenuView
-                    }
-                    .frame(maxWidth: .infinity)
-                    .padding()
-                    .background(Color("green"))
-                    .cornerRadius(25)
-                    .foregroundColor(Color("FFFFFF"))
+                } else if sliderValue == 4 {
+                    status = "Sedang"
+                    warna = Color(red: 0.67, green: 0.63, blue: 0.2)
+                    description = "Menyedihkan"
 
-                    Button("Lanjutkan") {
-                        coordinator.push(page: .symptomWorseningFactors)
-                    }
-                    .frame(maxWidth: .infinity)
-                    .padding()
-                    .background(isAnswerProvided ? Color("light-green-button") : Color.gray)
-                    .cornerRadius(25)
-                    .foregroundColor(Color("FFFFFF"))
-                    .disabled(!isAnswerProvided) // Disable the button if no answer is provided
+                } else if sliderValue == 5 {
+                    status = "Sedang"
+                    warna = Color(red: 0.82, green: 0.63, blue: 0.13)
+                    description = "Sangat Menyedihkan"
+
+                } else if sliderValue == 6 {
+                    status = "Sedang"
+                    warna = Color(red: 0.84, green: 0.57, blue: 0.17)
+                    description = "Intens sehingga menyebabkan tidak fokus dan komunikasi terganggu"
+
+                } else if sliderValue == 7 {
+                    status = "Parah"
+                    warna = Color(red: 0.85, green: 0.52, blue: 0.21)
+                    description = "Sangat intens dan mendominasi indera sehingga tidak bisa berkomunikasi dengan baik dan tidak mampu melakukan perawatan sendiri"
+
+                } else if sliderValue == 8 {
+                    status = "Parah"
+                    warna = Color(red: 0.86, green: 0.47, blue: 0.25)
+                    description = "Sangat mengerikan sehingga tidak dapat berpikir jernih dan mengubah kepribadian ketika sakit"
+
+                } else if sliderValue == 9 {
+                    status = "Parah"
+                    warna = Color(red: 0.87, green: 0.42, blue: 0.29)
+                    description = "Menyiksa tak tertahankan sehingga tidak bisa ditoleransi dan ingin segera dihilangkan"
+
+                } else if sliderValue == 10 {
+                    status = "Parah"
+                    warna = Color(red: 0.89, green: 0.35, blue: 0.35)
+                    description = "Tidak terbayangkan dan tidak dapat diungkapkan karena sampai tidak sadarkan diri"
                 }
-                .padding(.horizontal, 32)
             }
-            .padding(.top, 32)
-            .padding(.bottom, 32)
-            .background(
-                RoundedRectangle(cornerRadius: 20)
-                    .fill(Color("light-green"))
-                    .edgesIgnoringSafeArea(.bottom)
-            )
-            .cornerRadius(25, corners: [.topLeft, .topRight])
+
+            Spacer().frame(height: 188)
+
+            ZStack {
+                VStack {
+                    HStack(alignment: .top, spacing: 8) {
+                        HStack(alignment: .center, spacing: 4) {
+                            VStack {
+                                Text("0-3").bold()
+                                Text("Rendah")
+                            }
+                            .padding(.horizontal, 22)
+
+                            Text("Lemah dan tidak terlalu mengganggu")
+                        }
+                        .padding(.horizontal)
+                        .padding(.vertical, 5)
+                    }
+                    .frame(width: 330, alignment: .topLeading)
+                    .background(Color(red: 0.96, green: 1, blue: 0.96))
+                    .cornerRadius(25)
+                    .overlay(
+                        RoundedRectangle(cornerRadius: 25)
+                            .stroke(Color(red: 0.6, green: 0.6, blue: 0.6), lineWidth: 0)
+                    )
+
+                    HStack(alignment: .top, spacing: 8) {
+                        HStack(alignment: .center, spacing: 4) {
+                            VStack {
+                                Text("4-6").bold()
+                                Text("Sedang")
+                            }
+                            .padding(.horizontal, 22)
+                            Text("Cukup terasa dan mulai mengganggu aktivitas, tetapi masih bisa ditoleransi.")
+                        }
+                        .padding(.horizontal)
+                        .padding(.vertical, 5)                    }
+                    .frame(width: 330, alignment: .topLeading)
+                    .background(Color(red: 1, green: 1, blue: 0.93))
+                    .cornerRadius(25)
+                    .overlay(
+                        RoundedRectangle(cornerRadius: 25)
+                            .stroke(Color(red: 0.6, green: 0.6, blue: 0.6), lineWidth: 0)
+                    )
+
+                    HStack(alignment: .top, spacing: 0) {
+                        HStack(alignment: .center, spacing: 4) {
+                            VStack {
+                                Text("7-10").bold()
+                                Text("Parah")
+                            }
+                            .padding(.horizontal, 22)
+
+                            Text("Sangat kuat dan sering kali tak tertahankan.")
+                        }
+                        .padding(.horizontal)
+                        .padding(.vertical, 5)                    }
+                    .frame(width: 330, alignment: .topLeading)
+                    .background(Color(red: 1, green: 0.96, blue: 0.96))
+                    .cornerRadius(25)
+                    .overlay(
+                        RoundedRectangle(cornerRadius: 25)
+                            .stroke(Color(red: 0.6, green: 0.6, blue: 0.6), lineWidth: 0)
+                    )
+                }
+            }.frame(width: 363)
+                .font(
+                Font.custom("SF Pro", size: 12)
+                .weight(.bold)
+                )                .padding(.vertical, 12)
+                .foregroundColor(Color(red: 0.58, green: 0.58, blue: 0.58))
+                .background(Color(red: 0.97, green: 0.97, blue: 0.97))
+                .cornerRadius(25)
+                .overlay(
+                    RoundedRectangle(cornerRadius: 25)
+                        .inset(by: 0)
+                        .stroke(Color(red: 0.6, green: 0.6, blue: 0.6), lineWidth: 0)
+                )
+
+            Spacer().frame(height: 18)
+
+            Button("Lanjutkan") {
+                coordinator.push(page: .symptomWorseningFactors)
+            }
+            .frame(width: 363, height: 52)
+            .background(isAnswerProvided ? Color(red: 0.25, green: 0.48, blue: 0.68) : Color.gray)
+            .cornerRadius(25)
+            .foregroundColor(Color("FFFFFF"))
+            .disabled(!isAnswerProvided)
         }
         .edgesIgnoringSafeArea(.bottom)
         .navigationBarBackButtonHidden(true)
@@ -136,127 +246,4 @@ struct SymptomSeverityView: View {
     SymptomSeverityView()
         .environmentObject(Coordinator())
         .environmentObject(ComplaintViewModel(datasource: LocalDataSource.shared))
-}
-
-struct CustomSlider: View {
-    @Binding var value: Double
-    var range: ClosedRange<Double>
-    var step: Double
-    var label: () -> Text
-    var minimumValueLabel: () -> Text
-    var maximumValueLabel: () -> Text
-    
-    let placeholderHeight: CGFloat = 4
-    let knobSize: CGSize = .init(width: 26, height: 26)
-    let ticksSize: CGSize = .init(width: 1, height: 8)
-    
-    let placeholderColor: Color = .init(UIColor.systemGray4)
-    let ticksColor: Color = .secondary
-    let progressColor: Color = .accentColor
-    let knobColor: Color = .white
-    
-    @EnvironmentObject var complaintViewModel: ComplaintViewModel
-
-    private var maxTicks: Int {
-        let totalSteps = (range.upperBound - range.lowerBound) / step
-        return Int(totalSteps) + 1
-    }
-    
-    var body: some View {
-        VStack {
-            HStack {
-                label()
-                Spacer()
-            }
-            
-            HStack {
-                minimumValueLabel()
-                
-                GeometryReader { geometry in
-                    let placeholderWidth = geometry.size.width - knobSize.width
-                    
-                    ZStack(alignment: .center) {
-                        Capsule()
-                            .fill(placeholderColor)
-                            .frame(width: placeholderWidth, height: placeholderHeight)
-                            .overlay(alignment: .leading, content: {
-                                Capsule().fill(progressColor)
-                                    .frame(width: CGFloat(self.normalizedValue) * placeholderWidth, height: placeholderHeight)
-                            })
-                        
-                        HStackDots(diameter: ticksSize.height - 4, maxDots: maxTicks, inSet: true).fill(ticksColor)
-                            .offset(x: knobSize.width / 2)
-                            .padding(.trailing, knobSize.width)
-                        
-                        HStack {
-                            Circle().fill(knobColor)
-                                .frame(width: knobSize.width, height: knobSize.height)
-                                .shadow(color: .gray.opacity(0.4), radius: 3, x: 2, y: 2)
-                                .offset(x: self.knobOffset(width: geometry.size.width - knobSize.width))
-                                .gesture(
-                                    DragGesture()
-                                        .onChanged { gesture in
-                                            self.updateValue(from: gesture.location.x, geometry)
-                                        }
-                                )
-                            Spacer()
-                        }
-                    }
-                }
-                .frame(height: knobSize.height)
-                
-                maximumValueLabel()
-            }
-            .frame(height: knobSize.height + 16)
-        }
-    }
-    
-    private var normalizedValue: Double {
-        return (value - range.lowerBound) / (range.upperBound - range.lowerBound)
-    }
-    
-    private func knobOffset(width: CGFloat) -> CGFloat {
-        let stepCount = (range.upperBound - range.lowerBound) / step
-        let tickWidth = width / CGFloat(stepCount)
-        let currentStep = (value - range.lowerBound) / step
-        let offset = tickWidth * CGFloat(currentStep)
-        return offset
-    }
-    
-    private func updateValue(from touchLocation: CGFloat, _ geometry: GeometryProxy) {
-        let stepCount = (range.upperBound - range.lowerBound) / step
-        let tickWidth = (geometry.size.width - knobSize.width) / CGFloat(stepCount)
-        let knobX = max(0, min(abs(touchLocation - knobSize.width / 2), geometry.size.width - knobSize.width))
-        
-        let newValue = range.lowerBound + Double(round(knobX / tickWidth)) * step
-        value = max(range.lowerBound, min(newValue, range.upperBound))
-        
-        complaintViewModel.updateAnswer(for: 3, with: "\(Int(newValue))")
-    }
-}
-
-struct HStackDots: Shape {
-    var diameter: CGFloat = 8.0 // 4
-    var candidates: Set<Int> = []
-    var maxDots: Int = 6 // 10
-    var inSet: Bool = false // true
-    
-    func path(in rect: CGRect) -> Path {
-        var path = Path()
-        
-        let actualMaxDots = max(maxDots, 1) // 10
-        
-        let spacing = inSet ? (rect.width - diameter) / CGFloat(actualMaxDots - 1) : rect.width / CGFloat(actualMaxDots - 1)
-        
-        for i in 0 ..< actualMaxDots {
-            if candidates.isEmpty || candidates.contains(i) {
-                let xPosition = inSet ? spacing * CGFloat(i) * diameter / 4 : spacing * CGFloat(i)
-                let yPosition = rect.midY
-                
-                path.addEllipse(in: CGRect(x: xPosition - diameter / 2, y: yPosition - diameter / 2, width: diameter, height: diameter))
-            }
-        }
-        
-        return path
-    }
 }
