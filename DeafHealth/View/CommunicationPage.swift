@@ -40,7 +40,6 @@ struct CommunicationPage: View {
                                 .frame(maxWidth: .infinity, alignment: message.role == .user ? .trailing : .leading)
                                 .padding(.horizontal, 16)
                                 .transition(.move(edge: message.role == .user ? .trailing : .leading))
-                                .transition(.scale)
                             }
                         }
                     }
