@@ -4,9 +4,11 @@ import Speech
 import SwiftUI
 
 /// A helper for transcribing speech to text using SFSpeechRecognizer and AVAudioEngine.
-class SpeechRecognizer: ObservableObject {
+class SpeechViewModel: ObservableObject {
     @Published var transcript: String = ""
-
+    @Published var audioLevels: [CGFloat] = Array(repeating: 0.5, count: 50) // Array to store audio levels
+    @Published var isRecording = false
+    
     private var audioEngine: AVAudioEngine?
     private var request: SFSpeechAudioBufferRecognitionRequest?
     private var task: SFSpeechRecognitionTask?
@@ -86,7 +88,7 @@ class SpeechRecognizer: ObservableObject {
             }
 
             do {
-                let (audioEngine, request) = try Self.prepareEngine()
+                let (audioEngine, request) = try prepareEngine()
                 self.audioEngine = audioEngine
                 self.request = request
 
@@ -110,7 +112,7 @@ class SpeechRecognizer: ObservableObject {
         }
     }
 
-    private static func prepareEngine() throws -> (AVAudioEngine, SFSpeechAudioBufferRecognitionRequest) {
+    func prepareEngine() throws -> (AVAudioEngine, SFSpeechAudioBufferRecognitionRequest) {
         let audioEngine = AVAudioEngine()
 
         let request = SFSpeechAudioBufferRecognitionRequest()
@@ -122,14 +124,29 @@ class SpeechRecognizer: ObservableObject {
         let inputNode = audioEngine.inputNode
 
         let recordingFormat = inputNode.outputFormat(forBus: 0)
-        inputNode.installTap(onBus: 0, bufferSize: 1024, format: recordingFormat) {
-            (buffer: AVAudioPCMBuffer, _: AVAudioTime) in
+        inputNode.installTap(onBus: 0, bufferSize: 1024, format: recordingFormat) { buffer, _ in
             request.append(buffer)
+
+            // Get the audio level (this is a basic way to capture amplitude)
+            let channelData = buffer.floatChannelData?[0]
+            let channelDataValueArray = stride(from: 0, to: Int(buffer.frameLength), by: buffer.stride).map { channelData![$0] }
+            let rms = sqrt(channelDataValueArray.map { $0 * $0 }.reduce(0, +) / Float(buffer.frameLength))
+            let avgPower = 20 * log10(rms)
+
+            DispatchQueue.main.async {
+                self.updateAudioLevels(with: avgPower)
+            }
         }
         audioEngine.prepare()
         try audioEngine.start()
 
         return (audioEngine, request)
+    }
+
+    private func updateAudioLevels(with power: Float) {
+        let normalizedPower = max(0.2, CGFloat(power + 50) / 2) / 25
+        audioLevels.removeFirst()
+        audioLevels.append(normalizedPower)
     }
 }
 
@@ -172,7 +189,6 @@ protocol SpeechSynthesizerProviding {
 
 final class SpeechSynthesizer: SpeechSynthesizerProviding {
     func speakText(text: String) {
-        print(text)
         let utterance = AVSpeechUtterance(string: text)
         utterance.voice = AVSpeechSynthesisVoice(language: "id_ID")
         let synthesizer = AVSpeechSynthesizer()

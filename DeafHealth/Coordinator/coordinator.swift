@@ -25,7 +25,7 @@ enum Page: String, Identifiable {
     }
 }
 
-enum Sheet: String, Identifiable {
+enum Sheet: Identifiable {
     // MARK: Add Your Sheet Here
 
     // MARK: Example Data
@@ -33,7 +33,7 @@ enum Sheet: String, Identifiable {
     case testSheet
 
     var id: String {
-        self.rawValue
+        self.id
     }
 }
 
