@@ -10,7 +10,7 @@ import SwiftUI
 
 enum Page: String, Identifiable {
     // MARK: Add Your Page Here
-    
+
     case mainComplaint
     case selectBodyPart
     case symptomStartTime
@@ -33,6 +33,11 @@ enum Sheet: String, Identifiable {
     // MARK: Example Data
 
     case testSheet
+    case symptomStartTime
+    case symptomSeverity
+    case symptomWorseningFactors
+    case symptomImprovementFactors
+    case previousConsultation
 
     var id: String {
         self.rawValue
@@ -105,10 +110,9 @@ class Coordinator: ObservableObject {
             PreviousConsultationView()
         case .summary:
             SummaryView()
-        case .consultationMenuView:  // Add this case
+        case .consultationMenuView: // Add this case
             ConsultationMenuView()
         }
-        
     }
 
     @ViewBuilder
@@ -117,6 +121,26 @@ class Coordinator: ObservableObject {
         case .testSheet:
             NavigationStack {
                 TestSheet()
+            }
+        case .symptomStartTime:
+            NavigationStack {
+                SymptomStartTimeView()
+            }
+        case .symptomSeverity:
+            NavigationStack {
+                SymptomSeverityView()
+            }
+        case .symptomWorseningFactors:
+            NavigationStack {
+                SymptomWorseningFactorsView()
+            }
+        case .symptomImprovementFactors:
+            NavigationStack {
+                SymptomImprovementFactorsView()
+            }
+        case .previousConsultation:
+            NavigationStack {
+                PreviousConsultationView()
             }
         }
     }

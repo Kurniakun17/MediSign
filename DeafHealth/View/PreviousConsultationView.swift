@@ -64,14 +64,14 @@ struct PreviousConsultationView: View {
             if isPernah {
                 TextField("Tambahkan obat yang diberikan di konsultasi sebelumnya", text: $previousMed)
                     .onChange(of: previousMed) {
-                        complaintViewModel.updateAnswer(for: 7, with: previousMed)
+                        complaintViewModel.updateAnswer(for: 5, with: previousMed)
                     }
             }
 
             Button(action: {
                 selectedDoctorConsultation = "Tidak"
                 isAnswerProvided = true
-                complaintViewModel.updateAnswer(for: 7, with: selectedDoctorConsultation)
+                complaintViewModel.updateAnswer(for: 5, with: selectedDoctorConsultation)
             }) {
                 Text("Tidak")
                     .padding()

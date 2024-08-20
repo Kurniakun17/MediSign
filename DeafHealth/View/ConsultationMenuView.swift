@@ -10,6 +10,7 @@ import SwiftUI
 struct ConsultationMenuView: View {
     @EnvironmentObject var coordinator: Coordinator
     @EnvironmentObject var complaintViewModel: ComplaintViewModel
+    @State private var currentQuestionIndex: Int? = nil
 
     var body: some View {
         ScrollView {
@@ -21,23 +22,57 @@ struct ConsultationMenuView: View {
 
                 Spacer()
 
-                ForEach(0..<8) { index in
-                    QuestionButtonView(index: index)
+                ForEach(0 ..< 6) { index in
+                    QuestionButtonView(index: index, currentQuestionIndex: $currentQuestionIndex)
                 }
 
                 Spacer()
 
-                SaveComplaintButton()
-                    .padding(.horizontal, 32)
-                    .disabled(!allQuestionsAnswered())
+                Button("Lanjutkan") {
+                    currentQuestionIndex = 0 // Open the first question sheet
+                }
+                .frame(maxWidth: .infinity)
+                .padding()
+                .background(allQuestionsAnswered() ? Color.blue : Color.gray)
+                .cornerRadius(25)
+                .foregroundColor(Color.white)
+                .disabled(!allQuestionsAnswered())
             }
             .padding()
             .background(Color("background"))
+        }
+        .sheet(item: $currentQuestionIndex) { index in
+            sheetView(for: index)
         }
     }
 
     func allQuestionsAnswered() -> Bool {
         return complaintViewModel.answers.allSatisfy { !$0.isEmpty }
+    }
+
+    @ViewBuilder
+    func sheetView(for index: Int) -> some View {
+        switch index {
+        case 0:
+            ComplaintView()
+        case 1:
+            SymptomStartTimeView()
+        case 2:
+            SymptomSeverityView()
+        case 3:
+            SymptomWorseningFactorsView()
+        case 4:
+            SymptomImprovementFactorsView()
+        case 5:
+            AdditionalComplaintsView()
+        default:
+            EmptyView()
+        }
+    }
+
+    private func goToNextQuestion() {
+        guard let current = currentQuestionIndex else { return }
+        currentQuestionIndex = current + 1
     }
 }
 
@@ -45,100 +80,76 @@ struct QuestionButtonView: View {
     @EnvironmentObject var coordinator: Coordinator
     @EnvironmentObject var complaintViewModel: ComplaintViewModel
     let index: Int
+    @Binding var currentQuestionIndex: Int?
 
     var body: some View {
         Button(action: {
-            navigateToQuestion(at: index)
+            currentQuestionIndex = index
         }) {
             HStack {
-                Text("\(index + 1)")
-                    .bold()
-                    .foregroundColor(.white)
-                    .padding(8)
-                    .background(Color("dark-green"))
-                    .cornerRadius(8)
+                ZStack {
+                    Rectangle()
+                        .foregroundColor(.clear)
+                        .frame(width: 42, height: 42)
+                        .background(Color(red: 0.43, green: 0.56, blue: 0.76))
+                        .cornerRadius(12)
+
+                    Text("\(index + 1)")
+                        .bold()
+                        .foregroundColor(.white)
+                        .padding(24)
+                        .cornerRadius(8)
+                }
 
                 Text(questionText(for: index))
                     .foregroundColor(.white)
                     .padding(.leading, 8)
+                    .multilineTextAlignment(.leading)
+
+                Spacer()
             }
-            .frame(maxWidth: .infinity)
+            .frame(maxWidth: .infinity, alignment: .trailing)
             .padding()
-            .background(isQuestionActive(at: index) ? Color("light-green") : Color.gray)
+            .background(isQuestionActive(at: index) ? Color(red: 0.35, green: 0.49, blue: 0.71) : Color.gray)
             .cornerRadius(8)
         }
-        .disabled(!isQuestionActive(at: index))
     }
 
     func questionText(for index: Int) -> String {
         switch index {
         case 0:
-            return "Selamat pagi, Dokter. Saya merasakan _____." // First question full text
+            return "Selamat pagi, Dokter. Saya merasakan " + complaintViewModel.answers[0]
         case 1:
-            return "di _____." // Only the second question text
+            return "Saya merasakan gejala ini sejak " + complaintViewModel.answers[1] + " yang lalu."
         case 2:
-            return "Saya merasakan gejala ini sejak _____." // Only the third question text
+            return "Rasa sakitnya " + complaintViewModel.answers[2] + " dari 10."
         case 3:
-            return "Rasa sakitnya _____ dari 10." // Only the fourth question text
+            return "Gejalanya semakin parah ketika saya " + complaintViewModel.answers[3]
         case 4:
-            return "Gejalanya semakin parah ketika saya _____." // Only the fifth question text
+            return "Gejalanya semakin membaik ketika saya " + complaintViewModel.answers[4]
         case 5:
-            return "Gejalanya semakin membaik ketika saya _____." // Only the sixth question text
-        case 6:
-            return "Terdapat keluhan lain berupa _____." // Only the seventh question text
-        case 7:
-            return "Pernah melakukan konsultasi ke dokter lain dan diberikan obat berupa _____." // Only the eighth question text
+            return "Pernah melakukan konsultasi ke dokter lain dan diberikan obat berupa " + complaintViewModel.answers[5]
         default:
             return ""
         }
     }
 
-    func navigateToQuestion(at index: Int) {
-        switch index {
-        case 0:
-            coordinator.push(page: .mainComplaint)
-        case 1:
-            coordinator.push(page: .selectBodyPart)
-        case 2:
-            coordinator.push(page: .symptomStartTime)
-        case 3:
-            coordinator.push(page: .symptomSeverity)
-        case 4:
-            coordinator.push(page: .symptomWorseningFactors)
-        case 5:
-            coordinator.push(page: .symptomImprovementFactors)
-        case 6:
-            coordinator.push(page: .additionalComplaints)
-        case 7:
-            coordinator.push(page: .previousConsultation)
-        default:
-            break
-        }
-    }
-
     func isQuestionActive(at index: Int) -> Bool {
-        // The first button is always active
         if index == 0 {
             return true
         }
-        // Subsequent buttons are active only if the previous question is answered
-        return !complaintViewModel.answers[index - 1].isEmpty
+        return !(complaintViewModel.answers[index - 1] == "_____")
     }
 }
 
-struct SaveComplaintButton: View {
-    @EnvironmentObject var coordinator: Coordinator
+#Preview {
+    ConsultationMenuView()
+        .environmentObject(Coordinator())
+        .environmentObject(ComplaintViewModel(datasource: LocalDataSource.shared))
+}
 
-    var body: some View {
-        Button("Simpan Keluhan") {
-            coordinator.push(page: .summary)
-        }
-        .frame(maxWidth: .infinity)
-        .padding()
-        .background(Color.blue)
-        .cornerRadius(25)
-        .foregroundColor(Color.white)
-    }
+extension Int: Identifiable {
+    public var id: Int { self }
 }
 
 #Preview {

@@ -87,7 +87,9 @@ struct ComplaintView: View {
                     .foregroundColor(Color("FFFFFF"))
 
                     Button("Lanjutkan") {
-                        coordinator.push(page: .selectBodyPart)
+//                        coordinator.push(page: .selectBodyPart)
+                        coordinator.present(sheet: .symptomStartTime)
+
                     }
                     .frame(maxWidth: .infinity)
                     .padding()

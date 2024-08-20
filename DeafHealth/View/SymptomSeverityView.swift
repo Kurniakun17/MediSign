@@ -92,6 +92,10 @@ struct SymptomSeverityView: View {
             .onChange(of: sliderValue) {
                 isAnswerProvided = true
                 selectedSeverity = sliderValue.formatted()
+                
+                complaintViewModel.updateAnswer(for: 2, with: selectedSeverity)
+
+                
                 if sliderValue == 0 {
                     status = ""
                     description = "Tidak ada rasa sakit"
@@ -229,7 +233,9 @@ struct SymptomSeverityView: View {
             Spacer().frame(height: 18)
 
             Button("Lanjutkan") {
-                coordinator.push(page: .symptomWorseningFactors)
+//                coordinator.push(page: .symptomWorseningFactors)
+                coordinator.present(sheet: .symptomWorseningFactors)
+
             }
             .frame(width: 363, height: 52)
             .background(isAnswerProvided ? Color(red: 0.25, green: 0.48, blue: 0.68) : Color.gray)

@@ -58,7 +58,7 @@ struct SymptomStartTimeView: View {
                 .frame(minWidth: 60)
                 .onChange(of: selectedNumber) {
                     isAnswerProvided = true
-                    complaintViewModel.updateAnswer(for: 2, with: selectedNumber + " " + selectedUnit.lowercased())
+                    complaintViewModel.updateAnswer(for: 1, with: selectedNumber + " " + selectedUnit.lowercased())
                 }
 
                 Picker("Unit", selection: $selectedUnit) {
@@ -84,14 +84,15 @@ struct SymptomStartTimeView: View {
                             batasAtas = 10
                         }
 
-                        complaintViewModel.updateAnswer(for: 2, with: selectedNumber + " " + selectedUnit.lowercased())
+                        complaintViewModel.updateAnswer(for: 1, with: selectedNumber + " " + selectedUnit.lowercased())
                     }
             }.padding(.horizontal, 110)
 
             Spacer().frame(height: 250)
 
             Button("Lanjutkan") {
-                coordinator.push(page: .symptomSeverity)
+//                coordinator.push(page: .symptomSeverity)
+                coordinator.present(sheet: .symptomSeverity)
             }
             .frame(width: 363, height: 52)
             .background(isAnswerProvided ? Color(red: 0.25, green: 0.48, blue: 0.68) : Color.gray)

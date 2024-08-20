@@ -20,8 +20,6 @@ struct SymptomWorseningFactorsView: View {
 
     @State private var isNotAvailable = false
 
-    @State var isLainnyaSelected = false
-
     var body: some View {
         VStack(spacing: 0) {
             ZStack {
@@ -38,16 +36,26 @@ struct SymptomWorseningFactorsView: View {
             .padding(.top, 16)
             .padding(.bottom, 16)
 
-            HStack {
-                Text("Gejala semakin memburuk ketika ").font(Font.custom("SF Pro", size: 20))
+            if isNotAvailable {
+                HStack {
+                    Text("Tidak terdapat faktor yang memperburuk gejala.").font(Font.custom("SF Pro", size: 20))
 
-                    + Text("\(selectedFactor.lowercased())").bold().underline().foregroundColor(.darkGreen)
+                }
+                .padding(.bottom, 8)
+                .multilineTextAlignment(.center)
+                .frame(maxWidth: 257, alignment: .center)
+            } else {
+                HStack {
+                    Text("Gejala semakin memburuk ketika ").font(Font.custom("SF Pro", size: 20))
 
-                    + Text(".").font(Font.custom("SF Pro", size: 20))
+                        + Text("\(selectedFactor.lowercased())").bold().underline().foregroundColor(.darkGreen)
+
+                        + Text(".").font(Font.custom("SF Pro", size: 20))
+                }
+                .padding(.bottom, 8)
+                .multilineTextAlignment(.center)
+                .frame(maxWidth: 257, alignment: .center)
             }
-            .padding(.bottom, 8)
-            .multilineTextAlignment(.center)
-            .frame(maxWidth: 257, alignment: .center)
 
             Spacer().frame(height: 54)
 
@@ -62,8 +70,11 @@ struct SymptomWorseningFactorsView: View {
                         RoundedRectangle(cornerRadius: 25)
                             .stroke(Color.gray, lineWidth: 1)
                     )
+                    .disabled(isNotAvailable)
                     .onChange(of: factor) { newValue in
                         selectedFactor = newValue
+                        complaintViewModel.updateAnswer(for: 3, with: selectedFactor)
+                        isAnswerProvided = true
                     }
 
                 if factor.isEmpty && !isFocused {
@@ -125,8 +136,6 @@ struct SymptomWorseningFactorsView: View {
             .cornerRadius(25)
             .foregroundColor(.gray)
         }
-        .edgesIgnoringSafeArea(.bottom)
-        .navigationBarBackButtonHidden(true)
 
         Spacer().frame(height: 18)
 
@@ -156,6 +165,9 @@ struct SymptomWorseningFactorsView: View {
                                 .stroke(.black, lineWidth: 1)
                         )
                 }
+            }.onChange(of: isNotAvailable) {
+                factor = ""
+                selectedFactor = ""
             }
 
             Text("Tidak ada faktor yang memperburuk gejala").font(Font.custom("SF Pro Bold", size: 14))
@@ -164,7 +176,8 @@ struct SymptomWorseningFactorsView: View {
         Spacer().frame(height: 18)
 
         Button("Lanjutkan") {
-            coordinator.push(page: .symptomWorseningFactors)
+//            coordinator.push(page: .symptomWorseningFactors)
+            coordinator.present(sheet: .symptomImprovementFactors)
         }
         .frame(width: 363, height: 52)
         .background(isAnswerProvided ? Color(red: 0.25, green: 0.48, blue: 0.68) : Color.gray)

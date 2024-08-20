@@ -108,8 +108,6 @@ struct CustomSlider: View {
         
         let newValue = range.lowerBound + Double(round(knobX / tickWidth)) * step
         value = max(range.lowerBound, min(newValue, range.upperBound))
-        
-        complaintViewModel.updateAnswer(for: 3, with: "\(Int(newValue))")
     }
 }
 
