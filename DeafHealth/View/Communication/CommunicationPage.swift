@@ -158,9 +158,7 @@ struct CommunicationPage: View {
                 isKeyboardFocus = false
             }
         }
-        .onChange(of: speechViewModel.isRecording) {
-            value in print(value)
-        }
+
     }
 
     func startRecording() {
