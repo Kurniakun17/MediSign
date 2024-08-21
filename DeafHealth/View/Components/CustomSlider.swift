@@ -75,7 +75,9 @@ struct CustomSlider: View {
                             .gesture(
                                 DragGesture()
                                     .onChanged { gesture in
-                                        self.updateValue(from: gesture.location.x, geometry)
+                                        withAnimation(.easeInOut) {
+                                            self.updateValue(from: gesture.location.x, geometry)
+                                        }
                                     }
                             )
                             .offset(y: -16)

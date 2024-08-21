@@ -13,13 +13,7 @@ struct ContentView: View {
 
     var body: some View {
         NavigationStack(path: $coordinator.path) {
-            VStack {
-                // Your main menu content
-                Button("Tambah Keluhan") {
-                    coordinator.push(page: .consultationMenuView)
-                }
-                .padding()
-            }
+            coordinator.build(page: .homepage)
             .navigationDestination(for: Page.self) { page in
                 coordinator.build(page: page)
             }

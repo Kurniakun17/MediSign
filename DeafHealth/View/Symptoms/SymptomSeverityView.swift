@@ -30,7 +30,7 @@ struct SymptomSeverityView: View {
                     Spacer()
 
                     HStack {
-                        Text("3").bold().font(Font.custom("SF Pro Bold", size: 14)) + Text(" / 6 pertanyaan").font(Font.custom("SF Pro", size: 13))
+                        Text("3").bold().font(Font.system(size: 14)).bold() + Text(" / 6 pertanyaan").font(Font.custom("SF Pro", size: 13))
                     }
                     .foregroundColor(.gray)
                 }
@@ -42,9 +42,9 @@ struct SymptomSeverityView: View {
             Spacer().frame(height: 32)
 
             HStack {
-                Text("Rasa sakitnya ").font(Font.custom("SF Pro", size: 20))
+                Text("Rasa sakitnya ").font(Font.system(size: 20))
 
-                    + Text("\(selectedSeverity)").bold().underline().foregroundColor(.darkGreen)
+                    + Text("\(selectedSeverity)").font(Font.system(size: 20)).bold().foregroundColor(.darkBlue)
 
                     + Text(" dari 10.").font(Font.custom("SF Pro", size: 20))
             }
@@ -55,7 +55,7 @@ struct SymptomSeverityView: View {
             Spacer().frame(height: 18)
 
             Text("\(status)").font(
-                Font.custom("SF Pro", size: 20)
+                Font.system(size: 20)
                     .weight(.bold)
             )
             .foregroundColor(warna)
@@ -63,7 +63,7 @@ struct SymptomSeverityView: View {
             Spacer().frame(height: 12)
 
             Text("\(description)")
-                .font(Font.custom("SF Pro", size: 14))
+                .font(Font.system(size: 14))
                 .multilineTextAlignment(.center)
                 .foregroundColor(.black)
                 .frame(width: 290, height: 68, alignment: .top)
@@ -91,11 +91,14 @@ struct SymptomSeverityView: View {
             .padding(.horizontal, 54)
             .onChange(of: sliderValue) {
                 isAnswerProvided = true
+
                 selectedSeverity = sliderValue.formatted()
-                
+
+                let feedbackGenerator = UIImpactFeedbackGenerator(style: .medium)
+                feedbackGenerator.impactOccurred()
+
                 complaintViewModel.updateAnswer(for: 2, with: selectedSeverity)
 
-                
                 if sliderValue == 0 {
                     status = ""
                     description = "Tidak ada rasa sakit"
@@ -187,7 +190,8 @@ struct SymptomSeverityView: View {
                             Text("Cukup terasa dan mulai mengganggu aktivitas, tetapi masih bisa ditoleransi.")
                         }
                         .padding(.horizontal)
-                        .padding(.vertical, 5)                    }
+                        .padding(.vertical, 5)
+                    }
                     .frame(width: 330, alignment: .topLeading)
                     .background(Color(red: 1, green: 1, blue: 0.93))
                     .cornerRadius(25)
@@ -207,7 +211,8 @@ struct SymptomSeverityView: View {
                             Text("Sangat kuat dan sering kali tak tertahankan.")
                         }
                         .padding(.horizontal)
-                        .padding(.vertical, 5)                    }
+                        .padding(.vertical, 5)
+                    }
                     .frame(width: 330, alignment: .topLeading)
                     .background(Color(red: 1, green: 0.96, blue: 0.96))
                     .cornerRadius(25)
@@ -218,9 +223,9 @@ struct SymptomSeverityView: View {
                 }
             }.frame(width: 363)
                 .font(
-                Font.custom("SF Pro", size: 12)
-                .weight(.bold)
-                )                .padding(.vertical, 12)
+                    Font.custom("SF Pro", size: 12)
+                        .weight(.bold)
+                ).padding(.vertical, 12)
                 .foregroundColor(Color(red: 0.58, green: 0.58, blue: 0.58))
                 .background(Color(red: 0.97, green: 0.97, blue: 0.97))
                 .cornerRadius(25)
@@ -235,13 +240,15 @@ struct SymptomSeverityView: View {
             Button("Lanjutkan") {
 //                coordinator.push(page: .symptomWorseningFactors)
                 coordinator.present(sheet: .symptomWorseningFactors)
-
             }
             .frame(width: 363, height: 52)
             .background(isAnswerProvided ? Color(red: 0.25, green: 0.48, blue: 0.68) : Color.gray)
             .cornerRadius(25)
             .foregroundColor(Color("FFFFFF"))
             .disabled(!isAnswerProvided)
+        }
+        .background {
+            Image("sheet-background")
         }
         .edgesIgnoringSafeArea(.bottom)
         .navigationBarBackButtonHidden(true)

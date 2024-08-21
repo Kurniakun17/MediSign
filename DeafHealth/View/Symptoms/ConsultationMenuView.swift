@@ -30,7 +30,7 @@ struct ConsultationMenuView: View {
                     Spacer()
 
                     Text("Tambah Keluhan")
-                        .font(.custom("SF Pro", size: 20))
+                        .font(.system(size: 20))
                         .bold()
                         .frame(maxWidth: .infinity, alignment: .center)
                 }
@@ -38,7 +38,7 @@ struct ConsultationMenuView: View {
                 .padding(.trailing, 25)
                 .frame(height: 44)
 
-                ForEach(0..<6) { index in
+                ForEach(0 ..< 6) { index in
                     QuestionButtonView(index: index, currentQuestionIndex: $currentQuestionIndex)
                 }
 
@@ -147,7 +147,7 @@ struct QuestionButtonView: View {
         if index == 0 {
             return true
         }
-        return !complaintViewModel.answers[index - 1].isEmpty
+        return !(complaintViewModel.answers[index - 1] == "_____")
     }
 }
 
@@ -164,7 +164,7 @@ struct SaveComplaintButton: View {
         .background(Color("blue-button"))
         .cornerRadius(25)
         .foregroundColor(Color.white)
-        .disabled(true) 
+        .disabled(true)
     }
 }
 

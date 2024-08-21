@@ -27,7 +27,7 @@ struct SymptomImprovementFactorsView: View {
                     Spacer()
 
                     HStack {
-                        Text("5").bold().font(Font.custom("SF Pro Bold", size: 14)) + Text(" / 6 pertanyaan").font(Font.custom("SF Pro", size: 13))
+                        Text("5").bold().font(Font.system(size: 14)).bold() + Text(" / 6 pertanyaan").font(Font.custom("SF Pro", size: 13))
                     }
                     .foregroundColor(.gray)
                 }
@@ -36,43 +36,57 @@ struct SymptomImprovementFactorsView: View {
             .padding(.top, 16)
             .padding(.bottom, 16)
 
-            HStack {
-                Text("Gejala semakin membaik ketika ").font(Font.custom("SF Pro", size: 20))
+            Spacer().frame(height: 32)
 
-                    + Text("\(selectedFactor.lowercased())").bold().underline().foregroundColor(.darkGreen)
+            if isNotAvailable {
+                HStack {
+                    Text("Tidak terdapat faktor yang membuat gejala membaik.").font(Font.custom("SF Pro", size: 20))
+                }
+                .padding(.bottom, 8)
+                .multilineTextAlignment(.center)
+                .frame(maxWidth: 257, alignment: .center)
+            } else {
+                HStack {
+                    Text("Gejala semakin membaik ketika ").font(Font.custom("SF Pro", size: 20))
 
-                    + Text(".").font(Font.custom("SF Pro", size: 20))
+                        + Text("\(selectedFactor.lowercased() == "" ? "_____" : selectedFactor.lowercased())").font(Font.system(size: 20)).bold().foregroundColor(.darkBlue)
+
+                        + Text(".").font(Font.custom("SF Pro", size: 20))
+                }
+                .padding(.bottom, 8)
+                .multilineTextAlignment(.center)
+                .frame(maxWidth: 257, alignment: .center)
             }
-            .padding(.bottom, 8)
-            .multilineTextAlignment(.center)
-            .frame(maxWidth: 257, alignment: .center)
 
             Spacer().frame(height: 54)
 
-            ZStack(alignment: .leading) {
-                TextEditor(text: $factor)
-                    .padding(EdgeInsets(top: 10, leading: 10, bottom: 10, trailing: 10))
-                    .frame(width: 360, height: 180)
-                    .background(Color.white)
-                    .cornerRadius(25)
-                    .focused($isFocused) // Bind the focus state
-                    .overlay(
-                        RoundedRectangle(cornerRadius: 25)
-                            .stroke(Color.gray, lineWidth: 1)
-                    )
-                    .onChange(of: factor) { newValue in
-                        selectedFactor = newValue
-                        complaintViewModel.updateAnswer(for: 3, with: selectedFactor)
-                    }
+            if !isNotAvailable {
+                ZStack(alignment: .leading) {
+                    TextEditor(text: $factor)
+                        .padding(EdgeInsets(top: 10, leading: 10, bottom: 10, trailing: 10))
+                        .frame(width: 360, height: 180)
+                        .background(Color.white)
+                        .cornerRadius(25)
+                        .focused($isFocused) // Bind the focus state
+                        .overlay(
+                            RoundedRectangle(cornerRadius: 25)
+                                .stroke(Color.gray, lineWidth: 1)
+                        )
+                        .onChange(of: factor) { newValue in
+                            selectedFactor = newValue
+                            complaintViewModel.updateAnswer(for: 4, with: selectedFactor)
+                            isAnswerProvided = true
+                        }
 
-                if factor.isEmpty && !isFocused {
-                    Text("Tambahkan faktor yang membuat gejala membaik")
-                        .foregroundColor(.gray)
-                        .padding(.horizontal, 16)
-                        .padding(.vertical, 12)
-                        .offset(x: 5, y: -62)
-                        .font(Font.custom("SF Pro Bold", size: 14))
-                        .multilineTextAlignment(.leading)
+                    if factor.isEmpty && !isFocused {
+                        Text("Tambahkan faktor yang membuat gejala membaik")
+                            .foregroundColor(.gray)
+                            .padding(.horizontal, 16)
+                            .padding(.vertical, 12)
+                            .offset(x: 5, y: -62)
+                            .font(Font.custom("SF Pro Bold", size: 14))
+                            .multilineTextAlignment(.leading)
+                    }
                 }
             }
 
@@ -87,7 +101,7 @@ struct SymptomImprovementFactorsView: View {
                     }
                     HStack(alignment: .top) {
                         Text("   •")
-                        Text("Mengonsumsi makanan atau minuman tertentu (sebutkan)")
+                        Text("Mengonsumsi makanan/minuman tertentu (sebutkan)")
                     }
                     HStack(alignment: .top) {
                         Text("   •")
@@ -95,7 +109,7 @@ struct SymptomImprovementFactorsView: View {
                     }
                 }
             }
-            .font(Font.custom("SF Pro Bold", size: 14))
+            .font(Font.system(size: 14)).italic()
             .padding(.horizontal, 18)
             .padding(.vertical, 14)
             .frame(width: 360, alignment: .topLeading)
@@ -109,6 +123,10 @@ struct SymptomImprovementFactorsView: View {
                 Button {
                     isAnswerProvided = true
                     isNotAvailable.toggle()
+
+                    if !isNotAvailable {
+                        isAnswerProvided = false
+                    }
                 } label: {
                     if isNotAvailable {
                         Rectangle()
@@ -131,6 +149,9 @@ struct SymptomImprovementFactorsView: View {
                                     .stroke(.black, lineWidth: 1)
                             )
                     }
+                }.onChange(of: isNotAvailable) {
+                    factor = ""
+                    selectedFactor = ""
                 }
 
                 Text("Tidak ada faktor yang membuat gejala membaik").font(Font.custom("SF Pro Bold", size: 14))
@@ -140,7 +161,7 @@ struct SymptomImprovementFactorsView: View {
 
             Button("Lanjutkan") {
                 //            coordinator.push(page: .symptomWorseningFactors)
-                coordinator.present(sheet: .symptomImprovementFactors)
+                coordinator.present(sheet: .previousConsultation)
             }
             .frame(width: 363, height: 52)
             .background(isAnswerProvided ? Color(red: 0.25, green: 0.48, blue: 0.68) : Color.gray)
@@ -148,7 +169,9 @@ struct SymptomImprovementFactorsView: View {
             .foregroundColor(Color("FFFFFF"))
             .disabled(!isAnswerProvided)
         }
-     
+        .background {
+            Image("sheet-background")
+        }
     }
 }
 
