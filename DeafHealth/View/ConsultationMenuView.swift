@@ -10,37 +10,53 @@ import SwiftUI
 struct ConsultationMenuView: View {
     @EnvironmentObject var coordinator: Coordinator
     @EnvironmentObject var complaintViewModel: ComplaintViewModel
+    @Environment(\.presentationMode) var presentationMode
     @State private var currentQuestionIndex: Int? = nil
 
     var body: some View {
         ScrollView {
             VStack(spacing: 16) {
-                Text("Tambah Keluhan")
-                    .font(.title3)
-                    .bold()
-                    .padding(.top, 32)
+                HStack {
+                    Button(action: {
+                        presentationMode.wrappedValue.dismiss()
+                    }) {
+                        Image(systemName: "chevron.left")
+                            .font(.custom("SF Pro", size: 20))
+                            .foregroundColor(.black)
+                            .imageScale(.large)
+                    }
+                    .padding(.leading, -5)
 
-                Spacer()
+                    Spacer()
 
-                ForEach(0 ..< 6) { index in
+                    Text("Tambah Keluhan")
+                        .font(.custom("SF Pro", size: 20))
+                        .bold()
+                        .frame(maxWidth: .infinity, alignment: .center)
+                }
+                .padding(.horizontal)
+                .padding(.trailing, 25)
+                .frame(height: 44)
+
+                ForEach(0..<6) { index in
                     QuestionButtonView(index: index, currentQuestionIndex: $currentQuestionIndex)
                 }
 
-                Spacer()
+                Spacer(minLength: -8)
 
-                Button("Lanjutkan") {
-                    currentQuestionIndex = 0 // Open the first question sheet
-                }
-                .frame(maxWidth: .infinity)
-                .padding()
-                .background(allQuestionsAnswered() ? Color.blue : Color.gray)
-                .cornerRadius(25)
-                .foregroundColor(Color.white)
-                .disabled(!allQuestionsAnswered())
+                SaveComplaintButton()
+                    .disabled(!allQuestionsAnswered())
             }
             .padding()
-            .background(Color("background"))
+            .background(Color.clear)
         }
+        .background(
+            Image("consultation-menu-background")
+                .resizable()
+                .scaledToFill()
+                .ignoresSafeArea()
+        )
+        .navigationBarBackButtonHidden(true)
         .sheet(item: $currentQuestionIndex) { index in
             sheetView(for: index)
         }
@@ -64,15 +80,10 @@ struct ConsultationMenuView: View {
         case 4:
             SymptomImprovementFactorsView()
         case 5:
-            AdditionalComplaintsView()
+            PreviousConsultationView()
         default:
             EmptyView()
         }
-    }
-
-    private func goToNextQuestion() {
-        guard let current = currentQuestionIndex else { return }
-        currentQuestionIndex = current + 1
     }
 }
 
@@ -87,48 +98,46 @@ struct QuestionButtonView: View {
             currentQuestionIndex = index
         }) {
             HStack {
-                ZStack {
-                    Rectangle()
-                        .foregroundColor(.clear)
-                        .frame(width: 42, height: 42)
-                        .background(Color(red: 0.43, green: 0.56, blue: 0.76))
-                        .cornerRadius(12)
-
-                    Text("\(index + 1)")
-                        .bold()
-                        .foregroundColor(.white)
-                        .padding(24)
-                        .cornerRadius(8)
-                }
+                Text("\(index + 1)")
+                    .font(.custom("SF Pro", size: 28))
+                    .bold()
+                    .foregroundColor(.white)
+                    .frame(width: 42, height: 42)
+                    .background(isQuestionActive(at: index) ? Color("blue-active") : Color("blue-disabled"))
+                    .cornerRadius(12)
+                    .padding(8)
 
                 Text(questionText(for: index))
+                    .font(.custom("SF Pro", size: 16))
                     .foregroundColor(.white)
-                    .padding(.leading, 8)
-                    .multilineTextAlignment(.leading)
-
-                Spacer()
+                    .padding(.leading, 2)
+                    .padding(.vertical, 12)
             }
-            .frame(maxWidth: .infinity, alignment: .trailing)
-            .padding()
-            .background(isQuestionActive(at: index) ? Color(red: 0.35, green: 0.49, blue: 0.71) : Color.gray)
-            .cornerRadius(8)
+            .frame(maxWidth: .infinity, alignment: .leading)
+            .padding(.horizontal, 12)
+            .padding(.vertical, 12)
+            .background(isQuestionActive(at: index) ? Color("dark-blue") : Color("light-blue"))
+            .cornerRadius(16)
+            .multilineTextAlignment(.leading)
         }
+        .disabled(!isQuestionActive(at: index))
+        .padding(.horizontal, 3)
     }
 
     func questionText(for index: Int) -> String {
         switch index {
         case 0:
-            return "Selamat pagi, Dokter. Saya merasakan " + complaintViewModel.answers[0]
+            return "Halo, Dokter. Saya merasakan \(complaintViewModel.answers[0])."
         case 1:
-            return "Saya merasakan gejala ini sejak " + complaintViewModel.answers[1] + " yang lalu."
+            return "Saya merasakan gejala ini sejak \(complaintViewModel.answers[1])."
         case 2:
-            return "Rasa sakitnya " + complaintViewModel.answers[2] + " dari 10."
+            return "Rasa sakitnya \(complaintViewModel.answers[2]) dari 10."
         case 3:
-            return "Gejalanya semakin parah ketika saya " + complaintViewModel.answers[3]
+            return "Gejalanya semakin parah ketika saya \(complaintViewModel.answers[3])."
         case 4:
-            return "Gejalanya semakin membaik ketika saya " + complaintViewModel.answers[4]
+            return "Gejalanya semakin membaik ketika saya \(complaintViewModel.answers[4])."
         case 5:
-            return "Pernah melakukan konsultasi ke dokter lain dan diberikan obat berupa " + complaintViewModel.answers[5]
+            return "Pernah melakukan konsultasi ke dokter lain dan diberikan obat berupa \(complaintViewModel.answers[5])."
         default:
             return ""
         }
@@ -138,7 +147,24 @@ struct QuestionButtonView: View {
         if index == 0 {
             return true
         }
-        return !(complaintViewModel.answers[index - 1] == "_____")
+        return !complaintViewModel.answers[index - 1].isEmpty
+    }
+}
+
+struct SaveComplaintButton: View {
+    @EnvironmentObject var coordinator: Coordinator
+
+    var body: some View {
+        Button("Simpan Keluhan") {
+            coordinator.push(page: .summary)
+        }
+        .font(.custom("SF Pro", size: 16))
+        .frame(width: 363)
+        .padding(.vertical, 16)
+        .background(Color("blue-button"))
+        .cornerRadius(25)
+        .foregroundColor(Color.white)
+        .disabled(true) // Will be enabled once all questions are answered
     }
 }
 
@@ -150,10 +176,4 @@ struct QuestionButtonView: View {
 
 extension Int: Identifiable {
     public var id: Int { self }
-}
-
-#Preview {
-    ConsultationMenuView()
-        .environmentObject(Coordinator())
-        .environmentObject(ComplaintViewModel(datasource: LocalDataSource.shared))
 }

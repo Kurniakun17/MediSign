@@ -9,112 +9,137 @@ import SwiftUI
 
 struct SelectBodyPartView: View {
     @EnvironmentObject var coordinator: Coordinator
-    @Environment(\.dismiss) private var dismiss
     @EnvironmentObject var complaintViewModel: ComplaintViewModel
 
     @State private var selectedBodyPart: String = ""
     @State private var isAnswerProvided: Bool = false
+    @State private var isFrontView: Bool = true // Track front or back view
 
     var body: some View {
         VStack(spacing: 0) {
             ZStack {
-                SegmentedProgressBar(totalSteps: 8, currentStep: 2)
-                    .padding(.horizontal)
-
                 HStack {
-                    Button(action: {
-                        coordinator.popToRoot()
-                        coordinator.push(page: .consultationMenuView)
-                    }) {
-                        Image(systemName: "chevron.left")
-                            .foregroundColor(Color("black"))
-                    }
-                    .padding(.leading)
-
                     Spacer()
+
+                    HStack {
+                        Text("1").bold().font(Font.custom("SF Pro Bold", size: 14)) + Text(" / 6 pertanyaan").font(Font.custom("SF Pro", size: 13))
+                    }
+                    .foregroundColor(.gray)
                 }
+                .padding(.horizontal, 22)
+                .padding(.top, 24) // Align with ComplaintView's layout
             }
+
+            // Main text question with dynamic body part insertion
+            VStack(spacing: 8) {
+                Text("Halo, Dokter. Saya merasakan \(complaintViewModel.answers[0]) di bagian \(selectedBodyPart.isEmpty ? "____" : selectedBodyPart).")
+                    .font(.title3)
+                    .foregroundColor(selectedBodyPart.isEmpty ? .primary : Color.blue)
+                    .multilineTextAlignment(.center)
+            }
+            .padding(.horizontal)
             .padding(.top, 16)
-            .padding(.bottom, 16)
-
-            VStack(spacing: 0) {
-                Text("Pilih bagian tubuh yang")
-                    .font(.title3)
-                    .multilineTextAlignment(.center)
-                Text("terasa nyeri")
-                    .font(.title3)
-                    .multilineTextAlignment(.center)
-            }
-            Spacer()
-
-            // Example body part selection
-            Button(action: {
-                selectedBodyPart = "Bahu Depan Bagian Kanan"
-                isAnswerProvided = true
-                complaintViewModel.updateAnswer(for: 1, with: selectedBodyPart)
-            }) {
-                Text("Bahu Depan Bagian Kanan")
-                    .padding()
-                    .background(Color.blue)
-                    .foregroundColor(.white)
-                    .cornerRadius(8)
-            }
 
             Spacer()
 
-            // Green overlay at the bottom with buttons
-            VStack(spacing: 16) {
-                Text("Hasil Susun Keluhan")
-                    .font(.headline)
-                    .bold()
-                    .padding(.top, 8)
-                    .padding(.leading, 32)
-                    .frame(maxWidth: .infinity, alignment: .leading)
-
-                Text(complaintViewModel.getSummary(for: 1))
-                    .font(.subheadline)
-                    .padding(.bottom, 8)
-                    .padding(.leading, 32)
-                    .frame(maxWidth: .infinity, alignment: .leading)
-
-                HStack(spacing: 16) {
-                    Button("Kembali") {
-                        coordinator.pop() // Navigate back to ConsultationMenuView
-                    }
-                    .frame(maxWidth: .infinity)
-                    .padding()
-                    .background(Color("green"))
-                    .cornerRadius(25)
-                    .foregroundColor(Color("FFFFFF"))
-
-                    Button("Lanjutkan") {
-                        coordinator.push(page: .symptomStartTime)
-                    }
-                    .frame(maxWidth: .infinity)
-                    .padding()
-                    .background(isAnswerProvided ? Color("light-green-button") : Color.gray)
-                    .cornerRadius(25)
-                    .foregroundColor(Color("FFFFFF"))
-                    .disabled(!isAnswerProvided)  // Disable the button if no answer is provided
+            ZStack {
+                if isFrontView {
+                    Image("front")  // Using the front view image from assets
+                        .resizable()
+                        .aspectRatio(contentMode: .fit)
+                        .overlay(frontBodyCircles())
+                } else {
+                    Image("back")  // Using the back view image from assets
+                        .resizable()
+                        .aspectRatio(contentMode: .fit)
+                        .overlay(backBodyCircles())
                 }
-                .padding(.horizontal, 32)
+
+                // Left arrow for flipping to back view
+                Button(action: {
+                    withAnimation {
+                        isFrontView = false
+                    }
+                }) {
+                    Image("left-arrow")  // Using the left arrow image from assets
+                }
+                .position(x: 30, y: UIScreen.main.bounds.height / 2)
+                .opacity(isFrontView ? 1 : 0) // Hide when on the back view
+
+                // Right arrow for flipping to front view
+                Button(action: {
+                    withAnimation {
+                        isFrontView = true
+                    }
+                }) {
+                    Image("right-arrow")  // Using the right arrow image from assets
+                }
+                .position(x: UIScreen.main.bounds.width - 30, y: UIScreen.main.bounds.height / 2)
+                .opacity(isFrontView ? 0 : 1) // Hide when on the front view
             }
-            .padding(.top, 32)
-            .padding(.bottom, 32)
-            .background(
-                RoundedRectangle(cornerRadius: 20)
-                    .fill(Color("light-green"))
-                    .edgesIgnoringSafeArea(.bottom)
-            )
-            .cornerRadius(25, corners: [.topLeft, .topRight])
+            .padding()
+
+            Spacer()
+
+            Button("Lanjutkan") {
+                coordinator.present(sheet: .symptomStartTime) // Proceed to Question 2
+            }
+            .frame(width: 363, height: 52)
+            .background(isAnswerProvided ? Color(red: 0.25, green: 0.48, blue: 0.68) : Color.gray)
+            .cornerRadius(25)
+            .foregroundColor(Color("FFFFFF"))
+            .disabled(!isAnswerProvided)
+            .padding(.bottom, 32) // Align with ComplaintView's layout
         }
         .edgesIgnoringSafeArea(.bottom)
         .navigationBarBackButtonHidden(true)
     }
+
+    // Circles for front body view
+    func frontBodyCircles() -> some View {
+        ZStack {
+            Circle().positionedCircle(x: 150, y: 200, bodyPart: "Leher", selectedBodyPart: $selectedBodyPart, isAnswerProvided: $isAnswerProvided)
+            Circle().positionedCircle(x: 120, y: 230, bodyPart: "Bahu", selectedBodyPart: $selectedBodyPart, isAnswerProvided: $isAnswerProvided)
+            Circle().positionedCircle(x: 140, y: 260, bodyPart: "Dada", selectedBodyPart: $selectedBodyPart, isAnswerProvided: $isAnswerProvided)
+            Circle().positionedCircle(x: 140, y: 290, bodyPart: "Perut", selectedBodyPart: $selectedBodyPart, isAnswerProvided: $isAnswerProvided)
+            Circle().positionedCircle(x: 100, y: 320, bodyPart: "Lengan Atas", selectedBodyPart: $selectedBodyPart, isAnswerProvided: $isAnswerProvided)
+            Circle().positionedCircle(x: 120, y: 360, bodyPart: "Siku tangan", selectedBodyPart: $selectedBodyPart, isAnswerProvided: $isAnswerProvided)
+            Circle().positionedCircle(x: 160, y: 390, bodyPart: "Pergelangan Tangan", selectedBodyPart: $selectedBodyPart, isAnswerProvided: $isAnswerProvided)
+            Circle().positionedCircle(x: 140, y: 420, bodyPart: "Kelamin", selectedBodyPart: $selectedBodyPart, isAnswerProvided: $isAnswerProvided)
+            Circle().positionedCircle(x: 140, y: 450, bodyPart: "Paha atas", selectedBodyPart: $selectedBodyPart, isAnswerProvided: $isAnswerProvided)
+            Circle().positionedCircle(x: 160, y: 480, bodyPart: "Lutut", selectedBodyPart: $selectedBodyPart, isAnswerProvided: $isAnswerProvided)
+            Circle().positionedCircle(x: 140, y: 510, bodyPart: "Jari dan telapak kaki", selectedBodyPart: $selectedBodyPart, isAnswerProvided: $isAnswerProvided)
+        }
+    }
+
+    // Circles for back body view
+    func backBodyCircles() -> some View {
+        ZStack {
+            Circle().positionedCircle(x: 150, y: 200, bodyPart: "Tengkuk", selectedBodyPart: $selectedBodyPart, isAnswerProvided: $isAnswerProvided)
+            Circle().positionedCircle(x: 120, y: 230, bodyPart: "Pundak", selectedBodyPart: $selectedBodyPart, isAnswerProvided: $isAnswerProvided)
+            Circle().positionedCircle(x: 140, y: 260, bodyPart: "Punggung Atas", selectedBodyPart: $selectedBodyPart, isAnswerProvided: $isAnswerProvided)
+            Circle().positionedCircle(x: 140, y: 290, bodyPart: "Punggung Bawah", selectedBodyPart: $selectedBodyPart, isAnswerProvided: $isAnswerProvided)
+            Circle().positionedCircle(x: 140, y: 320, bodyPart: "Pinggul", selectedBodyPart: $selectedBodyPart, isAnswerProvided: $isAnswerProvided)
+            Circle().positionedCircle(x: 120, y: 360, bodyPart: "Jari dan Telapak tangan", selectedBodyPart: $selectedBodyPart, isAnswerProvided: $isAnswerProvided)
+            Circle().positionedCircle(x: 140, y: 390, bodyPart: "Pantat/Bokong", selectedBodyPart: $selectedBodyPart, isAnswerProvided: $isAnswerProvided)
+//            Circle().positionedCircle(x: 140, y: 450, bodyPart: "Belakang Paha", selectedBodyPart: $selectedBodyPart, isAnswerProvided: $selectedBodyPart, isAnswerProvided: $isAnswerProvided)
+            Circle().positionedCircle(x: 160, y: 480, bodyPart: "Betis", selectedBodyPart: $selectedBodyPart, isAnswerProvided: $isAnswerProvided)
+            Circle().positionedCircle(x: 140, y: 510, bodyPart: "Pergelangan Kaki", selectedBodyPart: $selectedBodyPart, isAnswerProvided: $isAnswerProvided)
+        }
+    }
 }
 
-#Preview {
-    SelectBodyPartView()
-        .environmentObject(Coordinator())
-        .environmentObject(ComplaintViewModel(datasource: LocalDataSource.shared))
+
+private extension View {
+    // Helper function for creating a circle at a specific position with a body part name
+    func positionedCircle(x: CGFloat, y: CGFloat, bodyPart: String, selectedBodyPart: Binding<String>, isAnswerProvided: Binding<Bool>) -> some View {
+        Circle()
+            .fill(selectedBodyPart.wrappedValue == bodyPart ? Color.blue : Color.blue.opacity(0.7))
+            .frame(width: 30, height: 30)
+            .position(x: x, y: y)
+            .onTapGesture {
+                selectedBodyPart.wrappedValue = bodyPart
+                isAnswerProvided.wrappedValue = true
+            }
+    }
 }

@@ -27,7 +27,7 @@ struct SymptomWorseningFactorsView: View {
                     Spacer()
 
                     HStack {
-                        Text("4").bold().font(Font.custom("SF Pro Bold", size: 14)) + Text(" / 7 pertanyaan").font(Font.custom("SF Pro", size: 13))
+                        Text("4").bold().font(Font.custom("SF Pro Bold", size: 14)) + Text(" / 6 pertanyaan").font(Font.custom("SF Pro", size: 13))
                     }
                     .foregroundColor(.gray)
                 }

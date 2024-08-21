@@ -14,103 +14,116 @@ struct ComplaintView: View {
 
     @State private var selectedComplaint: String = ""
     @State private var isAnswerProvided: Bool = false
+    @State private var selectedSegment: String = "Gejala Umum" // Default segment
 
     var body: some View {
         VStack(spacing: 0) {
             ZStack {
-                SegmentedProgressBar(totalSteps: 8, currentStep: 1)
-                    .padding(.horizontal)
-
                 HStack {
-                    Button(action: {
-                        coordinator.pop() // Navigate back to ConsultationMenuView
-                    }) {
-                        Image(systemName: "chevron.left")
-                            .foregroundColor(Color("black"))
-                    }
-                    .padding(.leading)
-
                     Spacer()
+
+                    HStack {
+                        Text("1").bold().font(Font.custom("SF Pro Bold", size: 14)) + Text(" / 6 pertanyaan").font(Font.custom("SF Pro", size: 13))
+                    }
+                    .foregroundColor(.gray)
                 }
+                .padding(.horizontal, 22)
+                .padding(.top, 24) // Increased top padding
             }
+
+            // Main text question with dynamic complaint insertion
+            VStack(spacing: 8) {
+                Text("Halo, Dokter. Saya merasakan")
+                    .font(.title3)
+                    .multilineTextAlignment(.center)
+
+                Text(selectedComplaint.isEmpty ? "____." : selectedComplaint)
+                    .font(.title3)
+                    .foregroundColor(selectedComplaint.isEmpty ? .primary : Color.blue) // Change color to blue if selected
+                    .multilineTextAlignment(.center)
+            }
+            .padding(.horizontal)
             .padding(.top, 16)
-            .padding(.bottom, 16)
 
-            VStack(spacing: 0) {
-                Text("Apa keluhan utama yang")
-                    .font(.title3)
-                    .multilineTextAlignment(.center)
-                Text("Anda rasakan?")
-                    .font(.title3)
-                    .multilineTextAlignment(.center)
+            // Segmented control
+            Picker("Select Category", selection: $selectedSegment) {
+                Text("Gejala Umum").tag("Gejala Umum")
+                Text("Bagian Tertentu").tag("Bagian Tertentu")
             }
-            Spacer()
+            .pickerStyle(SegmentedPickerStyle())
+            .padding(.horizontal)
+            .padding(.top, 15)
+            .padding(.bottom, 15)
 
-            // Example complaint selection
-            Button(action: {
-                selectedComplaint = "Nyeri"
-                isAnswerProvided = true
-                complaintViewModel.updateAnswer(for: 0, with: selectedComplaint)
-            }) {
-                Text("Nyeri")
-                    .padding()
-                    .background(Color.blue)
-                    .foregroundColor(.white)
-                    .cornerRadius(8)
-            }
-
-            Spacer()
-
-            // Green overlay at the bottom with buttons
-            VStack(spacing: 16) {
-                Text("Hasil Susun Keluhan")
-                    .font(.headline)
-                    .bold()
-                    .padding(.top, 8)
-                    .padding(.leading, 32)
-                    .frame(maxWidth: .infinity, alignment: .leading)
-
-                Text(complaintViewModel.getSummary(for: 0))
-                    .font(.subheadline)
-                    .padding(.bottom, 8)
-                    .padding(.leading, 32)
-                    .frame(maxWidth: .infinity, alignment: .leading)
-
-                HStack(spacing: 16) {
-                    Button("Kembali") {
-                        coordinator.pop() // Navigate back to ConsultationMenuView
-                    }
-                    .frame(maxWidth: .infinity)
-                    .padding()
-                    .background(Color("green"))
-                    .cornerRadius(25)
-                    .foregroundColor(Color("FFFFFF"))
-
-                    Button("Lanjutkan") {
-//                        coordinator.push(page: .selectBodyPart)
-                        coordinator.present(sheet: .symptomStartTime)
-
-                    }
-                    .frame(maxWidth: .infinity)
-                    .padding()
-                    .background(isAnswerProvided ? Color("light-green-button") : Color.gray)
-                    .cornerRadius(25)
-                    .foregroundColor(Color("FFFFFF"))
-                    .disabled(!isAnswerProvided)  // Disable the button if no answer is provided
+            // Complaint selection buttons based on the selected segment
+            ScrollView {
+                if selectedSegment == "Gejala Umum" {
+                    gridOfSymptoms(generalSymptoms)
+                } else {
+                    gridOfSymptoms(specificSymptoms)
                 }
-                .padding(.horizontal, 32)
             }
-            .padding(.top, 32)
-            .padding(.bottom, 32)
-            .background(
-                RoundedRectangle(cornerRadius: 20)
-                    .fill(Color("light-green"))
-                    .edgesIgnoringSafeArea(.bottom)
-            )
-            .cornerRadius(25, corners: [.topLeft, .topRight])
+            .padding(.horizontal)
+            .padding(.bottom, 10)
+
+            Spacer()
+
+            Button("Lanjutkan") {
+                coordinator.present(sheet: .selectBodyPart)
+            }
+            .frame(width: 363, height: 52)
+            .background(isAnswerProvided ? Color(red: 0.25, green: 0.48, blue: 0.68) : Color.gray)
+            .cornerRadius(25)
+            .foregroundColor(Color("FFFFFF"))
+            .disabled(!isAnswerProvided)
+            .padding(.bottom, 32) // Increased bottom padding
         }
         .edgesIgnoringSafeArea(.bottom)
         .navigationBarBackButtonHidden(true)
+    }
+
+    // View for arranging the symptoms in a grid
+    func gridOfSymptoms(_ symptoms: [String]) -> some View {
+        LazyVGrid(columns: [GridItem(.flexible()), GridItem(.flexible())], spacing: 16) {
+            ForEach(symptoms, id: \.self) { symptom in
+                Button(action: {
+                    selectedComplaint = symptom
+                    isAnswerProvided = true
+                    complaintViewModel.updateAnswer(for: 0, with: selectedComplaint)
+                }) {
+                    symptomButton(symptom)
+                }
+            }
+        }
+        .padding(.top, 16)
+    }
+
+    // Helper view for symptom buttons
+    func symptomButton(_ symptom: String) -> some View {
+        VStack {
+            Text(symptom)
+                .font(.headline)
+                .foregroundColor(selectedComplaint == symptom ? .white : .primary)
+            
+            Image(systemName: "photo") // Placeholder for actual image
+                .resizable()
+                .scaledToFit()
+                .frame(height: 60)
+                .foregroundColor(.white)
+        }
+        .frame(maxWidth: .infinity, maxHeight: 150)
+        .padding()
+        .background(selectedComplaint == symptom ? Color.blue : Color("light-blue")) // Change color if selected
+        .cornerRadius(12)
+    }
+
+    // Sample data for symptoms
+    var generalSymptoms: [String] {
+        ["Flu", "Demam", "Pusing", "Batuk", "Sesak Nafas", "Diare", "Mual/Muntah", "Sakit lain"]
+    }
+
+    var specificSymptoms: [String] {
+        ["Sakit Kepala", "Nyeri Dada", "Nyeri Punggung", "Nyeri Sendi", "Nyeri Otot"]
     }
 }
 

@@ -33,6 +33,7 @@ enum Sheet: String, Identifiable {
     // MARK: Example Data
 
     case testSheet
+    case selectBodyPart
     case symptomStartTime
     case symptomSeverity
     case symptomWorseningFactors
@@ -125,6 +126,10 @@ class Coordinator: ObservableObject {
         case .symptomStartTime:
             NavigationStack {
                 SymptomStartTimeView()
+            }
+        case .selectBodyPart:
+            NavigationStack {
+                SelectBodyPartView()
             }
         case .symptomSeverity:
             NavigationStack {
