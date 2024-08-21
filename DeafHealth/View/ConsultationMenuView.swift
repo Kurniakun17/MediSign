@@ -164,7 +164,7 @@ struct SaveComplaintButton: View {
         .background(Color("blue-button"))
         .cornerRadius(25)
         .foregroundColor(Color.white)
-        .disabled(true) // Will be enabled once all questions are answered
+        .disabled(true) 
     }
 }
 

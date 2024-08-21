@@ -17,7 +17,6 @@ enum Page: String, Identifiable {
     case symptomSeverity
     case symptomWorseningFactors
     case symptomImprovementFactors
-    case additionalComplaints
     case previousConsultation
     case summary
     case consultationMenuView
@@ -105,8 +104,6 @@ class Coordinator: ObservableObject {
             SymptomWorseningFactorsView()
         case .symptomImprovementFactors:
             SymptomImprovementFactorsView()
-        case .additionalComplaints:
-            AdditionalComplaintsView()
         case .previousConsultation:
             PreviousConsultationView()
         case .summary:

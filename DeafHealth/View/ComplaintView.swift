@@ -98,7 +98,6 @@ struct ComplaintView: View {
         .padding(.top, 16)
     }
 
-    // Helper view for symptom buttons
     func symptomButton(_ symptom: String) -> some View {
         VStack {
             Text(symptom)
@@ -115,50 +114,6 @@ struct ComplaintView: View {
         .padding()
         .background(selectedComplaint == symptom ? Color.blue : Color("light-blue")) // Change color if selected
         .cornerRadius(12)
-    }
-
-    // Sample data for symptoms
-    var generalSymptoms: [String] {
-        ["Flu", "Demam", "Pusing", "Batuk", "Sesak Nafas", "Diare", "Mual/Muntah", "Sakit lain"]
-    }
-
-    var specificSymptoms: [String] {
-        ["Sakit Kepala", "Nyeri Dada", "Nyeri Punggung", "Nyeri Sendi", "Nyeri Otot"]
-    }
-}
-
-// CornerRadius on specific corners using a RoundedRectangle background
-extension View {
-    func cornerRadius(_ radius: CGFloat, corners: UIRectCorner) -> some View {
-        clipShape(RoundedCorner(radius: radius, corners: corners))
-    }
-}
-
-struct RoundedCorner: Shape {
-    var radius: CGFloat = .infinity
-    var corners: UIRectCorner = .allCorners
-
-    func path(in rect: CGRect) -> Path {
-        let path = UIBezierPath(roundedRect: rect, byRoundingCorners: corners, cornerRadii: CGSize(width: radius, height: radius))
-        return Path(path.cgPath)
-    }
-}
-
-struct SegmentedProgressBar: View {
-    var totalSteps: Int
-    var currentStep: Int
-
-    var body: some View {
-        HStack(spacing: 4) {
-            ForEach(0..<totalSteps, id: \.self) { index in
-                Rectangle()
-                    .frame(height: 3)
-                    .frame(width: 30)
-                    .foregroundColor(index < self.currentStep ? Color("dark-green") : Color("light-green"))
-                    .cornerRadius(4)
-            }
-        }
-        .padding(.horizontal)
     }
 }
 

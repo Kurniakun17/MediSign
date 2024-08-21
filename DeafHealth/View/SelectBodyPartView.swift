@@ -27,10 +27,9 @@ struct SelectBodyPartView: View {
                     .foregroundColor(.gray)
                 }
                 .padding(.horizontal, 22)
-                .padding(.top, 24) // Align with ComplaintView's layout
+                .padding(.top, 24)
             }
 
-            // Main text question with dynamic body part insertion
             VStack(spacing: 8) {
                 Text("Halo, Dokter. Saya merasakan \(complaintViewModel.answers[0]) di bagian \(selectedBodyPart.isEmpty ? "____" : selectedBodyPart).")
                     .font(.title3)
@@ -89,7 +88,7 @@ struct SelectBodyPartView: View {
             .cornerRadius(25)
             .foregroundColor(Color("FFFFFF"))
             .disabled(!isAnswerProvided)
-            .padding(.bottom, 32) // Align with ComplaintView's layout
+            .padding(.bottom, 32)
         }
         .edgesIgnoringSafeArea(.bottom)
         .navigationBarBackButtonHidden(true)
@@ -112,7 +111,6 @@ struct SelectBodyPartView: View {
         }
     }
 
-    // Circles for back body view
     func backBodyCircles() -> some View {
         ZStack {
             Circle().positionedCircle(x: 150, y: 200, bodyPart: "Tengkuk", selectedBodyPart: $selectedBodyPart, isAnswerProvided: $isAnswerProvided)
@@ -130,16 +128,3 @@ struct SelectBodyPartView: View {
 }
 
 
-private extension View {
-    // Helper function for creating a circle at a specific position with a body part name
-    func positionedCircle(x: CGFloat, y: CGFloat, bodyPart: String, selectedBodyPart: Binding<String>, isAnswerProvided: Binding<Bool>) -> some View {
-        Circle()
-            .fill(selectedBodyPart.wrappedValue == bodyPart ? Color.blue : Color.blue.opacity(0.7))
-            .frame(width: 30, height: 30)
-            .position(x: x, y: y)
-            .onTapGesture {
-                selectedBodyPart.wrappedValue = bodyPart
-                isAnswerProvided.wrappedValue = true
-            }
-    }
-}

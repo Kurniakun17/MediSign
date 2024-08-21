@@ -22,4 +22,3 @@ enum Gender: Codable {
     case female
 }
 
-

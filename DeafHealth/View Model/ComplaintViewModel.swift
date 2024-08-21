@@ -16,13 +16,13 @@ class ComplaintViewModel: ObservableObject {
 
     init(datasource: LocalDataSource) {
         self.dataSource = datasource
-        updateComplaintSummary(for: 0) // Initialize with the first placeholder
+        updateComplaintSummary(for: 0)
     }
 
     func updateAnswer(for questionIndex: Int, with answer: String) {
         guard questionIndex < answers.count else { return }
         answers[questionIndex] = answer
-        updateComplaintSummary(for: questionIndex + 1) // Update for the next question
+        updateComplaintSummary(for: questionIndex + 1)
     }
 
     func getSummary(for questionIndex: Int) -> String {

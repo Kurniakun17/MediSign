@@ -9,13 +9,13 @@
 /* Begin PBXBuildFile section */
 		9B0F1FEC2C74574200030F0C /* CustomSlider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B0F1FEB2C74574200030F0C /* CustomSlider.swift */; };
 		A255E0242C72045000274DF5 /* ConsultationMenuView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A255E0232C72045000274DF5 /* ConsultationMenuView.swift */; };
+		A255E03D2C7585BE00274DF5 /* RoundedCorner.swift in Sources */ = {isa = PBXBuildFile; fileRef = A255E03C2C7585BE00274DF5 /* RoundedCorner.swift */; };
 		A2A0C5472C6F68B0002240E2 /* ComplaintView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2A0C5462C6F68B0002240E2 /* ComplaintView.swift */; };
 		A2A0C5492C6F6922002240E2 /* SelectBodyPartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2A0C5482C6F6922002240E2 /* SelectBodyPartView.swift */; };
 		A2A0C5512C6F69D6002240E2 /* SymptomStartTimeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2A0C5502C6F69D6002240E2 /* SymptomStartTimeView.swift */; };
 		A2A0C5532C6F69E1002240E2 /* SymptomSeverityView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2A0C5522C6F69E1002240E2 /* SymptomSeverityView.swift */; };
 		A2A0C5552C6F69ED002240E2 /* SymptomWorseningFactorsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2A0C5542C6F69ED002240E2 /* SymptomWorseningFactorsView.swift */; };
 		A2A0C5572C6F69FB002240E2 /* SymptomImprovementFactorsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2A0C5562C6F69FB002240E2 /* SymptomImprovementFactorsView.swift */; };
-		A2A0C5592C6F6A05002240E2 /* AdditionalComplaintsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2A0C5582C6F6A05002240E2 /* AdditionalComplaintsView.swift */; };
 		A2A0C55B2C6F6A15002240E2 /* PreviousConsultationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2A0C55A2C6F6A15002240E2 /* PreviousConsultationView.swift */; };
 		A2A0C55D2C6F6A1C002240E2 /* SummaryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2A0C55C2C6F6A1C002240E2 /* SummaryView.swift */; };
 		A2A0C55F2C709032002240E2 /* ComplaintFlowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2A0C55E2C709032002240E2 /* ComplaintFlowView.swift */; };
@@ -42,13 +42,13 @@
 /* Begin PBXFileReference section */
 		9B0F1FEB2C74574200030F0C /* CustomSlider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomSlider.swift; sourceTree = "<group>"; };
 		A255E0232C72045000274DF5 /* ConsultationMenuView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConsultationMenuView.swift; sourceTree = "<group>"; };
+		A255E03C2C7585BE00274DF5 /* RoundedCorner.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundedCorner.swift; sourceTree = "<group>"; };
 		A2A0C5462C6F68B0002240E2 /* ComplaintView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComplaintView.swift; sourceTree = "<group>"; };
 		A2A0C5482C6F6922002240E2 /* SelectBodyPartView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectBodyPartView.swift; sourceTree = "<group>"; };
 		A2A0C5502C6F69D6002240E2 /* SymptomStartTimeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SymptomStartTimeView.swift; sourceTree = "<group>"; };
 		A2A0C5522C6F69E1002240E2 /* SymptomSeverityView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SymptomSeverityView.swift; sourceTree = "<group>"; };
 		A2A0C5542C6F69ED002240E2 /* SymptomWorseningFactorsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SymptomWorseningFactorsView.swift; sourceTree = "<group>"; };
 		A2A0C5562C6F69FB002240E2 /* SymptomImprovementFactorsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SymptomImprovementFactorsView.swift; sourceTree = "<group>"; };
-		A2A0C5582C6F6A05002240E2 /* AdditionalComplaintsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdditionalComplaintsView.swift; sourceTree = "<group>"; };
 		A2A0C55A2C6F6A15002240E2 /* PreviousConsultationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreviousConsultationView.swift; sourceTree = "<group>"; };
 		A2A0C55C2C6F6A1C002240E2 /* SummaryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SummaryView.swift; sourceTree = "<group>"; };
 		A2A0C55E2C709032002240E2 /* ComplaintFlowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComplaintFlowView.swift; sourceTree = "<group>"; };
@@ -88,6 +88,7 @@
 			isa = PBXGroup;
 			children = (
 				9B0F1FEB2C74574200030F0C /* CustomSlider.swift */,
+				A255E03C2C7585BE00274DF5 /* RoundedCorner.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -162,7 +163,6 @@
 				A2A0C5522C6F69E1002240E2 /* SymptomSeverityView.swift */,
 				A2A0C5542C6F69ED002240E2 /* SymptomWorseningFactorsView.swift */,
 				A2A0C5562C6F69FB002240E2 /* SymptomImprovementFactorsView.swift */,
-				A2A0C5582C6F6A05002240E2 /* AdditionalComplaintsView.swift */,
 				A2A0C55A2C6F6A15002240E2 /* PreviousConsultationView.swift */,
 				A2A0C55C2C6F6A1C002240E2 /* SummaryView.swift */,
 				A2A0C55E2C709032002240E2 /* ComplaintFlowView.swift */,
@@ -301,11 +301,11 @@
 				A2A0C5512C6F69D6002240E2 /* SymptomStartTimeView.swift in Sources */,
 				F62EF9F62C6B2B3D0025498E /* SymptomsDetail.swift in Sources */,
 				F62EFA022C6B3C190025498E /* coordinator.swift in Sources */,
-				A2A0C5592C6F6A05002240E2 /* AdditionalComplaintsView.swift in Sources */,
 				A2A0C55B2C6F6A15002240E2 /* PreviousConsultationView.swift in Sources */,
 				F62EF9FB2C6B2BAF0025498E /* enums.swift in Sources */,
 				A2A0C55D2C6F6A1C002240E2 /* SummaryView.swift in Sources */,
 				F62EF9F22C6B27D30025498E /* User.swift in Sources */,
+				A255E03D2C7585BE00274DF5 /* RoundedCorner.swift in Sources */,
 				F62EF9FE2C6B2C010025498E /* LocalDataSource.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
