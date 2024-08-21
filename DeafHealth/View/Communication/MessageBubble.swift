@@ -10,7 +10,7 @@ import SwiftUI
 struct MessageBubble: View {
     var message: Message
     var body: some View {
-        HStack {
+        HStack(alignment: .top, spacing: 2) {
             if message.role == .doctor {
                 Circle()
                     .fill(.primaryBlue)
