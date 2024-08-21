@@ -19,16 +19,18 @@ struct CommunicationPage: View {
             ScrollViewReader {
                 proxy in
                 ScrollView(.vertical) {
-                    VStack(spacing: 8) {
+                    VStack(spacing: 12) {
                         ForEach(messageViewModel.messages, id: \.self.id) {
                             message in
                             Button(action: {
-                                messageViewModel.speak(text: message.body)
+                                speechViewModel.speak(text: message.body)
                             }) {
                                 MessageBubble(message: message)
                             }
                         }
                     }
+                    .padding(.horizontal, 16)
+
                     Color.clear
                         .frame(height: 1)
                         .id("Bottom")
@@ -76,6 +78,7 @@ struct CommunicationPage: View {
                         .background(.gray.opacity(0.2))
                         .clipShape(RoundedRectangle(cornerRadius: 12))
                     })
+                    .transition(.opacity)
                 } else {
                     HStack(spacing: 8, content: {
                         Button(action: {
@@ -108,6 +111,7 @@ struct CommunicationPage: View {
                         .clipShape(RoundedRectangle(cornerRadius: 12))
 
                     })
+                    .transition(.opacity)
                 }
 
                 HStack {
@@ -136,14 +140,26 @@ struct CommunicationPage: View {
         }
         .sheet(isPresented: $speechViewModel.isRecording, content: {
             RecordingSheet(stopRecording: stopRecording)
+                .onDisappear {
+                    if speechViewModel.transcript != "" {
+                        stopRecording()
+                    }
+                }
                 .environmentObject(messageViewModel)
                 .environmentObject(speechViewModel)
         })
         .onReceive(NotificationCenter.default.publisher(for: UIResponder.keyboardDidShowNotification)) { _ in
-            isKeyboardFocus = true
+            withAnimation {
+                isKeyboardFocus = true
+            }
         }
         .onReceive(NotificationCenter.default.publisher(for: UIResponder.keyboardDidHideNotification)) { _ in
-            isKeyboardFocus = false
+            withAnimation {
+                isKeyboardFocus = false
+            }
+        }
+        .onChange(of: speechViewModel.isRecording) {
+            value in print(value)
         }
     }
 
@@ -161,9 +177,10 @@ struct CommunicationPage: View {
     func stopRecording() {
         speechViewModel.isRecording = false
         speechViewModel.stopTranscribing()
+        messageViewModel.role = .doctor
         messageViewModel.inputValue = speechViewModel.transcript
         speechViewModel.transcript = ""
-        speechViewModel.audioLevels = Array(repeating: 0.5, count: 50)
+        speechViewModel.audioLevels = Array(repeating: AudioLevel(level: 0.1), count: 50)
     }
 }
 

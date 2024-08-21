@@ -10,6 +10,13 @@
 		F61AA4E52C743AE6007CDCA6 /* RecordingSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = F61AA4E42C743AE6007CDCA6 /* RecordingSheet.swift */; };
 		F61AA4E72C745447007CDCA6 /* MessageBubble.swift in Sources */ = {isa = PBXBuildFile; fileRef = F61AA4E62C745447007CDCA6 /* MessageBubble.swift */; };
 		F61AA4E92C7454F7007CDCA6 /* MessageViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F61AA4E82C7454F7007CDCA6 /* MessageViewModel.swift */; };
+		F61AA4F32C749BE2007CDCA6 /* DeafHealthTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F61AA4F22C749BE2007CDCA6 /* DeafHealthTests.swift */; };
+		F61AA4FA2C749CC1007CDCA6 /* MessageViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F61AA4F92C749CC1007CDCA6 /* MessageViewModelTests.swift */; };
+		F61AA4FD2C749DE1007CDCA6 /* Message.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6D07E3F2C6F79DB006113FB /* Message.swift */; };
+		F61AA4FE2C749DE6007CDCA6 /* MessageViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F61AA4E82C7454F7007CDCA6 /* MessageViewModel.swift */; };
+		F61AA4FF2C74A745007CDCA6 /* enums.swift in Sources */ = {isa = PBXBuildFile; fileRef = F62EF9FA2C6B2BAF0025498E /* enums.swift */; };
+		F61AA5012C74B3D5007CDCA6 /* SpeechViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F61AA5002C74B3D5007CDCA6 /* SpeechViewModelTests.swift */; };
+		F61AA5022C74B3D9007CDCA6 /* SpeechViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6856F982C6F582B00574B7E /* SpeechViewModel.swift */; };
 		F62EF9E12C6B27840025498E /* DeafHealthApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = F62EF9E02C6B27840025498E /* DeafHealthApp.swift */; };
 		F62EF9E32C6B27840025498E /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F62EF9E22C6B27840025498E /* ContentView.swift */; };
 		F62EF9E52C6B27850025498E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F62EF9E42C6B27850025498E /* Assets.xcassets */; };
@@ -33,10 +40,24 @@
 		F6D07E402C6F79DB006113FB /* Message.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6D07E3F2C6F79DB006113FB /* Message.swift */; };
 /* End PBXBuildFile section */
 
+/* Begin PBXContainerItemProxy section */
+		F61AA4F42C749BE2007CDCA6 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = F62EF9D52C6B27840025498E /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = F62EF9DC2C6B27840025498E;
+			remoteInfo = DeafHealth;
+		};
+/* End PBXContainerItemProxy section */
+
 /* Begin PBXFileReference section */
 		F61AA4E42C743AE6007CDCA6 /* RecordingSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordingSheet.swift; sourceTree = "<group>"; };
 		F61AA4E62C745447007CDCA6 /* MessageBubble.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageBubble.swift; sourceTree = "<group>"; };
 		F61AA4E82C7454F7007CDCA6 /* MessageViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageViewModel.swift; sourceTree = "<group>"; };
+		F61AA4F02C749BE2007CDCA6 /* DeafHealthTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = DeafHealthTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		F61AA4F22C749BE2007CDCA6 /* DeafHealthTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeafHealthTests.swift; sourceTree = "<group>"; };
+		F61AA4F92C749CC1007CDCA6 /* MessageViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageViewModelTests.swift; sourceTree = "<group>"; };
+		F61AA5002C74B3D5007CDCA6 /* SpeechViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpeechViewModelTests.swift; sourceTree = "<group>"; };
 		F62EF9DD2C6B27840025498E /* DeafHealth.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DeafHealth.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F62EF9E02C6B27840025498E /* DeafHealthApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeafHealthApp.swift; sourceTree = "<group>"; };
 		F62EF9E22C6B27840025498E /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -62,6 +83,13 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		F61AA4ED2C749BE2007CDCA6 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		F62EF9DA2C6B27840025498E /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -72,10 +100,21 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		F61AA4F12C749BE2007CDCA6 /* DeafHealthTests */ = {
+			isa = PBXGroup;
+			children = (
+				F61AA4F22C749BE2007CDCA6 /* DeafHealthTests.swift */,
+				F61AA4F92C749CC1007CDCA6 /* MessageViewModelTests.swift */,
+				F61AA5002C74B3D5007CDCA6 /* SpeechViewModelTests.swift */,
+			);
+			path = DeafHealthTests;
+			sourceTree = "<group>";
+		};
 		F62EF9D42C6B27840025498E = {
 			isa = PBXGroup;
 			children = (
 				F62EF9DF2C6B27840025498E /* DeafHealth */,
+				F61AA4F12C749BE2007CDCA6 /* DeafHealthTests */,
 				F62EF9DE2C6B27840025498E /* Products */,
 			);
 			sourceTree = "<group>";
@@ -84,6 +123,7 @@
 			isa = PBXGroup;
 			children = (
 				F62EF9DD2C6B27840025498E /* DeafHealth.app */,
+				F61AA4F02C749BE2007CDCA6 /* DeafHealthTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -194,6 +234,24 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
+		F61AA4EF2C749BE2007CDCA6 /* DeafHealthTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = F61AA4F62C749BE2007CDCA6 /* Build configuration list for PBXNativeTarget "DeafHealthTests" */;
+			buildPhases = (
+				F61AA4EC2C749BE2007CDCA6 /* Sources */,
+				F61AA4ED2C749BE2007CDCA6 /* Frameworks */,
+				F61AA4EE2C749BE2007CDCA6 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				F61AA4F52C749BE2007CDCA6 /* PBXTargetDependency */,
+			);
+			name = DeafHealthTests;
+			productName = DeafHealthTests;
+			productReference = F61AA4F02C749BE2007CDCA6 /* DeafHealthTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 		F62EF9DC2C6B27840025498E /* DeafHealth */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = F62EF9EB2C6B27850025498E /* Build configuration list for PBXNativeTarget "DeafHealth" */;
@@ -223,6 +281,10 @@
 				LastSwiftUpdateCheck = 1530;
 				LastUpgradeCheck = 1530;
 				TargetAttributes = {
+					F61AA4EF2C749BE2007CDCA6 = {
+						CreatedOnToolsVersion = 15.3;
+						TestTargetID = F62EF9DC2C6B27840025498E;
+					};
 					F62EF9DC2C6B27840025498E = {
 						CreatedOnToolsVersion = 15.3;
 					};
@@ -245,11 +307,19 @@
 			projectRoot = "";
 			targets = (
 				F62EF9DC2C6B27840025498E /* DeafHealth */,
+				F61AA4EF2C749BE2007CDCA6 /* DeafHealthTests */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		F61AA4EE2C749BE2007CDCA6 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		F62EF9DB2C6B27840025498E /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -262,6 +332,20 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		F61AA4EC2C749BE2007CDCA6 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F61AA5012C74B3D5007CDCA6 /* SpeechViewModelTests.swift in Sources */,
+				F61AA4FD2C749DE1007CDCA6 /* Message.swift in Sources */,
+				F61AA5022C74B3D9007CDCA6 /* SpeechViewModel.swift in Sources */,
+				F61AA4FF2C74A745007CDCA6 /* enums.swift in Sources */,
+				F61AA4FA2C749CC1007CDCA6 /* MessageViewModelTests.swift in Sources */,
+				F61AA4FE2C749DE6007CDCA6 /* MessageViewModel.swift in Sources */,
+				F61AA4F32C749BE2007CDCA6 /* DeafHealthTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		F62EF9D92C6B27840025498E /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -293,7 +377,51 @@
 		};
 /* End PBXSourcesBuildPhase section */
 
+/* Begin PBXTargetDependency section */
+		F61AA4F52C749BE2007CDCA6 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = F62EF9DC2C6B27840025498E /* DeafHealth */;
+			targetProxy = F61AA4F42C749BE2007CDCA6 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
 /* Begin XCBuildConfiguration section */
+		F61AA4F72C749BE2007CDCA6 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 49V8Q5W76J;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = test.DeafHealthTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/DeafHealth.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/DeafHealth";
+			};
+			name = Debug;
+		};
+		F61AA4F82C749BE2007CDCA6 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 49V8Q5W76J;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = test.DeafHealthTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/DeafHealth.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/DeafHealth";
+			};
+			name = Release;
+		};
 		F62EF9E92C6B27850025498E /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -478,6 +606,15 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		F61AA4F62C749BE2007CDCA6 /* Build configuration list for PBXNativeTarget "DeafHealthTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				F61AA4F72C749BE2007CDCA6 /* Debug */,
+				F61AA4F82C749BE2007CDCA6 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		F62EF9D82C6B27840025498E /* Build configuration list for PBXProject "DeafHealth" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
