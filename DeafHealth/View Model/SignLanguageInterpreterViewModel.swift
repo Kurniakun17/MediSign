@@ -6,13 +6,32 @@
 //
 
 import SwiftUI
+import AVFoundation
+import Vision
+import CoreML
 
-struct SignLanguageInterpreterViewModel: View {
-    var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+class SignLanguageInterpreterViewModel: ObservableObject {
+    @Published var recognizedText: String = ""
+    @Published var isInterpreting: Bool = false
+
+    var cameraModel: CameraModel?
+
+    init() {
+        self.cameraModel = CameraModel()
+        self.cameraModel?.onActionRecognized = { [weak self] recognizedAction in
+            DispatchQueue.main.async {
+                self?.recognizedText += " \(recognizedAction)"
+            }
+        }
     }
-}
 
-#Preview {
-    SignLanguageInterpreterViewModel()
+    func startInterpreting() {
+        self.isInterpreting = true
+        cameraModel?.setupCamera()
+    }
+
+    func stopInterpreting() {
+        self.isInterpreting = false
+        cameraModel?.stopCamera()
+    }
 }

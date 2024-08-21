@@ -28,4 +28,8 @@ class MessageViewModel: ObservableObject {
     func addMessage(newMessage: Message) {
         messages.append(newMessage)
     }
+    
+    func updateInputValue(with text: String){
+        self.inputValue += text
+    }
 }

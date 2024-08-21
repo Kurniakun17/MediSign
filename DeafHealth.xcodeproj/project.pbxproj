@@ -7,6 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		B4F84E342C75944B009723B1 /* SignLanguageInterpreterViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4F84E332C75944B009723B1 /* SignLanguageInterpreterViewModel.swift */; };
+		B4F84E362C759486009723B1 /* CameraModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4F84E352C759486009723B1 /* CameraModel.swift */; };
+		B4F84E382C7594E9009723B1 /* SignLanguageClassifier.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = B4F84E372C7594E9009723B1 /* SignLanguageClassifier.mlmodel */; };
+		B4F84E3B2C759655009723B1 /* HandPoseDetector.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4F84E3A2C759655009723B1 /* HandPoseDetector.swift */; };
+		B4F84E3D2C7598F7009723B1 /* CameraView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4F84E3C2C7598F7009723B1 /* CameraView.swift */; };
 		F61AA4E52C743AE6007CDCA6 /* RecordingSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = F61AA4E42C743AE6007CDCA6 /* RecordingSheet.swift */; };
 		F61AA4E72C745447007CDCA6 /* MessageBubble.swift in Sources */ = {isa = PBXBuildFile; fileRef = F61AA4E62C745447007CDCA6 /* MessageBubble.swift */; };
 		F61AA4E92C7454F7007CDCA6 /* MessageViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F61AA4E82C7454F7007CDCA6 /* MessageViewModel.swift */; };
@@ -51,6 +56,11 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		B4F84E332C75944B009723B1 /* SignLanguageInterpreterViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignLanguageInterpreterViewModel.swift; sourceTree = "<group>"; };
+		B4F84E352C759486009723B1 /* CameraModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraModel.swift; sourceTree = "<group>"; };
+		B4F84E372C7594E9009723B1 /* SignLanguageClassifier.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = SignLanguageClassifier.mlmodel; sourceTree = "<group>"; };
+		B4F84E3A2C759655009723B1 /* HandPoseDetector.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HandPoseDetector.swift; sourceTree = "<group>"; };
+		B4F84E3C2C7598F7009723B1 /* CameraView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraView.swift; sourceTree = "<group>"; };
 		F61AA4E42C743AE6007CDCA6 /* RecordingSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordingSheet.swift; sourceTree = "<group>"; };
 		F61AA4E62C745447007CDCA6 /* MessageBubble.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageBubble.swift; sourceTree = "<group>"; };
 		F61AA4E82C7454F7007CDCA6 /* MessageViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageViewModel.swift; sourceTree = "<group>"; };
@@ -100,6 +110,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		B4F84E392C7594ED009723B1 /* Model Predictor */ = {
+			isa = PBXGroup;
+			children = (
+				B4F84E372C7594E9009723B1 /* SignLanguageClassifier.mlmodel */,
+			);
+			path = "Model Predictor";
+			sourceTree = "<group>";
+		};
 		F61AA4F12C749BE2007CDCA6 /* DeafHealthTests */ = {
 			isa = PBXGroup;
 			children = (
@@ -131,6 +149,7 @@
 		F62EF9DF2C6B27840025498E /* DeafHealth */ = {
 			isa = PBXGroup;
 			children = (
+				B4F84E392C7594ED009723B1 /* Model Predictor */,
 				F62EF9FC2C6B2BCC0025498E /* Data Source */,
 				F62EFA032C6B3C450025498E /* Coordinator */,
 				F62EF9EE2C6B27910025498E /* Model */,
@@ -160,6 +179,8 @@
 				F62EF9F32C6B293B0025498E /* Complaint.swift */,
 				F62EF9F52C6B2B3D0025498E /* SymptomsDetail.swift */,
 				F6D07E3F2C6F79DB006113FB /* Message.swift */,
+				B4F84E352C759486009723B1 /* CameraModel.swift */,
+				B4F84E3A2C759655009723B1 /* HandPoseDetector.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -170,6 +191,7 @@
 				F62EF9FF2C6B2EB10025498E /* ComplaintViewModel.swift */,
 				F6856F982C6F582B00574B7E /* SpeechViewModel.swift */,
 				F61AA4E82C7454F7007CDCA6 /* MessageViewModel.swift */,
+				B4F84E332C75944B009723B1 /* SignLanguageInterpreterViewModel.swift */,
 			);
 			path = "View Model";
 			sourceTree = "<group>";
@@ -227,6 +249,7 @@
 				F6A950012C6C5C6700F45997 /* CommunicationPage.swift */,
 				F61AA4E42C743AE6007CDCA6 /* RecordingSheet.swift */,
 				F61AA4E62C745447007CDCA6 /* MessageBubble.swift */,
+				B4F84E3C2C7598F7009723B1 /* CameraView.swift */,
 			);
 			path = Communication;
 			sourceTree = "<group>";
@@ -360,13 +383,18 @@
 				F6856F992C6F582B00574B7E /* SpeechViewModel.swift in Sources */,
 				F62EFA062C6B3ECB0025498E /* Strawberry.swift in Sources */,
 				F6D07E402C6F79DB006113FB /* Message.swift in Sources */,
+				B4F84E382C7594E9009723B1 /* SignLanguageClassifier.mlmodel in Sources */,
 				F62EFA082C6B40D80025498E /* Lemon.swift in Sources */,
 				F61AA4E72C745447007CDCA6 /* MessageBubble.swift in Sources */,
+				B4F84E3B2C759655009723B1 /* HandPoseDetector.swift in Sources */,
+				B4F84E342C75944B009723B1 /* SignLanguageInterpreterViewModel.swift in Sources */,
 				F6A94FFD2C6C47AC00F45997 /* TestSheet.swift in Sources */,
+				B4F84E362C759486009723B1 /* CameraModel.swift in Sources */,
 				F62EFA0C2C6B41450025498E /* Pineapple.swift in Sources */,
 				F62EFA0F2C6B41A00025498E /* Banana.swift in Sources */,
 				F62EFA002C6B2EB10025498E /* ComplaintViewModel.swift in Sources */,
 				F62EF9E12C6B27840025498E /* DeafHealthApp.swift in Sources */,
+				B4F84E3D2C7598F7009723B1 /* CameraView.swift in Sources */,
 				F62EF9F62C6B2B3D0025498E /* SymptomsDetail.swift in Sources */,
 				F62EFA022C6B3C190025498E /* coordinator.swift in Sources */,
 				F62EF9FB2C6B2BAF0025498E /* enums.swift in Sources */,
@@ -549,9 +577,10 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"DeafHealth/Preview Content\"";
-				DEVELOPMENT_TEAM = 49V8Q5W76J;
+				DEVELOPMENT_TEAM = TL3VJLYVF8;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSCameraUsageDescription = "Camera to translate Sign Language to text";
 				INFOPLIST_KEY_NSMicrophoneUsageDescription = "Access microphone to enable speech to text functionality ";
 				INFOPLIST_KEY_NSSpeechRecognitionUsageDescription = "Speech Recognition to translate doctor to text";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
@@ -580,9 +609,10 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"DeafHealth/Preview Content\"";
-				DEVELOPMENT_TEAM = 49V8Q5W76J;
+				DEVELOPMENT_TEAM = TL3VJLYVF8;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSCameraUsageDescription = "Camera to translate Sign Language to text";
 				INFOPLIST_KEY_NSMicrophoneUsageDescription = "Access microphone to enable speech to text functionality ";
 				INFOPLIST_KEY_NSSpeechRecognitionUsageDescription = "Speech Recognition to translate doctor to text";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
