@@ -29,7 +29,6 @@
 		F62EF9F22C6B27D30025498E /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = F62EF9F12C6B27D30025498E /* User.swift */; };
 		F62EF9F42C6B293B0025498E /* Complaint.swift in Sources */ = {isa = PBXBuildFile; fileRef = F62EF9F32C6B293B0025498E /* Complaint.swift */; };
 		F62EF9F62C6B2B3D0025498E /* SymptomsDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = F62EF9F52C6B2B3D0025498E /* SymptomsDetail.swift */; };
-		F62EF9FB2C6B2BAF0025498E /* enums.swift in Sources */ = {isa = PBXBuildFile; fileRef = F62EF9FA2C6B2BAF0025498E /* enums.swift */; };
 		F62EF9FE2C6B2C010025498E /* LocalDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = F62EF9FD2C6B2C010025498E /* LocalDataSource.swift */; };
 		F62EFA002C6B2EB10025498E /* ComplaintViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F62EF9FF2C6B2EB10025498E /* ComplaintViewModel.swift */; };
 		F62EFA022C6B3C190025498E /* Coordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = F62EFA012C6B3C190025498E /* Coordinator.swift */; };
@@ -48,10 +47,13 @@
 		F6B739892C75AD6D00B2AA63 /* ComplaintViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6B739882C75AD6D00B2AA63 /* ComplaintViewModelTests.swift */; };
 		F6B7398B2C75ADC200B2AA63 /* MessageViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6B7398A2C75ADC200B2AA63 /* MessageViewModelTests.swift */; };
 		F6B7398E2C75AE2500B2AA63 /* SpeechViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6B7398D2C75AE2500B2AA63 /* SpeechViewModelTests.swift */; };
-		F6D07E402C6F79DB006113FB /* Message.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6D07E3F2C6F79DB006113FB /* Message.swift */; };
+		F6D07E402C6F79DB006113FB /* MessageModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6D07E3F2C6F79DB006113FB /* MessageModel.swift */; };
 		F6E9221D2C75BBD9000D3833 /* AppColors.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6E9221C2C75BBD9000D3833 /* AppColors.swift */; };
 		F6E922202C75BCF3000D3833 /* AppLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6E9221F2C75BCF3000D3833 /* AppLabel.swift */; };
 		F6E922222C75BD9F000D3833 /* Decimal.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6E922212C75BD9F000D3833 /* Decimal.swift */; };
+		F6E922292C75DDCF000D3833 /* Role.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6E922282C75DDCF000D3833 /* Role.swift */; };
+		F6E922362C75DF2A000D3833 /* SymptomsType.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6E922352C75DF2A000D3833 /* SymptomsType.swift */; };
+		F6E922382C75DF62000D3833 /* Gender.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6E922372C75DF62000D3833 /* Gender.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -88,7 +90,6 @@
 		F62EF9F12C6B27D30025498E /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		F62EF9F32C6B293B0025498E /* Complaint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Complaint.swift; sourceTree = "<group>"; };
 		F62EF9F52C6B2B3D0025498E /* SymptomsDetail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SymptomsDetail.swift; sourceTree = "<group>"; };
-		F62EF9FA2C6B2BAF0025498E /* enums.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = enums.swift; sourceTree = "<group>"; };
 		F62EF9FD2C6B2C010025498E /* LocalDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalDataSource.swift; sourceTree = "<group>"; };
 		F62EF9FF2C6B2EB10025498E /* ComplaintViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComplaintViewModel.swift; sourceTree = "<group>"; };
 		F62EFA012C6B3C190025498E /* Coordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coordinator.swift; sourceTree = "<group>"; };
@@ -108,10 +109,13 @@
 		F6B739882C75AD6D00B2AA63 /* ComplaintViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComplaintViewModelTests.swift; sourceTree = "<group>"; };
 		F6B7398A2C75ADC200B2AA63 /* MessageViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageViewModelTests.swift; sourceTree = "<group>"; };
 		F6B7398D2C75AE2500B2AA63 /* SpeechViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpeechViewModelTests.swift; sourceTree = "<group>"; };
-		F6D07E3F2C6F79DB006113FB /* Message.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Message.swift; sourceTree = "<group>"; };
+		F6D07E3F2C6F79DB006113FB /* MessageModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageModel.swift; sourceTree = "<group>"; };
 		F6E9221C2C75BBD9000D3833 /* AppColors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppColors.swift; sourceTree = "<group>"; };
 		F6E9221F2C75BCF3000D3833 /* AppLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppLabel.swift; sourceTree = "<group>"; };
 		F6E922212C75BD9F000D3833 /* Decimal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Decimal.swift; sourceTree = "<group>"; };
+		F6E922282C75DDCF000D3833 /* Role.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Role.swift; sourceTree = "<group>"; };
+		F6E922352C75DF2A000D3833 /* SymptomsType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SymptomsType.swift; sourceTree = "<group>"; };
+		F6E922372C75DF62000D3833 /* Gender.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Gender.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -132,15 +136,6 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		9B0F1FED2C74575900030F0C /* Components */ = {
-			isa = PBXGroup;
-			children = (
-				9B0F1FEB2C74574200030F0C /* CustomSlider.swift */,
-				A255E03C2C7585BE00274DF5 /* RoundedCorner.swift */,
-			);
-			path = Components;
-			sourceTree = "<group>";
-		};
 		F62EF9D42C6B27840025498E = {
 			isa = PBXGroup;
 			children = (
@@ -164,11 +159,6 @@
 			children = (
 				F6E922112C75BAAE000D3833 /* Shared */,
 				F6E922122C75BAC5000D3833 /* Modules */,
-				F62EF9FC2C6B2BCC0025498E /* Data Source */,
-				F62EF9EE2C6B27910025498E /* Model */,
-				F62EF9EF2C6B279B0025498E /* View Model */,
-				F62EF9F02C6B27AD0025498E /* View */,
-				F62EF9F92C6B2B720025498E /* Utils */,
 				F62EF9E02C6B27840025498E /* DeafHealthApp.swift */,
 				F62EF9E22C6B27840025498E /* ContentView.swift */,
 				F62EF9E42C6B27850025498E /* Assets.xcassets */,
@@ -185,52 +175,12 @@
 			path = "Preview Content";
 			sourceTree = "<group>";
 		};
-		F62EF9EE2C6B27910025498E /* Model */ = {
-			isa = PBXGroup;
-			children = (
-				F62EF9F32C6B293B0025498E /* Complaint.swift */,
-				F62EF9F52C6B2B3D0025498E /* SymptomsDetail.swift */,
-				F6D07E3F2C6F79DB006113FB /* Message.swift */,
-			);
-			path = Model;
-			sourceTree = "<group>";
-		};
-		F62EF9EF2C6B279B0025498E /* View Model */ = {
-			isa = PBXGroup;
-			children = (
-				F62EF9FF2C6B2EB10025498E /* ComplaintViewModel.swift */,
-				F6856F982C6F582B00574B7E /* SpeechViewModel.swift */,
-				F61AA4E82C7454F7007CDCA6 /* MessageViewModel.swift */,
-			);
-			path = "View Model";
-			sourceTree = "<group>";
-		};
-		F62EF9F02C6B27AD0025498E /* View */ = {
-			isa = PBXGroup;
-			children = (
-				F6B739702C758F7800B2AA63 /* Consultation */,
-				9B0F1FED2C74575900030F0C /* Components */,
-				F6EC258E2C743A9F001D7AAF /* Communication */,
-				F62EFA042C6B3EB70025498E /* Example */,
-				F6B739712C758FA900B2AA63 /* HomePage.swift */,
-			);
-			path = View;
-			sourceTree = "<group>";
-		};
-		F62EF9F92C6B2B720025498E /* Utils */ = {
-			isa = PBXGroup;
-			children = (
-				F62EF9FA2C6B2BAF0025498E /* enums.swift */,
-			);
-			path = Utils;
-			sourceTree = "<group>";
-		};
-		F62EF9FC2C6B2BCC0025498E /* Data Source */ = {
+		F62EF9FC2C6B2BCC0025498E /* DataSource */ = {
 			isa = PBXGroup;
 			children = (
 				F62EF9FD2C6B2C010025498E /* LocalDataSource.swift */,
 			);
-			path = "Data Source";
+			path = DataSource;
 			sourceTree = "<group>";
 		};
 		F62EFA032C6B3C450025498E /* Coordinator */ = {
@@ -255,23 +205,6 @@
 			path = Example;
 			sourceTree = "<group>";
 		};
-		F6B739702C758F7800B2AA63 /* Consultation */ = {
-			isa = PBXGroup;
-			children = (
-				A2A0C5462C6F68B0002240E2 /* ComplaintView.swift */,
-				A2A0C5482C6F6922002240E2 /* SelectBodyPartView.swift */,
-				A2A0C5502C6F69D6002240E2 /* SymptomStartTimeView.swift */,
-				A2A0C5522C6F69E1002240E2 /* SymptomSeverityView.swift */,
-				A2A0C5542C6F69ED002240E2 /* SymptomWorseningFactorsView.swift */,
-				A2A0C5562C6F69FB002240E2 /* SymptomImprovementFactorsView.swift */,
-				A2A0C55A2C6F6A15002240E2 /* PreviousConsultationView.swift */,
-				A2A0C55C2C6F6A1C002240E2 /* SummaryView.swift */,
-				A2A0C55E2C709032002240E2 /* ComplaintFlowView.swift */,
-				A255E0232C72045000274DF5 /* ConsultationMenuView.swift */,
-			);
-			path = Consultation;
-			sourceTree = "<group>";
-		};
 		F6B739802C75AD3500B2AA63 /* MediSignTests */ = {
 			isa = PBXGroup;
 			children = (
@@ -287,6 +220,7 @@
 		F6E922112C75BAAE000D3833 /* Shared */ = {
 			isa = PBXGroup;
 			children = (
+				F62EF9FC2C6B2BCC0025498E /* DataSource */,
 				F6E9221E2C75BCDF000D3833 /* Constants */,
 				F6E922192C75BB69000D3833 /* Themes */,
 				F62EFA032C6B3C450025498E /* Coordinator */,
@@ -297,6 +231,9 @@
 		F6E922122C75BAC5000D3833 /* Modules */ = {
 			isa = PBXGroup;
 			children = (
+				F62EFA042C6B3EB70025498E /* Example */,
+				F6E9222D2C75DE42000D3833 /* Profile */,
+				F6E922242C75DD8A000D3833 /* Communication */,
 				F6E922132C75BACF000D3833 /* Onboarding */,
 				F6E922232C75BE5C000D3833 /* Consultation */,
 			);
@@ -387,18 +324,151 @@
 		F6E922232C75BE5C000D3833 /* Consultation */ = {
 			isa = PBXGroup;
 			children = (
+				F6E9222C2C75DE0C000D3833 /* Models */,
+				F6E9222B2C75DE02000D3833 /* ViewModels */,
+				F6E9222A2C75DDFC000D3833 /* Presentations */,
 			);
 			path = Consultation;
 			sourceTree = "<group>";
 		};
-		F6EC258E2C743A9F001D7AAF /* Communication */ = {
+		F6E922242C75DD8A000D3833 /* Communication */ = {
+			isa = PBXGroup;
+			children = (
+				F6E922272C75DDA3000D3833 /* Models */,
+				F6E922262C75DD95000D3833 /* ViewModels */,
+				F6E922252C75DD90000D3833 /* Presentations */,
+			);
+			path = Communication;
+			sourceTree = "<group>";
+		};
+		F6E922252C75DD90000D3833 /* Presentations */ = {
+			isa = PBXGroup;
+			children = (
+				F6E922322C75DEB3000D3833 /* Views */,
+				F6E922312C75DEAE000D3833 /* Components */,
+			);
+			path = Presentations;
+			sourceTree = "<group>";
+		};
+		F6E922262C75DD95000D3833 /* ViewModels */ = {
+			isa = PBXGroup;
+			children = (
+				F61AA4E82C7454F7007CDCA6 /* MessageViewModel.swift */,
+				F6856F982C6F582B00574B7E /* SpeechViewModel.swift */,
+			);
+			path = ViewModels;
+			sourceTree = "<group>";
+		};
+		F6E922272C75DDA3000D3833 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				F6D07E3F2C6F79DB006113FB /* MessageModel.swift */,
+				F6E922282C75DDCF000D3833 /* Role.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		F6E9222A2C75DDFC000D3833 /* Presentations */ = {
+			isa = PBXGroup;
+			children = (
+				F6E922342C75DEF3000D3833 /* Components */,
+				F6E922332C75DEED000D3833 /* Views */,
+			);
+			path = Presentations;
+			sourceTree = "<group>";
+		};
+		F6E9222B2C75DE02000D3833 /* ViewModels */ = {
+			isa = PBXGroup;
+			children = (
+				F62EF9FF2C6B2EB10025498E /* ComplaintViewModel.swift */,
+			);
+			path = ViewModels;
+			sourceTree = "<group>";
+		};
+		F6E9222C2C75DE0C000D3833 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				F62EF9F52C6B2B3D0025498E /* SymptomsDetail.swift */,
+				F62EF9F32C6B293B0025498E /* Complaint.swift */,
+				F6E922352C75DF2A000D3833 /* SymptomsType.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		F6E9222D2C75DE42000D3833 /* Profile */ = {
+			isa = PBXGroup;
+			children = (
+				F6E922302C75DE57000D3833 /* Models */,
+				F6E9222F2C75DE50000D3833 /* ViewModels */,
+				F6E9222E2C75DE4A000D3833 /* Views */,
+			);
+			path = Profile;
+			sourceTree = "<group>";
+		};
+		F6E9222E2C75DE4A000D3833 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		F6E9222F2C75DE50000D3833 /* ViewModels */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = ViewModels;
+			sourceTree = "<group>";
+		};
+		F6E922302C75DE57000D3833 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				F6E922372C75DF62000D3833 /* Gender.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		F6E922312C75DEAE000D3833 /* Components */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Components;
+			sourceTree = "<group>";
+		};
+		F6E922322C75DEB3000D3833 /* Views */ = {
 			isa = PBXGroup;
 			children = (
 				F6A950012C6C5C6700F45997 /* CommunicationPage.swift */,
 				F61AA4E42C743AE6007CDCA6 /* RecordingSheet.swift */,
 				F61AA4E62C745447007CDCA6 /* MessageBubble.swift */,
 			);
-			path = Communication;
+			path = Views;
+			sourceTree = "<group>";
+		};
+		F6E922332C75DEED000D3833 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				F6B739712C758FA900B2AA63 /* HomePage.swift */,
+				A2A0C5462C6F68B0002240E2 /* ComplaintView.swift */,
+				A2A0C5482C6F6922002240E2 /* SelectBodyPartView.swift */,
+				A2A0C5502C6F69D6002240E2 /* SymptomStartTimeView.swift */,
+				A2A0C5522C6F69E1002240E2 /* SymptomSeverityView.swift */,
+				A2A0C5542C6F69ED002240E2 /* SymptomWorseningFactorsView.swift */,
+				A2A0C5562C6F69FB002240E2 /* SymptomImprovementFactorsView.swift */,
+				A2A0C55A2C6F6A15002240E2 /* PreviousConsultationView.swift */,
+				A2A0C55C2C6F6A1C002240E2 /* SummaryView.swift */,
+				A2A0C55E2C709032002240E2 /* ComplaintFlowView.swift */,
+				A255E0232C72045000274DF5 /* ConsultationMenuView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		F6E922342C75DEF3000D3833 /* Components */ = {
+			isa = PBXGroup;
+			children = (
+				9B0F1FEB2C74574200030F0C /* CustomSlider.swift */,
+				A255E03C2C7585BE00274DF5 /* RoundedCorner.swift */,
+			);
+			path = Components;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -519,7 +589,7 @@
 				F6856F992C6F582B00574B7E /* SpeechViewModel.swift in Sources */,
 				F62EFA062C6B3ECB0025498E /* Strawberry.swift in Sources */,
 				A2A0C5552C6F69ED002240E2 /* SymptomWorseningFactorsView.swift in Sources */,
-				F6D07E402C6F79DB006113FB /* Message.swift in Sources */,
+				F6D07E402C6F79DB006113FB /* MessageModel.swift in Sources */,
 				F62EFA082C6B40D80025498E /* Lemon.swift in Sources */,
 				F61AA4E72C745447007CDCA6 /* MessageBubble.swift in Sources */,
 				F6A94FFD2C6C47AC00F45997 /* TestSheet.swift in Sources */,
@@ -529,6 +599,7 @@
 				A2A0C5472C6F68B0002240E2 /* ComplaintView.swift in Sources */,
 				A2A0C55F2C709032002240E2 /* ComplaintFlowView.swift in Sources */,
 				F62EFA002C6B2EB10025498E /* ComplaintViewModel.swift in Sources */,
+				F6E922292C75DDCF000D3833 /* Role.swift in Sources */,
 				A2A0C5532C6F69E1002240E2 /* SymptomSeverityView.swift in Sources */,
 				9B0F1FEC2C74574200030F0C /* CustomSlider.swift in Sources */,
 				F6E922222C75BD9F000D3833 /* Decimal.swift in Sources */,
@@ -539,8 +610,9 @@
 				F62EF9F62C6B2B3D0025498E /* SymptomsDetail.swift in Sources */,
 				F62EFA022C6B3C190025498E /* Coordinator.swift in Sources */,
 				A2A0C55B2C6F6A15002240E2 /* PreviousConsultationView.swift in Sources */,
-				F62EF9FB2C6B2BAF0025498E /* enums.swift in Sources */,
+				F6E922362C75DF2A000D3833 /* SymptomsType.swift in Sources */,
 				A2A0C55D2C6F6A1C002240E2 /* SummaryView.swift in Sources */,
+				F6E922382C75DF62000D3833 /* Gender.swift in Sources */,
 				F62EF9F22C6B27D30025498E /* User.swift in Sources */,
 				A255E03D2C7585BE00274DF5 /* RoundedCorner.swift in Sources */,
 				F62EF9FE2C6B2C010025498E /* LocalDataSource.swift in Sources */,
