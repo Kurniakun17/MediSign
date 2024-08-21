@@ -1,9 +1,3 @@
-//
-//  SpeechViewModelTests.swift
-//  DeafHealthTests
-//
-//  Created by Kurnia Kharisma Agung Samiadjie on 20/08/24.
-//
 
 @testable import DeafHealth
 import XCTest
@@ -20,13 +14,13 @@ final class SpeechViewModelTests: XCTestCase {
     }
 
     func testStopTranscribing() throws {
-        // Start transcribing
+        // GIVEN
         viewModel.startTranscribe()
 
-        // Stop transcribing
+        // WHEN
         viewModel.stopTranscribing()
 
-        // Ensure that the transcription stops and the engine resets
+        // ASSERT
         XCTAssertNil(viewModel.audioEngine)
         XCTAssertNil(viewModel.request)
         XCTAssertNil(viewModel.task)

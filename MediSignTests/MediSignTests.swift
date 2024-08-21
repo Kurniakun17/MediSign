@@ -1,13 +1,13 @@
 //
-//  DeafHealthTests.swift
-//  DeafHealthTests
+//  MediSignTests.swift
+//  MediSignTests
 //
-//  Created by Kurnia Kharisma Agung Samiadjie on 20/08/24.
+//  Created by Kurnia Kharisma Agung Samiadjie on 21/08/24.
 //
 
 import XCTest
 
-final class DeafHealthTests: XCTestCase {
+final class MediSignTests: XCTestCase {
 
     override func setUpWithError() throws {
         // Put setup code here. This method is called before the invocation of each test method in the class.

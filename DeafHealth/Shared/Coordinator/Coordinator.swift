@@ -26,6 +26,10 @@ enum Page: String, Identifiable {
     var id: String {
         self.rawValue
     }
+    
+    func sendData()  {
+        print("value")
+    }
 }
 
 enum Sheet: String, Identifiable {

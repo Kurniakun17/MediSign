@@ -1,9 +1,3 @@
-//
-//  MessageViewModelTests.swift
-//  DeafHealthTests
-//
-//  Created by Kurnia Kharisma Agung Samiadjie on 20/08/24.
-//
 
 @testable import DeafHealth
 import XCTest

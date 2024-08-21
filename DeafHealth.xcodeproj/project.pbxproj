@@ -22,13 +22,6 @@
 		F61AA4E52C743AE6007CDCA6 /* RecordingSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = F61AA4E42C743AE6007CDCA6 /* RecordingSheet.swift */; };
 		F61AA4E72C745447007CDCA6 /* MessageBubble.swift in Sources */ = {isa = PBXBuildFile; fileRef = F61AA4E62C745447007CDCA6 /* MessageBubble.swift */; };
 		F61AA4E92C7454F7007CDCA6 /* MessageViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F61AA4E82C7454F7007CDCA6 /* MessageViewModel.swift */; };
-		F61AA4F32C749BE2007CDCA6 /* DeafHealthTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F61AA4F22C749BE2007CDCA6 /* DeafHealthTests.swift */; };
-		F61AA4FA2C749CC1007CDCA6 /* MessageViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F61AA4F92C749CC1007CDCA6 /* MessageViewModelTests.swift */; };
-		F61AA4FD2C749DE1007CDCA6 /* Message.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6D07E3F2C6F79DB006113FB /* Message.swift */; };
-		F61AA4FE2C749DE6007CDCA6 /* MessageViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F61AA4E82C7454F7007CDCA6 /* MessageViewModel.swift */; };
-		F61AA4FF2C74A745007CDCA6 /* enums.swift in Sources */ = {isa = PBXBuildFile; fileRef = F62EF9FA2C6B2BAF0025498E /* enums.swift */; };
-		F61AA5012C74B3D5007CDCA6 /* SpeechViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F61AA5002C74B3D5007CDCA6 /* SpeechViewModelTests.swift */; };
-		F61AA5022C74B3D9007CDCA6 /* SpeechViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6856F982C6F582B00574B7E /* SpeechViewModel.swift */; };
 		F62EF9E12C6B27840025498E /* DeafHealthApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = F62EF9E02C6B27840025498E /* DeafHealthApp.swift */; };
 		F62EF9E32C6B27840025498E /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F62EF9E22C6B27840025498E /* ContentView.swift */; };
 		F62EF9E52C6B27850025498E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F62EF9E42C6B27850025498E /* Assets.xcassets */; };
@@ -39,22 +32,30 @@
 		F62EF9FB2C6B2BAF0025498E /* enums.swift in Sources */ = {isa = PBXBuildFile; fileRef = F62EF9FA2C6B2BAF0025498E /* enums.swift */; };
 		F62EF9FE2C6B2C010025498E /* LocalDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = F62EF9FD2C6B2C010025498E /* LocalDataSource.swift */; };
 		F62EFA002C6B2EB10025498E /* ComplaintViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F62EF9FF2C6B2EB10025498E /* ComplaintViewModel.swift */; };
-		F62EFA022C6B3C190025498E /* coordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = F62EFA012C6B3C190025498E /* coordinator.swift */; };
+		F62EFA022C6B3C190025498E /* Coordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = F62EFA012C6B3C190025498E /* Coordinator.swift */; };
 		F62EFA062C6B3ECB0025498E /* Strawberry.swift in Sources */ = {isa = PBXBuildFile; fileRef = F62EFA052C6B3ECB0025498E /* Strawberry.swift */; };
 		F62EFA082C6B40D80025498E /* Lemon.swift in Sources */ = {isa = PBXBuildFile; fileRef = F62EFA072C6B40D80025498E /* Lemon.swift */; };
 		F62EFA0A2C6B41030025498E /* Watermelon.swift in Sources */ = {isa = PBXBuildFile; fileRef = F62EFA092C6B41030025498E /* Watermelon.swift */; };
 		F62EFA0C2C6B41450025498E /* Pineapple.swift in Sources */ = {isa = PBXBuildFile; fileRef = F62EFA0B2C6B41450025498E /* Pineapple.swift */; };
 		F62EFA0F2C6B41A00025498E /* Banana.swift in Sources */ = {isa = PBXBuildFile; fileRef = F62EFA0E2C6B41A00025498E /* Banana.swift */; };
+		F67F89242C75B15000FBB6CE /* CommunicationPageTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F67F89232C75B15000FBB6CE /* CommunicationPageTests.swift */; };
 		F6856F992C6F582B00574B7E /* SpeechViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6856F982C6F582B00574B7E /* SpeechViewModel.swift */; };
 		F6A94FFD2C6C47AC00F45997 /* TestSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6A94FFC2C6C47AC00F45997 /* TestSheet.swift */; };
 		F6A94FFF2C6C486D00F45997 /* TestFullScreenCover.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6A94FFE2C6C486D00F45997 /* TestFullScreenCover.swift */; };
 		F6A950022C6C5C6700F45997 /* CommunicationPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6A950012C6C5C6700F45997 /* CommunicationPage.swift */; };
 		F6B739722C758FA900B2AA63 /* HomePage.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6B739712C758FA900B2AA63 /* HomePage.swift */; };
+		F6B739822C75AD3500B2AA63 /* MediSignTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6B739812C75AD3500B2AA63 /* MediSignTests.swift */; };
+		F6B739892C75AD6D00B2AA63 /* ComplaintViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6B739882C75AD6D00B2AA63 /* ComplaintViewModelTests.swift */; };
+		F6B7398B2C75ADC200B2AA63 /* MessageViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6B7398A2C75ADC200B2AA63 /* MessageViewModelTests.swift */; };
+		F6B7398E2C75AE2500B2AA63 /* SpeechViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6B7398D2C75AE2500B2AA63 /* SpeechViewModelTests.swift */; };
 		F6D07E402C6F79DB006113FB /* Message.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6D07E3F2C6F79DB006113FB /* Message.swift */; };
+		F6E9221D2C75BBD9000D3833 /* AppColors.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6E9221C2C75BBD9000D3833 /* AppColors.swift */; };
+		F6E922202C75BCF3000D3833 /* AppLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6E9221F2C75BCF3000D3833 /* AppLabel.swift */; };
+		F6E922222C75BD9F000D3833 /* Decimal.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6E922212C75BD9F000D3833 /* Decimal.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		F61AA4F42C749BE2007CDCA6 /* PBXContainerItemProxy */ = {
+		F6B739832C75AD3500B2AA63 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = F62EF9D52C6B27840025498E /* Project object */;
 			proxyType = 1;
@@ -79,10 +80,6 @@
 		F61AA4E42C743AE6007CDCA6 /* RecordingSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordingSheet.swift; sourceTree = "<group>"; };
 		F61AA4E62C745447007CDCA6 /* MessageBubble.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageBubble.swift; sourceTree = "<group>"; };
 		F61AA4E82C7454F7007CDCA6 /* MessageViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageViewModel.swift; sourceTree = "<group>"; };
-		F61AA4F02C749BE2007CDCA6 /* DeafHealthTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = DeafHealthTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		F61AA4F22C749BE2007CDCA6 /* DeafHealthTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeafHealthTests.swift; sourceTree = "<group>"; };
-		F61AA4F92C749CC1007CDCA6 /* MessageViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageViewModelTests.swift; sourceTree = "<group>"; };
-		F61AA5002C74B3D5007CDCA6 /* SpeechViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpeechViewModelTests.swift; sourceTree = "<group>"; };
 		F62EF9DD2C6B27840025498E /* DeafHealth.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DeafHealth.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F62EF9E02C6B27840025498E /* DeafHealthApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeafHealthApp.swift; sourceTree = "<group>"; };
 		F62EF9E22C6B27840025498E /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -94,29 +91,38 @@
 		F62EF9FA2C6B2BAF0025498E /* enums.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = enums.swift; sourceTree = "<group>"; };
 		F62EF9FD2C6B2C010025498E /* LocalDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalDataSource.swift; sourceTree = "<group>"; };
 		F62EF9FF2C6B2EB10025498E /* ComplaintViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComplaintViewModel.swift; sourceTree = "<group>"; };
-		F62EFA012C6B3C190025498E /* coordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = coordinator.swift; sourceTree = "<group>"; };
+		F62EFA012C6B3C190025498E /* Coordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coordinator.swift; sourceTree = "<group>"; };
 		F62EFA052C6B3ECB0025498E /* Strawberry.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Strawberry.swift; sourceTree = "<group>"; };
 		F62EFA072C6B40D80025498E /* Lemon.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Lemon.swift; sourceTree = "<group>"; };
 		F62EFA092C6B41030025498E /* Watermelon.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Watermelon.swift; sourceTree = "<group>"; };
 		F62EFA0B2C6B41450025498E /* Pineapple.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Pineapple.swift; sourceTree = "<group>"; };
 		F62EFA0E2C6B41A00025498E /* Banana.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Banana.swift; sourceTree = "<group>"; };
+		F67F89232C75B15000FBB6CE /* CommunicationPageTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommunicationPageTests.swift; sourceTree = "<group>"; };
 		F6856F982C6F582B00574B7E /* SpeechViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpeechViewModel.swift; sourceTree = "<group>"; };
 		F6A94FFC2C6C47AC00F45997 /* TestSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestSheet.swift; sourceTree = "<group>"; };
 		F6A94FFE2C6C486D00F45997 /* TestFullScreenCover.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestFullScreenCover.swift; sourceTree = "<group>"; };
 		F6A950012C6C5C6700F45997 /* CommunicationPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommunicationPage.swift; sourceTree = "<group>"; };
 		F6B739712C758FA900B2AA63 /* HomePage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomePage.swift; sourceTree = "<group>"; };
+		F6B7397F2C75AD3500B2AA63 /* MediSignTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MediSignTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		F6B739812C75AD3500B2AA63 /* MediSignTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MediSignTests.swift; sourceTree = "<group>"; };
+		F6B739882C75AD6D00B2AA63 /* ComplaintViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComplaintViewModelTests.swift; sourceTree = "<group>"; };
+		F6B7398A2C75ADC200B2AA63 /* MessageViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageViewModelTests.swift; sourceTree = "<group>"; };
+		F6B7398D2C75AE2500B2AA63 /* SpeechViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpeechViewModelTests.swift; sourceTree = "<group>"; };
 		F6D07E3F2C6F79DB006113FB /* Message.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Message.swift; sourceTree = "<group>"; };
+		F6E9221C2C75BBD9000D3833 /* AppColors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppColors.swift; sourceTree = "<group>"; };
+		F6E9221F2C75BCF3000D3833 /* AppLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppLabel.swift; sourceTree = "<group>"; };
+		F6E922212C75BD9F000D3833 /* Decimal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Decimal.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
-		F61AA4ED2C749BE2007CDCA6 /* Frameworks */ = {
+		F62EF9DA2C6B27840025498E /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		F62EF9DA2C6B27840025498E /* Frameworks */ = {
+		F6B7397C2C75AD3500B2AA63 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -135,21 +141,11 @@
 			path = Components;
 			sourceTree = "<group>";
 		};
-		F61AA4F12C749BE2007CDCA6 /* DeafHealthTests */ = {
-			isa = PBXGroup;
-			children = (
-				F61AA4F22C749BE2007CDCA6 /* DeafHealthTests.swift */,
-				F61AA4F92C749CC1007CDCA6 /* MessageViewModelTests.swift */,
-				F61AA5002C74B3D5007CDCA6 /* SpeechViewModelTests.swift */,
-			);
-			path = DeafHealthTests;
-			sourceTree = "<group>";
-		};
 		F62EF9D42C6B27840025498E = {
 			isa = PBXGroup;
 			children = (
 				F62EF9DF2C6B27840025498E /* DeafHealth */,
-				F61AA4F12C749BE2007CDCA6 /* DeafHealthTests */,
+				F6B739802C75AD3500B2AA63 /* MediSignTests */,
 				F62EF9DE2C6B27840025498E /* Products */,
 			);
 			sourceTree = "<group>";
@@ -158,7 +154,7 @@
 			isa = PBXGroup;
 			children = (
 				F62EF9DD2C6B27840025498E /* DeafHealth.app */,
-				F61AA4F02C749BE2007CDCA6 /* DeafHealthTests.xctest */,
+				F6B7397F2C75AD3500B2AA63 /* MediSignTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -166,8 +162,9 @@
 		F62EF9DF2C6B27840025498E /* DeafHealth */ = {
 			isa = PBXGroup;
 			children = (
+				F6E922112C75BAAE000D3833 /* Shared */,
+				F6E922122C75BAC5000D3833 /* Modules */,
 				F62EF9FC2C6B2BCC0025498E /* Data Source */,
-				F62EFA032C6B3C450025498E /* Coordinator */,
 				F62EF9EE2C6B27910025498E /* Model */,
 				F62EF9EF2C6B279B0025498E /* View Model */,
 				F62EF9F02C6B27AD0025498E /* View */,
@@ -191,7 +188,6 @@
 		F62EF9EE2C6B27910025498E /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				F62EF9F12C6B27D30025498E /* User.swift */,
 				F62EF9F32C6B293B0025498E /* Complaint.swift */,
 				F62EF9F52C6B2B3D0025498E /* SymptomsDetail.swift */,
 				F6D07E3F2C6F79DB006113FB /* Message.swift */,
@@ -212,7 +208,7 @@
 		F62EF9F02C6B27AD0025498E /* View */ = {
 			isa = PBXGroup;
 			children = (
-				F6B739702C758F7800B2AA63 /* Symptoms */,
+				F6B739702C758F7800B2AA63 /* Consultation */,
 				9B0F1FED2C74575900030F0C /* Components */,
 				F6EC258E2C743A9F001D7AAF /* Communication */,
 				F62EFA042C6B3EB70025498E /* Example */,
@@ -240,7 +236,7 @@
 		F62EFA032C6B3C450025498E /* Coordinator */ = {
 			isa = PBXGroup;
 			children = (
-				F62EFA012C6B3C190025498E /* coordinator.swift */,
+				F62EFA012C6B3C190025498E /* Coordinator.swift */,
 			);
 			path = Coordinator;
 			sourceTree = "<group>";
@@ -259,7 +255,7 @@
 			path = Example;
 			sourceTree = "<group>";
 		};
-		F6B739702C758F7800B2AA63 /* Symptoms */ = {
+		F6B739702C758F7800B2AA63 /* Consultation */ = {
 			isa = PBXGroup;
 			children = (
 				A2A0C5462C6F68B0002240E2 /* ComplaintView.swift */,
@@ -273,7 +269,126 @@
 				A2A0C55E2C709032002240E2 /* ComplaintFlowView.swift */,
 				A255E0232C72045000274DF5 /* ConsultationMenuView.swift */,
 			);
-			path = Symptoms;
+			path = Consultation;
+			sourceTree = "<group>";
+		};
+		F6B739802C75AD3500B2AA63 /* MediSignTests */ = {
+			isa = PBXGroup;
+			children = (
+				F6B739812C75AD3500B2AA63 /* MediSignTests.swift */,
+				F6B739882C75AD6D00B2AA63 /* ComplaintViewModelTests.swift */,
+				F6B7398A2C75ADC200B2AA63 /* MessageViewModelTests.swift */,
+				F6B7398D2C75AE2500B2AA63 /* SpeechViewModelTests.swift */,
+				F67F89232C75B15000FBB6CE /* CommunicationPageTests.swift */,
+			);
+			path = MediSignTests;
+			sourceTree = "<group>";
+		};
+		F6E922112C75BAAE000D3833 /* Shared */ = {
+			isa = PBXGroup;
+			children = (
+				F6E9221E2C75BCDF000D3833 /* Constants */,
+				F6E922192C75BB69000D3833 /* Themes */,
+				F62EFA032C6B3C450025498E /* Coordinator */,
+			);
+			path = Shared;
+			sourceTree = "<group>";
+		};
+		F6E922122C75BAC5000D3833 /* Modules */ = {
+			isa = PBXGroup;
+			children = (
+				F6E922132C75BACF000D3833 /* Onboarding */,
+				F6E922232C75BE5C000D3833 /* Consultation */,
+			);
+			path = Modules;
+			sourceTree = "<group>";
+		};
+		F6E922132C75BACF000D3833 /* Onboarding */ = {
+			isa = PBXGroup;
+			children = (
+				F6E922142C75BADE000D3833 /* Models */,
+				F6E922152C75BAE3000D3833 /* ViewModels */,
+				F6E922162C75BAE9000D3833 /* Presentations */,
+			);
+			path = Onboarding;
+			sourceTree = "<group>";
+		};
+		F6E922142C75BADE000D3833 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				F62EF9F12C6B27D30025498E /* User.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		F6E922152C75BAE3000D3833 /* ViewModels */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = ViewModels;
+			sourceTree = "<group>";
+		};
+		F6E922162C75BAE9000D3833 /* Presentations */ = {
+			isa = PBXGroup;
+			children = (
+				F6E922172C75BAFB000D3833 /* Views */,
+				F6E922182C75BB00000D3833 /* Components */,
+			);
+			path = Presentations;
+			sourceTree = "<group>";
+		};
+		F6E922172C75BAFB000D3833 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		F6E922182C75BB00000D3833 /* Components */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Components;
+			sourceTree = "<group>";
+		};
+		F6E922192C75BB69000D3833 /* Themes */ = {
+			isa = PBXGroup;
+			children = (
+				F6E9221B2C75BB7F000D3833 /* Components */,
+				F6E9221A2C75BB70000D3833 /* Views */,
+				F6E9221C2C75BBD9000D3833 /* AppColors.swift */,
+			);
+			path = Themes;
+			sourceTree = "<group>";
+		};
+		F6E9221A2C75BB70000D3833 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		F6E9221B2C75BB7F000D3833 /* Components */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Components;
+			sourceTree = "<group>";
+		};
+		F6E9221E2C75BCDF000D3833 /* Constants */ = {
+			isa = PBXGroup;
+			children = (
+				F6E9221F2C75BCF3000D3833 /* AppLabel.swift */,
+				F6E922212C75BD9F000D3833 /* Decimal.swift */,
+			);
+			path = Constants;
+			sourceTree = "<group>";
+		};
+		F6E922232C75BE5C000D3833 /* Consultation */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Consultation;
 			sourceTree = "<group>";
 		};
 		F6EC258E2C743A9F001D7AAF /* Communication */ = {
@@ -289,24 +404,6 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		F61AA4EF2C749BE2007CDCA6 /* DeafHealthTests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = F61AA4F62C749BE2007CDCA6 /* Build configuration list for PBXNativeTarget "DeafHealthTests" */;
-			buildPhases = (
-				F61AA4EC2C749BE2007CDCA6 /* Sources */,
-				F61AA4ED2C749BE2007CDCA6 /* Frameworks */,
-				F61AA4EE2C749BE2007CDCA6 /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				F61AA4F52C749BE2007CDCA6 /* PBXTargetDependency */,
-			);
-			name = DeafHealthTests;
-			productName = DeafHealthTests;
-			productReference = F61AA4F02C749BE2007CDCA6 /* DeafHealthTests.xctest */;
-			productType = "com.apple.product-type.bundle.unit-test";
-		};
 		F62EF9DC2C6B27840025498E /* DeafHealth */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = F62EF9EB2C6B27850025498E /* Build configuration list for PBXNativeTarget "DeafHealth" */;
@@ -326,6 +423,24 @@
 			productReference = F62EF9DD2C6B27840025498E /* DeafHealth.app */;
 			productType = "com.apple.product-type.application";
 		};
+		F6B7397E2C75AD3500B2AA63 /* MediSignTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = F6B739852C75AD3500B2AA63 /* Build configuration list for PBXNativeTarget "MediSignTests" */;
+			buildPhases = (
+				F6B7397B2C75AD3500B2AA63 /* Sources */,
+				F6B7397C2C75AD3500B2AA63 /* Frameworks */,
+				F6B7397D2C75AD3500B2AA63 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				F6B739842C75AD3500B2AA63 /* PBXTargetDependency */,
+			);
+			name = MediSignTests;
+			productName = MediSignTests;
+			productReference = F6B7397F2C75AD3500B2AA63 /* MediSignTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -336,12 +451,12 @@
 				LastSwiftUpdateCheck = 1530;
 				LastUpgradeCheck = 1530;
 				TargetAttributes = {
-					F61AA4EF2C749BE2007CDCA6 = {
-						CreatedOnToolsVersion = 15.3;
-						TestTargetID = F62EF9DC2C6B27840025498E;
-					};
 					F62EF9DC2C6B27840025498E = {
 						CreatedOnToolsVersion = 15.3;
+					};
+					F6B7397E2C75AD3500B2AA63 = {
+						CreatedOnToolsVersion = 15.3;
+						TestTargetID = F62EF9DC2C6B27840025498E;
 					};
 				};
 			};
@@ -362,19 +477,12 @@
 			projectRoot = "";
 			targets = (
 				F62EF9DC2C6B27840025498E /* DeafHealth */,
-				F61AA4EF2C749BE2007CDCA6 /* DeafHealthTests */,
+				F6B7397E2C75AD3500B2AA63 /* MediSignTests */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
-		F61AA4EE2C749BE2007CDCA6 /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 		F62EF9DB2C6B27840025498E /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -384,23 +492,16 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-/* End PBXResourcesBuildPhase section */
-
-/* Begin PBXSourcesBuildPhase section */
-		F61AA4EC2C749BE2007CDCA6 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
+		F6B7397D2C75AD3500B2AA63 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				F61AA5012C74B3D5007CDCA6 /* SpeechViewModelTests.swift in Sources */,
-				F61AA4FD2C749DE1007CDCA6 /* Message.swift in Sources */,
-				F61AA5022C74B3D9007CDCA6 /* SpeechViewModel.swift in Sources */,
-				F61AA4FF2C74A745007CDCA6 /* enums.swift in Sources */,
-				F61AA4FA2C749CC1007CDCA6 /* MessageViewModelTests.swift in Sources */,
-				F61AA4FE2C749DE6007CDCA6 /* MessageViewModel.swift in Sources */,
-				F61AA4F32C749BE2007CDCA6 /* DeafHealthTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
 		F62EF9D92C6B27840025498E /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -414,6 +515,7 @@
 				F62EFA0A2C6B41030025498E /* Watermelon.swift in Sources */,
 				F62EF9F42C6B293B0025498E /* Complaint.swift in Sources */,
 				F61AA4E52C743AE6007CDCA6 /* RecordingSheet.swift in Sources */,
+				F6E9221D2C75BBD9000D3833 /* AppColors.swift in Sources */,
 				F6856F992C6F582B00574B7E /* SpeechViewModel.swift in Sources */,
 				F62EFA062C6B3ECB0025498E /* Strawberry.swift in Sources */,
 				A2A0C5552C6F69ED002240E2 /* SymptomWorseningFactorsView.swift in Sources */,
@@ -422,18 +524,20 @@
 				F61AA4E72C745447007CDCA6 /* MessageBubble.swift in Sources */,
 				F6A94FFD2C6C47AC00F45997 /* TestSheet.swift in Sources */,
 				F62EFA0C2C6B41450025498E /* Pineapple.swift in Sources */,
+				F6E922202C75BCF3000D3833 /* AppLabel.swift in Sources */,
 				F62EFA0F2C6B41A00025498E /* Banana.swift in Sources */,
 				A2A0C5472C6F68B0002240E2 /* ComplaintView.swift in Sources */,
 				A2A0C55F2C709032002240E2 /* ComplaintFlowView.swift in Sources */,
 				F62EFA002C6B2EB10025498E /* ComplaintViewModel.swift in Sources */,
 				A2A0C5532C6F69E1002240E2 /* SymptomSeverityView.swift in Sources */,
 				9B0F1FEC2C74574200030F0C /* CustomSlider.swift in Sources */,
+				F6E922222C75BD9F000D3833 /* Decimal.swift in Sources */,
 				A2A0C5492C6F6922002240E2 /* SelectBodyPartView.swift in Sources */,
 				A255E0242C72045000274DF5 /* ConsultationMenuView.swift in Sources */,
 				F62EF9E12C6B27840025498E /* DeafHealthApp.swift in Sources */,
 				A2A0C5512C6F69D6002240E2 /* SymptomStartTimeView.swift in Sources */,
 				F62EF9F62C6B2B3D0025498E /* SymptomsDetail.swift in Sources */,
-				F62EFA022C6B3C190025498E /* coordinator.swift in Sources */,
+				F62EFA022C6B3C190025498E /* Coordinator.swift in Sources */,
 				A2A0C55B2C6F6A15002240E2 /* PreviousConsultationView.swift in Sources */,
 				F62EF9FB2C6B2BAF0025498E /* enums.swift in Sources */,
 				A2A0C55D2C6F6A1C002240E2 /* SummaryView.swift in Sources */,
@@ -443,53 +547,29 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		F6B7397B2C75AD3500B2AA63 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F6B7398E2C75AE2500B2AA63 /* SpeechViewModelTests.swift in Sources */,
+				F6B739892C75AD6D00B2AA63 /* ComplaintViewModelTests.swift in Sources */,
+				F6B739822C75AD3500B2AA63 /* MediSignTests.swift in Sources */,
+				F67F89242C75B15000FBB6CE /* CommunicationPageTests.swift in Sources */,
+				F6B7398B2C75ADC200B2AA63 /* MessageViewModelTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
-		F61AA4F52C749BE2007CDCA6 /* PBXTargetDependency */ = {
+		F6B739842C75AD3500B2AA63 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = F62EF9DC2C6B27840025498E /* DeafHealth */;
-			targetProxy = F61AA4F42C749BE2007CDCA6 /* PBXContainerItemProxy */;
+			targetProxy = F6B739832C75AD3500B2AA63 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
-		F61AA4F72C749BE2007CDCA6 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				BUNDLE_LOADER = "$(TEST_HOST)";
-				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = 49V8Q5W76J;
-				GENERATE_INFOPLIST_FILE = YES;
-				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = test.DeafHealthTests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_EMIT_LOC_STRINGS = NO;
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/DeafHealth.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/DeafHealth";
-			};
-			name = Debug;
-		};
-		F61AA4F82C749BE2007CDCA6 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				BUNDLE_LOADER = "$(TEST_HOST)";
-				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = 49V8Q5W76J;
-				GENERATE_INFOPLIST_FILE = YES;
-				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = test.DeafHealthTests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_EMIT_LOC_STRINGS = NO;
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/DeafHealth.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/DeafHealth";
-			};
-			name = Release;
-		};
 		F62EF9E92C6B27850025498E /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -673,18 +753,45 @@
 			};
 			name = Release;
 		};
+		F6B739862C75AD3500B2AA63 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 49V8Q5W76J;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = test.MediSignTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/DeafHealth.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/DeafHealth";
+			};
+			name = Debug;
+		};
+		F6B739872C75AD3500B2AA63 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 49V8Q5W76J;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = test.MediSignTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/DeafHealth.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/DeafHealth";
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		F61AA4F62C749BE2007CDCA6 /* Build configuration list for PBXNativeTarget "DeafHealthTests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				F61AA4F72C749BE2007CDCA6 /* Debug */,
-				F61AA4F82C749BE2007CDCA6 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
 		F62EF9D82C6B27840025498E /* Build configuration list for PBXProject "DeafHealth" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
@@ -699,6 +806,15 @@
 			buildConfigurations = (
 				F62EF9EC2C6B27850025498E /* Debug */,
 				F62EF9ED2C6B27850025498E /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		F6B739852C75AD3500B2AA63 /* Build configuration list for PBXNativeTarget "MediSignTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				F6B739862C75AD3500B2AA63 /* Debug */,
+				F6B739872C75AD3500B2AA63 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

@@ -33,7 +33,7 @@ struct ComplaintView: View {
 
             // Main text question with dynamic complaint insertion
             VStack(spacing: 8) {
-                Text("Halo, Dokter. Saya merasakan")
+                Text(AppLabel.complaintStatement)
                     .font(.title3)
                     .multilineTextAlignment(.center)
 
@@ -52,7 +52,7 @@ struct ComplaintView: View {
             }
             .pickerStyle(SegmentedPickerStyle())
             .padding(.horizontal)
-            .padding(.top, 15)
+            .padding(.top, Decimal.d16)
             .padding(.bottom, 15)
 
             // Complaint selection buttons based on the selected segment

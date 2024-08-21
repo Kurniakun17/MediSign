@@ -29,6 +29,30 @@
       selectedLauncherIdentifier = "Xcode.DebuggerFoundation.Launcher.LLDB"
       shouldUseLaunchSchemeArgsEnv = "YES"
       shouldAutocreateTestPlan = "YES">
+      <Testables>
+         <TestableReference
+            skipped = "NO"
+            parallelizable = "YES">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "F6B7397E2C75AD3500B2AA63"
+               BuildableName = "MediSignTests.xctest"
+               BlueprintName = "MediSignTests"
+               ReferencedContainer = "container:DeafHealth.xcodeproj">
+            </BuildableReference>
+         </TestableReference>
+         <TestableReference
+            skipped = "NO"
+            parallelizable = "YES">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "F61AA4EF2C749BE2007CDCA6"
+               BuildableName = "DeafHealthTests.xctest"
+               BlueprintName = "DeafHealthTests"
+               ReferencedContainer = "container:DeafHealth.xcodeproj">
+            </BuildableReference>
+         </TestableReference>
+      </Testables>
    </TestAction>
    <LaunchAction
       buildConfiguration = "Debug"
