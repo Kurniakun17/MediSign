@@ -30,6 +30,6 @@ class MessageViewModel: ObservableObject {
     }
     
     func updateInputValue(with text: String){
-        self.inputValue += text
+        self.inputValue = text
     }
 }

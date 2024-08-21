@@ -126,20 +126,11 @@ struct CommunicationPage: View {
                 }
                 if isShowingInterpreter {
                     VStack {
-                        Text("Saya Berbahasa Isyarat")
-                            .fontWeight(.bold)
-                            .padding()
-
                         // Camera View
                         CameraView(cameraModel: signLanguageInterpreterViewModel.cameraModel!)
-                            .frame(height: 300)  // Adjust the height as per your need
+                            .frame(height: 400)  // Adjust the height as per your need
                             .clipShape(RoundedRectangle(cornerRadius: 12))
                             .padding()
-
-                        // Recognized Text
-                        Text(signLanguageInterpreterViewModel.recognizedText)
-                            .padding()
-                            .multilineTextAlignment(.center)
                     }
                     .background(Color(.systemGray6))
                     .clipShape(RoundedRectangle(cornerRadius: 12))
