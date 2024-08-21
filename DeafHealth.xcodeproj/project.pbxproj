@@ -49,6 +49,7 @@
 		F6A94FFD2C6C47AC00F45997 /* TestSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6A94FFC2C6C47AC00F45997 /* TestSheet.swift */; };
 		F6A94FFF2C6C486D00F45997 /* TestFullScreenCover.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6A94FFE2C6C486D00F45997 /* TestFullScreenCover.swift */; };
 		F6A950022C6C5C6700F45997 /* CommunicationPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6A950012C6C5C6700F45997 /* CommunicationPage.swift */; };
+		F6B739722C758FA900B2AA63 /* HomePage.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6B739712C758FA900B2AA63 /* HomePage.swift */; };
 		F6D07E402C6F79DB006113FB /* Message.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6D07E3F2C6F79DB006113FB /* Message.swift */; };
 /* End PBXBuildFile section */
 
@@ -103,6 +104,7 @@
 		F6A94FFC2C6C47AC00F45997 /* TestSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestSheet.swift; sourceTree = "<group>"; };
 		F6A94FFE2C6C486D00F45997 /* TestFullScreenCover.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestFullScreenCover.swift; sourceTree = "<group>"; };
 		F6A950012C6C5C6700F45997 /* CommunicationPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommunicationPage.swift; sourceTree = "<group>"; };
+		F6B739712C758FA900B2AA63 /* HomePage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomePage.swift; sourceTree = "<group>"; };
 		F6D07E3F2C6F79DB006113FB /* Message.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Message.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -210,19 +212,11 @@
 		F62EF9F02C6B27AD0025498E /* View */ = {
 			isa = PBXGroup;
 			children = (
+				F6B739702C758F7800B2AA63 /* Symptoms */,
 				9B0F1FED2C74575900030F0C /* Components */,
 				F6EC258E2C743A9F001D7AAF /* Communication */,
 				F62EFA042C6B3EB70025498E /* Example */,
-				A2A0C5462C6F68B0002240E2 /* ComplaintView.swift */,
-				A2A0C5482C6F6922002240E2 /* SelectBodyPartView.swift */,
-				A2A0C5502C6F69D6002240E2 /* SymptomStartTimeView.swift */,
-				A2A0C5522C6F69E1002240E2 /* SymptomSeverityView.swift */,
-				A2A0C5542C6F69ED002240E2 /* SymptomWorseningFactorsView.swift */,
-				A2A0C5562C6F69FB002240E2 /* SymptomImprovementFactorsView.swift */,
-				A2A0C55A2C6F6A15002240E2 /* PreviousConsultationView.swift */,
-				A2A0C55C2C6F6A1C002240E2 /* SummaryView.swift */,
-				A2A0C55E2C709032002240E2 /* ComplaintFlowView.swift */,
-				A255E0232C72045000274DF5 /* ConsultationMenuView.swift */,
+				F6B739712C758FA900B2AA63 /* HomePage.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -263,6 +257,23 @@
 				F6A94FFE2C6C486D00F45997 /* TestFullScreenCover.swift */,
 			);
 			path = Example;
+			sourceTree = "<group>";
+		};
+		F6B739702C758F7800B2AA63 /* Symptoms */ = {
+			isa = PBXGroup;
+			children = (
+				A2A0C5462C6F68B0002240E2 /* ComplaintView.swift */,
+				A2A0C5482C6F6922002240E2 /* SelectBodyPartView.swift */,
+				A2A0C5502C6F69D6002240E2 /* SymptomStartTimeView.swift */,
+				A2A0C5522C6F69E1002240E2 /* SymptomSeverityView.swift */,
+				A2A0C5542C6F69ED002240E2 /* SymptomWorseningFactorsView.swift */,
+				A2A0C5562C6F69FB002240E2 /* SymptomImprovementFactorsView.swift */,
+				A2A0C55A2C6F6A15002240E2 /* PreviousConsultationView.swift */,
+				A2A0C55C2C6F6A1C002240E2 /* SummaryView.swift */,
+				A2A0C55E2C709032002240E2 /* ComplaintFlowView.swift */,
+				A255E0232C72045000274DF5 /* ConsultationMenuView.swift */,
+			);
+			path = Symptoms;
 			sourceTree = "<group>";
 		};
 		F6EC258E2C743A9F001D7AAF /* Communication */ = {
@@ -399,6 +410,7 @@
 				F6A94FFF2C6C486D00F45997 /* TestFullScreenCover.swift in Sources */,
 				F62EF9E32C6B27840025498E /* ContentView.swift in Sources */,
 				F6A950022C6C5C6700F45997 /* CommunicationPage.swift in Sources */,
+				F6B739722C758FA900B2AA63 /* HomePage.swift in Sources */,
 				F62EFA0A2C6B41030025498E /* Watermelon.swift in Sources */,
 				F62EF9F42C6B293B0025498E /* Complaint.swift in Sources */,
 				F61AA4E52C743AE6007CDCA6 /* RecordingSheet.swift in Sources */,
@@ -605,9 +617,10 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"DeafHealth/Preview Content\"";
-				DEVELOPMENT_TEAM = FTP77G36XW;
+				DEVELOPMENT_TEAM = 49V8Q5W76J;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_CFBundleDisplayName = MediSign;
 				INFOPLIST_KEY_NSMicrophoneUsageDescription = "Access microphone to enable speech to text functionality ";
 				INFOPLIST_KEY_NSSpeechRecognitionUsageDescription = "Speech Recognition to translate doctor to text";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
@@ -636,9 +649,10 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"DeafHealth/Preview Content\"";
-				DEVELOPMENT_TEAM = FTP77G36XW;
+				DEVELOPMENT_TEAM = 49V8Q5W76J;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_CFBundleDisplayName = MediSign;
 				INFOPLIST_KEY_NSMicrophoneUsageDescription = "Access microphone to enable speech to text functionality ";
 				INFOPLIST_KEY_NSSpeechRecognitionUsageDescription = "Speech Recognition to translate doctor to text";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
