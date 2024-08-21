@@ -16,14 +16,20 @@ struct RecordingSheet: View {
     var body: some View {
         return GeometryReader { geometry in
             VStack {
-                Text("Dokter Berbicara")
+                Text("Dokter berbicara")
                     .fontWeight(.bold)
                     .font(.title2)
+
+                Text(speechViewModel.transcript)
+                    .foregroundStyle(.gray)
+
+                Spacer()
+
                 HStack(spacing: 2) {
-                    ForEach(speechViewModel.audioLevels, id: \.self) { level in
+                    ForEach(speechViewModel.audioLevels, id: \.self.id) { audioLevel in
                         RoundedRectangle(cornerRadius: 12)
                             .fill(.primaryBlue)
-                            .frame(width: 4, height: max(geometry.size.height * level * 0.5, 1))
+                            .frame(width: 4, height: max(geometry.size.height * audioLevel.level * 0.5, 1))
                     }
                 }
                 .frame(maxWidth: .infinity, maxHeight: 200, alignment: .center)
@@ -44,6 +50,6 @@ struct RecordingSheet: View {
             }
             .padding(36)
         }
-        .presentationDetents([.height(300)])
+        .presentationDetents([.height(500)])
     }
 }

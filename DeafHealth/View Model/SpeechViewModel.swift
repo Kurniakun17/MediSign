@@ -3,16 +3,22 @@ import Foundation
 import Speech
 import SwiftUI
 
+struct AudioLevel {
+    var level: CGFloat
+    var id = UUID()
+}
+
 /// A helper for transcribing speech to text using SFSpeechRecognizer and AVAudioEngine.
 class SpeechViewModel: ObservableObject {
     @Published var transcript: String = ""
-    @Published var audioLevels: [CGFloat] = Array(repeating: 0.5, count: 50) // Array to store audio levels
+    @Published var audioLevels: [AudioLevel] = Array(repeating: AudioLevel(level: 0.1), count: 50) // Array to store audio levels
     @Published var isRecording = false
-    
-    private var audioEngine: AVAudioEngine?
-    private var request: SFSpeechAudioBufferRecognitionRequest?
-    private var task: SFSpeechRecognitionTask?
-    private let recognizer: SFSpeechRecognizer?
+    @Published private var speechSynthesizer: AVSpeechSynthesizer?
+
+    var audioEngine: AVAudioEngine?
+    var request: SFSpeechAudioBufferRecognitionRequest?
+    var task: SFSpeechRecognitionTask?
+    let recognizer: SFSpeechRecognizer?
 
     enum RecognizerError: Error {
         case nilRecognizer
@@ -58,7 +64,7 @@ class SpeechViewModel: ObservableObject {
         transcript = message
     }
 
-    private func speakError(_ error: Error) {
+    func speakError(_ error: Error) {
         var errorMessage = ""
         if let error = error as? RecognizerError {
             errorMessage += error.message
@@ -146,7 +152,15 @@ class SpeechViewModel: ObservableObject {
     private func updateAudioLevels(with power: Float) {
         let normalizedPower = max(0.2, CGFloat(power + 50) / 2) / 25
         audioLevels.removeFirst()
-        audioLevels.append(normalizedPower)
+        audioLevels.append(AudioLevel(level: normalizedPower))
+    }
+
+    func speak(text: String) {
+        let utterance = AVSpeechUtterance(string: text)
+        utterance.voice = AVSpeechSynthesisVoice(language: "id_ID")
+
+        speechSynthesizer = AVSpeechSynthesizer()
+        speechSynthesizer?.speak(utterance)
     }
 }
 
