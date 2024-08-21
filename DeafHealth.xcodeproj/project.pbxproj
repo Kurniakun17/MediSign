@@ -268,8 +268,8 @@
 		F6E922162C75BAE9000D3833 /* Presentations */ = {
 			isa = PBXGroup;
 			children = (
-				F6E922172C75BAFB000D3833 /* Views */,
 				F6E922182C75BB00000D3833 /* Components */,
+				F6E922172C75BAFB000D3833 /* Views */,
 			);
 			path = Presentations;
 			sourceTree = "<group>";
@@ -344,8 +344,8 @@
 		F6E922252C75DD90000D3833 /* Presentations */ = {
 			isa = PBXGroup;
 			children = (
-				F6E922322C75DEB3000D3833 /* Views */,
 				F6E922312C75DEAE000D3833 /* Components */,
+				F6E922322C75DEB3000D3833 /* Views */,
 			);
 			path = Presentations;
 			sourceTree = "<group>";
@@ -400,16 +400,18 @@
 			children = (
 				F6E922302C75DE57000D3833 /* Models */,
 				F6E9222F2C75DE50000D3833 /* ViewModels */,
-				F6E9222E2C75DE4A000D3833 /* Views */,
+				F6E9222E2C75DE4A000D3833 /* Presentations */,
 			);
 			path = Profile;
 			sourceTree = "<group>";
 		};
-		F6E9222E2C75DE4A000D3833 /* Views */ = {
+		F6E9222E2C75DE4A000D3833 /* Presentations */ = {
 			isa = PBXGroup;
 			children = (
+				F6E9223A2C75DFF3000D3833 /* Components */,
+				F6E922392C75DFEF000D3833 /* Views */,
 			);
-			path = Views;
+			path = Presentations;
 			sourceTree = "<group>";
 		};
 		F6E9222F2C75DE50000D3833 /* ViewModels */ = {
@@ -467,6 +469,20 @@
 			children = (
 				9B0F1FEB2C74574200030F0C /* CustomSlider.swift */,
 				A255E03C2C7585BE00274DF5 /* RoundedCorner.swift */,
+			);
+			path = Components;
+			sourceTree = "<group>";
+		};
+		F6E922392C75DFEF000D3833 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		F6E9223A2C75DFF3000D3833 /* Components */ = {
+			isa = PBXGroup;
+			children = (
 			);
 			path = Components;
 			sourceTree = "<group>";
