@@ -20,13 +20,6 @@ enum Page: String, Identifiable {
     case previousConsultation
     case summary
     case consultationMenuView
-    // MARK: Example Data
-
-    case banana
-    case lemon
-    case watermelon
-    case strawberry
-    case pineapple
     case communication
 
     var id: String {
@@ -118,16 +111,6 @@ class Coordinator: ObservableObject {
             SummaryView()
         case .consultationMenuView: // Add this case
             ConsultationMenuView()
-        case .banana:
-            Banana()
-        case .lemon:
-            Lemon()
-        case .strawberry:
-            Strawberry()
-        case .watermelon:
-            Watermelon()
-        case .pineapple:
-            Pineapple()
         case .communication:
             CommunicationPage()
         }
