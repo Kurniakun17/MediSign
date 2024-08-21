@@ -19,6 +19,16 @@
 		A2A0C55B2C6F6A15002240E2 /* PreviousConsultationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2A0C55A2C6F6A15002240E2 /* PreviousConsultationView.swift */; };
 		A2A0C55D2C6F6A1C002240E2 /* SummaryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2A0C55C2C6F6A1C002240E2 /* SummaryView.swift */; };
 		A2A0C55F2C709032002240E2 /* ComplaintFlowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2A0C55E2C709032002240E2 /* ComplaintFlowView.swift */; };
+		F61AA4E52C743AE6007CDCA6 /* RecordingSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = F61AA4E42C743AE6007CDCA6 /* RecordingSheet.swift */; };
+		F61AA4E72C745447007CDCA6 /* MessageBubble.swift in Sources */ = {isa = PBXBuildFile; fileRef = F61AA4E62C745447007CDCA6 /* MessageBubble.swift */; };
+		F61AA4E92C7454F7007CDCA6 /* MessageViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F61AA4E82C7454F7007CDCA6 /* MessageViewModel.swift */; };
+		F61AA4F32C749BE2007CDCA6 /* DeafHealthTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F61AA4F22C749BE2007CDCA6 /* DeafHealthTests.swift */; };
+		F61AA4FA2C749CC1007CDCA6 /* MessageViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F61AA4F92C749CC1007CDCA6 /* MessageViewModelTests.swift */; };
+		F61AA4FD2C749DE1007CDCA6 /* Message.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6D07E3F2C6F79DB006113FB /* Message.swift */; };
+		F61AA4FE2C749DE6007CDCA6 /* MessageViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F61AA4E82C7454F7007CDCA6 /* MessageViewModel.swift */; };
+		F61AA4FF2C74A745007CDCA6 /* enums.swift in Sources */ = {isa = PBXBuildFile; fileRef = F62EF9FA2C6B2BAF0025498E /* enums.swift */; };
+		F61AA5012C74B3D5007CDCA6 /* SpeechViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F61AA5002C74B3D5007CDCA6 /* SpeechViewModelTests.swift */; };
+		F61AA5022C74B3D9007CDCA6 /* SpeechViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6856F982C6F582B00574B7E /* SpeechViewModel.swift */; };
 		F62EF9E12C6B27840025498E /* DeafHealthApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = F62EF9E02C6B27840025498E /* DeafHealthApp.swift */; };
 		F62EF9E32C6B27840025498E /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F62EF9E22C6B27840025498E /* ContentView.swift */; };
 		F62EF9E52C6B27850025498E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F62EF9E42C6B27850025498E /* Assets.xcassets */; };
@@ -35,9 +45,22 @@
 		F62EFA0A2C6B41030025498E /* Watermelon.swift in Sources */ = {isa = PBXBuildFile; fileRef = F62EFA092C6B41030025498E /* Watermelon.swift */; };
 		F62EFA0C2C6B41450025498E /* Pineapple.swift in Sources */ = {isa = PBXBuildFile; fileRef = F62EFA0B2C6B41450025498E /* Pineapple.swift */; };
 		F62EFA0F2C6B41A00025498E /* Banana.swift in Sources */ = {isa = PBXBuildFile; fileRef = F62EFA0E2C6B41A00025498E /* Banana.swift */; };
+		F6856F992C6F582B00574B7E /* SpeechViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6856F982C6F582B00574B7E /* SpeechViewModel.swift */; };
 		F6A94FFD2C6C47AC00F45997 /* TestSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6A94FFC2C6C47AC00F45997 /* TestSheet.swift */; };
 		F6A94FFF2C6C486D00F45997 /* TestFullScreenCover.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6A94FFE2C6C486D00F45997 /* TestFullScreenCover.swift */; };
+		F6A950022C6C5C6700F45997 /* CommunicationPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6A950012C6C5C6700F45997 /* CommunicationPage.swift */; };
+		F6D07E402C6F79DB006113FB /* Message.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6D07E3F2C6F79DB006113FB /* Message.swift */; };
 /* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		F61AA4F42C749BE2007CDCA6 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = F62EF9D52C6B27840025498E /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = F62EF9DC2C6B27840025498E;
+			remoteInfo = DeafHealth;
+		};
+/* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
 		9B0F1FEB2C74574200030F0C /* CustomSlider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomSlider.swift; sourceTree = "<group>"; };
@@ -52,6 +75,13 @@
 		A2A0C55A2C6F6A15002240E2 /* PreviousConsultationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreviousConsultationView.swift; sourceTree = "<group>"; };
 		A2A0C55C2C6F6A1C002240E2 /* SummaryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SummaryView.swift; sourceTree = "<group>"; };
 		A2A0C55E2C709032002240E2 /* ComplaintFlowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComplaintFlowView.swift; sourceTree = "<group>"; };
+		F61AA4E42C743AE6007CDCA6 /* RecordingSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordingSheet.swift; sourceTree = "<group>"; };
+		F61AA4E62C745447007CDCA6 /* MessageBubble.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageBubble.swift; sourceTree = "<group>"; };
+		F61AA4E82C7454F7007CDCA6 /* MessageViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageViewModel.swift; sourceTree = "<group>"; };
+		F61AA4F02C749BE2007CDCA6 /* DeafHealthTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = DeafHealthTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		F61AA4F22C749BE2007CDCA6 /* DeafHealthTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeafHealthTests.swift; sourceTree = "<group>"; };
+		F61AA4F92C749CC1007CDCA6 /* MessageViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageViewModelTests.swift; sourceTree = "<group>"; };
+		F61AA5002C74B3D5007CDCA6 /* SpeechViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpeechViewModelTests.swift; sourceTree = "<group>"; };
 		F62EF9DD2C6B27840025498E /* DeafHealth.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DeafHealth.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F62EF9E02C6B27840025498E /* DeafHealthApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeafHealthApp.swift; sourceTree = "<group>"; };
 		F62EF9E22C6B27840025498E /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -69,11 +99,21 @@
 		F62EFA092C6B41030025498E /* Watermelon.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Watermelon.swift; sourceTree = "<group>"; };
 		F62EFA0B2C6B41450025498E /* Pineapple.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Pineapple.swift; sourceTree = "<group>"; };
 		F62EFA0E2C6B41A00025498E /* Banana.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Banana.swift; sourceTree = "<group>"; };
+		F6856F982C6F582B00574B7E /* SpeechViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpeechViewModel.swift; sourceTree = "<group>"; };
 		F6A94FFC2C6C47AC00F45997 /* TestSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestSheet.swift; sourceTree = "<group>"; };
 		F6A94FFE2C6C486D00F45997 /* TestFullScreenCover.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestFullScreenCover.swift; sourceTree = "<group>"; };
+		F6A950012C6C5C6700F45997 /* CommunicationPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommunicationPage.swift; sourceTree = "<group>"; };
+		F6D07E3F2C6F79DB006113FB /* Message.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Message.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		F61AA4ED2C749BE2007CDCA6 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		F62EF9DA2C6B27840025498E /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -93,10 +133,21 @@
 			path = Components;
 			sourceTree = "<group>";
 		};
+		F61AA4F12C749BE2007CDCA6 /* DeafHealthTests */ = {
+			isa = PBXGroup;
+			children = (
+				F61AA4F22C749BE2007CDCA6 /* DeafHealthTests.swift */,
+				F61AA4F92C749CC1007CDCA6 /* MessageViewModelTests.swift */,
+				F61AA5002C74B3D5007CDCA6 /* SpeechViewModelTests.swift */,
+			);
+			path = DeafHealthTests;
+			sourceTree = "<group>";
+		};
 		F62EF9D42C6B27840025498E = {
 			isa = PBXGroup;
 			children = (
 				F62EF9DF2C6B27840025498E /* DeafHealth */,
+				F61AA4F12C749BE2007CDCA6 /* DeafHealthTests */,
 				F62EF9DE2C6B27840025498E /* Products */,
 			);
 			sourceTree = "<group>";
@@ -105,6 +156,7 @@
 			isa = PBXGroup;
 			children = (
 				F62EF9DD2C6B27840025498E /* DeafHealth.app */,
+				F61AA4F02C749BE2007CDCA6 /* DeafHealthTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -117,7 +169,7 @@
 				F62EF9EE2C6B27910025498E /* Model */,
 				F62EF9EF2C6B279B0025498E /* View Model */,
 				F62EF9F02C6B27AD0025498E /* View */,
-				F62EF9F92C6B2B720025498E /* enums */,
+				F62EF9F92C6B2B720025498E /* Utils */,
 				F62EF9E02C6B27840025498E /* DeafHealthApp.swift */,
 				F62EF9E22C6B27840025498E /* ContentView.swift */,
 				F62EF9E42C6B27850025498E /* Assets.xcassets */,
@@ -140,6 +192,7 @@
 				F62EF9F12C6B27D30025498E /* User.swift */,
 				F62EF9F32C6B293B0025498E /* Complaint.swift */,
 				F62EF9F52C6B2B3D0025498E /* SymptomsDetail.swift */,
+				F6D07E3F2C6F79DB006113FB /* Message.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -148,6 +201,8 @@
 			isa = PBXGroup;
 			children = (
 				F62EF9FF2C6B2EB10025498E /* ComplaintViewModel.swift */,
+				F6856F982C6F582B00574B7E /* SpeechViewModel.swift */,
+				F61AA4E82C7454F7007CDCA6 /* MessageViewModel.swift */,
 			);
 			path = "View Model";
 			sourceTree = "<group>";
@@ -156,6 +211,7 @@
 			isa = PBXGroup;
 			children = (
 				9B0F1FED2C74575900030F0C /* Components */,
+				F6EC258E2C743A9F001D7AAF /* Communication */,
 				F62EFA042C6B3EB70025498E /* Example */,
 				A2A0C5462C6F68B0002240E2 /* ComplaintView.swift */,
 				A2A0C5482C6F6922002240E2 /* SelectBodyPartView.swift */,
@@ -171,12 +227,12 @@
 			path = View;
 			sourceTree = "<group>";
 		};
-		F62EF9F92C6B2B720025498E /* enums */ = {
+		F62EF9F92C6B2B720025498E /* Utils */ = {
 			isa = PBXGroup;
 			children = (
 				F62EF9FA2C6B2BAF0025498E /* enums.swift */,
 			);
-			path = enums;
+			path = Utils;
 			sourceTree = "<group>";
 		};
 		F62EF9FC2C6B2BCC0025498E /* Data Source */ = {
@@ -209,9 +265,37 @@
 			path = Example;
 			sourceTree = "<group>";
 		};
+		F6EC258E2C743A9F001D7AAF /* Communication */ = {
+			isa = PBXGroup;
+			children = (
+				F6A950012C6C5C6700F45997 /* CommunicationPage.swift */,
+				F61AA4E42C743AE6007CDCA6 /* RecordingSheet.swift */,
+				F61AA4E62C745447007CDCA6 /* MessageBubble.swift */,
+			);
+			path = Communication;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
+		F61AA4EF2C749BE2007CDCA6 /* DeafHealthTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = F61AA4F62C749BE2007CDCA6 /* Build configuration list for PBXNativeTarget "DeafHealthTests" */;
+			buildPhases = (
+				F61AA4EC2C749BE2007CDCA6 /* Sources */,
+				F61AA4ED2C749BE2007CDCA6 /* Frameworks */,
+				F61AA4EE2C749BE2007CDCA6 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				F61AA4F52C749BE2007CDCA6 /* PBXTargetDependency */,
+			);
+			name = DeafHealthTests;
+			productName = DeafHealthTests;
+			productReference = F61AA4F02C749BE2007CDCA6 /* DeafHealthTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 		F62EF9DC2C6B27840025498E /* DeafHealth */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = F62EF9EB2C6B27850025498E /* Build configuration list for PBXNativeTarget "DeafHealth" */;
@@ -225,6 +309,8 @@
 			dependencies = (
 			);
 			name = DeafHealth;
+			packageProductDependencies = (
+			);
 			productName = DeafHealth;
 			productReference = F62EF9DD2C6B27840025498E /* DeafHealth.app */;
 			productType = "com.apple.product-type.application";
@@ -239,6 +325,10 @@
 				LastSwiftUpdateCheck = 1530;
 				LastUpgradeCheck = 1530;
 				TargetAttributes = {
+					F61AA4EF2C749BE2007CDCA6 = {
+						CreatedOnToolsVersion = 15.3;
+						TestTargetID = F62EF9DC2C6B27840025498E;
+					};
 					F62EF9DC2C6B27840025498E = {
 						CreatedOnToolsVersion = 15.3;
 					};
@@ -253,16 +343,27 @@
 				Base,
 			);
 			mainGroup = F62EF9D42C6B27840025498E;
+			packageReferences = (
+				F6856F952C6F509200574B7E /* XCRemoteSwiftPackageReference "SwiftUISpeechToText" */,
+			);
 			productRefGroup = F62EF9DE2C6B27840025498E /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
 				F62EF9DC2C6B27840025498E /* DeafHealth */,
+				F61AA4EF2C749BE2007CDCA6 /* DeafHealthTests */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		F61AA4EE2C749BE2007CDCA6 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		F62EF9DB2C6B27840025498E /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -275,18 +376,38 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		F61AA4EC2C749BE2007CDCA6 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F61AA5012C74B3D5007CDCA6 /* SpeechViewModelTests.swift in Sources */,
+				F61AA4FD2C749DE1007CDCA6 /* Message.swift in Sources */,
+				F61AA5022C74B3D9007CDCA6 /* SpeechViewModel.swift in Sources */,
+				F61AA4FF2C74A745007CDCA6 /* enums.swift in Sources */,
+				F61AA4FA2C749CC1007CDCA6 /* MessageViewModelTests.swift in Sources */,
+				F61AA4FE2C749DE6007CDCA6 /* MessageViewModel.swift in Sources */,
+				F61AA4F32C749BE2007CDCA6 /* DeafHealthTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		F62EF9D92C6B27840025498E /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 				A2A0C5572C6F69FB002240E2 /* SymptomImprovementFactorsView.swift in Sources */,
+				F61AA4E92C7454F7007CDCA6 /* MessageViewModel.swift in Sources */,
 				F6A94FFF2C6C486D00F45997 /* TestFullScreenCover.swift in Sources */,
 				F62EF9E32C6B27840025498E /* ContentView.swift in Sources */,
+				F6A950022C6C5C6700F45997 /* CommunicationPage.swift in Sources */,
 				F62EFA0A2C6B41030025498E /* Watermelon.swift in Sources */,
 				F62EF9F42C6B293B0025498E /* Complaint.swift in Sources */,
+				F61AA4E52C743AE6007CDCA6 /* RecordingSheet.swift in Sources */,
+				F6856F992C6F582B00574B7E /* SpeechViewModel.swift in Sources */,
 				F62EFA062C6B3ECB0025498E /* Strawberry.swift in Sources */,
 				A2A0C5552C6F69ED002240E2 /* SymptomWorseningFactorsView.swift in Sources */,
+				F6D07E402C6F79DB006113FB /* Message.swift in Sources */,
 				F62EFA082C6B40D80025498E /* Lemon.swift in Sources */,
+				F61AA4E72C745447007CDCA6 /* MessageBubble.swift in Sources */,
 				F6A94FFD2C6C47AC00F45997 /* TestSheet.swift in Sources */,
 				F62EFA0C2C6B41450025498E /* Pineapple.swift in Sources */,
 				F62EFA0F2C6B41A00025498E /* Banana.swift in Sources */,
@@ -312,7 +433,51 @@
 		};
 /* End PBXSourcesBuildPhase section */
 
+/* Begin PBXTargetDependency section */
+		F61AA4F52C749BE2007CDCA6 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = F62EF9DC2C6B27840025498E /* DeafHealth */;
+			targetProxy = F61AA4F42C749BE2007CDCA6 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
 /* Begin XCBuildConfiguration section */
+		F61AA4F72C749BE2007CDCA6 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 49V8Q5W76J;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = test.DeafHealthTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/DeafHealth.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/DeafHealth";
+			};
+			name = Debug;
+		};
+		F61AA4F82C749BE2007CDCA6 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 49V8Q5W76J;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = test.DeafHealthTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/DeafHealth.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/DeafHealth";
+			};
+			name = Release;
+		};
 		F62EF9E92C6B27850025498E /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -443,6 +608,8 @@
 				DEVELOPMENT_TEAM = FTP77G36XW;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSMicrophoneUsageDescription = "Access microphone to enable speech to text functionality ";
+				INFOPLIST_KEY_NSSpeechRecognitionUsageDescription = "Speech Recognition to translate doctor to text";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -472,6 +639,8 @@
 				DEVELOPMENT_TEAM = FTP77G36XW;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSMicrophoneUsageDescription = "Access microphone to enable speech to text functionality ";
+				INFOPLIST_KEY_NSSpeechRecognitionUsageDescription = "Speech Recognition to translate doctor to text";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -493,6 +662,15 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		F61AA4F62C749BE2007CDCA6 /* Build configuration list for PBXNativeTarget "DeafHealthTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				F61AA4F72C749BE2007CDCA6 /* Debug */,
+				F61AA4F82C749BE2007CDCA6 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		F62EF9D82C6B27840025498E /* Build configuration list for PBXProject "DeafHealth" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
@@ -512,6 +690,17 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		F6856F952C6F509200574B7E /* XCRemoteSwiftPackageReference "SwiftUISpeechToText" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/pandashashwat97/SwiftUISpeechToText.git";
+			requirement = {
+				branch = main;
+				kind = branch;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
 	};
 	rootObject = F62EF9D52C6B27840025498E /* Project object */;
 }

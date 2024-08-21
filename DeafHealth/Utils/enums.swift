@@ -22,3 +22,9 @@ enum Gender: Codable {
     case female
 }
 
+enum Role: String, CaseIterable, Identifiable {
+    case user = "User"
+    case doctor = "Doctor"
+
+    var id: String { rawValue }
+}

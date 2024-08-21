@@ -15,14 +15,18 @@ class SymptomsDetail {
     var dateOccurred: Date
     var durationInDays: Int
     var severity: Int
+    var feelWorse: [String] = []
+    var feelBetter: [String] = []
     var additionalNotes: String?
-
-    init(type: SymptomsType, position: [String], dateOccurred: Date, durationInDays: Int, severity: Int, additionalNotes: String? = nil) {
+    
+    init(type: SymptomsType, position: [String], dateOccurred: Date, durationInDays: Int, severity: Int, feelWorse: [String], feelBetter: [String], additionalNotes: String? = nil) {
         self.type = type
         self.position = position
         self.dateOccurred = dateOccurred
         self.durationInDays = durationInDays
         self.severity = severity
+        self.feelWorse = feelWorse
+        self.feelBetter = feelBetter
         self.additionalNotes = additionalNotes
     }
 }
