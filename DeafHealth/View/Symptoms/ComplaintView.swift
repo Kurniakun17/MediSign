@@ -23,7 +23,7 @@ struct ComplaintView: View {
                     Spacer()
 
                     HStack {
-                        Text("1").bold().font(Font.custom("SF Pro Bold", size: 14)) + Text(" / 6 pertanyaan").font(Font.custom("SF Pro", size: 13))
+                        Text("1").bold().font(Font.system(size: 14)).bold() + Text(" / 6 pertanyaan").font(Font.custom("SF Pro", size: 13))
                     }
                     .foregroundColor(.gray)
                 }
@@ -39,7 +39,7 @@ struct ComplaintView: View {
 
                 Text(selectedComplaint.isEmpty ? "____." : selectedComplaint)
                     .font(.title3)
-                    .foregroundColor(selectedComplaint.isEmpty ? .primary : Color.blue) // Change color to blue if selected
+                    .foregroundColor(selectedComplaint.isEmpty ? .primary : .darkBlue) // Change color to blue if selected
                     .multilineTextAlignment(.center)
             }
             .padding(.horizontal)
@@ -78,6 +78,9 @@ struct ComplaintView: View {
             .disabled(!isAnswerProvided)
             .padding(.bottom, 32) // Increased bottom padding
         }
+        .background {
+            Image("sheet-background")
+        }
         .edgesIgnoringSafeArea(.bottom)
         .navigationBarBackButtonHidden(true)
     }
@@ -103,7 +106,7 @@ struct ComplaintView: View {
             Text(symptom)
                 .font(.headline)
                 .foregroundColor(selectedComplaint == symptom ? .white : .primary)
-            
+
             Image(systemName: "photo") // Placeholder for actual image
                 .resizable()
                 .scaledToFit()
@@ -112,7 +115,7 @@ struct ComplaintView: View {
         }
         .frame(maxWidth: .infinity, maxHeight: 150)
         .padding()
-        .background(selectedComplaint == symptom ? Color.blue : Color("light-blue")) // Change color if selected
+        .background(selectedComplaint == symptom ? .darkBlue : Color("light-blue")) // Change color if selected
         .cornerRadius(12)
     }
 }

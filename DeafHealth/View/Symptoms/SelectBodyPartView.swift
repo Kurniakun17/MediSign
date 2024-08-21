@@ -43,12 +43,12 @@ struct SelectBodyPartView: View {
 
             ZStack {
                 if isFrontView {
-                    Image("front")  // Using the front view image from assets
+                    Image("front") // Using the front view image from assets
                         .resizable()
                         .aspectRatio(contentMode: .fit)
                         .overlay(frontBodyCircles())
                 } else {
-                    Image("back")  // Using the back view image from assets
+                    Image("back") // Using the back view image from assets
                         .resizable()
                         .aspectRatio(contentMode: .fit)
                         .overlay(backBodyCircles())
@@ -60,7 +60,7 @@ struct SelectBodyPartView: View {
                         isFrontView = false
                     }
                 }) {
-                    Image("left-arrow")  // Using the left arrow image from assets
+                    Image("left-arrow") // Using the left arrow image from assets
                 }
                 .position(x: 30, y: UIScreen.main.bounds.height / 2)
                 .opacity(isFrontView ? 1 : 0) // Hide when on the back view
@@ -71,7 +71,7 @@ struct SelectBodyPartView: View {
                         isFrontView = true
                     }
                 }) {
-                    Image("right-arrow")  // Using the right arrow image from assets
+                    Image("right-arrow") // Using the right arrow image from assets
                 }
                 .position(x: UIScreen.main.bounds.width - 30, y: UIScreen.main.bounds.height / 2)
                 .opacity(isFrontView ? 0 : 1) // Hide when on the front view
@@ -89,6 +89,9 @@ struct SelectBodyPartView: View {
             .foregroundColor(Color("FFFFFF"))
             .disabled(!isAnswerProvided)
             .padding(.bottom, 32)
+        }
+        .background {
+            Image("sheet-background")
         }
         .edgesIgnoringSafeArea(.bottom)
         .navigationBarBackButtonHidden(true)
@@ -126,5 +129,3 @@ struct SelectBodyPartView: View {
         }
     }
 }
-
-

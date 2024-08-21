@@ -21,13 +21,14 @@ enum Page: String, Identifiable {
     case summary
     case consultationMenuView
     case communication
+    case homepage
 
     var id: String {
         self.rawValue
     }
 }
 
-enum Sheet: Identifiable {
+enum Sheet: String, Identifiable {
     // MARK: Add Your Sheet Here
 
     // MARK: Example Data
@@ -41,7 +42,7 @@ enum Sheet: Identifiable {
     case previousConsultation
 
     var id: String {
-        self.id
+        self.rawValue
     }
 }
 
@@ -113,6 +114,8 @@ class Coordinator: ObservableObject {
             ConsultationMenuView()
         case .communication:
             CommunicationPage()
+        case .homepage:
+            HomePage()
         }
     }
 

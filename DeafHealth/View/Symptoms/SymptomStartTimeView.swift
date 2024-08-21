@@ -26,7 +26,7 @@ struct SymptomStartTimeView: View {
                     Spacer()
 
                     HStack {
-                        Text("2").bold().font(Font.custom("SF Pro Bold", size: 14)) + Text(" / 6 pertanyaan").font(Font.custom("SF Pro", size: 13))
+                        Text("2").bold().font(Font.system(size: 14)).bold() + Text(" / 6 pertanyaan").font(Font.custom("SF Pro", size: 13))
                     }
                     .foregroundColor(.gray)
                 }
@@ -35,12 +35,12 @@ struct SymptomStartTimeView: View {
             .padding(.top, 16)
             .padding(.bottom, 16)
 
-            Spacer().frame(height: 147)
+            Spacer().frame(height: 48)
 
             HStack {
-                Text("Saya merasakan gejala ini sejak ").font(Font.custom("SF Pro", size: 20))
+                Text("Saya merasakan gejala ini sejak ").font(Font.system(size: 20))
 
-                    + Text("\(selectedNumber + " " + selectedUnit.lowercased())").bold().underline().foregroundColor(.darkGreen)
+                    + Text("\(selectedNumber + " " + selectedUnit.lowercased())").font(Font.system(size: 20)).bold().foregroundColor(.darkBlue)
 
                     + Text(" yang lalu.").font(Font.custom("SF Pro", size: 20))
             }
@@ -57,8 +57,13 @@ struct SymptomStartTimeView: View {
                 .pickerStyle(.wheel)
                 .frame(minWidth: 60)
                 .onChange(of: selectedNumber) {
-                    isAnswerProvided = true
                     complaintViewModel.updateAnswer(for: 1, with: selectedNumber + " " + selectedUnit.lowercased())
+                    let feedbackGenerator = UIImpactFeedbackGenerator(style: .medium)
+                    feedbackGenerator.impactOccurred()
+
+                    if selectedNumber != "_" && selectedUnit != "_____" {
+                        isAnswerProvided = true
+                    }
                 }
 
                 Picker("Unit", selection: $selectedUnit) {
@@ -70,7 +75,8 @@ struct SymptomStartTimeView: View {
 
                 }.pickerStyle(.wheel).frame(minWidth: 120)
                     .onChange(of: selectedUnit) {
-                        isAnswerProvided = true
+                        let feedbackGenerator = UIImpactFeedbackGenerator(style: .medium)
+                        feedbackGenerator.impactOccurred()
 
                         if selectedUnit == "Jam" {
                             batasAtas = 24
@@ -84,11 +90,15 @@ struct SymptomStartTimeView: View {
                             batasAtas = 10
                         }
 
+                        if selectedNumber != "_" && selectedUnit != "_____" {
+                            isAnswerProvided = true
+                        }
+
                         complaintViewModel.updateAnswer(for: 1, with: selectedNumber + " " + selectedUnit.lowercased())
                     }
             }.padding(.horizontal, 110)
 
-            Spacer().frame(height: 250)
+            Spacer().frame(height: 350)
 
             Button("Lanjutkan") {
 //                coordinator.push(page: .symptomSeverity)
@@ -100,8 +110,9 @@ struct SymptomStartTimeView: View {
             .foregroundColor(Color("FFFFFF"))
             .disabled(!isAnswerProvided)
         }
-        .edgesIgnoringSafeArea(.bottom)
-        .navigationBarBackButtonHidden(true)
+        .background {
+            Image("sheet-background")
+        }
     }
 }
 
