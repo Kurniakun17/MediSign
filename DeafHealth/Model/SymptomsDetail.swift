@@ -30,3 +30,11 @@ class SymptomsDetail {
         self.additionalNotes = additionalNotes
     }
 }
+
+var generalSymptoms: [String] {
+    ["Flu", "Demam", "Pusing", "Batuk", "Sesak Nafas", "Diare", "Mual/Muntah", "Sakit lain"]
+}
+
+var specificSymptoms: [String] {
+    ["Sakit Kepala", "Nyeri Dada", "Nyeri Punggung", "Nyeri Sendi", "Nyeri Otot"]
+}

@@ -12,22 +12,24 @@ struct ContentView: View {
     @StateObject private var coordinator = Coordinator()
 
     var body: some View {
-        NavigationStack(path: $coordinator.path
-        ) {
-            coordinator.build(page: .communication)
-                .navigationDestination(for: Page.self) {
-                    page in
-                    coordinator.build(page: page)
+        NavigationStack(path: $coordinator.path) {
+            VStack {
+                // Your main menu content
+                Button("Tambah Keluhan") {
+                    coordinator.push(page: .consultationMenuView)
                 }
-                .sheet(item: $coordinator.sheet) {
-                    sheet in coordinator.build(sheet: sheet)
-                }
-
-                .fullScreenCover(item: $coordinator.fullScreenCover) {
-                    fullScreenCover in coordinator.build(fullScreenCover: fullScreenCover)
-                }
+                .padding()
+            }
+            .navigationDestination(for: Page.self) { page in
+                coordinator.build(page: page)
+            }
+            .sheet(item: $coordinator.sheet) { sheet in
+                coordinator.build(sheet: sheet)
+            }
+            .fullScreenCover(item: $coordinator.fullScreenCover) { fullScreenCover in
+                coordinator.build(fullScreenCover: fullScreenCover)
+            }
         }
-
         .environmentObject(coordinator)
         .environmentObject(complaintViewModel)
     }

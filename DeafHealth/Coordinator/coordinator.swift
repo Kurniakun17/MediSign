@@ -11,6 +11,15 @@ import SwiftUI
 enum Page: String, Identifiable {
     // MARK: Add Your Page Here
 
+    case mainComplaint
+    case selectBodyPart
+    case symptomStartTime
+    case symptomSeverity
+    case symptomWorseningFactors
+    case symptomImprovementFactors
+    case previousConsultation
+    case summary
+    case consultationMenuView
     // MARK: Example Data
 
     case banana
@@ -31,6 +40,12 @@ enum Sheet: Identifiable {
     // MARK: Example Data
 
     case testSheet
+    case selectBodyPart
+    case symptomStartTime
+    case symptomSeverity
+    case symptomWorseningFactors
+    case symptomImprovementFactors
+    case previousConsultation
 
     var id: String {
         self.id
@@ -85,6 +100,24 @@ class Coordinator: ObservableObject {
     @ViewBuilder
     func build(page: Page) -> some View {
         switch page {
+        case .mainComplaint:
+            ComplaintView()
+        case .selectBodyPart:
+            SelectBodyPartView()
+        case .symptomStartTime:
+            SymptomStartTimeView()
+        case .symptomSeverity:
+            SymptomSeverityView()
+        case .symptomWorseningFactors:
+            SymptomWorseningFactorsView()
+        case .symptomImprovementFactors:
+            SymptomImprovementFactorsView()
+        case .previousConsultation:
+            PreviousConsultationView()
+        case .summary:
+            SummaryView()
+        case .consultationMenuView: // Add this case
+            ConsultationMenuView()
         case .banana:
             Banana()
         case .lemon:
@@ -106,6 +139,30 @@ class Coordinator: ObservableObject {
         case .testSheet:
             NavigationStack {
                 TestSheet()
+            }
+        case .symptomStartTime:
+            NavigationStack {
+                SymptomStartTimeView()
+            }
+        case .selectBodyPart:
+            NavigationStack {
+                SelectBodyPartView()
+            }
+        case .symptomSeverity:
+            NavigationStack {
+                SymptomSeverityView()
+            }
+        case .symptomWorseningFactors:
+            NavigationStack {
+                SymptomWorseningFactorsView()
+            }
+        case .symptomImprovementFactors:
+            NavigationStack {
+                SymptomImprovementFactorsView()
+            }
+        case .previousConsultation:
+            NavigationStack {
+                PreviousConsultationView()
             }
         }
     }
