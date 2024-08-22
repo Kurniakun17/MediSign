@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct DecimalConstants {
+enum DecimalConstants {
     static let zeros = 0.0
     static let d1 = 1.0
     static let d2 = 2.0

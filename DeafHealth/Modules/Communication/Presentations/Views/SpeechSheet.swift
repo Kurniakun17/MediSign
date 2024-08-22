@@ -8,7 +8,7 @@
 import Foundation
 import SwiftUI
 
-struct RecordingSheet: View {
+struct SpeechSheet: View {
     @EnvironmentObject var messageViewModel: MessageViewModel
     @EnvironmentObject var speechViewModel: SpeechViewModel
     let stopRecording: () -> Void
@@ -19,9 +19,11 @@ struct RecordingSheet: View {
                 Text("Dokter berbicara")
                     .fontWeight(.bold)
                     .font(.title2)
+                    .multilineTextAlignment(.leading)
 
-                Text(speechViewModel.transcript)
+                Text(speechViewModel.transcript != "" ? speechViewModel.transcript : AppLabel.speechPlaceholder)
                     .foregroundStyle(.gray)
+                    .multilineTextAlignment(.leading)
 
                 Spacer()
 
@@ -51,5 +53,10 @@ struct RecordingSheet: View {
             .padding(36)
         }
         .presentationDetents([.height(500)])
+        .onDisappear {
+            if speechViewModel.transcript != "" {
+                stopRecording()
+            }
+        }
     }
 }

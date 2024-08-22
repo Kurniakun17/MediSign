@@ -31,6 +31,7 @@ struct ContentView: View {
             .fullScreenCover(item: $coordinator.fullScreenCover) { fullScreenCover in
                 coordinator.build(fullScreenCover: fullScreenCover)
             }
+
         }
         .environmentObject(coordinator)
         .environmentObject(complaintViewModel)

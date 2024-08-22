@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct AppLabel {
+enum AppLabel {
     // Consultation Labels
     static let consultationGreeting = "Halo, "
     static let addConsultation = "Tambah Keluhan"
@@ -23,7 +23,10 @@ struct AppLabel {
 
     // Communication Labels
     static let doctorGreeting = "Hai, bagaimana saya bisa membantu?"
+    static let speechPlaceholder = "Hasil ucapan akan muncul disini"
+    static let signLanguageCameraPlaceholder = "Hasil bahasa isyarat akan muncul disini"
     static let userGreeting = "Halo, saya butuh bantuan."
+    static let signLanguageCameraTitle = "Saya Berbahasa Isyarat"
 
     // Profile Labels
     static let profileTitle = "Profil Pengguna"
