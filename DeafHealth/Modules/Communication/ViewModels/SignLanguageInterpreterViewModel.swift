@@ -2,14 +2,13 @@
 //  SignLanguageInterpreterViewModel.swift
 //  DeafHealth
 //
-//  Created by Kurnia Kharisma Agung Samiadjie on 22/08/24.
+//  Created by Stefan Agusto Hutapea on 21/08/24.
 //
 
-import AVFoundation
-import CoreML
-import Foundation
 import SwiftUI
+import AVFoundation
 import Vision
+import CoreML
 
 class SignLanguageInterpreterViewModel: ObservableObject {
     @Published var recognizedText: String = ""
@@ -20,7 +19,7 @@ class SignLanguageInterpreterViewModel: ObservableObject {
 
     init() {
         self.cameraModel = CameraModel()
-        cameraModel?.onActionRecognized = { [weak self] recognizedAction in
+        self.cameraModel?.onActionRecognized = { [weak self] recognizedAction in
             DispatchQueue.main.async {
                 self?.processRecognizedAction(recognizedAction)
             }
@@ -28,26 +27,26 @@ class SignLanguageInterpreterViewModel: ObservableObject {
     }
 
     func startInterpreting() {
-        isInterpreting = true
+        self.isInterpreting = true
         cameraModel?.setupCamera()
     }
 
     func stopInterpreting() {
-        isInterpreting = false
+        self.isInterpreting = false
         cameraModel?.stopCamera()
         detectedWords.removeAll()
         recognizedText = ""
     }
 
     private func processRecognizedAction(_ action: String) {
-        guard action != "Nothing" else { return } // Ignore "Nothing" class
+        guard action != "Nothing" else { return }  // Ignore "Nothing" class
 
         if !detectedWords.contains(action) {
             recognizedText += recognizedText.isEmpty ? action : " \(action)"
             detectedWords.insert(action)
         }
     }
-
+    
     private func appendToRecognizedText(_ word: String) {
         recognizedText = recognizedText.isEmpty ? word : "\(recognizedText) \(word)"
     }

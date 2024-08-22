@@ -14,15 +14,15 @@ struct ContentView: View {
     var body: some View {
         NavigationStack(path: $coordinator.path) {
             coordinator.build(page: .homepage)
-            .navigationDestination(for: Page.self) { page in
-                coordinator.build(page: page)
-            }
-            .sheet(item: $coordinator.sheet) { sheet in
-                coordinator.build(sheet: sheet)
-            }
-            .fullScreenCover(item: $coordinator.fullScreenCover) { fullScreenCover in
-                coordinator.build(fullScreenCover: fullScreenCover)
-            }
+                .navigationDestination(for: Page.self) { page in
+                    coordinator.build(page: page)
+                }
+                .sheet(item: $coordinator.sheet) { sheet in
+                    coordinator.build(sheet: sheet)
+                }
+                .fullScreenCover(item: $coordinator.fullScreenCover) { fullScreenCover in
+                    coordinator.build(fullScreenCover: fullScreenCover)
+                }
         }
         .environmentObject(coordinator)
         .environmentObject(complaintViewModel)

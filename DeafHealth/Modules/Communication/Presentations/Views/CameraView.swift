@@ -1,6 +1,12 @@
+//
+//  CameraView.swift
+//  DeafHealth
+//
+//  Created by Stefan Agusto Hutapea on 21/08/24.
+//
 
-import SwiftUI
 import AVFoundation
+import SwiftUI
 
 struct CameraView: UIViewControllerRepresentable {
     var cameraModel: CameraModel
@@ -37,6 +43,3 @@ class CameraViewController: UIViewController {
         cameraModel?.stopCamera()
     }
 }
-
-
-
