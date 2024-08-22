@@ -88,6 +88,8 @@ struct ComplaintView: View {
                     selectedComplaint = symptom
                     isAnswerProvided = true
                     complaintViewModel.updateAnswer(for: 0, with: selectedComplaint)
+                    complaintViewModel.updateAnswer(for: 1, with: "")
+
                 }) {
                     symptomButton(symptom)
                 }

@@ -44,8 +44,18 @@ struct ConsultationMenuView: View {
 
                 Spacer(minLength: -8)
 
-                SaveComplaintButton()
-                    .disabled(!allQuestionsAnswered())
+//                SaveComplaintButton()
+//                    .disabled(!allQuestionsAnswered())
+                Button("Simpan Keluhan") {
+                    coordinator.push(page: .summary)
+                }
+                .font(.custom("SF Pro", size: 16))
+                .frame(width: 363)
+                .padding(.vertical, 16)
+                .background(allQuestionsAnswered() ? Color(red: 0.25, green: 0.48, blue: 0.68) : Color("blue-button"))
+                .cornerRadius(25)
+                .foregroundColor(Color.white)
+                .disabled(!allQuestionsAnswered())
             }
             .padding()
             .background(Color.clear)
@@ -63,7 +73,13 @@ struct ConsultationMenuView: View {
     }
 
     func allQuestionsAnswered() -> Bool {
-        return complaintViewModel.answers.allSatisfy { !$0.isEmpty }
+        for answer in complaintViewModel.answers {
+            if answer == "_____" {
+                return false
+            }
+        }
+        return true
+//        return complaintViewModel.answers.allSatisfy { !$0.isEmpty }
     }
 
     @ViewBuilder
@@ -161,29 +177,32 @@ struct QuestionButtonView: View {
     func isQuestionActive(at index: Int) -> Bool {
         if index == 0 {
             return true
-        } else if index == 1 && complaintViewModel.answers[2] != "_____" {
-            return true
         }
+//        else if index == 1 && complaintViewModel.answers[2] != "_____" {
+//            return true
+//        }
         return !(complaintViewModel.answers[index] == "_____")
     }
 }
 
-struct SaveComplaintButton: View {
-    @EnvironmentObject var coordinator: Coordinator
-
-    var body: some View {
-        Button("Simpan Keluhan") {
-            coordinator.push(page: .summary)
-        }
-        .font(.custom("SF Pro", size: 16))
-        .frame(width: 363)
-        .padding(.vertical, 16)
-        .background(Color("blue-button"))
-        .cornerRadius(25)
-        .foregroundColor(Color.white)
-        .disabled(true)
-    }
-}
+//
+// struct SaveComplaintButton: View {
+//    @EnvironmentObject var coordinator: Coordinator
+//    @Binding var isDisabled
+//
+//    var body: some View {
+//        Button("Simpan Keluhan") {
+//            coordinator.push(page: .summary)
+//        }
+//        .font(.custom("SF Pro", size: 16))
+//        .frame(width: 363)
+//        .padding(.vertical, 16)
+//        .background(Color("blue-button"))
+//        .cornerRadius(25)
+//        .foregroundColor(Color.white)
+//        .disabled(true)
+//    }
+// }
 
 #Preview {
     ConsultationMenuView()

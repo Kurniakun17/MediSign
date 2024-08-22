@@ -10,7 +10,7 @@ import SwiftData
 
 class ComplaintViewModel: ObservableObject {
     @Published private(set) var complaintSummary: String = "Halo Dokter. Saya merasakan _____." // Initial placeholder text
-    @Published private(set) var answers: [String] = ["_____", "_____", "_____", "_____", "_____", "_____", "_____", "_____"]
+    @Published private(set) var answers: [String] = ["_____", "_____", "_____", "_____", "_____", "_____", "_____"]
     @Published private(set) var summary: [String] = ["Saya merasakan ", "Saya merasakan gejala ini sejak ", " yang lalu", "Rasa sakitnya ", " dari 10", "Gejalanya semakin parah ketika saya ", "Gejalanya semakin membaik ketika saya ", "Pernah konsultasi ke dokter lain dan diberi obat yaitu "]
 
     private let dataSource: LocalDataSource
@@ -65,9 +65,9 @@ class ComplaintViewModel: ObservableObject {
             summaryParts.append("Terdapat keluhan lain berupa \(answers[6].isEmpty ? "_____" : answers[6]).")
         }
 
-        if currentQuestionIndex >= 7 {
-            summaryParts.append("\(answers[7].isEmpty ? "_____" : answers[7]) pernah konsultasi ke dokter.")
-        }
+//        if currentQuestionIndex >= 7 {
+//            summaryParts.append("\(answers[7].isEmpty ? "_____" : answers[7]) pernah konsultasi ke dokter.")
+//        }
 
         // Return the summary up to the current question, plus a placeholder for the next unanswered part.
         return summaryParts.joined(separator: " ")
