@@ -26,8 +26,9 @@ struct RoundedCorner: Shape {
 extension View {
     func positionedCircle(x: CGFloat, y: CGFloat, bodyPart: String, selectedBodyPart: Binding<String>, isAnswerProvided: Binding<Bool>) -> some View {
         Circle()
-            .fill(selectedBodyPart.wrappedValue == bodyPart ? Color.blue : Color.blue.opacity(0.7))
-            .frame(width: 30, height: 30)
+            .fill(Color.clear) // Transparent fill
+            .frame(width: 40, height: 40) // Adjust size as needed
+            .contentShape(Circle()) // Ensures the entire circle area is tappable
             .position(x: x, y: y)
             .onTapGesture {
                 selectedBodyPart.wrappedValue = bodyPart

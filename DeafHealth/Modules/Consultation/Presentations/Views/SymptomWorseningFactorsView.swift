@@ -22,7 +22,7 @@ struct SymptomWorseningFactorsView: View {
 
     var body: some View {
         VStack {
-            VStack(spacing: 0) {
+            VStack(spacing: DecimalConstants.zeros) {
                 ZStack {
                     HStack {
                         Spacer()
@@ -32,47 +32,47 @@ struct SymptomWorseningFactorsView: View {
                         }
                         .foregroundColor(.gray)
                     }
-                    .padding(.horizontal, 22)
+                    .padding(.horizontal, DecimalConstants.d8 * 2.75)
                 }
-                .padding(.top, 16)
-                .padding(.bottom, 16)
+                .padding(.top, DecimalConstants.d8 * 2)
+                .padding(.bottom, DecimalConstants.d8 * 2)
 
-                Spacer().frame(height: 32)
+                Spacer().frame(height: DecimalConstants.d8 * 4)
 
                 if isNotAvailable {
                     HStack {
                         Text("Tidak terdapat faktor yang memperburuk gejala.").font(Font.system(size: 20))
                     }
-                    .padding(.bottom, 8)
+                    .padding(.bottom, DecimalConstants.d8)
                     .multilineTextAlignment(.center)
                     .frame(maxWidth: 257, alignment: .center)
                 } else {
                     HStack {
-                        Text("Gejala semakin memburuk ketika ").font(Font.system(size: 20))
+                        Text("\(AppLabel.worseningFactors) ").font(Font.system(size: 20))
 
                             +
                             Text("\(selectedFactor.lowercased() == "" ? "_____" : selectedFactor.lowercased())").font(Font.system(size: 20)).bold().foregroundColor(.darkBlue)
 
                             + Text(".").font(Font.custom("SF Pro", size: 20))
                     }
-                    .padding(.bottom, 8)
+                    .padding(.bottom, DecimalConstants.d8)
                     .multilineTextAlignment(.center)
                     .frame(maxWidth: 257, alignment: .center)
                 }
 
-                Spacer().frame(height: 54)
+                Spacer().frame(height: DecimalConstants.d8 * 6.75)
 
                 if !isNotAvailable {
                     ZStack(alignment: .leading) {
                         TextEditor(text: $factor)
-                            .padding(EdgeInsets(top: 10, leading: 10, bottom: 10, trailing: 10))
+                            .padding(EdgeInsets(top: DecimalConstants.d8 * 1.25, leading: DecimalConstants.d8 * 1.25, bottom: DecimalConstants.d8 * 1.25, trailing: DecimalConstants.d8 * 1.25))
                             .frame(width: 360, height: 180)
                             .background(Color.white)
                             .cornerRadius(25)
-                            .focused($isFocused) // Bind the focus state
+                            .focused($isFocused)
                             .overlay(
                                 RoundedRectangle(cornerRadius: 25)
-                                    .stroke(Color.gray, lineWidth: 1)
+                                    .stroke(Color.gray, lineWidth: DecimalConstants.d1)
                             )
                             .disabled(isNotAvailable)
                             .onChange(of: factor) { newValue in
@@ -84,9 +84,9 @@ struct SymptomWorseningFactorsView: View {
                         if factor.isEmpty && !isFocused {
                             Text("Tambahkan faktor yang memperburuk gejala")
                                 .foregroundColor(.gray)
-                                .padding(.horizontal, 16)
-                                .padding(.vertical, 12)
-                                .offset(x: 5, y: -62)
+                                .padding(.horizontal, DecimalConstants.d8 * 2)
+                                .padding(.vertical, DecimalConstants.d8 * 1.5)
+                                .offset(x: DecimalConstants.d8 * 0.625, y: -DecimalConstants.d8 * 7.75)
                                 .font(Font.custom("SF Pro Bold", size: 14))
                                 .multilineTextAlignment(.leading)
                         }
@@ -134,15 +134,15 @@ struct SymptomWorseningFactorsView: View {
                     }
                 }
                 .font(Font.system(size: 14)).italic()
-                .padding(.horizontal, 18)
-                .padding(.vertical, 14)
+                .padding(.horizontal, DecimalConstants.d8 * 2.25)
+                .padding(.vertical, DecimalConstants.d8 * 1.75)
                 .frame(width: 360, alignment: .topLeading)
                 .background(Color(red: 0.97, green: 0.97, blue: 0.97))
                 .cornerRadius(25)
                 .foregroundColor(.gray)
             }
 
-            Spacer().frame(height: 18)
+            Spacer().frame(height: DecimalConstants.d8 * 2.25)
 
             HStack {
                 Button {
@@ -157,22 +157,22 @@ struct SymptomWorseningFactorsView: View {
                     if isNotAvailable {
                         Rectangle()
                             .foregroundColor(.blue)
-                            .frame(width: 15, height: 15)
+                            .frame(width: DecimalConstants.d8 * 1.875, height: DecimalConstants.d8 * 1.875)
                             .cornerRadius(3)
                             .overlay(
                                 RoundedRectangle(cornerRadius: 3)
-                                    .inset(by: 0.5)
-                                    .stroke(.black, lineWidth: 1)
+                                    .inset(by: DecimalConstants.d8 * 0.0625)
+                                    .stroke(.black, lineWidth: DecimalConstants.d8 * 0.125)
                             )
                     } else {
                         Rectangle()
                             .foregroundColor(.clear)
-                            .frame(width: 15, height: 15)
+                            .frame(width: DecimalConstants.d8 * 1.875, height: DecimalConstants.d8 * 1.875)
                             .cornerRadius(3)
                             .overlay(
                                 RoundedRectangle(cornerRadius: 3)
-                                    .inset(by: 0.5)
-                                    .stroke(.black, lineWidth: 1)
+                                    .inset(by: DecimalConstants.d8 * 0.0625)
+                                    .stroke(.black, lineWidth: DecimalConstants.d8 * 0.125)
                             )
                     }
                 }.onChange(of: isNotAvailable) {
@@ -183,10 +183,9 @@ struct SymptomWorseningFactorsView: View {
                 Text("Tidak ada faktor yang memperburuk gejala").font(Font.custom("SF Pro Bold", size: 14))
             }
 
-            Spacer().frame(height: 18)
+            Spacer().frame(height: DecimalConstants.d8 * 2.25)
 
-            Button("Lanjutkan") {
-                //            coordinator.push(page: .symptomWorseningFactors)
+            Button(AppLabel.continueButton) {
                 coordinator.present(sheet: .symptomImprovementFactors)
             }
             .frame(width: 363, height: 52)
@@ -196,7 +195,7 @@ struct SymptomWorseningFactorsView: View {
             .disabled(!isAnswerProvided)
         }
         .background {
-            Image("sheet-background")
+            Image(ImageLabel.sheetBackground)
         }
     }
 }

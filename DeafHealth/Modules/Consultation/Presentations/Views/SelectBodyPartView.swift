@@ -13,10 +13,10 @@ struct SelectBodyPartView: View {
 
     @State private var selectedBodyPart: String = ""
     @State private var isAnswerProvided: Bool = false
-    @State private var isFrontView: Bool = true // Track front or back view
+    @State private var isFrontView: Bool = true
 
     var body: some View {
-        VStack(spacing: 0) {
+        VStack(spacing: DecimalConstants.zeros) {
             ZStack {
                 HStack {
                     Spacer()
@@ -26,29 +26,29 @@ struct SelectBodyPartView: View {
                     }
                     .foregroundColor(.gray)
                 }
-                .padding(.horizontal, 22)
-                .padding(.top, 24)
+                .padding(.horizontal, DecimalConstants.d8 * 2.75)
+                .padding(.top, DecimalConstants.d16 * 1.5)
             }
 
-            VStack(spacing: 8) {
-                Text("Halo, Dokter. Saya merasakan \(complaintViewModel.answers[0]) di bagian \(selectedBodyPart.isEmpty ? "____" : selectedBodyPart).")
+            VStack(spacing: DecimalConstants.d8) {
+                Text("\(AppLabel.complaintStatement) \(complaintViewModel.answers[0]) di bagian \(selectedBodyPart.isEmpty ? "____" : selectedBodyPart).")
                     .font(.title3)
                     .foregroundColor(selectedBodyPart.isEmpty ? .primary : Color.blue)
                     .multilineTextAlignment(.center)
             }
             .padding(.horizontal)
-            .padding(.top, 16)
+            .padding(.top, DecimalConstants.d8 * 2)
 
             Spacer()
 
             ZStack {
                 if isFrontView {
-                    Image("front") // Using the front view image from assets
+                    Image(ImageLabel.frontViewBody)
                         .resizable()
                         .aspectRatio(contentMode: .fit)
                         .overlay(frontBodyCircles())
                 } else {
-                    Image("back") // Using the back view image from assets
+                    Image(ImageLabel.backViewBody)
                         .resizable()
                         .aspectRatio(contentMode: .fit)
                         .overlay(backBodyCircles())
@@ -60,10 +60,10 @@ struct SelectBodyPartView: View {
                         isFrontView = false
                     }
                 }) {
-                    Image("left-arrow") // Using the left arrow image from assets
+                    Image(ImageLabel.leftArrow)
                 }
                 .position(x: 30, y: UIScreen.main.bounds.height / 2)
-                .opacity(isFrontView ? 1 : 0) // Hide when on the back view
+                .opacity(isFrontView ? 1 : 0)
 
                 // Right arrow for flipping to front view
                 Button(action: {
@@ -71,27 +71,27 @@ struct SelectBodyPartView: View {
                         isFrontView = true
                     }
                 }) {
-                    Image("right-arrow") // Using the right arrow image from assets
+                    Image(ImageLabel.rightArrow)
                 }
                 .position(x: UIScreen.main.bounds.width - 30, y: UIScreen.main.bounds.height / 2)
-                .opacity(isFrontView ? 0 : 1) // Hide when on the front view
+                .opacity(isFrontView ? 0 : 1)
             }
             .padding()
 
             Spacer()
 
-            Button("Lanjutkan") {
-                coordinator.present(sheet: .symptomStartTime) // Proceed to Question 2
+            Button(AppLabel.continueButton) {
+                coordinator.present(sheet: .symptomStartTime)
             }
             .frame(width: 363, height: 52)
             .background(isAnswerProvided ? Color(red: 0.25, green: 0.48, blue: 0.68) : Color.gray)
             .cornerRadius(25)
             .foregroundColor(Color("FFFFFF"))
             .disabled(!isAnswerProvided)
-            .padding(.bottom, 32)
+            .padding(.bottom, DecimalConstants.d16 * 2)
         }
         .background {
-            Image("sheet-background")
+            Image(ImageLabel.sheetBackground)
         }
         .edgesIgnoringSafeArea(.bottom)
         .navigationBarBackButtonHidden(true)
@@ -100,32 +100,38 @@ struct SelectBodyPartView: View {
     // Circles for front body view
     func frontBodyCircles() -> some View {
         ZStack {
-            Circle().positionedCircle(x: 150, y: 200, bodyPart: "Leher", selectedBodyPart: $selectedBodyPart, isAnswerProvided: $isAnswerProvided)
-            Circle().positionedCircle(x: 120, y: 230, bodyPart: "Bahu", selectedBodyPart: $selectedBodyPart, isAnswerProvided: $isAnswerProvided)
-            Circle().positionedCircle(x: 140, y: 260, bodyPart: "Dada", selectedBodyPart: $selectedBodyPart, isAnswerProvided: $isAnswerProvided)
-            Circle().positionedCircle(x: 140, y: 290, bodyPart: "Perut", selectedBodyPart: $selectedBodyPart, isAnswerProvided: $isAnswerProvided)
-            Circle().positionedCircle(x: 100, y: 320, bodyPart: "Lengan Atas", selectedBodyPart: $selectedBodyPart, isAnswerProvided: $isAnswerProvided)
-            Circle().positionedCircle(x: 120, y: 360, bodyPart: "Siku tangan", selectedBodyPart: $selectedBodyPart, isAnswerProvided: $isAnswerProvided)
-            Circle().positionedCircle(x: 160, y: 390, bodyPart: "Pergelangan Tangan", selectedBodyPart: $selectedBodyPart, isAnswerProvided: $isAnswerProvided)
-            Circle().positionedCircle(x: 140, y: 420, bodyPart: "Kelamin", selectedBodyPart: $selectedBodyPart, isAnswerProvided: $isAnswerProvided)
-            Circle().positionedCircle(x: 140, y: 450, bodyPart: "Paha atas", selectedBodyPart: $selectedBodyPart, isAnswerProvided: $isAnswerProvided)
-            Circle().positionedCircle(x: 160, y: 480, bodyPart: "Lutut", selectedBodyPart: $selectedBodyPart, isAnswerProvided: $isAnswerProvided)
-            Circle().positionedCircle(x: 140, y: 510, bodyPart: "Jari dan telapak kaki", selectedBodyPart: $selectedBodyPart, isAnswerProvided: $isAnswerProvided)
+            Circle().positionedCircle(x: 86, y: 95, bodyPart: "Leher", selectedBodyPart: $selectedBodyPart, isAnswerProvided: $isAnswerProvided)
+            Circle().positionedCircle(x: 22, y: 115, bodyPart: "Bahu", selectedBodyPart: $selectedBodyPart, isAnswerProvided: $isAnswerProvided)
+            Circle().positionedCircle(x: 113, y: 149, bodyPart: "Dada", selectedBodyPart: $selectedBodyPart, isAnswerProvided: $isAnswerProvided)
+            Circle().positionedCircle(x: 88, y: 210, bodyPart: "Perut", selectedBodyPart: $selectedBodyPart, isAnswerProvided: $isAnswerProvided)
+            Circle().positionedCircle(x: 170, y: 163, bodyPart: "Lengan Atas", selectedBodyPart: $selectedBodyPart, isAnswerProvided: $isAnswerProvided)
+            Circle().positionedCircle(x:14, y: 205, bodyPart: "Siku tangan", selectedBodyPart: $selectedBodyPart, isAnswerProvided: $isAnswerProvided)
+            Circle().positionedCircle(x: 175, y: 255, bodyPart: "Pergelangan Tangan", selectedBodyPart: $selectedBodyPart, isAnswerProvided: $isAnswerProvided)
+            Circle().positionedCircle(x: 88, y: 274, bodyPart: "Kelamin", selectedBodyPart: $selectedBodyPart, isAnswerProvided: $isAnswerProvided)
+            Circle().positionedCircle(x: 57, y: 335, bodyPart: "Paha atas", selectedBodyPart: $selectedBodyPart, isAnswerProvided: $isAnswerProvided)
+            Circle().positionedCircle(x: 120, y: 415, bodyPart: "Lutut", selectedBodyPart: $selectedBodyPart, isAnswerProvided: $isAnswerProvided)
+            Circle().positionedCircle(x: 56, y: 537, bodyPart: "Jari dan telapak kaki", selectedBodyPart: $selectedBodyPart, isAnswerProvided: $isAnswerProvided)
         }
     }
 
     func backBodyCircles() -> some View {
         ZStack {
-            Circle().positionedCircle(x: 150, y: 200, bodyPart: "Tengkuk", selectedBodyPart: $selectedBodyPart, isAnswerProvided: $isAnswerProvided)
-            Circle().positionedCircle(x: 120, y: 230, bodyPart: "Pundak", selectedBodyPart: $selectedBodyPart, isAnswerProvided: $isAnswerProvided)
-            Circle().positionedCircle(x: 140, y: 260, bodyPart: "Punggung Atas", selectedBodyPart: $selectedBodyPart, isAnswerProvided: $isAnswerProvided)
-            Circle().positionedCircle(x: 140, y: 290, bodyPart: "Punggung Bawah", selectedBodyPart: $selectedBodyPart, isAnswerProvided: $isAnswerProvided)
-            Circle().positionedCircle(x: 140, y: 320, bodyPart: "Pinggul", selectedBodyPart: $selectedBodyPart, isAnswerProvided: $isAnswerProvided)
-            Circle().positionedCircle(x: 120, y: 360, bodyPart: "Jari dan Telapak tangan", selectedBodyPart: $selectedBodyPart, isAnswerProvided: $isAnswerProvided)
-            Circle().positionedCircle(x: 140, y: 390, bodyPart: "Pantat/Bokong", selectedBodyPart: $selectedBodyPart, isAnswerProvided: $isAnswerProvided)
-//            Circle().positionedCircle(x: 140, y: 450, bodyPart: "Belakang Paha", selectedBodyPart: $selectedBodyPart, isAnswerProvided: $selectedBodyPart, isAnswerProvided: $isAnswerProvided)
-            Circle().positionedCircle(x: 160, y: 480, bodyPart: "Betis", selectedBodyPart: $selectedBodyPart, isAnswerProvided: $isAnswerProvided)
-            Circle().positionedCircle(x: 140, y: 510, bodyPart: "Pergelangan Kaki", selectedBodyPart: $selectedBodyPart, isAnswerProvided: $isAnswerProvided)
+            Circle().positionedCircle(x: 96, y: 86, bodyPart: "Tengkuk", selectedBodyPart: $selectedBodyPart, isAnswerProvided: $isAnswerProvided)
+            Circle().positionedCircle(x: 31, y: 126, bodyPart: "Pundak", selectedBodyPart: $selectedBodyPart, isAnswerProvided: $isAnswerProvided)
+            Circle().positionedCircle(x: 130, y: 135, bodyPart: "Punggung Atas", selectedBodyPart: $selectedBodyPart, isAnswerProvided: $isAnswerProvided)
+            Circle().positionedCircle(x: 79, y: 172, bodyPart: "Punggung Bawah", selectedBodyPart: $selectedBodyPart, isAnswerProvided: $isAnswerProvided)
+            Circle().positionedCircle(x: 54, y: 245, bodyPart: "Pinggul", selectedBodyPart: $selectedBodyPart, isAnswerProvided: $isAnswerProvided)
+            Circle().positionedCircle(x: 20, y: 302, bodyPart: "Jari dan Telapak tangan", selectedBodyPart: $selectedBodyPart, isAnswerProvided: $isAnswerProvided)
+            Circle().positionedCircle(x: 125, y: 280, bodyPart: "Pantat/Bokong", selectedBodyPart: $selectedBodyPart, isAnswerProvided: $isAnswerProvided)
+            Circle().positionedCircle(x: 72, y: 350, bodyPart: "Belakang Paha", selectedBodyPart: $selectedBodyPart, isAnswerProvided: $isAnswerProvided)
+            Circle().positionedCircle(x: 125, y: 445, bodyPart: "Betis", selectedBodyPart: $selectedBodyPart, isAnswerProvided: $isAnswerProvided)
+            Circle().positionedCircle(x: 72, y: 520, bodyPart: "Pergelangan Kaki", selectedBodyPart: $selectedBodyPart, isAnswerProvided: $isAnswerProvided)
         }
     }
+}
+
+#Preview {
+    SelectBodyPartView()
+        .environmentObject(Coordinator())
+        .environmentObject(ComplaintViewModel(datasource: LocalDataSource.shared))
 }

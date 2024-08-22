@@ -20,7 +20,7 @@ struct SymptomStartTimeView: View {
     @State var batasAtas: Int = 24
 
     var body: some View {
-        VStack(spacing: 0) {
+        VStack(spacing: DecimalConstants.zeros) {
             ZStack {
                 HStack {
                     Spacer()
@@ -30,12 +30,12 @@ struct SymptomStartTimeView: View {
                     }
                     .foregroundColor(.gray)
                 }
-                .padding(.horizontal, 22)
+                .padding(.horizontal, DecimalConstants.d8 * 2.75)
             }
-            .padding(.top, 16)
-            .padding(.bottom, 16)
+            .padding(.top, DecimalConstants.d8 * 2)
+            .padding(.bottom, DecimalConstants.d8 * 2)
 
-            Spacer().frame(height: 48)
+            Spacer().frame(height: DecimalConstants.d16 * 3)
 
             HStack {
                 Text("Saya merasakan gejala ini sejak ").font(Font.system(size: 20))
@@ -44,7 +44,7 @@ struct SymptomStartTimeView: View {
 
                     + Text(" yang lalu.").font(Font.custom("SF Pro", size: 20))
             }
-            .padding(.bottom, 8)
+            .padding(.bottom, DecimalConstants.d8)
             .multilineTextAlignment(.center)
             .frame(maxWidth: 257, alignment: .center)
 
@@ -96,12 +96,11 @@ struct SymptomStartTimeView: View {
 
                         complaintViewModel.updateAnswer(for: 1, with: selectedNumber + " " + selectedUnit.lowercased())
                     }
-            }.padding(.horizontal, 110)
+            }.padding(.horizontal, DecimalConstants.d16 * 6.875)
 
-            Spacer().frame(height: 350)
+            Spacer().frame(height: DecimalConstants.d8 * 43.75)
 
-            Button("Lanjutkan") {
-//                coordinator.push(page: .symptomSeverity)
+            Button(AppLabel.continueButton) {
                 coordinator.present(sheet: .symptomSeverity)
             }
             .frame(width: 363, height: 52)
@@ -111,7 +110,7 @@ struct SymptomStartTimeView: View {
             .disabled(!isAnswerProvided)
         }
         .background {
-            Image("sheet-background")
+            Image(ImageLabel.sheetBackground)
         }
     }
 }
