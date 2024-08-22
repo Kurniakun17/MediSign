@@ -9,6 +9,7 @@ import Foundation
 import SwiftData
 
 class ComplaintViewModel: ObservableObject {
+    @Published var complaints: [Complaint] = []
     @Published private(set) var complaintSummary: String = "Halo Dokter. Saya merasakan _____." // Initial placeholder text
     @Published private(set) var answers: [String] = ["_____", "_____", "_____", "_____", "_____", "_____", "_____"]
     @Published private(set) var summary: [String] = ["Saya merasakan ", "Saya merasakan gejala ini sejak ", " yang lalu", "Rasa sakitnya ", " dari 10", "Gejalanya semakin parah ketika saya ", "Gejalanya semakin membaik ketika saya ", "Pernah konsultasi ke dokter lain dan diberi obat yaitu "]
@@ -16,8 +17,9 @@ class ComplaintViewModel: ObservableObject {
     private let dataSource: LocalDataSource
 
     init(datasource: LocalDataSource) {
-        self.dataSource = datasource
+        dataSource = datasource
         updateComplaintSummary(for: 0)
+        complaints = datasource.fetchComplaint()
     }
 
     func updateAnswer(for questionIndex: Int, with answer: String) {
@@ -79,16 +81,32 @@ class ComplaintViewModel: ObservableObject {
         }
     }
 
-    func saveComplaint() {
-        let userData = UserData(name: "John Doe", age: "30", gender: .male) // Example user data
+    func saveComplaint(userData: UserData, name: String) {
         let symptoms = [SymptomsDetail]() // Example symptoms
 
         let complaint = Complaint(
             user: userData,
+            name: name,
             symptoms: symptoms,
             summary: complaintSummary,
             answers: answers
         )
+
         dataSource.add(complaint: complaint)
+        complaints.append(complaint)
+
+        // TODO: Reset answer to 0
+        resetAnswers()
+    }
+
+    func resetAnswers() {
+        complaintSummary = "Halo Dokter. Saya merasakan _____." // Initial placeholder text
+        answers = ["_____", "_____", "_____", "_____", "_____", "_____", "_____"]
+        summary = ["Saya merasakan ", "Saya merasakan gejala ini sejak ", " yang lalu", "Rasa sakitnya ", " dari 10", "Gejalanya semakin parah ketika saya ", "Gejalanya semakin membaik ketika saya ", "Pernah konsultasi ke dokter lain dan diberi obat yaitu "]
+    }
+
+    func loadAnswers(complaint: Complaint) {
+        complaintSummary = complaint.summary
+        answers = complaint.answers
     }
 }

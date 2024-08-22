@@ -8,15 +8,14 @@
 import SwiftUI
 
 struct ContentView: View {
-    @StateObject var complaintViewModel = ComplaintViewModel(datasource: .shared)
     @StateObject private var coordinator = Coordinator()
-
-    @State private var doesUserProfileExist: Bool = false
+    @StateObject var complaintViewModel = ComplaintViewModel(datasource: .shared)
+    @StateObject var userDataViewModel = UserDataViewModel(datasource: .shared)
 
     var body: some View {
         NavigationStack(path: $coordinator.path) {
             Group {
-                if doesUserProfileExist {
+                if userDataViewModel.currentUser != nil {
                     coordinator.build(page: .homepage)
                 } else {
                     coordinator.build(page: .onboardingWelcome)
@@ -31,21 +30,10 @@ struct ContentView: View {
             .fullScreenCover(item: $coordinator.fullScreenCover) { fullScreenCover in
                 coordinator.build(fullScreenCover: fullScreenCover)
             }
-
         }
         .environmentObject(coordinator)
         .environmentObject(complaintViewModel)
-        .onAppear {
-            checkUserProfileExistence()
-        }
-    }
-
-    private func checkUserProfileExistence() {
-        if let userData = LocalDataSource.shared.fetchUserData(), !userData.name.isEmpty {
-            doesUserProfileExist = true
-        } else {
-            doesUserProfileExist = false
-        }
+        .environmentObject(userDataViewModel)
     }
 }
 

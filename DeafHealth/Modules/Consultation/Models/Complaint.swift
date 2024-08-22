@@ -10,13 +10,17 @@ import SwiftData
 
 @Model
 class Complaint {
+    var id: UUID
+    var name: String = ""
     var user: UserData
     var symptoms: [SymptomsDetail]
     var summary: String
     var answers: [String]
     var date: Date
 
-    init(user: UserData, symptoms: [SymptomsDetail], summary: String, answers: [String], date: Date = Date()) {
+    init(id: UUID = UUID(), user: UserData, name: String = "", symptoms: [SymptomsDetail], summary: String, answers: [String], date: Date = Date()) {
+        self.id = id
+        self.name = name
         self.user = user
         self.symptoms = symptoms
         self.summary = summary

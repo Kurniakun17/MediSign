@@ -16,7 +16,7 @@ class UserData {
     var foodAllergy: String?
     var drugAllergy: String?
     var conditionAllergy: String?
-    var profileImageData: Data?  
+    var profileImageData: Data?
 
     init(name: String, age: String, gender: Gender, foodAllergy: String? = nil, drugAllergy: String? = nil, conditionAllergy: String? = nil, profileImageData: Data? = nil) {
         self.name = name

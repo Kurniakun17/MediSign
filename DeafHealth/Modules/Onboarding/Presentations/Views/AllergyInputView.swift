@@ -108,14 +108,13 @@ struct AllergyInputView: View {
                     coordinator.push(page: .homepage)
                 }) {
                     Text(AppLabel.continueButton)
-                        .frame(maxWidth: .infinity, maxHeight: .infinity) 
+                        .frame(maxWidth: .infinity, maxHeight: .infinity)
                 }
                 .frame(width: 363, height: 52)
                 .foregroundColor(Color.white)
                 .background(Color(red: 0.25, green: 0.48, blue: 0.68))
                 .cornerRadius(15)
                 .padding(.bottom, DecimalConstants.d16 * 3.5)
-
             }
             .padding(.horizontal, DecimalConstants.d16)
         }

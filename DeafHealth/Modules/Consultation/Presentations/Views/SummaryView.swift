@@ -11,6 +11,7 @@ struct SummaryView: View {
     @EnvironmentObject var coordinator: Coordinator
     @Environment(\.dismiss) private var dismiss
     @EnvironmentObject var complaintViewModel: ComplaintViewModel
+    @EnvironmentObject var userDataViewModel: UserDataViewModel
 
     @State private var showingSaveModal = false
     @State private var complaintName = ""
@@ -61,7 +62,6 @@ struct SummaryView: View {
                 if complaintViewModel.answers[1] == "" {
 //                    Image("\(complaintViewModel.answers[0])")
                     Image("Pusing").resizable().aspectRatio(contentMode: .fit).frame(width: 185)
-
                 } else {
                     Image("LK \(complaintViewModel.answers[1])").resizable().aspectRatio(contentMode: .fit).frame(width: 185)
                 }
@@ -115,7 +115,11 @@ struct SummaryView: View {
 
                     HStack(alignment: .top) {
                         Text("•")
-                        Text("\(complaintViewModel.getSummary(for: 7))") + Text("\(complaintViewModel.answers[6])".lowercased()).bold().foregroundColor(AppColors.blueMedium)
+                        if complaintViewModel.answers[6] == "Tidak ada riwayat konsultasi sebelumnya" {
+                            Text("\(complaintViewModel.answers[6])".lowercased()).bold().foregroundColor(AppColors.blueMedium)
+                        } else {
+                            Text("\(complaintViewModel.getSummary(for: 7))") + Text("\(complaintViewModel.answers[6])".lowercased()).bold().foregroundColor(AppColors.blueMedium)
+                        }
                     }
                 }
                 .padding(.horizontal, DecimalConstants.d16)
@@ -170,8 +174,8 @@ struct SummaryView: View {
         .sheet(isPresented: $showingSaveModal) {
             SaveComplaintModal(complaintName: $complaintName) {
                 // Action for saving the complaint
-                complaintViewModel.saveComplaint()
-                dismiss() // Save and go back to home view
+                complaintViewModel.saveComplaint(userData: userDataViewModel.currentUser!, name: complaintName)
+                coordinator.popToRoot()
             }
         }
     }

@@ -9,6 +9,7 @@ import SwiftUI
 
 struct HomePage: View {
     @EnvironmentObject var coordinator: Coordinator
+    @EnvironmentObject var complaintViewModel: ComplaintViewModel
     @State private var userName: String = ""
     @State private var profileImage: UIImage? = nil
 
@@ -19,116 +20,105 @@ struct HomePage: View {
                 .scaledToFill()
                 .edgesIgnoringSafeArea(.all)
 
-            VStack {
-                VStack(spacing: 16) {
-                    HStack {
-                        HStack(spacing: 4) {
-                            Text(AppLabel.consultationGreeting)
-                                .fontWeight(.bold)
-                                .font(.title2)
-                            Text(userName.isEmpty ? "Guest" : userName)
-                                .font(.title2)
-                        }
+            ScrollView(.vertical) {
+                VStack {
+                    VStack(spacing: 16) {
+                        HStack {
+                            HStack(spacing: 4) {
+                                Text(AppLabel.consultationGreeting)
+                                    .fontWeight(.bold)
+                                    .font(.title2)
+                                Text(userName.isEmpty ? "Guest" : userName)
+                                    .font(.title2)
+                            }
 
-                        Spacer()
+                            Spacer()
 
-                        Button(action: {
-                            coordinator.push(page: .userProfile)
-                        }) {
-                            if let profileImage = profileImage {
-                                Image(uiImage: profileImage)
-                                    .resizable()
-                                    .scaledToFill()
-                                    .frame(width: 40, height: 40)
-                                    .clipShape(Circle())
-                            } else {
-                                Circle()
-                                    .fill(Color.gray.opacity(DecimalConstants.d2 * 0.15))
-                                    .frame(width: 40, height: 40)
-                                    .overlay(
-                                        Image(systemName: "person.fill")
-                                            .foregroundColor(.white)
-                                    )
+                            Button(action: {
+                                coordinator.push(page: .userProfile)
+                            }) {
+                                if let profileImage = profileImage {
+                                    Image(uiImage: profileImage)
+                                        .resizable()
+                                        .scaledToFill()
+                                        .frame(width: 40, height: 40)
+                                        .clipShape(Circle())
+                                } else {
+                                    Circle()
+                                        .fill(Color.gray.opacity(DecimalConstants.d2 * 0.15))
+                                        .frame(width: 40, height: 40)
+                                        .overlay(
+                                            Image(systemName: "person.fill")
+                                                .foregroundColor(.white)
+                                        )
+                                }
                             }
                         }
-                    }
 
-                    VStack(spacing: DecimalConstants.d16) {
-                        Button(action: {
-                            coordinator.push(page: .consultationMenuView)
-                        }) {
-                            ZStack {
-                                Image(ImageLabel.logo)
-                                    .resizable()
-                                    .frame(width: 207, height: 180)
-                                    .offset(x: 100, y: 50)
+                        VStack(spacing: DecimalConstants.d16) {
+                            Button(action: {
+                                coordinator.push(page: .consultationMenuView)
+                            }) {
+                                ZStack {
+                                    Image(ImageLabel.logo)
+                                        .resizable()
+                                        .frame(width: 207, height: 180)
+                                        .offset(x: 100, y: 50)
 
-                                VStack(spacing: DecimalConstants.d8 * 2.5) {
-                                    Image(systemName: "plus.square.fill")
+                                    VStack(spacing: DecimalConstants.d8 * 2.5) {
+                                        Image(systemName: "plus.square.fill")
+                                            .foregroundStyle(.white)
+                                            .font(.system(size: 60))
+                                        Text(AppLabel.addConsultation)
+                                            .foregroundStyle(.white)
+                                            .fontWeight(.semibold)
+                                    }
+                                }
+                            }
+                            .frame(maxWidth: .infinity)
+                            .background(.bluePurple)
+                            .clipShape(RoundedRectangle(cornerRadius: 10))
+
+                            Button(action: {
+                                coordinator.push(page: .communication)
+                            }) {
+                                VStack(spacing: DecimalConstants.d8) {
+                                    Image(systemName: "stethoscope.circle.fill")
                                         .foregroundStyle(.white)
-                                        .font(.system(size: 60))
-                                    Text(AppLabel.addConsultation)
+                                        .font(.system(size: 36))
+                                    Text(AppLabel.startCommunication)
                                         .foregroundStyle(.white)
                                         .fontWeight(.semibold)
                                 }
                             }
+                            .frame(maxWidth: .infinity)
+                            .padding(.top, DecimalConstants.d8 * 3)
+                            .padding(.bottom, DecimalConstants.d8 * 3)
+                            .background(.lightBlue)
+                            .clipShape(RoundedRectangle(cornerRadius: 10))
                         }
-                        .frame(maxWidth: .infinity)
-                        .background(.bluePurple)
-                        .clipShape(RoundedRectangle(cornerRadius: 10))
 
-                        Button(action: {
-                            coordinator.push(page: .communication)
-                        }) {
-                            VStack(spacing: DecimalConstants.d8) {
-                                Image(systemName: "stethoscope.circle.fill")
-                                    .foregroundStyle(.white)
-                                    .font(.system(size: 36))
-                                Text(AppLabel.startCommunication)
-                                    .foregroundStyle(.white)
-                                    .fontWeight(.semibold)
+                        HStack {}
+                            .padding(.top, 30)
+
+                        VStack(alignment: .leading) {
+                            Text(AppLabel.consultationHistory)
+                                .font(.title2)
+                                .fontWeight(.semibold)
+                                .padding(.bottom, DecimalConstants.d8 * 1.5)
+
+                            ForEach(complaintViewModel.complaints, id: \.self.id) { complaintData in
+                                ComplaintHistoryCard(complaintData: complaintData)
                             }
                         }
-                        .frame(maxWidth: .infinity)
-                        .padding(.top, DecimalConstants.d8 * 3)
-                        .padding(.bottom, DecimalConstants.d8 * 3)
-                        .background(.lightBlue)
-                        .clipShape(RoundedRectangle(cornerRadius: 10))
-                    }
-
-                    HStack {}
-                        .padding(.top, 30)
-
-                    VStack(alignment: .leading) {
-                        Text(AppLabel.consultationHistory)
-                            .font(.title2)
-                            .fontWeight(.semibold)
-                            .padding(.bottom, DecimalConstants.d8 * 1.5)
-
-                        HStack(spacing: DecimalConstants.d8 * 2.25) {
-                            RoundedRectangle(cornerRadius: 8)
-                                .frame(width: 60, height: 60)
-                            VStack(alignment: .leading) {
-                                Text("Nyeri otot bahu")
-                                    .font(.title3)
-                                Text("Selasa, 13 Agustus 2024")
-                                    .font(.footnote)
-                                    .foregroundStyle(.gray)
-                            }
-                        }
-                        .padding(DecimalConstants.d16)
                         .frame(maxWidth: .infinity, alignment: .leading)
-                        .overlay(
-                            RoundedRectangle(cornerRadius: 8)
-                                .stroke(.gray.opacity(DecimalConstants.d2 * 0.15), lineWidth: 1)
-                        )
+                        .padding(.bottom, 20)
                     }
-                    .frame(maxWidth: .infinity, alignment: .leading)
+                    Spacer()
                 }
-                Spacer()
+                .padding(.horizontal)
+                .padding(.top, 70)
             }
-            .padding(.horizontal)
-            .padding(.top, 70)
         }
         .ignoresSafeArea()
         .navigationBarBackButtonHidden(true)

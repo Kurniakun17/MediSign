@@ -81,7 +81,7 @@ struct PreviousConsultationView: View {
                 Button(action: {
                     hasNotConsultedBefore.toggle()
                     if hasNotConsultedBefore {
-                        previousMed = "Tidak ada konsultasi sebelumnya"
+                        previousMed = "Tidak ada riwayat konsultasi sebelumnya"
                         isAnswerProvided = true
                         complaintViewModel.updateAnswer(for: 6, with: previousMed)
                     } else {

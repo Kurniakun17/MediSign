@@ -12,10 +12,6 @@
 		A23D28762C76E03400C8506C /* NameInputView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A23D28752C76E03400C8506C /* NameInputView.swift */; };
 		A23D28782C76E04000C8506C /* AgeGenderInputView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A23D28772C76E04000C8506C /* AgeGenderInputView.swift */; };
 		A23D287A2C76E05000C8506C /* AllergyInputView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A23D28792C76E05000C8506C /* AllergyInputView.swift */; };
-		A23D287E2C77018C00C8506C /* Algance-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = A23D287C2C77018C00C8506C /* Algance-Regular.ttf */; };
-		A23D287F2C77018C00C8506C /* Algance-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = A23D287C2C77018C00C8506C /* Algance-Regular.ttf */; };
-		A23D28802C77018C00C8506C /* Algance-Italic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = A23D287D2C77018C00C8506C /* Algance-Italic.ttf */; };
-		A23D28812C77018C00C8506C /* Algance-Italic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = A23D287D2C77018C00C8506C /* Algance-Italic.ttf */; };
 		A255E0242C72045000274DF5 /* ConsultationMenuView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A255E0232C72045000274DF5 /* ConsultationMenuView.swift */; };
 		A255E03D2C7585BE00274DF5 /* RoundedCorner.swift in Sources */ = {isa = PBXBuildFile; fileRef = A255E03C2C7585BE00274DF5 /* RoundedCorner.swift */; };
 		A27C2C9E2C773F5700865F03 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A27C2C9D2C773F5700865F03 /* ProfileViewController.swift */; };
@@ -38,7 +34,7 @@
 		F62EF9E32C6B27840025498E /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F62EF9E22C6B27840025498E /* ContentView.swift */; };
 		F62EF9E52C6B27850025498E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F62EF9E42C6B27850025498E /* Assets.xcassets */; };
 		F62EF9E82C6B27850025498E /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F62EF9E72C6B27850025498E /* Preview Assets.xcassets */; };
-		F62EF9F22C6B27D30025498E /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = F62EF9F12C6B27D30025498E /* User.swift */; };
+		F62EF9F22C6B27D30025498E /* UserData.swift in Sources */ = {isa = PBXBuildFile; fileRef = F62EF9F12C6B27D30025498E /* UserData.swift */; };
 		F62EF9F42C6B293B0025498E /* Complaint.swift in Sources */ = {isa = PBXBuildFile; fileRef = F62EF9F32C6B293B0025498E /* Complaint.swift */; };
 		F62EF9F62C6B2B3D0025498E /* SymptomsDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = F62EF9F52C6B2B3D0025498E /* SymptomsDetail.swift */; };
 		F62EF9FE2C6B2C010025498E /* LocalDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = F62EF9FD2C6B2C010025498E /* LocalDataSource.swift */; };
@@ -56,6 +52,9 @@
 		F65A1BE72C76EC7E00E5BF3D /* HandPoseDetector.swift in Sources */ = {isa = PBXBuildFile; fileRef = F65A1BE62C76EC7E00E5BF3D /* HandPoseDetector.swift */; };
 		F65A1BEA2C76EE6900E5BF3D /* Keyboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = F65A1BE92C76EE6900E5BF3D /* Keyboard.swift */; };
 		F65A1BEC2C76F8CE00E5BF3D /* SignLanguageSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = F65A1BEB2C76F8CE00E5BF3D /* SignLanguageSheet.swift */; };
+		F65A1BF42C77A8D600E5BF3D /* UserDataViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F65A1BF32C77A8D600E5BF3D /* UserDataViewModel.swift */; };
+		F65A1BF62C77FD7F00E5BF3D /* Date.swift in Sources */ = {isa = PBXBuildFile; fileRef = F65A1BF52C77FD7F00E5BF3D /* Date.swift */; };
+		F65A1BF82C78049200E5BF3D /* ComplaintHistoryCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = F65A1BF72C78049200E5BF3D /* ComplaintHistoryCard.swift */; };
 		F67F89242C75B15000FBB6CE /* CommunicationPageTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F67F89232C75B15000FBB6CE /* CommunicationPageTests.swift */; };
 		F6856F992C6F582B00574B7E /* SpeechViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6856F982C6F582B00574B7E /* SpeechViewModel.swift */; };
 		F6A94FFD2C6C47AC00F45997 /* TestSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6A94FFC2C6C47AC00F45997 /* TestSheet.swift */; };
@@ -91,8 +90,6 @@
 		A23D28752C76E03400C8506C /* NameInputView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NameInputView.swift; sourceTree = "<group>"; };
 		A23D28772C76E04000C8506C /* AgeGenderInputView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AgeGenderInputView.swift; sourceTree = "<group>"; };
 		A23D28792C76E05000C8506C /* AllergyInputView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllergyInputView.swift; sourceTree = "<group>"; };
-		A23D287C2C77018C00C8506C /* Algance-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Algance-Regular.ttf"; path = "../../../../../Downloads/Algance-Regular.ttf"; sourceTree = "<group>"; };
-		A23D287D2C77018C00C8506C /* Algance-Italic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Algance-Italic.ttf"; path = "../../../../../Downloads/Algance-Italic.ttf"; sourceTree = "<group>"; };
 		A23D28822C7701AA00C8506C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		A255E0232C72045000274DF5 /* ConsultationMenuView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConsultationMenuView.swift; sourceTree = "<group>"; };
 		A255E03C2C7585BE00274DF5 /* RoundedCorner.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundedCorner.swift; sourceTree = "<group>"; };
@@ -117,7 +114,7 @@
 		F62EF9E22C6B27840025498E /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		F62EF9E42C6B27850025498E /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		F62EF9E72C6B27850025498E /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
-		F62EF9F12C6B27D30025498E /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		F62EF9F12C6B27D30025498E /* UserData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserData.swift; sourceTree = "<group>"; };
 		F62EF9F32C6B293B0025498E /* Complaint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Complaint.swift; sourceTree = "<group>"; };
 		F62EF9F52C6B2B3D0025498E /* SymptomsDetail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SymptomsDetail.swift; sourceTree = "<group>"; };
 		F62EF9FD2C6B2C010025498E /* LocalDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalDataSource.swift; sourceTree = "<group>"; };
@@ -135,6 +132,11 @@
 		F65A1BE62C76EC7E00E5BF3D /* HandPoseDetector.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HandPoseDetector.swift; sourceTree = "<group>"; };
 		F65A1BE92C76EE6900E5BF3D /* Keyboard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Keyboard.swift; sourceTree = "<group>"; };
 		F65A1BEB2C76F8CE00E5BF3D /* SignLanguageSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignLanguageSheet.swift; sourceTree = "<group>"; };
+		F65A1BF12C77A6AE00E5BF3D /* Algance-Italic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Algance-Italic.ttf"; sourceTree = "<group>"; };
+		F65A1BF22C77A6B400E5BF3D /* Algance-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Algance-Regular.ttf"; sourceTree = "<group>"; };
+		F65A1BF32C77A8D600E5BF3D /* UserDataViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDataViewModel.swift; sourceTree = "<group>"; };
+		F65A1BF52C77FD7F00E5BF3D /* Date.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Date.swift; sourceTree = "<group>"; };
+		F65A1BF72C78049200E5BF3D /* ComplaintHistoryCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComplaintHistoryCard.swift; sourceTree = "<group>"; };
 		F67F89232C75B15000FBB6CE /* CommunicationPageTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommunicationPageTests.swift; sourceTree = "<group>"; };
 		F6856F982C6F582B00574B7E /* SpeechViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpeechViewModel.swift; sourceTree = "<group>"; };
 		F6A94FFC2C6C47AC00F45997 /* TestSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestSheet.swift; sourceTree = "<group>"; };
@@ -176,6 +178,7 @@
 		A23D286D2C76DFD900C8506C /* ViewModels */ = {
 			isa = PBXGroup;
 			children = (
+				F65A1BF32C77A8D600E5BF3D /* UserDataViewModel.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -218,8 +221,8 @@
 		A23D287B2C77017E00C8506C /* Fonts */ = {
 			isa = PBXGroup;
 			children = (
-				A23D287D2C77018C00C8506C /* Algance-Italic.ttf */,
-				A23D287C2C77018C00C8506C /* Algance-Regular.ttf */,
+				F65A1BF22C77A6B400E5BF3D /* Algance-Regular.ttf */,
+				F65A1BF12C77A6AE00E5BF3D /* Algance-Italic.ttf */,
 			);
 			path = Fonts;
 			sourceTree = "<group>";
@@ -306,6 +309,7 @@
 			isa = PBXGroup;
 			children = (
 				F65A1BE92C76EE6900E5BF3D /* Keyboard.swift */,
+				F65A1BF52C77FD7F00E5BF3D /* Date.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -361,7 +365,7 @@
 		F6E922142C75BADE000D3833 /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				F62EF9F12C6B27D30025498E /* User.swift */,
+				F62EF9F12C6B27D30025498E /* UserData.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -538,6 +542,7 @@
 			children = (
 				9B0F1FEB2C74574200030F0C /* CustomSlider.swift */,
 				A255E03C2C7585BE00274DF5 /* RoundedCorner.swift */,
+				F65A1BF72C78049200E5BF3D /* ComplaintHistoryCard.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -627,9 +632,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A23D28802C77018C00C8506C /* Algance-Italic.ttf in Resources */,
 				F62EF9E82C6B27850025498E /* Preview Assets.xcassets in Resources */,
-				A23D287E2C77018C00C8506C /* Algance-Regular.ttf in Resources */,
 				F62EF9E52C6B27850025498E /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -638,8 +641,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A23D28812C77018C00C8506C /* Algance-Italic.ttf in Resources */,
-				A23D287F2C77018C00C8506C /* Algance-Regular.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -655,12 +656,13 @@
 				F6A94FFF2C6C486D00F45997 /* TestFullScreenCover.swift in Sources */,
 				F62EF9E32C6B27840025498E /* ContentView.swift in Sources */,
 				F6A950022C6C5C6700F45997 /* CommunicationPage.swift in Sources */,
+				F65A1BF62C77FD7F00E5BF3D /* Date.swift in Sources */,
 				F6B739722C758FA900B2AA63 /* HomePage.swift in Sources */,
 				A27C2CA02C773F6D00865F03 /* ProfileImageView.swift in Sources */,
 				F62EFA0A2C6B41030025498E /* Watermelon.swift in Sources */,
 				F62EF9F42C6B293B0025498E /* Complaint.swift in Sources */,
 				A23D28782C76E04000C8506C /* AgeGenderInputView.swift in Sources */,
-				F61AA4E52C743AE6007CDCA6 /* RecordingSheet.swift in Sources */,
+				F61AA4E52C743AE6007CDCA6 /* SpeechSheet.swift in Sources */,
 				F61AA4E52C743AE6007CDCA6 /* SpeechSheet.swift in Sources */,
 				F6E9221D2C75BBD9000D3833 /* AppColors.swift in Sources */,
 				F6856F992C6F582B00574B7E /* SpeechViewModel.swift in Sources */,
@@ -690,9 +692,11 @@
 				F65A1BE12C76EBBD00E5BF3D /* CameraView.swift in Sources */,
 				F65A1BEC2C76F8CE00E5BF3D /* SignLanguageSheet.swift in Sources */,
 				A2A0C5492C6F6922002240E2 /* SelectBodyPartView.swift in Sources */,
+				F65A1BF82C78049200E5BF3D /* ComplaintHistoryCard.swift in Sources */,
 				A255E0242C72045000274DF5 /* ConsultationMenuView.swift in Sources */,
 				F62EF9E12C6B27840025498E /* DeafHealthApp.swift in Sources */,
 				A2A0C5512C6F69D6002240E2 /* SymptomStartTimeView.swift in Sources */,
+				F65A1BF42C77A8D600E5BF3D /* UserDataViewModel.swift in Sources */,
 				F65A1BDF2C76EB7700E5BF3D /* SignLanguageClassifier.mlmodel in Sources */,
 				F62EF9F62C6B2B3D0025498E /* SymptomsDetail.swift in Sources */,
 				F62EFA022C6B3C190025498E /* Coordinator.swift in Sources */,
@@ -703,7 +707,7 @@
 				F65A1BE32C76EBD200E5BF3D /* SignLanguageInterpreterViewModel.swift in Sources */,
 				A2A0C55D2C6F6A1C002240E2 /* SummaryView.swift in Sources */,
 				F6E922382C75DF62000D3833 /* Gender.swift in Sources */,
-				F62EF9F22C6B27D30025498E /* User.swift in Sources */,
+				F62EF9F22C6B27D30025498E /* UserData.swift in Sources */,
 				A255E03D2C7585BE00274DF5 /* RoundedCorner.swift in Sources */,
 				F62EF9FE2C6B2C010025498E /* LocalDataSource.swift in Sources */,
 			);
@@ -859,7 +863,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"DeafHealth/Preview Content\"";
-				DEVELOPMENT_TEAM = F7W83KYCN5;
+				DEVELOPMENT_TEAM = 49V8Q5W76J;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = DeafHealth/Info.plist;
@@ -892,7 +896,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"DeafHealth/Preview Content\"";
-				DEVELOPMENT_TEAM = F7W83KYCN5;
+				DEVELOPMENT_TEAM = 49V8Q5W76J;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = DeafHealth/Info.plist;

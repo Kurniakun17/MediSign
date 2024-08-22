@@ -8,7 +8,6 @@
 import UIKit
 
 class ProfileViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
-
     var profileImageView: ProfileImageView!
     var cameraIconView: UIImageView!
     var nameLabel: UILabel!
@@ -179,7 +178,7 @@ class ProfileViewController: UIViewController, UIImagePickerControllerDelegate, 
             if let imageData = userData.profileImageData {
                 profileImageView.image = UIImage(data: imageData)
             } else {
-                profileImageView.image = UIImage(named: "defaultProfileImage")  // Load default image if none is saved
+                profileImageView.image = UIImage(named: "defaultProfileImage") // Load default image if none is saved
             }
         }
     }
@@ -198,7 +197,8 @@ class ProfileViewController: UIViewController, UIImagePickerControllerDelegate, 
 
     @objc func saveProfile() {
         guard let name = nameTextField.text, !name.isEmpty,
-              let age = ageTextField.text, !age.isEmpty else {
+              let age = ageTextField.text, !age.isEmpty
+        else {
             print("Name or Age field is empty")
             return
         }
@@ -214,6 +214,11 @@ class ProfileViewController: UIViewController, UIImagePickerControllerDelegate, 
         // Convert the profile image to Data
         let profileImageData = profileImageView.image?.jpegData(compressionQuality: 0.8)
 
+        let data = UserData(name: name, age: age, gender: gender, foodAllergy: foodAllergy,
+                            drugAllergy: drugAllergy,
+                            conditionAllergy: conditionAllergy,
+                            profileImageData: profileImageData)
+        
         LocalDataSource.shared.saveUserData(
             name: name,
             age: age,
@@ -221,15 +226,15 @@ class ProfileViewController: UIViewController, UIImagePickerControllerDelegate, 
             foodAllergy: foodAllergy,
             drugAllergy: drugAllergy,
             conditionAllergy: conditionAllergy,
-            profileImageData: profileImageData  // Save the image data
+            profileImageData: profileImageData // Save the image data
         )
-        
+
         navigationController?.popViewController(animated: true)
     }
 
-
     // MARK: - UIImagePickerControllerDelegate
-    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey: Any]) {
         if let selectedImage = info[.originalImage] as? UIImage {
             profileImageView.image = selectedImage
         }
@@ -240,4 +245,3 @@ class ProfileViewController: UIViewController, UIImagePickerControllerDelegate, 
         dismiss(animated: true, completion: nil)
     }
 }
-

@@ -175,7 +175,6 @@ struct QuestionButtonView: View {
     }
 
     func isQuestionActive(at index: Int) -> Bool {
-        print(complaintViewModel.answers)
         if index == 0 {
             return true
         }
