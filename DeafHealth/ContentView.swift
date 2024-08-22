@@ -11,9 +11,17 @@ struct ContentView: View {
     @StateObject var complaintViewModel = ComplaintViewModel(datasource: .shared)
     @StateObject private var coordinator = Coordinator()
 
+    @State private var doesUserProfileExist: Bool = false
+
     var body: some View {
         NavigationStack(path: $coordinator.path) {
-            coordinator.build(page: .homepage)
+            Group {
+                if doesUserProfileExist {
+                    coordinator.build(page: .homepage)
+                } else {
+                    coordinator.build(page: .onboardingWelcome)
+                }
+            }
             .navigationDestination(for: Page.self) { page in
                 coordinator.build(page: page)
             }
@@ -23,9 +31,21 @@ struct ContentView: View {
             .fullScreenCover(item: $coordinator.fullScreenCover) { fullScreenCover in
                 coordinator.build(fullScreenCover: fullScreenCover)
             }
+
         }
         .environmentObject(coordinator)
         .environmentObject(complaintViewModel)
+        .onAppear {
+            checkUserProfileExistence()
+        }
+    }
+
+    private func checkUserProfileExistence() {
+        if let userData = LocalDataSource.shared.fetchUserData(), !userData.name.isEmpty {
+            doesUserProfileExist = true
+        } else {
+            doesUserProfileExist = false
+        }
     }
 }
 

@@ -9,10 +9,15 @@ import SwiftUI
 
 struct HomePage: View {
     @EnvironmentObject var coordinator: Coordinator
+    @State private var userName: String = ""
+    @State private var profileImage: UIImage? = nil
 
     var body: some View {
         ZStack {
             Image(ImageLabel.homepageBackground)
+                .resizable()
+                .scaledToFill()
+                .edgesIgnoringSafeArea(.all)
 
             VStack {
                 VStack(spacing: 16) {
@@ -21,16 +26,31 @@ struct HomePage: View {
                             Text(AppLabel.consultationGreeting)
                                 .fontWeight(.bold)
                                 .font(.title2)
-                            // TODO: Change name
-                            Text("Ibun Iwawan")
+                            Text(userName.isEmpty ? "Guest" : userName)
                                 .font(.title2)
                         }
 
                         Spacer()
 
-                        Circle()
-                            .fill(.gray.opacity(DecimalConstants.d2 * 0.15))
-                            .frame(width: 40, height: 40)
+                        Button(action: {
+                            coordinator.push(page: .userProfile)
+                        }) {
+                            if let profileImage = profileImage {
+                                Image(uiImage: profileImage)
+                                    .resizable()
+                                    .scaledToFill()
+                                    .frame(width: 40, height: 40)
+                                    .clipShape(Circle())
+                            } else {
+                                Circle()
+                                    .fill(Color.gray.opacity(DecimalConstants.d2 * 0.15))
+                                    .frame(width: 40, height: 40)
+                                    .overlay(
+                                        Image(systemName: "person.fill")
+                                            .foregroundColor(.white)
+                                    )
+                            }
+                        }
                     }
 
                     VStack(spacing: DecimalConstants.d16) {
@@ -105,16 +125,34 @@ struct HomePage: View {
                     }
                     .frame(maxWidth: .infinity, alignment: .leading)
                 }
-
                 Spacer()
             }
             .padding(.horizontal)
             .padding(.top, 70)
         }
         .ignoresSafeArea()
+        .navigationBarBackButtonHidden(true)
+        .onAppear {
+            loadUserData()
+        }
+    }
+
+    private func loadUserData() {
+        if let userData = LocalDataSource.shared.fetchUserData() {
+            userName = userData.name
+            if let imageData = userData.profileImageData {
+                profileImage = UIImage(data: imageData)
+            } else {
+                profileImage = nil
+            }
+        } else {
+            userName = "Guest"
+            profileImage = nil
+        }
     }
 }
 
 #Preview {
     HomePage()
+        .environmentObject(Coordinator())
 }

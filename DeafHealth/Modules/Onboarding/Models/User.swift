@@ -13,10 +13,18 @@ class UserData {
     var name: String
     var age: String
     var gender: Gender
+    var foodAllergy: String?
+    var drugAllergy: String?
+    var conditionAllergy: String?
+    var profileImageData: Data?  
 
-    init(name: String, age: String, gender: Gender) {
+    init(name: String, age: String, gender: Gender, foodAllergy: String? = nil, drugAllergy: String? = nil, conditionAllergy: String? = nil, profileImageData: Data? = nil) {
         self.name = name
         self.age = age
         self.gender = gender
+        self.foodAllergy = foodAllergy
+        self.drugAllergy = drugAllergy
+        self.conditionAllergy = conditionAllergy
+        self.profileImageData = profileImageData
     }
 }

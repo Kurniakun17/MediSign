@@ -16,4 +16,7 @@ struct ImageLabel {
     static let rightArrow = "right-arrow"
     static let frontViewBody = "front"
     static let backViewBody = "back"
+    static let soundWave = "soundwave"
+    static let onboardingBackground = "onboarding-background"
+    static let mainLogo = "main-logo"
 }

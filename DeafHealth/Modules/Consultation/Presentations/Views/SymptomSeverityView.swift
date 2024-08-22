@@ -72,7 +72,8 @@ struct SymptomSeverityView: View {
 
             CustomSlider(
                 value: $sliderValue,
-                range: DecimalConstants.d1 ... DecimalConstants.d8 + DecimalConstants.d2,
+                range: 1 ... 10,
+
                 step: 1,
                 label: {
                     Text("")

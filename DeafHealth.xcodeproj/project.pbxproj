@@ -8,8 +8,19 @@
 
 /* Begin PBXBuildFile section */
 		9B0F1FEC2C74574200030F0C /* CustomSlider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B0F1FEB2C74574200030F0C /* CustomSlider.swift */; };
+		A23D28742C76E02300C8506C /* WelcomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A23D28732C76E02300C8506C /* WelcomeView.swift */; };
+		A23D28762C76E03400C8506C /* NameInputView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A23D28752C76E03400C8506C /* NameInputView.swift */; };
+		A23D28782C76E04000C8506C /* AgeGenderInputView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A23D28772C76E04000C8506C /* AgeGenderInputView.swift */; };
+		A23D287A2C76E05000C8506C /* AllergyInputView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A23D28792C76E05000C8506C /* AllergyInputView.swift */; };
+		A23D287E2C77018C00C8506C /* Algance-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = A23D287C2C77018C00C8506C /* Algance-Regular.ttf */; };
+		A23D287F2C77018C00C8506C /* Algance-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = A23D287C2C77018C00C8506C /* Algance-Regular.ttf */; };
+		A23D28802C77018C00C8506C /* Algance-Italic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = A23D287D2C77018C00C8506C /* Algance-Italic.ttf */; };
+		A23D28812C77018C00C8506C /* Algance-Italic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = A23D287D2C77018C00C8506C /* Algance-Italic.ttf */; };
 		A255E0242C72045000274DF5 /* ConsultationMenuView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A255E0232C72045000274DF5 /* ConsultationMenuView.swift */; };
 		A255E03D2C7585BE00274DF5 /* RoundedCorner.swift in Sources */ = {isa = PBXBuildFile; fileRef = A255E03C2C7585BE00274DF5 /* RoundedCorner.swift */; };
+		A27C2C9E2C773F5700865F03 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A27C2C9D2C773F5700865F03 /* ProfileViewController.swift */; };
+		A27C2CA02C773F6D00865F03 /* ProfileImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A27C2C9F2C773F6D00865F03 /* ProfileImageView.swift */; };
+		A27C2CA22C773F7B00865F03 /* ProfileCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = A27C2CA12C773F7B00865F03 /* ProfileCoordinator.swift */; };
 		A2A0C5472C6F68B0002240E2 /* ComplaintView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2A0C5462C6F68B0002240E2 /* ComplaintView.swift */; };
 		A2A0C5492C6F6922002240E2 /* SelectBodyPartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2A0C5482C6F6922002240E2 /* SelectBodyPartView.swift */; };
 		A2A0C5512C6F69D6002240E2 /* SymptomStartTimeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2A0C5502C6F69D6002240E2 /* SymptomStartTimeView.swift */; };
@@ -20,7 +31,7 @@
 		A2A0C55D2C6F6A1C002240E2 /* SummaryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2A0C55C2C6F6A1C002240E2 /* SummaryView.swift */; };
 		A2A0C55F2C709032002240E2 /* ComplaintFlowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2A0C55E2C709032002240E2 /* ComplaintFlowView.swift */; };
 		A2E406132C76C28E0094625A /* ImageLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2E406122C76C28E0094625A /* ImageLabel.swift */; };
-		F61AA4E52C743AE6007CDCA6 /* RecordingSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = F61AA4E42C743AE6007CDCA6 /* RecordingSheet.swift */; };
+		F61AA4E52C743AE6007CDCA6 /* SpeechSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = F61AA4E42C743AE6007CDCA6 /* SpeechSheet.swift */; };
 		F61AA4E72C745447007CDCA6 /* MessageBubble.swift in Sources */ = {isa = PBXBuildFile; fileRef = F61AA4E62C745447007CDCA6 /* MessageBubble.swift */; };
 		F61AA4E92C7454F7007CDCA6 /* MessageViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F61AA4E82C7454F7007CDCA6 /* MessageViewModel.swift */; };
 		F62EF9E12C6B27840025498E /* DeafHealthApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = F62EF9E02C6B27840025498E /* DeafHealthApp.swift */; };
@@ -38,6 +49,13 @@
 		F62EFA0A2C6B41030025498E /* Watermelon.swift in Sources */ = {isa = PBXBuildFile; fileRef = F62EFA092C6B41030025498E /* Watermelon.swift */; };
 		F62EFA0C2C6B41450025498E /* Pineapple.swift in Sources */ = {isa = PBXBuildFile; fileRef = F62EFA0B2C6B41450025498E /* Pineapple.swift */; };
 		F62EFA0F2C6B41A00025498E /* Banana.swift in Sources */ = {isa = PBXBuildFile; fileRef = F62EFA0E2C6B41A00025498E /* Banana.swift */; };
+		F65A1BDF2C76EB7700E5BF3D /* SignLanguageClassifier.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = F65A1BDE2C76EB7700E5BF3D /* SignLanguageClassifier.mlmodel */; };
+		F65A1BE12C76EBBD00E5BF3D /* CameraView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F65A1BE02C76EBBD00E5BF3D /* CameraView.swift */; };
+		F65A1BE32C76EBD200E5BF3D /* SignLanguageInterpreterViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F65A1BE22C76EBD200E5BF3D /* SignLanguageInterpreterViewModel.swift */; };
+		F65A1BE52C76EC6100E5BF3D /* CameraModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F65A1BE42C76EC6100E5BF3D /* CameraModel.swift */; };
+		F65A1BE72C76EC7E00E5BF3D /* HandPoseDetector.swift in Sources */ = {isa = PBXBuildFile; fileRef = F65A1BE62C76EC7E00E5BF3D /* HandPoseDetector.swift */; };
+		F65A1BEA2C76EE6900E5BF3D /* Keyboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = F65A1BE92C76EE6900E5BF3D /* Keyboard.swift */; };
+		F65A1BEC2C76F8CE00E5BF3D /* SignLanguageSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = F65A1BEB2C76F8CE00E5BF3D /* SignLanguageSheet.swift */; };
 		F67F89242C75B15000FBB6CE /* CommunicationPageTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F67F89232C75B15000FBB6CE /* CommunicationPageTests.swift */; };
 		F6856F992C6F582B00574B7E /* SpeechViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6856F982C6F582B00574B7E /* SpeechViewModel.swift */; };
 		F6A94FFD2C6C47AC00F45997 /* TestSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6A94FFC2C6C47AC00F45997 /* TestSheet.swift */; };
@@ -69,8 +87,18 @@
 
 /* Begin PBXFileReference section */
 		9B0F1FEB2C74574200030F0C /* CustomSlider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomSlider.swift; sourceTree = "<group>"; };
+		A23D28732C76E02300C8506C /* WelcomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeView.swift; sourceTree = "<group>"; };
+		A23D28752C76E03400C8506C /* NameInputView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NameInputView.swift; sourceTree = "<group>"; };
+		A23D28772C76E04000C8506C /* AgeGenderInputView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AgeGenderInputView.swift; sourceTree = "<group>"; };
+		A23D28792C76E05000C8506C /* AllergyInputView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllergyInputView.swift; sourceTree = "<group>"; };
+		A23D287C2C77018C00C8506C /* Algance-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Algance-Regular.ttf"; path = "../../../../../Downloads/Algance-Regular.ttf"; sourceTree = "<group>"; };
+		A23D287D2C77018C00C8506C /* Algance-Italic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Algance-Italic.ttf"; path = "../../../../../Downloads/Algance-Italic.ttf"; sourceTree = "<group>"; };
+		A23D28822C7701AA00C8506C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		A255E0232C72045000274DF5 /* ConsultationMenuView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConsultationMenuView.swift; sourceTree = "<group>"; };
 		A255E03C2C7585BE00274DF5 /* RoundedCorner.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundedCorner.swift; sourceTree = "<group>"; };
+		A27C2C9D2C773F5700865F03 /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
+		A27C2C9F2C773F6D00865F03 /* ProfileImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileImageView.swift; sourceTree = "<group>"; };
+		A27C2CA12C773F7B00865F03 /* ProfileCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileCoordinator.swift; sourceTree = "<group>"; };
 		A2A0C5462C6F68B0002240E2 /* ComplaintView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComplaintView.swift; sourceTree = "<group>"; };
 		A2A0C5482C6F6922002240E2 /* SelectBodyPartView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectBodyPartView.swift; sourceTree = "<group>"; };
 		A2A0C5502C6F69D6002240E2 /* SymptomStartTimeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SymptomStartTimeView.swift; sourceTree = "<group>"; };
@@ -81,7 +109,7 @@
 		A2A0C55C2C6F6A1C002240E2 /* SummaryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SummaryView.swift; sourceTree = "<group>"; };
 		A2A0C55E2C709032002240E2 /* ComplaintFlowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComplaintFlowView.swift; sourceTree = "<group>"; };
 		A2E406122C76C28E0094625A /* ImageLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageLabel.swift; sourceTree = "<group>"; };
-		F61AA4E42C743AE6007CDCA6 /* RecordingSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordingSheet.swift; sourceTree = "<group>"; };
+		F61AA4E42C743AE6007CDCA6 /* SpeechSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpeechSheet.swift; sourceTree = "<group>"; };
 		F61AA4E62C745447007CDCA6 /* MessageBubble.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageBubble.swift; sourceTree = "<group>"; };
 		F61AA4E82C7454F7007CDCA6 /* MessageViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageViewModel.swift; sourceTree = "<group>"; };
 		F62EF9DD2C6B27840025498E /* DeafHealth.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DeafHealth.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -100,6 +128,13 @@
 		F62EFA092C6B41030025498E /* Watermelon.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Watermelon.swift; sourceTree = "<group>"; };
 		F62EFA0B2C6B41450025498E /* Pineapple.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Pineapple.swift; sourceTree = "<group>"; };
 		F62EFA0E2C6B41A00025498E /* Banana.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Banana.swift; sourceTree = "<group>"; };
+		F65A1BDE2C76EB7700E5BF3D /* SignLanguageClassifier.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; name = SignLanguageClassifier.mlmodel; path = ../../../../../../../Downloads/SignLanguageClassifier.mlmodel; sourceTree = "<group>"; };
+		F65A1BE02C76EBBD00E5BF3D /* CameraView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraView.swift; sourceTree = "<group>"; };
+		F65A1BE22C76EBD200E5BF3D /* SignLanguageInterpreterViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignLanguageInterpreterViewModel.swift; sourceTree = "<group>"; };
+		F65A1BE42C76EC6100E5BF3D /* CameraModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraModel.swift; sourceTree = "<group>"; };
+		F65A1BE62C76EC7E00E5BF3D /* HandPoseDetector.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HandPoseDetector.swift; sourceTree = "<group>"; };
+		F65A1BE92C76EE6900E5BF3D /* Keyboard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Keyboard.swift; sourceTree = "<group>"; };
+		F65A1BEB2C76F8CE00E5BF3D /* SignLanguageSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignLanguageSheet.swift; sourceTree = "<group>"; };
 		F67F89232C75B15000FBB6CE /* CommunicationPageTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommunicationPageTests.swift; sourceTree = "<group>"; };
 		F6856F982C6F582B00574B7E /* SpeechViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpeechViewModel.swift; sourceTree = "<group>"; };
 		F6A94FFC2C6C47AC00F45997 /* TestSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestSheet.swift; sourceTree = "<group>"; };
@@ -138,6 +173,57 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		A23D286D2C76DFD900C8506C /* ViewModels */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = ViewModels;
+			sourceTree = "<group>";
+		};
+		A23D286E2C76DFDF00C8506C /* Presentations */ = {
+			isa = PBXGroup;
+			children = (
+				A23D28702C76DFF600C8506C /* Components */,
+				A23D28722C76E01700C8506C /* Views */,
+			);
+			path = Presentations;
+			sourceTree = "<group>";
+		};
+		A23D28702C76DFF600C8506C /* Components */ = {
+			isa = PBXGroup;
+			children = (
+				A23D28712C76DFFD00C8506C /* Views */,
+			);
+			path = Components;
+			sourceTree = "<group>";
+		};
+		A23D28712C76DFFD00C8506C /* Views */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		A23D28722C76E01700C8506C /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				A23D28732C76E02300C8506C /* WelcomeView.swift */,
+				A23D28752C76E03400C8506C /* NameInputView.swift */,
+				A23D28772C76E04000C8506C /* AgeGenderInputView.swift */,
+				A23D28792C76E05000C8506C /* AllergyInputView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		A23D287B2C77017E00C8506C /* Fonts */ = {
+			isa = PBXGroup;
+			children = (
+				A23D287D2C77018C00C8506C /* Algance-Italic.ttf */,
+				A23D287C2C77018C00C8506C /* Algance-Regular.ttf */,
+			);
+			path = Fonts;
+			sourceTree = "<group>";
+		};
 		F62EF9D42C6B27840025498E = {
 			isa = PBXGroup;
 			children = (
@@ -159,6 +245,7 @@
 		F62EF9DF2C6B27840025498E /* DeafHealth */ = {
 			isa = PBXGroup;
 			children = (
+				A23D28822C7701AA00C8506C /* Info.plist */,
 				F6E922112C75BAAE000D3833 /* Shared */,
 				F6E922122C75BAC5000D3833 /* Modules */,
 				F62EF9E02C6B27840025498E /* DeafHealthApp.swift */,
@@ -207,6 +294,22 @@
 			path = Example;
 			sourceTree = "<group>";
 		};
+		F65A1BDD2C76EB6600E5BF3D /* MLModel */ = {
+			isa = PBXGroup;
+			children = (
+				F65A1BDE2C76EB7700E5BF3D /* SignLanguageClassifier.mlmodel */,
+			);
+			path = MLModel;
+			sourceTree = "<group>";
+		};
+		F65A1BE82C76EE5D00E5BF3D /* Extension */ = {
+			isa = PBXGroup;
+			children = (
+				F65A1BE92C76EE6900E5BF3D /* Keyboard.swift */,
+			);
+			path = Extension;
+			sourceTree = "<group>";
+		};
 		F6B739802C75AD3500B2AA63 /* MediSignTests */ = {
 			isa = PBXGroup;
 			children = (
@@ -222,10 +325,13 @@
 		F6E922112C75BAAE000D3833 /* Shared */ = {
 			isa = PBXGroup;
 			children = (
+				A23D287B2C77017E00C8506C /* Fonts */,
 				F62EF9FC2C6B2BCC0025498E /* DataSource */,
+				F65A1BDD2C76EB6600E5BF3D /* MLModel */,
+				F62EFA032C6B3C450025498E /* Coordinator */,
 				F6E9221E2C75BCDF000D3833 /* Constants */,
 				F6E922192C75BB69000D3833 /* Themes */,
-				F62EFA032C6B3C450025498E /* Coordinator */,
+				F65A1BE82C76EE5D00E5BF3D /* Extension */,
 			);
 			path = Shared;
 			sourceTree = "<group>";
@@ -246,8 +352,8 @@
 			isa = PBXGroup;
 			children = (
 				F6E922142C75BADE000D3833 /* Models */,
-				F6E922152C75BAE3000D3833 /* ViewModels */,
-				F6E922162C75BAE9000D3833 /* Presentations */,
+				A23D286D2C76DFD900C8506C /* ViewModels */,
+				A23D286E2C76DFDF00C8506C /* Presentations */,
 			);
 			path = Onboarding;
 			sourceTree = "<group>";
@@ -258,36 +364,6 @@
 				F62EF9F12C6B27D30025498E /* User.swift */,
 			);
 			path = Models;
-			sourceTree = "<group>";
-		};
-		F6E922152C75BAE3000D3833 /* ViewModels */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = ViewModels;
-			sourceTree = "<group>";
-		};
-		F6E922162C75BAE9000D3833 /* Presentations */ = {
-			isa = PBXGroup;
-			children = (
-				F6E922182C75BB00000D3833 /* Components */,
-				F6E922172C75BAFB000D3833 /* Views */,
-			);
-			path = Presentations;
-			sourceTree = "<group>";
-		};
-		F6E922172C75BAFB000D3833 /* Views */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Views;
-			sourceTree = "<group>";
-		};
-		F6E922182C75BB00000D3833 /* Components */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Components;
 			sourceTree = "<group>";
 		};
 		F6E922192C75BB69000D3833 /* Themes */ = {
@@ -358,6 +434,7 @@
 			children = (
 				F61AA4E82C7454F7007CDCA6 /* MessageViewModel.swift */,
 				F6856F982C6F582B00574B7E /* SpeechViewModel.swift */,
+				F65A1BE22C76EBD200E5BF3D /* SignLanguageInterpreterViewModel.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -367,6 +444,8 @@
 			children = (
 				F6D07E3F2C6F79DB006113FB /* MessageModel.swift */,
 				F6E922282C75DDCF000D3833 /* Role.swift */,
+				F65A1BE42C76EC6100E5BF3D /* CameraModel.swift */,
+				F65A1BE62C76EC7E00E5BF3D /* HandPoseDetector.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -402,26 +481,11 @@
 			isa = PBXGroup;
 			children = (
 				F6E922302C75DE57000D3833 /* Models */,
-				F6E9222F2C75DE50000D3833 /* ViewModels */,
-				F6E9222E2C75DE4A000D3833 /* Presentations */,
+				A27C2C9D2C773F5700865F03 /* ProfileViewController.swift */,
+				A27C2C9F2C773F6D00865F03 /* ProfileImageView.swift */,
+				A27C2CA12C773F7B00865F03 /* ProfileCoordinator.swift */,
 			);
 			path = Profile;
-			sourceTree = "<group>";
-		};
-		F6E9222E2C75DE4A000D3833 /* Presentations */ = {
-			isa = PBXGroup;
-			children = (
-				F6E9223A2C75DFF3000D3833 /* Components */,
-				F6E922392C75DFEF000D3833 /* Views */,
-			);
-			path = Presentations;
-			sourceTree = "<group>";
-		};
-		F6E9222F2C75DE50000D3833 /* ViewModels */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = ViewModels;
 			sourceTree = "<group>";
 		};
 		F6E922302C75DE57000D3833 /* Models */ = {
@@ -443,8 +507,10 @@
 			isa = PBXGroup;
 			children = (
 				F6A950012C6C5C6700F45997 /* CommunicationPage.swift */,
-				F61AA4E42C743AE6007CDCA6 /* RecordingSheet.swift */,
+				F61AA4E42C743AE6007CDCA6 /* SpeechSheet.swift */,
 				F61AA4E62C745447007CDCA6 /* MessageBubble.swift */,
+				F65A1BE02C76EBBD00E5BF3D /* CameraView.swift */,
+				F65A1BEB2C76F8CE00E5BF3D /* SignLanguageSheet.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -472,20 +538,6 @@
 			children = (
 				9B0F1FEB2C74574200030F0C /* CustomSlider.swift */,
 				A255E03C2C7585BE00274DF5 /* RoundedCorner.swift */,
-			);
-			path = Components;
-			sourceTree = "<group>";
-		};
-		F6E922392C75DFEF000D3833 /* Views */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Views;
-			sourceTree = "<group>";
-		};
-		F6E9223A2C75DFF3000D3833 /* Components */ = {
-			isa = PBXGroup;
-			children = (
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -559,7 +611,6 @@
 			);
 			mainGroup = F62EF9D42C6B27840025498E;
 			packageReferences = (
-				F6856F952C6F509200574B7E /* XCRemoteSwiftPackageReference "SwiftUISpeechToText" */,
 			);
 			productRefGroup = F62EF9DE2C6B27840025498E /* Products */;
 			projectDirPath = "";
@@ -576,7 +627,9 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A23D28802C77018C00C8506C /* Algance-Italic.ttf in Resources */,
 				F62EF9E82C6B27850025498E /* Preview Assets.xcassets in Resources */,
+				A23D287E2C77018C00C8506C /* Algance-Regular.ttf in Resources */,
 				F62EF9E52C6B27850025498E /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -585,6 +638,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A23D28812C77018C00C8506C /* Algance-Italic.ttf in Resources */,
+				A23D287F2C77018C00C8506C /* Algance-Regular.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -601,36 +656,51 @@
 				F62EF9E32C6B27840025498E /* ContentView.swift in Sources */,
 				F6A950022C6C5C6700F45997 /* CommunicationPage.swift in Sources */,
 				F6B739722C758FA900B2AA63 /* HomePage.swift in Sources */,
+				A27C2CA02C773F6D00865F03 /* ProfileImageView.swift in Sources */,
 				F62EFA0A2C6B41030025498E /* Watermelon.swift in Sources */,
 				F62EF9F42C6B293B0025498E /* Complaint.swift in Sources */,
+				A23D28782C76E04000C8506C /* AgeGenderInputView.swift in Sources */,
 				F61AA4E52C743AE6007CDCA6 /* RecordingSheet.swift in Sources */,
+				F61AA4E52C743AE6007CDCA6 /* SpeechSheet.swift in Sources */,
 				F6E9221D2C75BBD9000D3833 /* AppColors.swift in Sources */,
 				F6856F992C6F582B00574B7E /* SpeechViewModel.swift in Sources */,
 				A2E406132C76C28E0094625A /* ImageLabel.swift in Sources */,
 				F62EFA062C6B3ECB0025498E /* Strawberry.swift in Sources */,
+				A23D28742C76E02300C8506C /* WelcomeView.swift in Sources */,
 				A2A0C5552C6F69ED002240E2 /* SymptomWorseningFactorsView.swift in Sources */,
 				F6D07E402C6F79DB006113FB /* MessageModel.swift in Sources */,
 				F62EFA082C6B40D80025498E /* Lemon.swift in Sources */,
 				F61AA4E72C745447007CDCA6 /* MessageBubble.swift in Sources */,
+				F65A1BE52C76EC6100E5BF3D /* CameraModel.swift in Sources */,
 				F6A94FFD2C6C47AC00F45997 /* TestSheet.swift in Sources */,
 				F62EFA0C2C6B41450025498E /* Pineapple.swift in Sources */,
+				A23D287A2C76E05000C8506C /* AllergyInputView.swift in Sources */,
 				F6E922202C75BCF3000D3833 /* AppLabel.swift in Sources */,
 				F62EFA0F2C6B41A00025498E /* Banana.swift in Sources */,
 				A2A0C5472C6F68B0002240E2 /* ComplaintView.swift in Sources */,
 				A2A0C55F2C709032002240E2 /* ComplaintFlowView.swift in Sources */,
 				F62EFA002C6B2EB10025498E /* ComplaintViewModel.swift in Sources */,
+				A23D28762C76E03400C8506C /* NameInputView.swift in Sources */,
+				F65A1BE72C76EC7E00E5BF3D /* HandPoseDetector.swift in Sources */,
 				F6E922292C75DDCF000D3833 /* Role.swift in Sources */,
 				A2A0C5532C6F69E1002240E2 /* SymptomSeverityView.swift in Sources */,
+				F65A1BEA2C76EE6900E5BF3D /* Keyboard.swift in Sources */,
 				9B0F1FEC2C74574200030F0C /* CustomSlider.swift in Sources */,
 				F6E922222C75BD9F000D3833 /* Decimal.swift in Sources */,
+				F65A1BE12C76EBBD00E5BF3D /* CameraView.swift in Sources */,
+				F65A1BEC2C76F8CE00E5BF3D /* SignLanguageSheet.swift in Sources */,
 				A2A0C5492C6F6922002240E2 /* SelectBodyPartView.swift in Sources */,
 				A255E0242C72045000274DF5 /* ConsultationMenuView.swift in Sources */,
 				F62EF9E12C6B27840025498E /* DeafHealthApp.swift in Sources */,
 				A2A0C5512C6F69D6002240E2 /* SymptomStartTimeView.swift in Sources */,
+				F65A1BDF2C76EB7700E5BF3D /* SignLanguageClassifier.mlmodel in Sources */,
 				F62EF9F62C6B2B3D0025498E /* SymptomsDetail.swift in Sources */,
 				F62EFA022C6B3C190025498E /* Coordinator.swift in Sources */,
+				A27C2C9E2C773F5700865F03 /* ProfileViewController.swift in Sources */,
+				A27C2CA22C773F7B00865F03 /* ProfileCoordinator.swift in Sources */,
 				A2A0C55B2C6F6A15002240E2 /* PreviousConsultationView.swift in Sources */,
 				F6E922362C75DF2A000D3833 /* SymptomsType.swift in Sources */,
+				F65A1BE32C76EBD200E5BF3D /* SignLanguageInterpreterViewModel.swift in Sources */,
 				A2A0C55D2C6F6A1C002240E2 /* SummaryView.swift in Sources */,
 				F6E922382C75DF62000D3833 /* Gender.swift in Sources */,
 				F62EF9F22C6B27D30025498E /* User.swift in Sources */,
@@ -792,6 +862,7 @@
 				DEVELOPMENT_TEAM = F7W83KYCN5;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = DeafHealth/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = MediSign;
 				INFOPLIST_KEY_NSMicrophoneUsageDescription = "Access microphone to enable speech to text functionality ";
 				INFOPLIST_KEY_NSSpeechRecognitionUsageDescription = "Speech Recognition to translate doctor to text";
@@ -824,6 +895,7 @@
 				DEVELOPMENT_TEAM = F7W83KYCN5;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = DeafHealth/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = MediSign;
 				INFOPLIST_KEY_NSMicrophoneUsageDescription = "Access microphone to enable speech to text functionality ";
 				INFOPLIST_KEY_NSSpeechRecognitionUsageDescription = "Speech Recognition to translate doctor to text";
@@ -912,17 +984,6 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
-
-/* Begin XCRemoteSwiftPackageReference section */
-		F6856F952C6F509200574B7E /* XCRemoteSwiftPackageReference "SwiftUISpeechToText" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/pandashashwat97/SwiftUISpeechToText.git";
-			requirement = {
-				branch = main;
-				kind = branch;
-			};
-		};
-/* End XCRemoteSwiftPackageReference section */
 	};
 	rootObject = F62EF9D52C6B27840025498E /* Project object */;
 }

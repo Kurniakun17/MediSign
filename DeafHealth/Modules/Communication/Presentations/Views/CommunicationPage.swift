@@ -11,17 +11,17 @@ import SwiftUI
 struct CommunicationPage: View {
     @StateObject var messageViewModel = MessageViewModel()
     @StateObject var speechViewModel = SpeechViewModel()
+    @StateObject var signLanguageInterpreterViewModel = SignLanguageInterpreterViewModel()
     @State var isKeyboardFocus = false
+    @State var isShowingInterpreter = false
 
     var body: some View {
         VStack {
-//            Chat History
-            ScrollViewReader {
-                proxy in
+            // Chat History
+            ScrollViewReader { proxy in
                 ScrollView(.vertical) {
                     VStack(spacing: 12) {
-                        ForEach(messageViewModel.messages, id: \.self.id) {
-                            message in
+                        ForEach(messageViewModel.messages, id: \.self.id) { message in
                             Button(action: {
                                 speechViewModel.speak(text: message.body)
                             }) {
@@ -42,17 +42,28 @@ struct CommunicationPage: View {
                     }
                 }
             }
+            .onTapGesture {
+                UIApplication.shared.hideKeyboard()
+
+                if speechViewModel.isRecording {
+                    stopRecording()
+                }
+
+                if signLanguageInterpreterViewModel.isInterpreting {
+                    signLanguageInterpreterViewModel.stopInterpreting()
+                    isShowingInterpreter = false
+                }
+            }
 
             Spacer()
 
-//            Keyboard unfocus
+            // Keyboard unfocus and other UI
             VStack(alignment: .leading, spacing: 12) {
                 if !isKeyboardFocus {
-                    HStack(spacing: 8, content: {
+                    HStack(spacing: 8) {
                         Button(action: {
                             if messageViewModel.isRecording {
                                 stopRecording()
-
                             } else {
                                 startRecording()
                             }
@@ -67,7 +78,14 @@ struct CommunicationPage: View {
                         .clipShape(RoundedRectangle(cornerRadius: 12))
 
                         Button(action: {
-                            // TODO: Epan kerjain disini
+                            if signLanguageInterpreterViewModel.isInterpreting {
+                                signLanguageInterpreterViewModel.stopInterpreting()
+                                isShowingInterpreter = false
+                            } else {
+                                signLanguageInterpreterViewModel.startInterpreting()
+                                messageViewModel.role = .user
+                                isShowingInterpreter = true
+                            }
                         }) {
                             Text("Saya")
                             Image(systemName: "camera.circle.fill")
@@ -75,15 +93,19 @@ struct CommunicationPage: View {
                         .foregroundStyle(.black)
                         .frame(maxWidth: .infinity)
                         .padding()
-                        .background(.gray.opacity(0.2))
+                        .background(signLanguageInterpreterViewModel.isInterpreting ? .blue.opacity(0.2) : .gray.opacity(0.2))
                         .clipShape(RoundedRectangle(cornerRadius: 12))
-                    })
+                        .onChange(of: signLanguageInterpreterViewModel.recognizedText) { newText in
+                            if newText != "" {
+                                messageViewModel.inputValue = newText
+                            }
+                        }
+                    }
                     .transition(.opacity)
                 } else {
-                    HStack(spacing: 8, content: {
+                    HStack(spacing: 8) {
                         Button(action: {
-                            messageViewModel.role
-                                = .doctor
+                            messageViewModel.role = .doctor
                         }) {
                             Text("Dokter").foregroundStyle(messageViewModel.role == .doctor ? .white : .black)
                             Image(systemName: "keyboard.fill")
@@ -92,12 +114,11 @@ struct CommunicationPage: View {
                         .foregroundStyle(.black)
                         .frame(maxWidth: .infinity)
                         .padding()
-                        .background(messageViewModel.role == .doctor ? .primaryBlue : .gray.opacity(0.2)).clipShape(RoundedRectangle(cornerRadius: 12))
+                        .background(messageViewModel.role == .doctor ? .primaryBlue : .gray.opacity(0.2))
+                        .clipShape(RoundedRectangle(cornerRadius: 12))
 
                         Button(action: {
-                            // TODO: Epan kerjain disini
-                            messageViewModel.role
-                                = .user
+                            messageViewModel.role = .user
                         }) {
                             Text("Saya")
                                 .foregroundStyle(messageViewModel.role == .user ? .white : .black)
@@ -109,8 +130,7 @@ struct CommunicationPage: View {
                         .padding()
                         .background(messageViewModel.role == .user ? .primaryBlue : .gray.opacity(0.2))
                         .clipShape(RoundedRectangle(cornerRadius: 12))
-
-                    })
+                    }
                     .transition(.opacity)
                 }
 
@@ -131,20 +151,22 @@ struct CommunicationPage: View {
                             .foregroundStyle(.white)
                     }
                     .padding()
-                    .background(messageViewModel.inputValue.isEmpty ? .gray : (messageViewModel.role == .user ?.green : .blue.opacity(0.8)))
+                    .background(messageViewModel.inputValue.isEmpty ? .gray : .primaryBlue)
                     .disabled(messageViewModel.inputValue.isEmpty)
                     .clipShape(RoundedRectangle(cornerRadius: 12))
                 }
             }
             .padding()
         }
+
+        .sheet(isPresented: $isShowingInterpreter) {
+            SignLanguageSheet(isShowingInterpreter: $isShowingInterpreter)
+                .environmentObject(signLanguageInterpreterViewModel)
+        }
+
         .sheet(isPresented: $speechViewModel.isRecording, content: {
-            RecordingSheet(stopRecording: stopRecording)
-                .onDisappear {
-                    if speechViewModel.transcript != "" {
-                        stopRecording()
-                    }
-                }
+            SpeechSheet(stopRecording: stopRecording)
+            
                 .environmentObject(messageViewModel)
                 .environmentObject(speechViewModel)
         })
@@ -158,7 +180,6 @@ struct CommunicationPage: View {
                 isKeyboardFocus = false
             }
         }
-
     }
 
     func startRecording() {
