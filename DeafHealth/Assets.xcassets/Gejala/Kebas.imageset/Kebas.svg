@@ -1,0 +1,23 @@
+<svg width="170" height="158" viewBox="0 0 170 158" fill="none" xmlns="http://www.w3.org/2000/svg">
+<rect x="10" y="33" width="150" height="113" rx="13" fill="#FFE1C7"/>
+<mask id="mask0_977_8652" style="mask-type:alpha" maskUnits="userSpaceOnUse" x="35" y="40" width="100" height="100">
+<circle cx="85" cy="90" r="50" fill="#FFE1C7"/>
+</mask>
+<g mask="url(#mask0_977_8652)">
+<circle cx="85" cy="90" r="50" fill="#FFE1C7"/>
+</g>
+<g filter="url(#filter0_f_977_8652)">
+<ellipse cx="85.0122" cy="91.8242" rx="15.5" ry="25.5" transform="rotate(29.3567 85.0122 91.8242)" fill="#FF0000" fill-opacity="0.25"/>
+</g>
+<path d="M47 93.5L54.5 90.5V81.5L62.5 81L63 71.5L70 70L69.5 64L75.5 63.5L76.5 56" stroke="#FFF7C4"/>
+<path d="M46 92.5L53.5 89.5V80.5L61.5 80L62 70.5L69 69L68.5 63L74.5 62.5L75.5 55" stroke="#FF0000" stroke-width="2" stroke-linecap="round"/>
+<path d="M86 126.5L95.5 124L93.5 114.5L101.5 114L102 104.5L109 103L108.5 97L114.5 96.5L115.5 89" stroke="#FFF7C4"/>
+<path d="M87 127.5L96.5 125L94.5 115.5L102.5 115L103 105.5L110 104L109.5 98L115.5 97.5L116.5 90" stroke="#FF0000" stroke-width="2" stroke-linecap="round"/>
+<defs>
+<filter id="filter0_f_977_8652" x="56.6055" y="58.3291" width="56.8125" height="66.9902" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+<feFlood flood-opacity="0" result="BackgroundImageFix"/>
+<feBlend mode="normal" in="SourceGraphic" in2="BackgroundImageFix" result="shape"/>
+<feGaussianBlur stdDeviation="5" result="effect1_foregroundBlur_977_8652"/>
+</filter>
+</defs>
+</svg>

@@ -211,7 +211,7 @@ struct SymptomSeverityView: View {
                             .stroke(Color(red: 0.6, green: 0.6, blue: 0.6), lineWidth: DecimalConstants.zeros)
                     )
                 }
-            }.frame(width: 363)
+            }.frame(maxWidth: /*@START_MENU_TOKEN@*/.infinity/*@END_MENU_TOKEN@*/)
                 .font(
                     Font.custom("SF Pro", size: 12)
                         .weight(.bold)
@@ -237,15 +237,6 @@ struct SymptomSeverityView: View {
                     .disabled(!isAnswerProvided)
                     .padding(.bottom, DecimalConstants.d16 * 2)
             }
-
-//            Button(AppLabel.continueButton) {
-//                coordinator.present(sheet: .symptomWorseningFactors)
-//            }
-//            .frame(width: 363, height: 52)
-//            .background(isAnswerProvided ? Color(red: 0.25, green: 0.48, blue: 0.68) : Color.gray)
-//            .cornerRadius(25)
-//            .foregroundColor(Color("FFFFFF"))
-//            .disabled(!isAnswerProvided)
         }
         .onAppear {
             selectedSeverity = complaintViewModel.answers[3]

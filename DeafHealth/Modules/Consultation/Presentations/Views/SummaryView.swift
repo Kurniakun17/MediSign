@@ -39,15 +39,17 @@ struct SummaryView: View {
 
                     // TODO: body part
 
-                    VStack {
-                        Text(complaintViewModel.answers[1])
-                    }.padding(.horizontal, 10)
-                        .padding(.vertical, 5)
-                        .background(AppColors.blueMedium)
-                        .cornerRadius(5)
-                        .foregroundColor(.white)
+                    if complaintViewModel.answers[1] != "" {
+                        VStack {
+                            Text(complaintViewModel.answers[1])
+                        }.padding(.horizontal, 10)
+                            .padding(.vertical, 5)
+                            .background(AppColors.blueMedium)
+                            .cornerRadius(5)
+                            .foregroundColor(.white)
+                    }
 
-                    Text("Rasa sakit \n\(painSeverity) (\(complaintViewModel.answers[2]) / 10)").padding(.horizontal, 10)
+                    Text("Rasa sakit \n\(painSeverity) (\(complaintViewModel.answers[3]) / 10)").padding(.horizontal, 10)
                         .padding(.vertical, 5)
                         .background(AppColors.blueMedium)
                         .cornerRadius(5)
@@ -56,7 +58,14 @@ struct SummaryView: View {
 
                 // TODO: body part
 
-                Image("")
+                if complaintViewModel.answers[1] == "" {
+//                    Image("\(complaintViewModel.answers[0])")
+                    Image("Pusing").resizable().aspectRatio(contentMode: .fit).frame(width: 185)
+
+                } else {
+                    Image("LK \(complaintViewModel.answers[1])").resizable().aspectRatio(contentMode: .fit).frame(width: 185)
+                }
+
             }.padding(.horizontal, 10)
                 .padding(.vertical, DecimalConstants.d16)
                 .frame(width: 361, alignment: .topLeading)
@@ -127,7 +136,7 @@ struct SummaryView: View {
             Spacer().frame(height: DecimalConstants.d16)
 
             HStack {
-                Text("adsf")
+//                Text("adsf")
             }.frame(width: 361, alignment: .topLeading)
                 .background(.white)
                 .cornerRadius(DecimalConstants.r15)
@@ -141,7 +150,7 @@ struct SummaryView: View {
 
             Spacer()
 
-            Button(AppLabel.continueButton) {
+            Button(AppLabel.saveButton) {
                 showingSaveModal = true
             }
             .frame(width: 363, height: 52)
@@ -150,9 +159,9 @@ struct SummaryView: View {
             .foregroundColor(Color("FFFFFF"))
         }
         .onAppear {
-            if complaintViewModel.answers[2] == "1" || complaintViewModel.answers[2] == "2" || complaintViewModel.answers[2] == "3" {
+            if complaintViewModel.answers[3] == "1" || complaintViewModel.answers[3] == "2" || complaintViewModel.answers[3] == "3" {
                 painSeverity = "Rendah"
-            } else if complaintViewModel.answers[2] == "4" || complaintViewModel.answers[2] == "5" || complaintViewModel.answers[2] == "6" {
+            } else if complaintViewModel.answers[3] == "4" || complaintViewModel.answers[3] == "5" || complaintViewModel.answers[3] == "6" {
                 painSeverity = "Sedang"
             } else {
                 painSeverity = "Tinggi"
@@ -187,7 +196,7 @@ struct SaveComplaintModal: View {
             }
             .frame(maxWidth: .infinity)
             .padding()
-            .background(Color("green"))
+            .background(AppColors.blueMedium)
             .cornerRadius(25)
             .foregroundColor(Color("FFFFFF"))
             .padding(.horizontal, 32)

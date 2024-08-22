@@ -47,7 +47,7 @@ struct PreviousConsultationView: View {
                 HStack {
                     Text("\(AppLabel.previousConsultation) ").font(Font.custom("SF Pro", size: 20))
 
-                    + Text("\(complaintViewModel.answers[6].lowercased() == "" ? "_____" : complaintViewModel.answers[6].lowercased())").font(Font.system(size: 20)).bold().foregroundColor(.darkBlue)
+                        + Text("\(complaintViewModel.answers[6].lowercased() == "" ? "_____" : complaintViewModel.answers[6].lowercased())").font(Font.system(size: 20)).bold().foregroundColor(.darkBlue)
 
                         + Text(".").font(Font.custom("SF Pro", size: 20))
                 }
@@ -118,9 +118,10 @@ struct PreviousConsultationView: View {
 //                .cornerRadius(25)
 //                .foregroundColor(Color("FFFFFF"))
 //                .disabled(!isAnswerProvided)
-                
+
                 Button {
-                    coordinator.present(sheet: .previousConsultation)
+                    coordinator.push(page: .summary)
+                    dismiss()
                 } label: {
                     Text(AppLabel.continueButton).frame(width: 363, height: 52)
                         .background(isAnswerProvided ? Color(red: 0.25, green: 0.48, blue: 0.68) : Color.gray)

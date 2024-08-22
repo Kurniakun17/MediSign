@@ -42,6 +42,8 @@ struct ComplaintView: View {
             .padding(.horizontal)
             .padding(.top, DecimalConstants.d8 * 2)
             .multilineTextAlignment(.center)
+            .frame(maxWidth: 300, alignment: .center)
+
 
             Picker("Select Category", selection: $selectedSegment) {
                 Text(AppLabel.mainSymptoms).tag(AppLabel.mainSymptoms)
@@ -126,20 +128,19 @@ struct ComplaintView: View {
     }
 
     func symptomButton(_ symptom: String) -> some View {
-        VStack {
+        ZStack {
             Text(symptom)
                 .font(.headline)
                 .foregroundColor(selectedComplaint == symptom ? .white : .primary)
+                .offset(y: -55)
 
-            Image(systemName: "photo") // Placeholder for actual image
+            Image(symptom) // Placeholder for actual image
                 .resizable()
                 .scaledToFit()
-                .frame(height: 60)
                 .foregroundColor(.white)
         }
-        .frame(maxWidth: .infinity, maxHeight: 150)
-        .padding()
-        .background(selectedComplaint == symptom ? .darkBlue : Color("light-blue"))
+        .frame(width: 170, height: 140)
+        .background(selectedComplaint == symptom ? .darkBlue : Color(red: 0.91, green: 0.95, blue: 0.99))
         .cornerRadius(12)
     }
 }

@@ -18,7 +18,7 @@ class SymptomsDetail {
     var feelWorse: [String] = []
     var feelBetter: [String] = []
     var additionalNotes: String?
-    
+
     init(type: SymptomsType, position: [String], dateOccurred: Date, durationInDays: Int, severity: Int, feelWorse: [String], feelBetter: [String], additionalNotes: String? = nil) {
         self.type = type
         self.position = position
@@ -32,9 +32,9 @@ class SymptomsDetail {
 }
 
 var generalSymptoms: [String] {
-    ["Flu", "Demam", "Pusing", "Batuk", "Sesak Nafas", "Diare", "Mual/Muntah", "Sakit lain"]
+    ["Demam", "Pusing", "Mual atau Muntah", "Batuk", "Flu", "Diare", "Sesak Nafas", "Gejala Lainnya"]
 }
 
 var specificSymptoms: [String] {
-    ["Sakit Kepala", "Nyeri Dada", "Nyeri Punggung", "Nyeri Sendi", "Nyeri Otot"]
+    ["Gatal", "Bengkak", "Terluka", "Nyeri", "Kaku", "Kebas"]
 }
