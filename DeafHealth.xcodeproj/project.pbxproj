@@ -20,7 +20,7 @@
 		A2A0C55D2C6F6A1C002240E2 /* SummaryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2A0C55C2C6F6A1C002240E2 /* SummaryView.swift */; };
 		A2A0C55F2C709032002240E2 /* ComplaintFlowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2A0C55E2C709032002240E2 /* ComplaintFlowView.swift */; };
 		A2E406132C76C28E0094625A /* ImageLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2E406122C76C28E0094625A /* ImageLabel.swift */; };
-		F61AA4E52C743AE6007CDCA6 /* RecordingSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = F61AA4E42C743AE6007CDCA6 /* RecordingSheet.swift */; };
+		F61AA4E52C743AE6007CDCA6 /* SpeechSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = F61AA4E42C743AE6007CDCA6 /* SpeechSheet.swift */; };
 		F61AA4E72C745447007CDCA6 /* MessageBubble.swift in Sources */ = {isa = PBXBuildFile; fileRef = F61AA4E62C745447007CDCA6 /* MessageBubble.swift */; };
 		F61AA4E92C7454F7007CDCA6 /* MessageViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F61AA4E82C7454F7007CDCA6 /* MessageViewModel.swift */; };
 		F62EF9E12C6B27840025498E /* DeafHealthApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = F62EF9E02C6B27840025498E /* DeafHealthApp.swift */; };
@@ -38,6 +38,13 @@
 		F62EFA0A2C6B41030025498E /* Watermelon.swift in Sources */ = {isa = PBXBuildFile; fileRef = F62EFA092C6B41030025498E /* Watermelon.swift */; };
 		F62EFA0C2C6B41450025498E /* Pineapple.swift in Sources */ = {isa = PBXBuildFile; fileRef = F62EFA0B2C6B41450025498E /* Pineapple.swift */; };
 		F62EFA0F2C6B41A00025498E /* Banana.swift in Sources */ = {isa = PBXBuildFile; fileRef = F62EFA0E2C6B41A00025498E /* Banana.swift */; };
+		F65A1BDF2C76EB7700E5BF3D /* SignLanguageClassifier.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = F65A1BDE2C76EB7700E5BF3D /* SignLanguageClassifier.mlmodel */; };
+		F65A1BE12C76EBBD00E5BF3D /* CameraView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F65A1BE02C76EBBD00E5BF3D /* CameraView.swift */; };
+		F65A1BE32C76EBD200E5BF3D /* SignLanguageInterpreterViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F65A1BE22C76EBD200E5BF3D /* SignLanguageInterpreterViewModel.swift */; };
+		F65A1BE52C76EC6100E5BF3D /* CameraModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F65A1BE42C76EC6100E5BF3D /* CameraModel.swift */; };
+		F65A1BE72C76EC7E00E5BF3D /* HandPoseDetector.swift in Sources */ = {isa = PBXBuildFile; fileRef = F65A1BE62C76EC7E00E5BF3D /* HandPoseDetector.swift */; };
+		F65A1BEA2C76EE6900E5BF3D /* Keyboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = F65A1BE92C76EE6900E5BF3D /* Keyboard.swift */; };
+		F65A1BEC2C76F8CE00E5BF3D /* SignLanguageSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = F65A1BEB2C76F8CE00E5BF3D /* SignLanguageSheet.swift */; };
 		F67F89242C75B15000FBB6CE /* CommunicationPageTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F67F89232C75B15000FBB6CE /* CommunicationPageTests.swift */; };
 		F6856F992C6F582B00574B7E /* SpeechViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6856F982C6F582B00574B7E /* SpeechViewModel.swift */; };
 		F6A94FFD2C6C47AC00F45997 /* TestSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6A94FFC2C6C47AC00F45997 /* TestSheet.swift */; };
@@ -81,7 +88,7 @@
 		A2A0C55C2C6F6A1C002240E2 /* SummaryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SummaryView.swift; sourceTree = "<group>"; };
 		A2A0C55E2C709032002240E2 /* ComplaintFlowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComplaintFlowView.swift; sourceTree = "<group>"; };
 		A2E406122C76C28E0094625A /* ImageLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageLabel.swift; sourceTree = "<group>"; };
-		F61AA4E42C743AE6007CDCA6 /* RecordingSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordingSheet.swift; sourceTree = "<group>"; };
+		F61AA4E42C743AE6007CDCA6 /* SpeechSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpeechSheet.swift; sourceTree = "<group>"; };
 		F61AA4E62C745447007CDCA6 /* MessageBubble.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageBubble.swift; sourceTree = "<group>"; };
 		F61AA4E82C7454F7007CDCA6 /* MessageViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageViewModel.swift; sourceTree = "<group>"; };
 		F62EF9DD2C6B27840025498E /* DeafHealth.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DeafHealth.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -100,6 +107,13 @@
 		F62EFA092C6B41030025498E /* Watermelon.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Watermelon.swift; sourceTree = "<group>"; };
 		F62EFA0B2C6B41450025498E /* Pineapple.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Pineapple.swift; sourceTree = "<group>"; };
 		F62EFA0E2C6B41A00025498E /* Banana.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Banana.swift; sourceTree = "<group>"; };
+		F65A1BDE2C76EB7700E5BF3D /* SignLanguageClassifier.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; name = SignLanguageClassifier.mlmodel; path = ../../../../../../../Downloads/SignLanguageClassifier.mlmodel; sourceTree = "<group>"; };
+		F65A1BE02C76EBBD00E5BF3D /* CameraView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraView.swift; sourceTree = "<group>"; };
+		F65A1BE22C76EBD200E5BF3D /* SignLanguageInterpreterViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignLanguageInterpreterViewModel.swift; sourceTree = "<group>"; };
+		F65A1BE42C76EC6100E5BF3D /* CameraModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraModel.swift; sourceTree = "<group>"; };
+		F65A1BE62C76EC7E00E5BF3D /* HandPoseDetector.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HandPoseDetector.swift; sourceTree = "<group>"; };
+		F65A1BE92C76EE6900E5BF3D /* Keyboard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Keyboard.swift; sourceTree = "<group>"; };
+		F65A1BEB2C76F8CE00E5BF3D /* SignLanguageSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignLanguageSheet.swift; sourceTree = "<group>"; };
 		F67F89232C75B15000FBB6CE /* CommunicationPageTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommunicationPageTests.swift; sourceTree = "<group>"; };
 		F6856F982C6F582B00574B7E /* SpeechViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpeechViewModel.swift; sourceTree = "<group>"; };
 		F6A94FFC2C6C47AC00F45997 /* TestSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestSheet.swift; sourceTree = "<group>"; };
@@ -207,6 +221,22 @@
 			path = Example;
 			sourceTree = "<group>";
 		};
+		F65A1BDD2C76EB6600E5BF3D /* MLModel */ = {
+			isa = PBXGroup;
+			children = (
+				F65A1BDE2C76EB7700E5BF3D /* SignLanguageClassifier.mlmodel */,
+			);
+			path = MLModel;
+			sourceTree = "<group>";
+		};
+		F65A1BE82C76EE5D00E5BF3D /* Extension */ = {
+			isa = PBXGroup;
+			children = (
+				F65A1BE92C76EE6900E5BF3D /* Keyboard.swift */,
+			);
+			path = Extension;
+			sourceTree = "<group>";
+		};
 		F6B739802C75AD3500B2AA63 /* MediSignTests */ = {
 			isa = PBXGroup;
 			children = (
@@ -223,9 +253,11 @@
 			isa = PBXGroup;
 			children = (
 				F62EF9FC2C6B2BCC0025498E /* DataSource */,
+				F65A1BDD2C76EB6600E5BF3D /* MLModel */,
+				F62EFA032C6B3C450025498E /* Coordinator */,
 				F6E9221E2C75BCDF000D3833 /* Constants */,
 				F6E922192C75BB69000D3833 /* Themes */,
-				F62EFA032C6B3C450025498E /* Coordinator */,
+				F65A1BE82C76EE5D00E5BF3D /* Extension */,
 			);
 			path = Shared;
 			sourceTree = "<group>";
@@ -358,6 +390,7 @@
 			children = (
 				F61AA4E82C7454F7007CDCA6 /* MessageViewModel.swift */,
 				F6856F982C6F582B00574B7E /* SpeechViewModel.swift */,
+				F65A1BE22C76EBD200E5BF3D /* SignLanguageInterpreterViewModel.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -367,6 +400,8 @@
 			children = (
 				F6D07E3F2C6F79DB006113FB /* MessageModel.swift */,
 				F6E922282C75DDCF000D3833 /* Role.swift */,
+				F65A1BE42C76EC6100E5BF3D /* CameraModel.swift */,
+				F65A1BE62C76EC7E00E5BF3D /* HandPoseDetector.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -443,8 +478,10 @@
 			isa = PBXGroup;
 			children = (
 				F6A950012C6C5C6700F45997 /* CommunicationPage.swift */,
-				F61AA4E42C743AE6007CDCA6 /* RecordingSheet.swift */,
+				F61AA4E42C743AE6007CDCA6 /* SpeechSheet.swift */,
 				F61AA4E62C745447007CDCA6 /* MessageBubble.swift */,
+				F65A1BE02C76EBBD00E5BF3D /* CameraView.swift */,
+				F65A1BEB2C76F8CE00E5BF3D /* SignLanguageSheet.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -559,7 +596,6 @@
 			);
 			mainGroup = F62EF9D42C6B27840025498E;
 			packageReferences = (
-				F6856F952C6F509200574B7E /* XCRemoteSwiftPackageReference "SwiftUISpeechToText" */,
 			);
 			productRefGroup = F62EF9DE2C6B27840025498E /* Products */;
 			projectDirPath = "";
@@ -603,7 +639,7 @@
 				F6B739722C758FA900B2AA63 /* HomePage.swift in Sources */,
 				F62EFA0A2C6B41030025498E /* Watermelon.swift in Sources */,
 				F62EF9F42C6B293B0025498E /* Complaint.swift in Sources */,
-				F61AA4E52C743AE6007CDCA6 /* RecordingSheet.swift in Sources */,
+				F61AA4E52C743AE6007CDCA6 /* SpeechSheet.swift in Sources */,
 				F6E9221D2C75BBD9000D3833 /* AppColors.swift in Sources */,
 				F6856F992C6F582B00574B7E /* SpeechViewModel.swift in Sources */,
 				A2E406132C76C28E0094625A /* ImageLabel.swift in Sources */,
@@ -612,6 +648,7 @@
 				F6D07E402C6F79DB006113FB /* MessageModel.swift in Sources */,
 				F62EFA082C6B40D80025498E /* Lemon.swift in Sources */,
 				F61AA4E72C745447007CDCA6 /* MessageBubble.swift in Sources */,
+				F65A1BE52C76EC6100E5BF3D /* CameraModel.swift in Sources */,
 				F6A94FFD2C6C47AC00F45997 /* TestSheet.swift in Sources */,
 				F62EFA0C2C6B41450025498E /* Pineapple.swift in Sources */,
 				F6E922202C75BCF3000D3833 /* AppLabel.swift in Sources */,
@@ -619,18 +656,24 @@
 				A2A0C5472C6F68B0002240E2 /* ComplaintView.swift in Sources */,
 				A2A0C55F2C709032002240E2 /* ComplaintFlowView.swift in Sources */,
 				F62EFA002C6B2EB10025498E /* ComplaintViewModel.swift in Sources */,
+				F65A1BE72C76EC7E00E5BF3D /* HandPoseDetector.swift in Sources */,
 				F6E922292C75DDCF000D3833 /* Role.swift in Sources */,
 				A2A0C5532C6F69E1002240E2 /* SymptomSeverityView.swift in Sources */,
+				F65A1BEA2C76EE6900E5BF3D /* Keyboard.swift in Sources */,
 				9B0F1FEC2C74574200030F0C /* CustomSlider.swift in Sources */,
 				F6E922222C75BD9F000D3833 /* Decimal.swift in Sources */,
+				F65A1BE12C76EBBD00E5BF3D /* CameraView.swift in Sources */,
+				F65A1BEC2C76F8CE00E5BF3D /* SignLanguageSheet.swift in Sources */,
 				A2A0C5492C6F6922002240E2 /* SelectBodyPartView.swift in Sources */,
 				A255E0242C72045000274DF5 /* ConsultationMenuView.swift in Sources */,
 				F62EF9E12C6B27840025498E /* DeafHealthApp.swift in Sources */,
 				A2A0C5512C6F69D6002240E2 /* SymptomStartTimeView.swift in Sources */,
+				F65A1BDF2C76EB7700E5BF3D /* SignLanguageClassifier.mlmodel in Sources */,
 				F62EF9F62C6B2B3D0025498E /* SymptomsDetail.swift in Sources */,
 				F62EFA022C6B3C190025498E /* Coordinator.swift in Sources */,
 				A2A0C55B2C6F6A15002240E2 /* PreviousConsultationView.swift in Sources */,
 				F6E922362C75DF2A000D3833 /* SymptomsType.swift in Sources */,
+				F65A1BE32C76EBD200E5BF3D /* SignLanguageInterpreterViewModel.swift in Sources */,
 				A2A0C55D2C6F6A1C002240E2 /* SummaryView.swift in Sources */,
 				F6E922382C75DF62000D3833 /* Gender.swift in Sources */,
 				F62EF9F22C6B27D30025498E /* User.swift in Sources */,
@@ -912,17 +955,6 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
-
-/* Begin XCRemoteSwiftPackageReference section */
-		F6856F952C6F509200574B7E /* XCRemoteSwiftPackageReference "SwiftUISpeechToText" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/pandashashwat97/SwiftUISpeechToText.git";
-			requirement = {
-				branch = main;
-				kind = branch;
-			};
-		};
-/* End XCRemoteSwiftPackageReference section */
 	};
 	rootObject = F62EF9D52C6B27840025498E /* Project object */;
 }
