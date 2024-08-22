@@ -147,7 +147,7 @@ struct QuestionButtonView: View {
         if index == 0 {
             return true
         }
-        return !(complaintViewModel.answers[index - 1] == "_____")
+        return !(complaintViewModel.answers[index] == "_____")
     }
 }
 

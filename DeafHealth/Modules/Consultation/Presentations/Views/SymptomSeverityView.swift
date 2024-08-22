@@ -72,7 +72,7 @@ struct SymptomSeverityView: View {
 
             CustomSlider(
                 value: $sliderValue,
-                range: DecimalConstants.d1 ... DecimalConstants.d16 + DecimalConstants.d2,
+                range: DecimalConstants.d1 ... DecimalConstants.d8 + DecimalConstants.d2,
                 step: DecimalConstants.d1,
                 label: {
                     Text("")
@@ -97,7 +97,7 @@ struct SymptomSeverityView: View {
                 let feedbackGenerator = UIImpactFeedbackGenerator(style: .medium)
                 feedbackGenerator.impactOccurred()
 
-                complaintViewModel.updateAnswer(for: 2, with: selectedSeverity)
+                complaintViewModel.updateAnswer(for: 3, with: selectedSeverity)
 
                 switch sliderValue {
                 case DecimalConstants.d1:

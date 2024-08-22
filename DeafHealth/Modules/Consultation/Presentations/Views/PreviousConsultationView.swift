@@ -45,7 +45,7 @@ struct PreviousConsultationView: View {
                 .frame(maxWidth: 257, alignment: .center)
             } else {
                 HStack {
-                    Text(AppLabel.previousConsultation).font(Font.custom("SF Pro", size: 20))
+                    Text("\(AppLabel.previousConsultation) ").font(Font.custom("SF Pro", size: 20))
 
                         + Text("\(previousMed.lowercased() == "" ? "_____" : previousMed.lowercased())").font(Font.system(size: 20)).bold().foregroundColor(.darkBlue)
 
@@ -69,7 +69,7 @@ struct PreviousConsultationView: View {
                     )
                     .onChange(of: previousMed) { newValue in
                         isAnswerProvided = !newValue.isEmpty
-                        complaintViewModel.updateAnswer(for: 7, with: previousMed)
+                        complaintViewModel.updateAnswer(for: 6, with: previousMed)
                     }
                     .padding(.horizontal)
                     .padding(.top, DecimalConstants.d8 * 8)
@@ -83,11 +83,11 @@ struct PreviousConsultationView: View {
                     if hasNotConsultedBefore {
                         previousMed = "Tidak ada konsultasi sebelumnya"
                         isAnswerProvided = true
-                        complaintViewModel.updateAnswer(for: 7, with: previousMed)
+                        complaintViewModel.updateAnswer(for: 6, with: previousMed)
                     } else {
                         previousMed = ""
                         isAnswerProvided = false
-                        complaintViewModel.updateAnswer(for: 7, with: previousMed)
+                        complaintViewModel.updateAnswer(for: 6, with: previousMed)
                     }
                 }) {
                     HStack {

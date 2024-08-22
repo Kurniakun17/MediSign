@@ -57,7 +57,7 @@ struct SymptomStartTimeView: View {
                 .pickerStyle(.wheel)
                 .frame(minWidth: 60)
                 .onChange(of: selectedNumber) {
-                    complaintViewModel.updateAnswer(for: 1, with: selectedNumber + " " + selectedUnit.lowercased())
+                    complaintViewModel.updateAnswer(for: 2, with: selectedNumber + " " + selectedUnit.lowercased())
                     let feedbackGenerator = UIImpactFeedbackGenerator(style: .medium)
                     feedbackGenerator.impactOccurred()
 
@@ -94,7 +94,7 @@ struct SymptomStartTimeView: View {
                             isAnswerProvided = true
                         }
 
-                        complaintViewModel.updateAnswer(for: 1, with: selectedNumber + " " + selectedUnit.lowercased())
+                        complaintViewModel.updateAnswer(for: 2, with: selectedNumber + " " + selectedUnit.lowercased())
                     }
             }.padding(.horizontal, DecimalConstants.d16 * 6.875)
 

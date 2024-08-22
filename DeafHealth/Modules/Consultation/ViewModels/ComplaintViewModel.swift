@@ -11,6 +11,7 @@ import SwiftData
 class ComplaintViewModel: ObservableObject {
     @Published private(set) var complaintSummary: String = "Halo Dokter. Saya merasakan _____." // Initial placeholder text
     @Published private(set) var answers: [String] = ["_____", "_____", "_____", "_____", "_____", "_____", "_____", "_____"]
+    @Published private(set) var summary: [String] = ["Saya merasakan ", "Saya merasakan gejala ini sejak ", " yang lalu", "Rasa sakitnya ", " dari 10", "Gejalanya semakin parah ketika saya ", "Gejalanya semakin membaik ketika saya ", "Pernah konsultasi ke dokter lain dan diberi obat yaitu "]
 
     private let dataSource: LocalDataSource
 
@@ -26,8 +27,12 @@ class ComplaintViewModel: ObservableObject {
     }
 
     func getSummary(for questionIndex: Int) -> String {
-        return buildComplaintSummary(upTo: questionIndex)
+        return summary[questionIndex]
     }
+
+//    func getSummary(for questionIndex: Int) -> String {
+//        return buildComplaintSummary(upTo: questionIndex)
+//    }
 
     private func buildComplaintSummary(upTo currentQuestionIndex: Int) -> String {
         var summaryParts: [String] = []

@@ -31,18 +31,17 @@ struct ComplaintView: View {
                 .padding(.top, DecimalConstants.d16 * 1.5)
             }
 
-            VStack(spacing: DecimalConstants.d8) {
-                Text(AppLabel.complaintStatement)
-                    .font(.title3)
-                    .multilineTextAlignment(.center)
+            HStack(spacing: DecimalConstants.d8) {
+                Text("\(AppLabel.complaintStatement) ")
+                    .font(Font.system(size: 20)) +
 
-                Text(selectedComplaint.isEmpty ? "____." : selectedComplaint)
+                    Text(selectedComplaint.isEmpty ? "____." : "\(selectedComplaint.lowercased()).")
                     .font(.title3)
-                    .foregroundColor(selectedComplaint.isEmpty ? .primary : .darkBlue) // Change color to blue if selected
-                    .multilineTextAlignment(.center)
+                    .foregroundColor(.darkBlue).bold()
             }
             .padding(.horizontal)
             .padding(.top, DecimalConstants.d8 * 2)
+            .multilineTextAlignment(.center)
 
             Picker("Select Category", selection: $selectedSegment) {
                 Text(AppLabel.mainSymptoms).tag(AppLabel.mainSymptoms)
@@ -57,7 +56,7 @@ struct ComplaintView: View {
                 if selectedSegment == AppLabel.mainSymptoms {
                     gridOfSymptoms(generalSymptoms)
                 } else {
-                    gridOfSymptoms(specificSymptoms)
+                    gridOfSpecificSymptoms(specificSymptoms)
                 }
             }
             .padding(.horizontal)
@@ -66,7 +65,7 @@ struct ComplaintView: View {
             Spacer()
 
             Button(AppLabel.continueButton) {
-                coordinator.present(sheet: .selectBodyPart)
+                coordinator.present(sheet: .symptomStartTime)
             }
             .frame(width: 363, height: 52)
             .background(isAnswerProvided ? Color(red: 0.25, green: 0.48, blue: 0.68) : Color.gray)
@@ -89,6 +88,22 @@ struct ComplaintView: View {
                     selectedComplaint = symptom
                     isAnswerProvided = true
                     complaintViewModel.updateAnswer(for: 0, with: selectedComplaint)
+                }) {
+                    symptomButton(symptom)
+                }
+            }
+        }
+        .padding(.top, DecimalConstants.d16)
+    }
+
+    func gridOfSpecificSymptoms(_ symptoms: [String]) -> some View {
+        LazyVGrid(columns: [GridItem(.flexible()), GridItem(.flexible())], spacing: DecimalConstants.d16) {
+            ForEach(symptoms, id: \.self) { symptom in
+                Button(action: {
+                    selectedComplaint = symptom
+                    complaintViewModel.updateAnswer(for: 0, with: selectedComplaint)
+                    coordinator.present(sheet: .selectBodyPart)
+
                 }) {
                     symptomButton(symptom)
                 }

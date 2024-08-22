@@ -37,4 +37,5 @@ struct AppLabel {
     static let continueButton = "Lanjutkan"
     static let saveButton = "Simpan"
     static let cancelButton = "Batal"
+    
 }

@@ -30,14 +30,14 @@ struct SelectBodyPartView: View {
                 .padding(.top, DecimalConstants.d16 * 1.5)
             }
 
-            VStack(spacing: DecimalConstants.d8) {
-                Text("\(AppLabel.complaintStatement) \(complaintViewModel.answers[0]) di bagian \(selectedBodyPart.isEmpty ? "____" : selectedBodyPart).")
-                    .font(.title3)
-                    .foregroundColor(selectedBodyPart.isEmpty ? .primary : Color.blue)
-                    .multilineTextAlignment(.center)
+            HStack(spacing: DecimalConstants.d8) {
+                Text("\(AppLabel.complaintStatement)") + Text(" \(complaintViewModel.answers[0].lowercased())").bold().foregroundColor(AppColors.blueMedium) + Text(" di bagian ") + Text("\(selectedBodyPart.isEmpty ? "____" : selectedBodyPart.lowercased()).")
+                    .foregroundColor(AppColors.blueMedium).bold()
             }
             .padding(.horizontal)
             .padding(.top, DecimalConstants.d8 * 2)
+            .multilineTextAlignment(.center)
+            .font(Font.system(size: 20))
 
             Spacer()
 
@@ -93,6 +93,9 @@ struct SelectBodyPartView: View {
         .background {
             Image(ImageLabel.sheetBackground)
         }
+        .onChange(of: selectedBodyPart) {
+            complaintViewModel.updateAnswer(for: 1, with: selectedBodyPart)
+        }
         .edgesIgnoringSafeArea(.bottom)
         .navigationBarBackButtonHidden(true)
     }
@@ -105,7 +108,7 @@ struct SelectBodyPartView: View {
             Circle().positionedCircle(x: 113, y: 149, bodyPart: "Dada", selectedBodyPart: $selectedBodyPart, isAnswerProvided: $isAnswerProvided)
             Circle().positionedCircle(x: 88, y: 210, bodyPart: "Perut", selectedBodyPart: $selectedBodyPart, isAnswerProvided: $isAnswerProvided)
             Circle().positionedCircle(x: 170, y: 163, bodyPart: "Lengan Atas", selectedBodyPart: $selectedBodyPart, isAnswerProvided: $isAnswerProvided)
-            Circle().positionedCircle(x:14, y: 205, bodyPart: "Siku tangan", selectedBodyPart: $selectedBodyPart, isAnswerProvided: $isAnswerProvided)
+            Circle().positionedCircle(x: 14, y: 205, bodyPart: "Siku tangan", selectedBodyPart: $selectedBodyPart, isAnswerProvided: $isAnswerProvided)
             Circle().positionedCircle(x: 175, y: 255, bodyPart: "Pergelangan Tangan", selectedBodyPart: $selectedBodyPart, isAnswerProvided: $isAnswerProvided)
             Circle().positionedCircle(x: 88, y: 274, bodyPart: "Kelamin", selectedBodyPart: $selectedBodyPart, isAnswerProvided: $isAnswerProvided)
             Circle().positionedCircle(x: 57, y: 335, bodyPart: "Paha atas", selectedBodyPart: $selectedBodyPart, isAnswerProvided: $isAnswerProvided)

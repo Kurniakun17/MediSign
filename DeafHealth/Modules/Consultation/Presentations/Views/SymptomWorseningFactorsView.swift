@@ -77,7 +77,7 @@ struct SymptomWorseningFactorsView: View {
                             .disabled(isNotAvailable)
                             .onChange(of: factor) { newValue in
                                 selectedFactor = newValue
-                                complaintViewModel.updateAnswer(for: 3, with: selectedFactor)
+                                complaintViewModel.updateAnswer(for: 4, with: selectedFactor)
                                 isAnswerProvided = true
                             }
 
