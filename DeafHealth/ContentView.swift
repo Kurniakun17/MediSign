@@ -10,15 +10,14 @@ import SwiftUI
 struct ContentView: View {
     @StateObject var complaintViewModel = ComplaintViewModel(datasource: .shared)
     @StateObject private var coordinator = Coordinator()
-    
-    // State to track if onboarding is completed
-    @AppStorage("isOnboardingCompleted") private var isOnboardingCompleted: Bool = false
+
+    @State private var doesUserProfileExist: Bool = false
 
     var body: some View {
         NavigationStack(path: $coordinator.path) {
             Group {
-                if isOnboardingCompleted {
-                    coordinator.build(page: .onboardingWelcome)
+                if doesUserProfileExist {
+                    coordinator.build(page: .homepage)
                 } else {
                     coordinator.build(page: .onboardingWelcome)
                 }
@@ -35,10 +34,20 @@ struct ContentView: View {
         }
         .environmentObject(coordinator)
         .environmentObject(complaintViewModel)
+        .onAppear {
+            checkUserProfileExistence()
+        }
+    }
+
+    private func checkUserProfileExistence() {
+        if let userData = LocalDataSource.shared.fetchUserData(), !userData.name.isEmpty {
+            doesUserProfileExist = true
+        } else {
+            doesUserProfileExist = false
+        }
     }
 }
 
 #Preview {
     ContentView()
 }
-

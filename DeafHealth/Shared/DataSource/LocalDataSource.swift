@@ -64,15 +64,32 @@ class LocalDataSource {
         }
     }
     
-    func saveUserData(name: String, age: String, gender: Gender, foodAllergy: String?, drugAllergy: String?, conditionAllergy: String?) {
-            let userData = UserData(name: name, age: age, gender: gender, foodAllergy: foodAllergy, drugAllergy: drugAllergy, conditionAllergy: conditionAllergy)
-            do {
+    func saveUserData(name: String, age: String, gender: Gender, foodAllergy: String?, drugAllergy: String?, conditionAllergy: String?, profileImageData: Data?) {
+        do {
+            if let existingUserData = fetchUserData() {
+                // Update existing user data
+                existingUserData.name = name
+                existingUserData.age = age
+                existingUserData.gender = gender
+                existingUserData.foodAllergy = foodAllergy
+                existingUserData.drugAllergy = drugAllergy
+                existingUserData.conditionAllergy = conditionAllergy
+                existingUserData.profileImageData = profileImageData
+            } else {
+                // Create new user data
+                let userData = UserData(name: name, age: age, gender: gender, foodAllergy: foodAllergy, drugAllergy: drugAllergy, conditionAllergy: conditionAllergy, profileImageData: profileImageData)
                 modelContext.insert(userData)
-                try modelContext.save()
-            } catch {
-                fatalError("Failed to save user data: \(error.localizedDescription)")
             }
+
+            try modelContext.save()
+            print("User data saved successfully")
+
+        } catch {
+            print("Failed to save user data: \(error.localizedDescription)")
         }
+    }
+
+
 
         func fetchUserData() -> UserData? {
             do {

@@ -27,6 +27,7 @@ enum Page: String, Identifiable {
     case onboardingName
     case onboardingAgeGender
     case onboardingAllergy
+    case userProfile
 
     var id: String {
         self.rawValue
@@ -125,6 +126,8 @@ class Coordinator: ObservableObject {
             AgeGenderInputView()
         case .onboardingAllergy:
             AllergyInputView()
+        case .userProfile:
+            ProfileViewControllerWrapper() 
         }
     }
 

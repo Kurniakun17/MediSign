@@ -9,11 +9,15 @@ import SwiftUI
 
 struct HomePage: View {
     @EnvironmentObject var coordinator: Coordinator
-    @State private var userName: String = "" // State variable to hold the user's name
+    @State private var userName: String = ""
+    @State private var profileImage: UIImage? = nil
 
     var body: some View {
         ZStack {
             Image(ImageLabel.homepageBackground)
+                .resizable()
+                .scaledToFill()
+                .edgesIgnoringSafeArea(.all)
 
             VStack {
                 VStack(spacing: 16) {
@@ -22,15 +26,31 @@ struct HomePage: View {
                             Text(AppLabel.consultationGreeting)
                                 .fontWeight(.bold)
                                 .font(.title2)
-                            Text(userName.isEmpty ? "Guest" : userName) // Display the user's name
+                            Text(userName.isEmpty ? "Guest" : userName)
                                 .font(.title2)
                         }
 
                         Spacer()
 
-                        Circle()
-                            .fill(.gray.opacity(DecimalConstants.d2 * 0.15))
-                            .frame(width: 40, height: 40)
+                        Button(action: {
+                            coordinator.push(page: .userProfile)
+                        }) {
+                            if let profileImage = profileImage {
+                                Image(uiImage: profileImage)
+                                    .resizable()
+                                    .scaledToFill()
+                                    .frame(width: 40, height: 40)
+                                    .clipShape(Circle())
+                            } else {
+                                Circle()
+                                    .fill(Color.gray.opacity(DecimalConstants.d2 * 0.15))
+                                    .frame(width: 40, height: 40)
+                                    .overlay(
+                                        Image(systemName: "person.fill")
+                                            .foregroundColor(.white)
+                                    )
+                            }
+                        }
                     }
 
                     VStack(spacing: DecimalConstants.d16) {
@@ -60,20 +80,13 @@ struct HomePage: View {
                         Button(action: {
                             coordinator.push(page: .communication)
                         }) {
-                            ZStack {
-                                Image(ImageLabel.soundWave)
-                                    .resizable()
-                                    .frame(width: 220.5, height: 35)
-                                    .offset(x: -125, y: -20)
-
-                                VStack(spacing: DecimalConstants.d8) {
-                                    Image(systemName: "stethoscope.circle.fill")
-                                        .foregroundStyle(.white)
-                                        .font(.system(size: 36))
-                                    Text(AppLabel.startCommunication)
-                                        .foregroundStyle(.white)
-                                        .fontWeight(.semibold)
-                                }
+                            VStack(spacing: DecimalConstants.d8) {
+                                Image(systemName: "stethoscope.circle.fill")
+                                    .foregroundStyle(.white)
+                                    .font(.system(size: 36))
+                                Text(AppLabel.startCommunication)
+                                    .foregroundStyle(.white)
+                                    .fontWeight(.semibold)
                             }
                         }
                         .frame(maxWidth: .infinity)
@@ -112,7 +125,6 @@ struct HomePage: View {
                     }
                     .frame(maxWidth: .infinity, alignment: .leading)
                 }
-
                 Spacer()
             }
             .padding(.horizontal)
@@ -121,19 +133,26 @@ struct HomePage: View {
         .ignoresSafeArea()
         .navigationBarBackButtonHidden(true)
         .onAppear {
-            loadUserData() // Load the user's name when the view appears
+            loadUserData()
         }
     }
 
     private func loadUserData() {
         if let userData = LocalDataSource.shared.fetchUserData() {
             userName = userData.name
+            if let imageData = userData.profileImageData {
+                profileImage = UIImage(data: imageData)
+            } else {
+                profileImage = nil
+            }
         } else {
-            userName = "Guest" // Default name if no user data found
+            userName = "Guest"
+            profileImage = nil
         }
     }
 }
 
 #Preview {
     HomePage()
+        .environmentObject(Coordinator())
 }

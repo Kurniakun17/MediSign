@@ -55,7 +55,7 @@ struct NameInputView: View {
                 Spacer()
 
                 Button(action: {
-                    LocalDataSource.shared.saveUserData(name: name, age: "", gender: .male, foodAllergy: nil, drugAllergy: nil, conditionAllergy: nil)
+                    LocalDataSource.shared.saveUserData(name: name, age: "", gender: .male, foodAllergy: nil, drugAllergy: nil, conditionAllergy: nil, profileImageData: nil)
                     coordinator.push(page: .onboardingAgeGender)
                 }) {
                     Text(AppLabel.continueButton)
