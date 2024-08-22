@@ -175,12 +175,16 @@ struct QuestionButtonView: View {
     }
 
     func isQuestionActive(at index: Int) -> Bool {
+        print(complaintViewModel.answers)
         if index == 0 {
             return true
         }
-//        else if index == 1 && complaintViewModel.answers[2] != "_____" {
-//            return true
-//        }
+        else if index == 2 && complaintViewModel.answers[2].contains("_____") {
+            return false
+        }
+        else if index == 1 && complaintViewModel.answers[2] != "_____" {
+            return true
+        }
         return !(complaintViewModel.answers[index] == "_____")
     }
 }

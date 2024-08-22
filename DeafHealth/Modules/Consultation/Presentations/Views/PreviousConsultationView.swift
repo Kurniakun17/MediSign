@@ -47,7 +47,7 @@ struct PreviousConsultationView: View {
                 HStack {
                     Text("\(AppLabel.previousConsultation) ").font(Font.custom("SF Pro", size: 20))
 
-                        + Text("\(previousMed.lowercased() == "" ? "_____" : previousMed.lowercased())").font(Font.system(size: 20)).bold().foregroundColor(.darkBlue)
+                    + Text("\(complaintViewModel.answers[6].lowercased() == "" ? "_____" : complaintViewModel.answers[6].lowercased())").font(Font.system(size: 20)).bold().foregroundColor(.darkBlue)
 
                         + Text(".").font(Font.custom("SF Pro", size: 20))
                 }
@@ -109,15 +109,26 @@ struct PreviousConsultationView: View {
                 .padding(.horizontal)
                 .padding(.bottom, DecimalConstants.d8)
 
-                Button(AppLabel.continueButton) {
-                    coordinator.push(page: .summary)
-                    dismiss()
+//                Button(AppLabel.continueButton) {
+//                    coordinator.push(page: .summary)
+//                    dismiss()
+//                }
+//                .frame(width: 363, height: 52)
+//                .background(isAnswerProvided ? Color(red: 0.25, green: 0.48, blue: 0.68) : Color.gray)
+//                .cornerRadius(25)
+//                .foregroundColor(Color("FFFFFF"))
+//                .disabled(!isAnswerProvided)
+                
+                Button {
+                    coordinator.present(sheet: .previousConsultation)
+                } label: {
+                    Text(AppLabel.continueButton).frame(width: 363, height: 52)
+                        .background(isAnswerProvided ? Color(red: 0.25, green: 0.48, blue: 0.68) : Color.gray)
+                        .cornerRadius(25)
+                        .foregroundColor(Color("FFFFFF"))
+                        .disabled(!isAnswerProvided)
+                        .padding(.bottom, DecimalConstants.d16 * 2)
                 }
-                .frame(width: 363, height: 52)
-                .background(isAnswerProvided ? Color(red: 0.25, green: 0.48, blue: 0.68) : Color.gray)
-                .cornerRadius(25)
-                .foregroundColor(Color("FFFFFF"))
-                .disabled(!isAnswerProvided)
             }
             .padding(.bottom, DecimalConstants.d8 * 5)
         }

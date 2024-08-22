@@ -31,7 +31,7 @@ struct SelectBodyPartView: View {
             }
 
             HStack(spacing: DecimalConstants.d8) {
-                Text("\(AppLabel.complaintStatement)") + Text(" \(complaintViewModel.answers[0].lowercased())").bold().foregroundColor(AppColors.blueMedium) + Text(" di bagian ") + Text("\(selectedBodyPart.isEmpty ? "____" : selectedBodyPart.lowercased()).")
+                Text("\(AppLabel.complaintStatement)") + Text(" \(complaintViewModel.answers[0].lowercased())").bold().foregroundColor(AppColors.blueMedium) + Text(" di bagian ") + Text("\(complaintViewModel.answers[1].isEmpty ? "____" : complaintViewModel.answers[1].lowercased()).")
                     .foregroundColor(AppColors.blueMedium).bold()
             }
             .padding(.horizontal)
@@ -80,15 +80,26 @@ struct SelectBodyPartView: View {
 
             Spacer()
 
-            Button(AppLabel.continueButton) {
+            Button {
                 coordinator.present(sheet: .symptomStartTime)
+            } label: {
+                Text(AppLabel.continueButton).frame(width: 363, height: 52)
+                    .background(isAnswerProvided ? Color(red: 0.25, green: 0.48, blue: 0.68) : Color.gray)
+                    .cornerRadius(25)
+                    .foregroundColor(Color("FFFFFF"))
+                    .disabled(!isAnswerProvided)
+                    .padding(.bottom, DecimalConstants.d16 * 2)
             }
-            .frame(width: 363, height: 52)
-            .background(isAnswerProvided ? Color(red: 0.25, green: 0.48, blue: 0.68) : Color.gray)
-            .cornerRadius(25)
-            .foregroundColor(Color("FFFFFF"))
-            .disabled(!isAnswerProvided)
-            .padding(.bottom, DecimalConstants.d16 * 2)
+
+//            Button(AppLabel.continueButton) {
+//                coordinator.present(sheet: .symptomStartTime)
+//            }
+//            .frame(width: 363, height: 52)
+//            .background(isAnswerProvided ? Color(red: 0.25, green: 0.48, blue: 0.68) : Color.gray)
+//            .cornerRadius(25)
+//            .foregroundColor(Color("FFFFFF"))
+//            .disabled(!isAnswerProvided)
+//            .padding(.bottom, DecimalConstants.d16 * 2)
         }
         .background {
             Image(ImageLabel.sheetBackground)

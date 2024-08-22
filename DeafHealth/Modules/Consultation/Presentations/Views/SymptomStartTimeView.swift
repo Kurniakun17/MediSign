@@ -100,15 +100,35 @@ struct SymptomStartTimeView: View {
 
             Spacer().frame(height: DecimalConstants.d8 * 43.75)
 
-            Button(AppLabel.continueButton) {
+            Button {
                 coordinator.present(sheet: .symptomSeverity)
+            } label: {
+                Text(AppLabel.continueButton).frame(width: 363, height: 52)
+                    .background(isAnswerProvided ? Color(red: 0.25, green: 0.48, blue: 0.68) : Color.gray)
+                    .cornerRadius(25)
+                    .foregroundColor(Color("FFFFFF"))
+                    .disabled(!isAnswerProvided)
+                    .padding(.bottom, DecimalConstants.d16 * 2)
             }
-            .frame(width: 363, height: 52)
-            .background(isAnswerProvided ? Color(red: 0.25, green: 0.48, blue: 0.68) : Color.gray)
-            .cornerRadius(25)
-            .foregroundColor(Color("FFFFFF"))
-            .disabled(!isAnswerProvided)
+
+//            Button(AppLabel.continueButton) {
+//                coordinator.present(sheet: .symptomSeverity)
+//            }
+//            .frame(width: 363, height: 52)
+//            .background(isAnswerProvided ? Color(red: 0.25, green: 0.48, blue: 0.68) : Color.gray)
+//            .cornerRadius(25)
+//            .foregroundColor(Color("FFFFFF"))
+//            .disabled(!isAnswerProvided)
         }
+        .onAppear {
+            selectedNumber = String(complaintViewModel.answers[2].split(separator: " ")[0])
+            
+            if complaintViewModel.answers[2].contains(" ") {
+                selectedUnit = String(complaintViewModel.answers[2].split(separator: " ")[1])
+
+            }
+        }
+
         .background {
             Image(ImageLabel.sheetBackground)
         }

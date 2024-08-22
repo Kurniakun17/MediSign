@@ -73,7 +73,7 @@ struct SymptomSeverityView: View {
             CustomSlider(
                 value: $sliderValue,
                 range: DecimalConstants.d1 ... DecimalConstants.d8 + DecimalConstants.d2,
-                step: DecimalConstants.d1,
+                step: 1,
                 label: {
                     Text("")
                 },
@@ -227,14 +227,28 @@ struct SymptomSeverityView: View {
 
             Spacer().frame(height: DecimalConstants.d8 * 2.25)
 
-            Button(AppLabel.continueButton) {
+            Button {
                 coordinator.present(sheet: .symptomWorseningFactors)
+            } label: {
+                Text(AppLabel.continueButton).frame(width: 363, height: 52)
+                    .background(isAnswerProvided ? Color(red: 0.25, green: 0.48, blue: 0.68) : Color.gray)
+                    .cornerRadius(25)
+                    .foregroundColor(Color("FFFFFF"))
+                    .disabled(!isAnswerProvided)
+                    .padding(.bottom, DecimalConstants.d16 * 2)
             }
-            .frame(width: 363, height: 52)
-            .background(isAnswerProvided ? Color(red: 0.25, green: 0.48, blue: 0.68) : Color.gray)
-            .cornerRadius(25)
-            .foregroundColor(Color("FFFFFF"))
-            .disabled(!isAnswerProvided)
+
+//            Button(AppLabel.continueButton) {
+//                coordinator.present(sheet: .symptomWorseningFactors)
+//            }
+//            .frame(width: 363, height: 52)
+//            .background(isAnswerProvided ? Color(red: 0.25, green: 0.48, blue: 0.68) : Color.gray)
+//            .cornerRadius(25)
+//            .foregroundColor(Color("FFFFFF"))
+//            .disabled(!isAnswerProvided)
+        }
+        .onAppear {
+            selectedSeverity = complaintViewModel.answers[3]
         }
         .background {
             Image(ImageLabel.sheetBackground)

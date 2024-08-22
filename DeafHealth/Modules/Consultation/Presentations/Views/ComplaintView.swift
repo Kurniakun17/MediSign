@@ -35,7 +35,7 @@ struct ComplaintView: View {
                 Text("\(AppLabel.complaintStatement) ")
                     .font(Font.system(size: 20)) +
 
-                    Text(selectedComplaint.isEmpty ? "____." : "\(selectedComplaint.lowercased()).")
+                    Text(complaintViewModel.answers[0].isEmpty ? "____." : "\(complaintViewModel.answers[0].lowercased()).")
                     .font(.title3)
                     .foregroundColor(.darkBlue).bold()
             }
@@ -64,15 +64,26 @@ struct ComplaintView: View {
 
             Spacer()
 
-            Button(AppLabel.continueButton) {
+            Button {
                 coordinator.present(sheet: .symptomStartTime)
+            } label: {
+                Text(AppLabel.continueButton).frame(width: 363, height: 52)
+                    .background(isAnswerProvided ? Color(red: 0.25, green: 0.48, blue: 0.68) : Color.gray)
+                    .cornerRadius(25)
+                    .foregroundColor(Color("FFFFFF"))
+                    .disabled(!isAnswerProvided)
+                    .padding(.bottom, DecimalConstants.d16 * 2)
             }
-            .frame(width: 363, height: 52)
-            .background(isAnswerProvided ? Color(red: 0.25, green: 0.48, blue: 0.68) : Color.gray)
-            .cornerRadius(25)
-            .foregroundColor(Color("FFFFFF"))
-            .disabled(!isAnswerProvided)
-            .padding(.bottom, DecimalConstants.d16 * 2)
+
+//            Button(AppLabel.continueButton) {
+//                coordinator.present(sheet: .symptomStartTime)
+//            }
+//            .frame(width: 363, height: 52)
+//            .background(isAnswerProvided ? Color(red: 0.25, green: 0.48, blue: 0.68) : Color.gray)
+//            .cornerRadius(25)
+//            .foregroundColor(Color("FFFFFF"))
+//            .disabled(!isAnswerProvided)
+//            .padding(.bottom, DecimalConstants.d16 * 2)
         }
         .background {
             Image(ImageLabel.sheetBackground)
