@@ -85,7 +85,7 @@ class CameraModel: NSObject, ObservableObject {
             let prediction = try model.prediction(poses: frameBuffer)
             
             // Log the detailed probabilities
-            print("Predicted label: \(prediction.label) with probabilities: \(prediction.labelProbabilities)")
+//            print("Predicted label: \(prediction.label) with probabilities: \(prediction.labelProbabilities)")
 
             // Check if the highest probability exceeds 80% confidence
             if let maxProbability = prediction.labelProbabilities[prediction.label], maxProbability > 0.8 {
