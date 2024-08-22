@@ -1,4 +1,3 @@
-
 //
 //  HandPoseDetector.swift
 //  DeafHealth

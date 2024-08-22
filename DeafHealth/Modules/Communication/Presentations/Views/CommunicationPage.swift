@@ -86,7 +86,7 @@ struct CommunicationPage: View {
                         .background(signLanguageInterpreterViewModel.isInterpreting ? .blue.opacity(0.2) : .gray.opacity(0.2))
                         .clipShape(RoundedRectangle(cornerRadius: 12))
                         .onChange(of: signLanguageInterpreterViewModel.recognizedText) { newText in
-                            messageViewModel.updateInputValue(with: newText)
+                            messageViewModel.inputValue = newText
                         }
                     })
                     .transition(.opacity)
@@ -128,7 +128,7 @@ struct CommunicationPage: View {
                     VStack {
                         // Camera View
                         CameraView(cameraModel: signLanguageInterpreterViewModel.cameraModel!)
-                            .frame(height: 400)  // Adjust the height as per your need
+                            .frame(height: 400) // Adjust the height as per your need
                             .clipShape(RoundedRectangle(cornerRadius: 12))
                             .padding()
                     }
@@ -182,7 +182,6 @@ struct CommunicationPage: View {
                 isKeyboardFocus = false
             }
         }
-
     }
 
     func startRecording() {
