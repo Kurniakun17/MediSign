@@ -15,46 +15,163 @@ struct SummaryView: View {
     @State private var showingSaveModal = false
     @State private var complaintName = ""
 
+    @State private var painSeverity = ""
+
     var body: some View {
         VStack(spacing: 0) {
-
             VStack(spacing: 0) {
                 Text("Ringkasan Keluhan")
                     .font(.title3)
                     .multilineTextAlignment(.center)
+                    .bold()
             }
+            Spacer().frame(height: DecimalConstants.d16 + DecimalConstants.d8)
+
+            HStack {
+                VStack(alignment: .trailing) {
+                    VStack {
+                        Text(complaintViewModel.answers[0])
+                    }.padding(.horizontal, 10)
+                        .padding(.vertical, 5)
+                        .background(AppColors.blueMedium)
+                        .cornerRadius(5)
+                        .foregroundColor(.white)
+
+                    // TODO: body part
+
+                    if complaintViewModel.answers[1] != "" {
+                        VStack {
+                            Text(complaintViewModel.answers[1])
+                        }.padding(.horizontal, 10)
+                            .padding(.vertical, 5)
+                            .background(AppColors.blueMedium)
+                            .cornerRadius(5)
+                            .foregroundColor(.white)
+                    }
+
+                    Text("Rasa sakit \n\(painSeverity) (\(complaintViewModel.answers[3]) / 10)").padding(.horizontal, 10)
+                        .padding(.vertical, 5)
+                        .background(AppColors.blueMedium)
+                        .cornerRadius(5)
+                        .foregroundColor(.white)
+                }.bold()
+
+                // TODO: body part
+
+                if complaintViewModel.answers[1] == "" {
+//                    Image("\(complaintViewModel.answers[0])")
+                    Image("Pusing").resizable().aspectRatio(contentMode: .fit).frame(width: 185)
+
+                } else {
+                    Image("LK \(complaintViewModel.answers[1])").resizable().aspectRatio(contentMode: .fit).frame(width: 185)
+                }
+
+            }.padding(.horizontal, 10)
+                .padding(.vertical, DecimalConstants.d16)
+                .frame(width: 361, alignment: .topLeading)
+                .background(.white)
+                .cornerRadius(DecimalConstants.r15)
+                .overlay(
+                    RoundedRectangle(cornerRadius: DecimalConstants.r15)
+                        .inset(by: -0.5)
+
+                        // TODO: benerin warna graynya
+                        .stroke(.gray, lineWidth: 1)
+                )
+
+            Spacer().frame(height: DecimalConstants.d8 + DecimalConstants.d4)
+
+            VStack(alignment: .leading) {
+                Text("Keluhan Saya").bold()
+
+                Spacer().frame(height: DecimalConstants.d16)
+
+                VStack(alignment: .leading) {
+                    HStack(alignment: .top) {
+                        Text("•")
+                        Text("\(complaintViewModel.getSummary(for: 0))")
+                            + Text("\(complaintViewModel.answers[0]).".lowercased()).bold().foregroundColor(AppColors.blueMedium)
+                    }
+
+                    HStack(alignment: .top) {
+                        Text("•")
+                        Text("\(complaintViewModel.getSummary(for: 1))") + Text("\(complaintViewModel.answers[2])".lowercased()).bold().foregroundColor(AppColors.blueMedium) + Text("\(complaintViewModel.getSummary(for: 2))")
+                    }
+
+                    HStack(alignment: .top) {
+                        Text("•")
+                        Text("\(complaintViewModel.getSummary(for: 3))") + Text("\(complaintViewModel.answers[3])".lowercased()).bold().foregroundColor(AppColors.blueMedium) + Text("\(complaintViewModel.getSummary(for: 4))")
+                    }
+
+                    HStack(alignment: .top) {
+                        Text("•")
+                        Text("\(complaintViewModel.getSummary(for: 5))") + Text("\(complaintViewModel.answers[4])".lowercased()).bold().foregroundColor(AppColors.blueMedium)
+                    }
+
+                    HStack(alignment: .top) {
+                        Text("•")
+                        Text("\(complaintViewModel.getSummary(for: 6))") + Text("\(complaintViewModel.answers[5])".lowercased()).bold().foregroundColor(AppColors.blueMedium)
+                    }
+
+                    HStack(alignment: .top) {
+                        Text("•")
+                        Text("\(complaintViewModel.getSummary(for: 7))") + Text("\(complaintViewModel.answers[6])".lowercased()).bold().foregroundColor(AppColors.blueMedium)
+                    }
+                }
+                .padding(.horizontal, DecimalConstants.d16)
+
+            }.padding(.horizontal, 10)
+                .padding(.vertical, DecimalConstants.d16)
+                .frame(width: 361, alignment: .topLeading)
+                .background(.white)
+                .cornerRadius(DecimalConstants.r15)
+                .overlay(
+                    RoundedRectangle(cornerRadius: DecimalConstants.r15)
+                        .inset(by: -0.5)
+
+                        // TODO: benerin warna graynya
+                        .stroke(.gray, lineWidth: 1)
+                )
+
+            Spacer().frame(height: DecimalConstants.d16)
+
+            HStack {
+//                Text("adsf")
+            }.frame(width: 361, alignment: .topLeading)
+                .background(.white)
+                .cornerRadius(DecimalConstants.r15)
+                .overlay(
+                    RoundedRectangle(cornerRadius: DecimalConstants.r15)
+                        .inset(by: -0.5)
+
+                        // TODO: benerin warna graynya
+                        .stroke(.gray, lineWidth: 1)
+                )
+
             Spacer()
 
-            // Summary details...
-            VStack(spacing: 16) {
-                Text(complaintViewModel.complaintSummary)
-                    .font(.body)
-                    .padding()
-                    .multilineTextAlignment(.leading)
-
-                HStack(spacing: 16) {
-                    Button("Simpan") {
-                        showingSaveModal = true
-                    }
-                    .frame(maxWidth: .infinity)
-                    .padding()
-                    .background(Color("green"))
-                    .cornerRadius(25)
-                    .foregroundColor(Color("FFFFFF"))
-                }
-                .padding(.horizontal, 32)
+            Button(AppLabel.saveButton) {
+                showingSaveModal = true
             }
-            .padding(.top, 32)
-            .padding(.bottom, 32)
-
+            .frame(width: 363, height: 52)
+            .background(Color(red: 0.25, green: 0.48, blue: 0.68))
+            .cornerRadius(25)
+            .foregroundColor(Color("FFFFFF"))
         }
-        .edgesIgnoringSafeArea(.bottom)
-        .navigationBarBackButtonHidden(true)
+        .onAppear {
+            if complaintViewModel.answers[3] == "1" || complaintViewModel.answers[3] == "2" || complaintViewModel.answers[3] == "3" {
+                painSeverity = "Rendah"
+            } else if complaintViewModel.answers[3] == "4" || complaintViewModel.answers[3] == "5" || complaintViewModel.answers[3] == "6" {
+                painSeverity = "Sedang"
+            } else {
+                painSeverity = "Tinggi"
+            }
+        }
         .sheet(isPresented: $showingSaveModal) {
             SaveComplaintModal(complaintName: $complaintName) {
                 // Action for saving the complaint
                 complaintViewModel.saveComplaint()
-                dismiss()  // Save and go back to home view
+                dismiss() // Save and go back to home view
             }
         }
     }
@@ -79,7 +196,7 @@ struct SaveComplaintModal: View {
             }
             .frame(maxWidth: .infinity)
             .padding()
-            .background(Color("green"))
+            .background(AppColors.blueMedium)
             .cornerRadius(25)
             .foregroundColor(Color("FFFFFF"))
             .padding(.horizontal, 32)
@@ -116,7 +233,6 @@ struct SaveComplaintAlert: View {
                 Divider()
 
                 HStack {
-
                     Button(action: {
                         onSave()
                     }) {

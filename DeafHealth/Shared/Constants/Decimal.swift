@@ -14,4 +14,6 @@ enum DecimalConstants {
     static let d4 = 4.0
     static let d8 = 8.0
     static let d16 = 16.0
+    
+    static let r15 = 15.0
 }

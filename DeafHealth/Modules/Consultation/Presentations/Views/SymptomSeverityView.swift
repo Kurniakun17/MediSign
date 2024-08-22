@@ -73,6 +73,7 @@ struct SymptomSeverityView: View {
             CustomSlider(
                 value: $sliderValue,
                 range: 1 ... 10,
+
                 step: 1,
                 label: {
                     Text("")
@@ -97,7 +98,7 @@ struct SymptomSeverityView: View {
                 let feedbackGenerator = UIImpactFeedbackGenerator(style: .medium)
                 feedbackGenerator.impactOccurred()
 
-                complaintViewModel.updateAnswer(for: 2, with: selectedSeverity)
+                complaintViewModel.updateAnswer(for: 3, with: selectedSeverity)
 
                 switch sliderValue {
                 case DecimalConstants.d1:
@@ -211,7 +212,7 @@ struct SymptomSeverityView: View {
                             .stroke(Color(red: 0.6, green: 0.6, blue: 0.6), lineWidth: DecimalConstants.zeros)
                     )
                 }
-            }.frame(width: 363)
+            }.frame(maxWidth: /*@START_MENU_TOKEN@*/.infinity/*@END_MENU_TOKEN@*/)
                 .font(
                     Font.custom("SF Pro", size: 12)
                         .weight(.bold)
@@ -227,14 +228,19 @@ struct SymptomSeverityView: View {
 
             Spacer().frame(height: DecimalConstants.d8 * 2.25)
 
-            Button(AppLabel.continueButton) {
+            Button {
                 coordinator.present(sheet: .symptomWorseningFactors)
+            } label: {
+                Text(AppLabel.continueButton).frame(width: 363, height: 52)
+                    .background(isAnswerProvided ? Color(red: 0.25, green: 0.48, blue: 0.68) : Color.gray)
+                    .cornerRadius(25)
+                    .foregroundColor(Color("FFFFFF"))
+                    .disabled(!isAnswerProvided)
+                    .padding(.bottom, DecimalConstants.d16 * 2)
             }
-            .frame(width: 363, height: 52)
-            .background(isAnswerProvided ? Color(red: 0.25, green: 0.48, blue: 0.68) : Color.gray)
-            .cornerRadius(25)
-            .foregroundColor(Color("FFFFFF"))
-            .disabled(!isAnswerProvided)
+        }
+        .onAppear {
+            selectedSeverity = complaintViewModel.answers[3]
         }
         .background {
             Image(ImageLabel.sheetBackground)

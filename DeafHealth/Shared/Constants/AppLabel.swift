@@ -40,7 +40,7 @@ enum AppLabel {
     static let continueButton = "Lanjutkan"
     static let saveButton = "Simpan"
     static let cancelButton = "Batal"
-    
+
     // Onboarding Labels
     static let appSlogan = "Asisten kesehatan digital anda"
     static let appLongSlogan = "Jelaskan keluhan Anda dengan akurat, konsultasi dokter dengan mudah"

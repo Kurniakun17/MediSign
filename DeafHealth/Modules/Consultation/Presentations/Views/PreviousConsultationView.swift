@@ -45,9 +45,9 @@ struct PreviousConsultationView: View {
                 .frame(maxWidth: 257, alignment: .center)
             } else {
                 HStack {
-                    Text(AppLabel.previousConsultation).font(Font.custom("SF Pro", size: 20))
+                    Text("\(AppLabel.previousConsultation) ").font(Font.custom("SF Pro", size: 20))
 
-                        + Text("\(previousMed.lowercased() == "" ? "_____" : previousMed.lowercased())").font(Font.system(size: 20)).bold().foregroundColor(.darkBlue)
+                        + Text("\(complaintViewModel.answers[6].lowercased() == "" ? "_____" : complaintViewModel.answers[6].lowercased())").font(Font.system(size: 20)).bold().foregroundColor(.darkBlue)
 
                         + Text(".").font(Font.custom("SF Pro", size: 20))
                 }
@@ -69,7 +69,7 @@ struct PreviousConsultationView: View {
                     )
                     .onChange(of: previousMed) { newValue in
                         isAnswerProvided = !newValue.isEmpty
-                        complaintViewModel.updateAnswer(for: 7, with: previousMed)
+                        complaintViewModel.updateAnswer(for: 6, with: previousMed)
                     }
                     .padding(.horizontal)
                     .padding(.top, DecimalConstants.d8 * 8)
@@ -83,11 +83,11 @@ struct PreviousConsultationView: View {
                     if hasNotConsultedBefore {
                         previousMed = "Tidak ada konsultasi sebelumnya"
                         isAnswerProvided = true
-                        complaintViewModel.updateAnswer(for: 7, with: previousMed)
+                        complaintViewModel.updateAnswer(for: 6, with: previousMed)
                     } else {
                         previousMed = ""
                         isAnswerProvided = false
-                        complaintViewModel.updateAnswer(for: 7, with: previousMed)
+                        complaintViewModel.updateAnswer(for: 6, with: previousMed)
                     }
                 }) {
                     HStack {
@@ -109,15 +109,27 @@ struct PreviousConsultationView: View {
                 .padding(.horizontal)
                 .padding(.bottom, DecimalConstants.d8)
 
-                Button(AppLabel.continueButton) {
+//                Button(AppLabel.continueButton) {
+//                    coordinator.push(page: .summary)
+//                    dismiss()
+//                }
+//                .frame(width: 363, height: 52)
+//                .background(isAnswerProvided ? Color(red: 0.25, green: 0.48, blue: 0.68) : Color.gray)
+//                .cornerRadius(25)
+//                .foregroundColor(Color("FFFFFF"))
+//                .disabled(!isAnswerProvided)
+
+                Button {
                     coordinator.push(page: .summary)
                     dismiss()
+                } label: {
+                    Text(AppLabel.continueButton).frame(width: 363, height: 52)
+                        .background(isAnswerProvided ? Color(red: 0.25, green: 0.48, blue: 0.68) : Color.gray)
+                        .cornerRadius(25)
+                        .foregroundColor(Color("FFFFFF"))
+                        .disabled(!isAnswerProvided)
+                        .padding(.bottom, DecimalConstants.d16 * 2)
                 }
-                .frame(width: 363, height: 52)
-                .background(isAnswerProvided ? Color(red: 0.25, green: 0.48, blue: 0.68) : Color.gray)
-                .cornerRadius(25)
-                .foregroundColor(Color("FFFFFF"))
-                .disabled(!isAnswerProvided)
             }
             .padding(.bottom, DecimalConstants.d8 * 5)
         }

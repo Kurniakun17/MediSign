@@ -74,7 +74,7 @@ struct SymptomImprovementFactorsView: View {
                         )
                         .onChange(of: factor) { newValue in
                             selectedFactor = newValue
-                            complaintViewModel.updateAnswer(for: 4, with: selectedFactor)
+                            complaintViewModel.updateAnswer(for: 5, with: selectedFactor)
                             isAnswerProvided = true
                         }
 
@@ -159,14 +159,28 @@ struct SymptomImprovementFactorsView: View {
 
             Spacer().frame(height: DecimalConstants.d8 * 2.25)
 
-            Button(AppLabel.continueButton) {
+            Button {
                 coordinator.present(sheet: .previousConsultation)
+            } label: {
+                Text(AppLabel.continueButton).frame(width: 363, height: 52)
+                    .background(isAnswerProvided ? Color(red: 0.25, green: 0.48, blue: 0.68) : Color.gray)
+                    .cornerRadius(25)
+                    .foregroundColor(Color("FFFFFF"))
+                    .disabled(!isAnswerProvided)
+                    .padding(.bottom, DecimalConstants.d16 * 2)
             }
-            .frame(width: 363, height: 52)
-            .background(isAnswerProvided ? Color(red: 0.25, green: 0.48, blue: 0.68) : Color.gray)
-            .cornerRadius(25)
-            .foregroundColor(Color("FFFFFF"))
-            .disabled(!isAnswerProvided)
+
+//            Button(AppLabel.continueButton) {
+//                coordinator.present(sheet: .previousConsultation)
+//            }
+//            .frame(width: 363, height: 52)
+//            .background(isAnswerProvided ? Color(red: 0.25, green: 0.48, blue: 0.68) : Color.gray)
+//            .cornerRadius(25)
+//            .foregroundColor(Color("FFFFFF"))
+//            .disabled(!isAnswerProvided)
+        }
+        .onAppear() {
+            selectedFactor = complaintViewModel.answers[5]
         }
         .background {
             Image(ImageLabel.sheetBackground)

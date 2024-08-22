@@ -44,8 +44,18 @@ struct ConsultationMenuView: View {
 
                 Spacer(minLength: -8)
 
-                SaveComplaintButton()
-                    .disabled(!allQuestionsAnswered())
+//                SaveComplaintButton()
+//                    .disabled(!allQuestionsAnswered())
+                Button("Simpan Keluhan") {
+                    coordinator.push(page: .summary)
+                }
+                .font(.custom("SF Pro", size: 16))
+                .frame(width: 363)
+                .padding(.vertical, 16)
+                .background(allQuestionsAnswered() ? Color(red: 0.25, green: 0.48, blue: 0.68) : Color("blue-button"))
+                .cornerRadius(25)
+                .foregroundColor(Color.white)
+                .disabled(!allQuestionsAnswered())
             }
             .padding()
             .background(Color.clear)
@@ -63,7 +73,13 @@ struct ConsultationMenuView: View {
     }
 
     func allQuestionsAnswered() -> Bool {
-        return complaintViewModel.answers.allSatisfy { !$0.isEmpty }
+        for answer in complaintViewModel.answers {
+            if answer == "_____" {
+                return false
+            }
+        }
+        return true
+//        return complaintViewModel.answers.allSatisfy { !$0.isEmpty }
     }
 
     @ViewBuilder
@@ -107,11 +123,12 @@ struct QuestionButtonView: View {
                     .cornerRadius(12)
                     .padding(8)
 
-                Text(questionText(for: index))
-                    .font(.custom("SF Pro", size: 16))
-                    .foregroundColor(.white)
-                    .padding(.leading, 2)
-                    .padding(.vertical, 12)
+//                Text(questionText(for: index))
+//                    .font(.custom("SF Pro", size: 16))
+//                    .foregroundColor(.white)
+//                    .padding(.leading, 2)
+//                    .padding(.vertical, 12)
+                questionText(for: index).foregroundColor(.white)
             }
             .frame(maxWidth: .infinity, alignment: .leading)
             .padding(.horizontal, 12)
@@ -124,49 +141,72 @@ struct QuestionButtonView: View {
         .padding(.horizontal, 3)
     }
 
-    func questionText(for index: Int) -> String {
+    func questionText(for index: Int) -> some View {
         switch index {
         case 0:
-            return "Halo, Dokter. Saya merasakan \(complaintViewModel.answers[0])."
+            return HStack {
+                Text("\(complaintViewModel.getSummary(for: 0))") + Text("\(complaintViewModel.answers[0])").bold().underline()
+            }
         case 1:
-            return "Saya merasakan gejala ini sejak \(complaintViewModel.answers[1])."
+            return HStack {
+                Text("\(complaintViewModel.getSummary(for: 1))") + Text("\(complaintViewModel.answers[2])").bold().underline() + Text("\(complaintViewModel.getSummary(for: 2))")
+            }
         case 2:
-            return "Rasa sakitnya \(complaintViewModel.answers[2]) dari 10."
+            return HStack {
+                Text("\(complaintViewModel.getSummary(for: 3))") + Text("\(complaintViewModel.answers[3])").bold().underline() + Text("\(complaintViewModel.getSummary(for: 4))")
+            }
         case 3:
-            return "Gejalanya semakin parah ketika saya \(complaintViewModel.answers[3])."
+            return HStack {
+                Text("\(complaintViewModel.getSummary(for: 5))") + Text("\(complaintViewModel.answers[4])").bold().underline()
+            }
         case 4:
-            return "Gejalanya semakin membaik ketika saya \(complaintViewModel.answers[4])."
+            return HStack {
+                Text("\(complaintViewModel.getSummary(for: 6))") + Text("\(complaintViewModel.answers[5])").bold().underline()
+            }
         case 5:
-            return "Pernah melakukan konsultasi ke dokter lain dan diberikan obat berupa \(complaintViewModel.answers[5])."
+            return HStack {
+                Text("\(complaintViewModel.getSummary(for: 7))") + Text("\(complaintViewModel.answers[6])").bold().underline()
+            }
         default:
-            return ""
+            return HStack {
+                Text("") // Ensure the default case also returns an HStack
+            }
         }
     }
 
     func isQuestionActive(at index: Int) -> Bool {
+        print(complaintViewModel.answers)
         if index == 0 {
             return true
         }
-        return !(complaintViewModel.answers[index - 1] == "_____")
-    }
-}
-
-struct SaveComplaintButton: View {
-    @EnvironmentObject var coordinator: Coordinator
-
-    var body: some View {
-        Button("Simpan Keluhan") {
-            coordinator.push(page: .summary)
+        else if index == 2 && complaintViewModel.answers[2].contains("_____") {
+            return false
         }
-        .font(.custom("SF Pro", size: 16))
-        .frame(width: 363)
-        .padding(.vertical, 16)
-        .background(Color("blue-button"))
-        .cornerRadius(25)
-        .foregroundColor(Color.white)
-        .disabled(true)
+        else if index == 1 && complaintViewModel.answers[2] != "_____" {
+            return true
+        }
+        return !(complaintViewModel.answers[index] == "_____")
     }
 }
+
+//
+// struct SaveComplaintButton: View {
+//    @EnvironmentObject var coordinator: Coordinator
+//    @Binding var isDisabled
+//
+//    var body: some View {
+//        Button("Simpan Keluhan") {
+//            coordinator.push(page: .summary)
+//        }
+//        .font(.custom("SF Pro", size: 16))
+//        .frame(width: 363)
+//        .padding(.vertical, 16)
+//        .background(Color("blue-button"))
+//        .cornerRadius(25)
+//        .foregroundColor(Color.white)
+//        .disabled(true)
+//    }
+// }
 
 #Preview {
     ConsultationMenuView()
