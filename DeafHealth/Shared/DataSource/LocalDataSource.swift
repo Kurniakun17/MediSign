@@ -63,5 +63,23 @@ class LocalDataSource {
             fatalError(error.localizedDescription)
         }
     }
+    
+    func saveUserData(name: String, age: String, gender: Gender, foodAllergy: String?, drugAllergy: String?, conditionAllergy: String?) {
+            let userData = UserData(name: name, age: age, gender: gender, foodAllergy: foodAllergy, drugAllergy: drugAllergy, conditionAllergy: conditionAllergy)
+            do {
+                modelContext.insert(userData)
+                try modelContext.save()
+            } catch {
+                fatalError("Failed to save user data: \(error.localizedDescription)")
+            }
+        }
+
+        func fetchUserData() -> UserData? {
+            do {
+                return try modelContext.fetch(FetchDescriptor<UserData>()).first
+            } catch {
+                fatalError("Failed to fetch user data: \(error.localizedDescription)")
+            }
+        }
 }
 

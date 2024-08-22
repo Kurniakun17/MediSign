@@ -9,8 +9,7 @@ import Foundation
 import SwiftUI
 
 enum Page: String, Identifiable {
-    // MARK: Add Your Page Here
-
+    // Existing Pages
     case mainComplaint
     case selectBodyPart
     case symptomStartTime
@@ -23,20 +22,19 @@ enum Page: String, Identifiable {
     case communication
     case homepage
 
+    // Onboarding Pages
+    case onboardingWelcome
+    case onboardingName
+    case onboardingAgeGender
+    case onboardingAllergy
+
     var id: String {
         self.rawValue
-    }
-    
-    func sendData()  {
-        print("value")
     }
 }
 
 enum Sheet: String, Identifiable {
-    // MARK: Add Your Sheet Here
-
-    // MARK: Example Data
-
+    // Existing Sheets
     case testSheet
     case selectBodyPart
     case symptomStartTime
@@ -51,10 +49,7 @@ enum Sheet: String, Identifiable {
 }
 
 enum FullScreenCover: String, Identifiable {
-    // MARK: Add Your Full Screen Cover Here
-
-    // MARK: Example Data
-
+    // Existing Full Screen Covers
     case testFullScreenCover
 
     var id: String {
@@ -114,12 +109,22 @@ class Coordinator: ObservableObject {
             PreviousConsultationView()
         case .summary:
             SummaryView()
-        case .consultationMenuView: // Add this case
+        case .consultationMenuView:
             ConsultationMenuView()
         case .communication:
             CommunicationPage()
         case .homepage:
             HomePage()
+
+        // Onboarding Pages
+        case .onboardingWelcome:
+            WelcomeView()
+        case .onboardingName:
+            NameInputView()
+        case .onboardingAgeGender:
+            AgeGenderInputView()
+        case .onboardingAllergy:
+            AllergyInputView()
         }
     }
 

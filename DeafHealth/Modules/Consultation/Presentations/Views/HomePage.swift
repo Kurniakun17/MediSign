@@ -9,6 +9,7 @@ import SwiftUI
 
 struct HomePage: View {
     @EnvironmentObject var coordinator: Coordinator
+    @State private var userName: String = "" // State variable to hold the user's name
 
     var body: some View {
         ZStack {
@@ -21,8 +22,7 @@ struct HomePage: View {
                             Text(AppLabel.consultationGreeting)
                                 .fontWeight(.bold)
                                 .font(.title2)
-                            // TODO: Change name
-                            Text("Ibun Iwawan")
+                            Text(userName.isEmpty ? "Guest" : userName) // Display the user's name
                                 .font(.title2)
                         }
 
@@ -60,13 +60,20 @@ struct HomePage: View {
                         Button(action: {
                             coordinator.push(page: .communication)
                         }) {
-                            VStack(spacing: DecimalConstants.d8) {
-                                Image(systemName: "stethoscope.circle.fill")
-                                    .foregroundStyle(.white)
-                                    .font(.system(size: 36))
-                                Text(AppLabel.startCommunication)
-                                    .foregroundStyle(.white)
-                                    .fontWeight(.semibold)
+                            ZStack {
+                                Image(ImageLabel.soundWave)
+                                    .resizable()
+                                    .frame(width: 220.5, height: 35)
+                                    .offset(x: -125, y: -20)
+
+                                VStack(spacing: DecimalConstants.d8) {
+                                    Image(systemName: "stethoscope.circle.fill")
+                                        .foregroundStyle(.white)
+                                        .font(.system(size: 36))
+                                    Text(AppLabel.startCommunication)
+                                        .foregroundStyle(.white)
+                                        .fontWeight(.semibold)
+                                }
                             }
                         }
                         .frame(maxWidth: .infinity)
@@ -112,6 +119,18 @@ struct HomePage: View {
             .padding(.top, 70)
         }
         .ignoresSafeArea()
+        .navigationBarBackButtonHidden(true)
+        .onAppear {
+            loadUserData() // Load the user's name when the view appears
+        }
+    }
+
+    private func loadUserData() {
+        if let userData = LocalDataSource.shared.fetchUserData() {
+            userName = userData.name
+        } else {
+            userName = "Guest" // Default name if no user data found
+        }
     }
 }
 

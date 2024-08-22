@@ -10,10 +10,19 @@ import SwiftUI
 struct ContentView: View {
     @StateObject var complaintViewModel = ComplaintViewModel(datasource: .shared)
     @StateObject private var coordinator = Coordinator()
+    
+    // State to track if onboarding is completed
+    @AppStorage("isOnboardingCompleted") private var isOnboardingCompleted: Bool = false
 
     var body: some View {
         NavigationStack(path: $coordinator.path) {
-            coordinator.build(page: .homepage)
+            Group {
+                if isOnboardingCompleted {
+                    coordinator.build(page: .onboardingWelcome)
+                } else {
+                    coordinator.build(page: .onboardingWelcome)
+                }
+            }
             .navigationDestination(for: Page.self) { page in
                 coordinator.build(page: page)
             }
@@ -32,3 +41,4 @@ struct ContentView: View {
 #Preview {
     ContentView()
 }
+
