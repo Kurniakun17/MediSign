@@ -14,10 +14,10 @@ struct ComplaintView: View {
 
     @State private var selectedComplaint: String = ""
     @State private var isAnswerProvided: Bool = false
-    @State private var selectedSegment: String = "Gejala Umum" // Default segment
+    @State private var selectedSegment: String = AppLabel.mainSymptoms
 
     var body: some View {
-        VStack(spacing: 0) {
+        VStack(spacing: DecimalConstants.zeros) {
             ZStack {
                 HStack {
                     Spacer()
@@ -27,12 +27,11 @@ struct ComplaintView: View {
                     }
                     .foregroundColor(.gray)
                 }
-                .padding(.horizontal, 22)
-                .padding(.top, 24) // Increased top padding
+                .padding(.horizontal, DecimalConstants.d8 * 2.75)
+                .padding(.top, DecimalConstants.d16 * 1.5)
             }
 
-            // Main text question with dynamic complaint insertion
-            VStack(spacing: 8) {
+            VStack(spacing: DecimalConstants.d8) {
                 Text(AppLabel.complaintStatement)
                     .font(.title3)
                     .multilineTextAlignment(.center)
@@ -43,21 +42,19 @@ struct ComplaintView: View {
                     .multilineTextAlignment(.center)
             }
             .padding(.horizontal)
-            .padding(.top, 16)
+            .padding(.top, DecimalConstants.d8 * 2)
 
-            // Segmented control
             Picker("Select Category", selection: $selectedSegment) {
-                Text("Gejala Umum").tag("Gejala Umum")
-                Text("Bagian Tertentu").tag("Bagian Tertentu")
+                Text(AppLabel.mainSymptoms).tag(AppLabel.mainSymptoms)
+                Text(AppLabel.certainBodyParts).tag(AppLabel.certainBodyParts)
             }
             .pickerStyle(SegmentedPickerStyle())
             .padding(.horizontal)
-            .padding(.top, Decimal.d16)
+            .padding(.top, DecimalConstants.d16)
             .padding(.bottom, 15)
 
-            // Complaint selection buttons based on the selected segment
             ScrollView {
-                if selectedSegment == "Gejala Umum" {
+                if selectedSegment == AppLabel.mainSymptoms {
                     gridOfSymptoms(generalSymptoms)
                 } else {
                     gridOfSymptoms(specificSymptoms)
@@ -68,7 +65,7 @@ struct ComplaintView: View {
 
             Spacer()
 
-            Button("Lanjutkan") {
+            Button(AppLabel.continueButton) {
                 coordinator.present(sheet: .selectBodyPart)
             }
             .frame(width: 363, height: 52)
@@ -76,18 +73,17 @@ struct ComplaintView: View {
             .cornerRadius(25)
             .foregroundColor(Color("FFFFFF"))
             .disabled(!isAnswerProvided)
-            .padding(.bottom, 32) // Increased bottom padding
+            .padding(.bottom, DecimalConstants.d16 * 2)
         }
         .background {
-            Image("sheet-background")
+            Image(ImageLabel.sheetBackground)
         }
         .edgesIgnoringSafeArea(.bottom)
         .navigationBarBackButtonHidden(true)
     }
 
-    // View for arranging the symptoms in a grid
     func gridOfSymptoms(_ symptoms: [String]) -> some View {
-        LazyVGrid(columns: [GridItem(.flexible()), GridItem(.flexible())], spacing: 16) {
+        LazyVGrid(columns: [GridItem(.flexible()), GridItem(.flexible())], spacing: DecimalConstants.d16) {
             ForEach(symptoms, id: \.self) { symptom in
                 Button(action: {
                     selectedComplaint = symptom
@@ -98,7 +94,7 @@ struct ComplaintView: View {
                 }
             }
         }
-        .padding(.top, 16)
+        .padding(.top, DecimalConstants.d16)
     }
 
     func symptomButton(_ symptom: String) -> some View {
@@ -115,7 +111,7 @@ struct ComplaintView: View {
         }
         .frame(maxWidth: .infinity, maxHeight: 150)
         .padding()
-        .background(selectedComplaint == symptom ? .darkBlue : Color("light-blue")) // Change color if selected
+        .background(selectedComplaint == symptom ? .darkBlue : Color("light-blue"))
         .cornerRadius(12)
     }
 }

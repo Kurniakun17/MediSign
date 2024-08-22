@@ -12,14 +12,13 @@ struct HomePage: View {
 
     var body: some View {
         ZStack {
-            Image("homepage-background")
-            Image("homepage-background")
+            Image(ImageLabel.homepageBackground)
 
             VStack {
                 VStack(spacing: 16) {
                     HStack {
                         HStack(spacing: 4) {
-                            Text("Halo,")
+                            Text(AppLabel.consultationGreeting)
                                 .fontWeight(.bold)
                                 .font(.title2)
                             // TODO: Change name
@@ -30,25 +29,25 @@ struct HomePage: View {
                         Spacer()
 
                         Circle()
-                            .fill(.gray.opacity(0.3))
+                            .fill(.gray.opacity(DecimalConstants.d2 * 0.15))
                             .frame(width: 40, height: 40)
                     }
 
-                    VStack(spacing: 24) {
+                    VStack(spacing: DecimalConstants.d16) {
                         Button(action: {
                             coordinator.push(page: .consultationMenuView)
                         }) {
                             ZStack {
-                                Image("logo")
+                                Image(ImageLabel.logo)
                                     .resizable()
                                     .frame(width: 207, height: 180)
                                     .offset(x: 100, y: 50)
 
-                                VStack(spacing: 20) {
+                                VStack(spacing: DecimalConstants.d8 * 2.5) {
                                     Image(systemName: "plus.square.fill")
                                         .foregroundStyle(.white)
                                         .font(.system(size: 60))
-                                    Text("Tambah keluhan")
+                                    Text(AppLabel.addConsultation)
                                         .foregroundStyle(.white)
                                         .fontWeight(.semibold)
                                 }
@@ -61,18 +60,18 @@ struct HomePage: View {
                         Button(action: {
                             coordinator.push(page: .communication)
                         }) {
-                            VStack(spacing: 8) {
+                            VStack(spacing: DecimalConstants.d8) {
                                 Image(systemName: "stethoscope.circle.fill")
                                     .foregroundStyle(.white)
                                     .font(.system(size: 36))
-                                Text("Mulai Komunikasi")
+                                Text(AppLabel.startCommunication)
                                     .foregroundStyle(.white)
                                     .fontWeight(.semibold)
                             }
                         }
                         .frame(maxWidth: .infinity)
-                        .padding(.top, 24)
-                        .padding(.bottom, 24)
+                        .padding(.top, DecimalConstants.d8 * 3)
+                        .padding(.bottom, DecimalConstants.d8 * 3)
                         .background(.lightBlue)
                         .clipShape(RoundedRectangle(cornerRadius: 10))
                     }
@@ -81,13 +80,12 @@ struct HomePage: View {
                         .padding(.top, 30)
 
                     VStack(alignment: .leading) {
-                        Text("Riwayat Keluhan")
+                        Text(AppLabel.consultationHistory)
                             .font(.title2)
                             .fontWeight(.semibold)
-                            .padding(.bottom, 12)
+                            .padding(.bottom, DecimalConstants.d8 * 1.5)
 
-//                        TODO: Complaint History
-                        HStack(spacing: 18) {
+                        HStack(spacing: DecimalConstants.d8 * 2.25) {
                             RoundedRectangle(cornerRadius: 8)
                                 .frame(width: 60, height: 60)
                             VStack(alignment: .leading) {
@@ -98,11 +96,11 @@ struct HomePage: View {
                                     .foregroundStyle(.gray)
                             }
                         }
-                        .padding(16)
+                        .padding(DecimalConstants.d16)
                         .frame(maxWidth: .infinity, alignment: .leading)
                         .overlay(
                             RoundedRectangle(cornerRadius: 8)
-                                .stroke(.gray.opacity(0.3), lineWidth: 1)
+                                .stroke(.gray.opacity(DecimalConstants.d2 * 0.15), lineWidth: 1)
                         )
                     }
                     .frame(maxWidth: .infinity, alignment: .leading)

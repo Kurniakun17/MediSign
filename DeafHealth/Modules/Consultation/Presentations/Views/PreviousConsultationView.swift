@@ -19,7 +19,7 @@ struct PreviousConsultationView: View {
     @State private var hasNotConsultedBefore: Bool = false
 
     var body: some View {
-        VStack(spacing: 0) {
+        VStack(spacing: DecimalConstants.zeros) {
             ZStack {
                 HStack {
                     Spacer()
@@ -29,38 +29,37 @@ struct PreviousConsultationView: View {
                     }
                     .foregroundColor(.gray)
                 }
-                .padding(.horizontal, 22)
+                .padding(.horizontal, DecimalConstants.d8 * 2.75)
             }
-            .padding(.top, 16)
-            .padding(.bottom, 16)
+            .padding(.top, DecimalConstants.d8 * 2)
+            .padding(.bottom, DecimalConstants.d8 * 2)
 
-            Spacer().frame(height: 32)
+            Spacer().frame(height: DecimalConstants.d8 * 4)
 
             if hasNotConsultedBefore {
                 HStack {
-                    Text("Belum pernah konsultasi ke dokter.").font(Font.system(size: 20))
+                    Text("Belum pernah konsultasi ke dokter.").font(Font.custom("SF Pro", size: 20))
                 }
-                .padding(.bottom, 8)
+                .padding(.bottom, DecimalConstants.d8)
                 .multilineTextAlignment(.center)
                 .frame(maxWidth: 257, alignment: .center)
             } else {
                 HStack {
-                    Text("Saya pernah konsultasi ke dokter dan diberikan obat yaitu ").font(Font.system(size: 20))
+                    Text(AppLabel.previousConsultation).font(Font.custom("SF Pro", size: 20))
 
-                        +
-                        Text("\(previousMed.lowercased() == "" ? "_____" : previousMed.lowercased())").font(Font.system(size: 20)).bold().foregroundColor(.darkBlue)
+                        + Text("\(previousMed.lowercased() == "" ? "_____" : previousMed.lowercased())").font(Font.system(size: 20)).bold().foregroundColor(.darkBlue)
 
                         + Text(".").font(Font.custom("SF Pro", size: 20))
                 }
-                .padding(.bottom, 8)
+                .padding(.bottom, DecimalConstants.d8)
                 .multilineTextAlignment(.center)
                 .frame(maxWidth: 257, alignment: .center)
             }
 
             if !hasNotConsultedBefore {
                 TextField("Tambahkan obat yang diberikan dokter sebelumnya", text: $previousMed)
-                    .padding(17)
-                    .padding(.vertical, -5)
+                    .padding(DecimalConstants.d8 * 2.125)
+                    .padding(.vertical, -DecimalConstants.d8 * 0.625)
                     .font(.custom("SF Pro", size: 14))
                     .background(Color.white.opacity(0.2))
                     .cornerRadius(8)
@@ -73,12 +72,12 @@ struct PreviousConsultationView: View {
                         complaintViewModel.updateAnswer(for: 7, with: previousMed)
                     }
                     .padding(.horizontal)
-                    .padding(.top, 64)
+                    .padding(.top, DecimalConstants.d8 * 8)
             }
 
             Spacer()
 
-            VStack(spacing: 16) {
+            VStack(spacing: DecimalConstants.d8 * 2) {
                 Button(action: {
                     hasNotConsultedBefore.toggle()
                     if hasNotConsultedBefore {
@@ -94,12 +93,12 @@ struct PreviousConsultationView: View {
                     HStack {
                         Rectangle()
                             .foregroundColor(hasNotConsultedBefore ? .blue : .clear)
-                            .frame(width: 15, height: 15)
+                            .frame(width: DecimalConstants.d8 * 1.875, height: DecimalConstants.d8 * 1.875)
                             .cornerRadius(3)
                             .overlay(
                                 RoundedRectangle(cornerRadius: 3)
-                                    .inset(by: 0.5)
-                                    .stroke(.black, lineWidth: 1)
+                                    .inset(by: DecimalConstants.d8 * 0.0625)
+                                    .stroke(.black, lineWidth: DecimalConstants.d8 * 0.125)
                             )
 
                         Text("Saya belum pernah konsultasi ke dokter")
@@ -108,10 +107,9 @@ struct PreviousConsultationView: View {
                     }
                 }
                 .padding(.horizontal)
-                .padding(.bottom, 8)
+                .padding(.bottom, DecimalConstants.d8)
 
-                Button("Selesai") {
-                    //            coordinator.push(page: .symptomWorseningFactors)
+                Button(AppLabel.continueButton) {
                     coordinator.push(page: .summary)
                     dismiss()
                 }
@@ -121,10 +119,10 @@ struct PreviousConsultationView: View {
                 .foregroundColor(Color("FFFFFF"))
                 .disabled(!isAnswerProvided)
             }
-            .padding(.bottom, 40)
+            .padding(.bottom, DecimalConstants.d8 * 5)
         }
         .background {
-            Image("sheet-background")
+            Image(ImageLabel.sheetBackground)
         }
         .edgesIgnoringSafeArea(.bottom)
         .navigationBarBackButtonHidden(true)

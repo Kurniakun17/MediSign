@@ -29,7 +29,7 @@ struct ConsultationMenuView: View {
 
                     Spacer()
 
-                    Text("Tambah Keluhan")
+                    Text(AppLabel.addConsultation)
                         .font(.system(size: 20))
                         .bold()
                         .frame(maxWidth: .infinity, alignment: .center)

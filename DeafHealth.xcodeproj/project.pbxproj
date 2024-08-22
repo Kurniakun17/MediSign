@@ -19,6 +19,7 @@
 		A2A0C55B2C6F6A15002240E2 /* PreviousConsultationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2A0C55A2C6F6A15002240E2 /* PreviousConsultationView.swift */; };
 		A2A0C55D2C6F6A1C002240E2 /* SummaryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2A0C55C2C6F6A1C002240E2 /* SummaryView.swift */; };
 		A2A0C55F2C709032002240E2 /* ComplaintFlowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2A0C55E2C709032002240E2 /* ComplaintFlowView.swift */; };
+		A2E406132C76C28E0094625A /* ImageLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2E406122C76C28E0094625A /* ImageLabel.swift */; };
 		F61AA4E52C743AE6007CDCA6 /* RecordingSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = F61AA4E42C743AE6007CDCA6 /* RecordingSheet.swift */; };
 		F61AA4E72C745447007CDCA6 /* MessageBubble.swift in Sources */ = {isa = PBXBuildFile; fileRef = F61AA4E62C745447007CDCA6 /* MessageBubble.swift */; };
 		F61AA4E92C7454F7007CDCA6 /* MessageViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F61AA4E82C7454F7007CDCA6 /* MessageViewModel.swift */; };
@@ -79,6 +80,7 @@
 		A2A0C55A2C6F6A15002240E2 /* PreviousConsultationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreviousConsultationView.swift; sourceTree = "<group>"; };
 		A2A0C55C2C6F6A1C002240E2 /* SummaryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SummaryView.swift; sourceTree = "<group>"; };
 		A2A0C55E2C709032002240E2 /* ComplaintFlowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComplaintFlowView.swift; sourceTree = "<group>"; };
+		A2E406122C76C28E0094625A /* ImageLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageLabel.swift; sourceTree = "<group>"; };
 		F61AA4E42C743AE6007CDCA6 /* RecordingSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordingSheet.swift; sourceTree = "<group>"; };
 		F61AA4E62C745447007CDCA6 /* MessageBubble.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageBubble.swift; sourceTree = "<group>"; };
 		F61AA4E82C7454F7007CDCA6 /* MessageViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageViewModel.swift; sourceTree = "<group>"; };
@@ -317,6 +319,7 @@
 			children = (
 				F6E9221F2C75BCF3000D3833 /* AppLabel.swift */,
 				F6E922212C75BD9F000D3833 /* Decimal.swift */,
+				A2E406122C76C28E0094625A /* ImageLabel.swift */,
 			);
 			path = Constants;
 			sourceTree = "<group>";
@@ -603,6 +606,7 @@
 				F61AA4E52C743AE6007CDCA6 /* RecordingSheet.swift in Sources */,
 				F6E9221D2C75BBD9000D3833 /* AppColors.swift in Sources */,
 				F6856F992C6F582B00574B7E /* SpeechViewModel.swift in Sources */,
+				A2E406132C76C28E0094625A /* ImageLabel.swift in Sources */,
 				F62EFA062C6B3ECB0025498E /* Strawberry.swift in Sources */,
 				A2A0C5552C6F69ED002240E2 /* SymptomWorseningFactorsView.swift in Sources */,
 				F6D07E402C6F79DB006113FB /* MessageModel.swift in Sources */,
