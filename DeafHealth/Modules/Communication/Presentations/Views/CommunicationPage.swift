@@ -1,17 +1,12 @@
-//
-//  CommuncationPage.swift
-//  DeafHealth
-//
-//  Created by Kurnia Kharisma Agung Samiadjie on 14/08/24.
-//
-
 import AVFoundation
 import SwiftUI
 
 struct CommunicationPage: View {
     @StateObject var messageViewModel = MessageViewModel()
     @StateObject var speechViewModel = SpeechViewModel()
+    @StateObject var signLanguageInterpreterViewModel = SignLanguageInterpreterViewModel()
     @State var isKeyboardFocus = false
+    @State var isShowingInterpreter = false
 
     var body: some View {
         VStack {
@@ -67,7 +62,13 @@ struct CommunicationPage: View {
                         .clipShape(RoundedRectangle(cornerRadius: 12))
 
                         Button(action: {
-                            // TODO: Epan kerjain disini
+                            if signLanguageInterpreterViewModel.isInterpreting {
+                                signLanguageInterpreterViewModel.stopInterpreting()
+                                isShowingInterpreter = false
+                            } else {
+                                signLanguageInterpreterViewModel.startInterpreting()
+                                isShowingInterpreter = true
+                            }
                         }) {
                             Text("Saya")
                             Image(systemName: "camera.circle.fill")
@@ -75,8 +76,11 @@ struct CommunicationPage: View {
                         .foregroundStyle(.black)
                         .frame(maxWidth: .infinity)
                         .padding()
-                        .background(.gray.opacity(0.2))
+                        .background(signLanguageInterpreterViewModel.isInterpreting ? .blue.opacity(0.2) : .gray.opacity(0.2))
                         .clipShape(RoundedRectangle(cornerRadius: 12))
+                        .onChange(of: signLanguageInterpreterViewModel.recognizedText) { newText in
+                            messageViewModel.updateInputValue(with: newText)
+                        }
                     })
                     .transition(.opacity)
                 } else {
@@ -112,6 +116,19 @@ struct CommunicationPage: View {
 
                     })
                     .transition(.opacity)
+                }
+                if isShowingInterpreter {
+                    VStack {
+                        // Camera View
+                        CameraView(cameraModel: signLanguageInterpreterViewModel.cameraModel!)
+                            .frame(height: 400)  // Adjust the height as per your need
+                            .clipShape(RoundedRectangle(cornerRadius: 12))
+                            .padding()
+                    }
+                    .background(Color(.systemGray6))
+                    .clipShape(RoundedRectangle(cornerRadius: 12))
+                    .padding()
+                    .transition(.slide)
                 }
 
                 HStack {
