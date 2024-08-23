@@ -136,6 +136,9 @@ struct PreviousConsultationView: View {
         .background {
             Image(ImageLabel.sheetBackground)
         }
+        .onAppear {
+            previousMed = complaintViewModel.currentComplaint.answers[6]
+        }
         .edgesIgnoringSafeArea(.bottom)
         .navigationBarBackButtonHidden(true)
     }

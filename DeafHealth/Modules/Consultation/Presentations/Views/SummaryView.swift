@@ -105,12 +105,20 @@ struct SummaryView: View {
 
                     HStack(alignment: .top) {
                         Text("•")
-                        Text("\(complaintViewModel.getSummary(for: 5))") + Text("\(complaintViewModel.currentComplaint.answers[4])".lowercased()).bold().foregroundColor(AppColors.blueMedium)
+                        if complaintViewModel.currentComplaint.answers[4] == "Tidak ada faktor yang membuat gejala semakin memburuk" {
+                            Text("\(complaintViewModel.currentComplaint.answers[4])".lowercased()).bold().foregroundColor(AppColors.blueMedium)
+                        } else {
+                            Text("\(complaintViewModel.getSummary(for: 5))") + Text("\(complaintViewModel.currentComplaint.answers[4])".lowercased()).bold().foregroundColor(AppColors.blueMedium)
+                        }
                     }
 
                     HStack(alignment: .top) {
                         Text("•")
-                        Text("\(complaintViewModel.getSummary(for: 6))") + Text("\(complaintViewModel.currentComplaint.answers[5])".lowercased()).bold().foregroundColor(AppColors.blueMedium)
+                        if complaintViewModel.currentComplaint.answers[5] == "Tidak ada faktor yang membuat gejala semakin membaik" {
+                            Text("\(complaintViewModel.currentComplaint.answers[5])".lowercased()).bold().foregroundColor(AppColors.blueMedium)
+                        } else {
+                            Text("\(complaintViewModel.getSummary(for: 6))") + Text("\(complaintViewModel.currentComplaint.answers[5])".lowercased()).bold().foregroundColor(AppColors.blueMedium)
+                        }
                     }
 
                     HStack(alignment: .top) {
@@ -154,17 +162,21 @@ struct SummaryView: View {
 
             Spacer()
 
-            Button(AppLabel.saveButton) {
-                if complaintViewModel.isUpdating {
-                    coordinator.popToRoot()
-                } else {
-                    showingSaveModal = true
+            HStack {
+                Button(AppLabel.saveButton) {
+                    if complaintViewModel.isUpdating {
+                        coordinator.popToRoot()
+                    } else {
+                        showingSaveModal = true
+                    }
                 }
+                .frame(maxWidth: .infinity)
+                .padding(.vertical, 16)
+                .background(Color(red: 0.25, green: 0.48, blue: 0.68))
+                .cornerRadius(25)
+                .foregroundColor(Color("FFFFFF"))
             }
-            .frame(width: 363, height: 52)
-            .background(Color(red: 0.25, green: 0.48, blue: 0.68))
-            .cornerRadius(25)
-            .foregroundColor(Color("FFFFFF"))
+            .padding(.horizontal, 24)
         }
         .onAppear {
             if complaintViewModel.currentComplaint.answers[3] == "1" || complaintViewModel.currentComplaint.answers[3] == "2" || complaintViewModel.currentComplaint.answers[3] == "3" {

@@ -15,6 +15,8 @@ struct ComplaintView: View {
     @State private var selectedComplaint: String = ""
     @State private var isAnswerProvided: Bool = false
     @State private var selectedSegment: String = AppLabel.mainSymptoms
+    @State private var showAlert = false
+    @State private var customComplaint = ""
 
     var body: some View {
         VStack(spacing: DecimalConstants.zeros) {
@@ -35,7 +37,7 @@ struct ComplaintView: View {
                 Text("\(AppLabel.complaintStatement) ")
                     .font(Font.system(size: 20)) +
 
-                    Text(complaintViewModel.currentComplaint.answers[0].isEmpty ? "____." : "\(complaintViewModel.currentComplaint.answers[0].lowercased()).")
+                    Text(complaintViewModel.currentComplaint.answers[0].isEmpty ? "____." : "\(complaintViewModel.currentComplaint.answers[0].lowercased())." )
                     .font(.title3)
                     .foregroundColor(.darkBlue).bold()
             }
@@ -43,7 +45,6 @@ struct ComplaintView: View {
             .padding(.top, DecimalConstants.d8 * 2)
             .multilineTextAlignment(.center)
             .frame(maxWidth: 300, alignment: .center)
-
 
             Picker("Select Category", selection: $selectedSegment) {
                 Text(AppLabel.mainSymptoms).tag(AppLabel.mainSymptoms)
@@ -90,6 +91,13 @@ struct ComplaintView: View {
         .background {
             Image(ImageLabel.sheetBackground)
         }
+        .alert("Tambahkan Keluhan", isPresented: $showAlert, actions: {
+            TextField("Keluhan Anda", text: $customComplaint)
+            Button("Simpan", action: saveCustomComplaint)
+            Button("Batal", role: .cancel, action: {})
+        })
+        .edgesIgnoringSafeArea(.bottom)
+        .navigationBarBackButtonHidden(true)
         .edgesIgnoringSafeArea(.bottom)
         .navigationBarBackButtonHidden(true)
     }
@@ -98,11 +106,14 @@ struct ComplaintView: View {
         LazyVGrid(columns: [GridItem(.flexible()), GridItem(.flexible())], spacing: DecimalConstants.d16) {
             ForEach(symptoms, id: \.self) { symptom in
                 Button(action: {
-                    selectedComplaint = symptom
-                    isAnswerProvided = true
-                    complaintViewModel.updateAnswer(for: 0, with: selectedComplaint)
-                    complaintViewModel.updateAnswer(for: 1, with: "")
-
+                    if symptom == "Gejala Lainnya" {
+                        showAlert = true
+                    } else {
+                        selectedComplaint = symptom
+                        isAnswerProvided = true
+                        complaintViewModel.updateAnswer(for: 0, with: selectedComplaint)
+                        complaintViewModel.updateAnswer(for: 1, with: "")
+                    }
                 }) {
                     symptomButton(symptom)
                 }
@@ -127,6 +138,13 @@ struct ComplaintView: View {
         .padding(.top, DecimalConstants.d16)
     }
 
+    func saveCustomComplaint() {
+        selectedComplaint = customComplaint
+        isAnswerProvided = true
+        complaintViewModel.updateAnswer(for: 0, with: selectedComplaint)
+        complaintViewModel.updateAnswer(for: 1, with: "")
+    }
+
     func symptomButton(_ symptom: String) -> some View {
         ZStack {
             Text(symptom)
@@ -134,7 +152,7 @@ struct ComplaintView: View {
                 .foregroundColor(selectedComplaint == symptom ? .white : .primary)
                 .offset(y: -55)
 
-            Image(symptom) // Placeholder for actual image
+            Image(symptom)
                 .resizable()
                 .scaledToFit()
                 .foregroundColor(.white)

@@ -17,7 +17,6 @@ class MessageViewModel: ObservableObject {
     @Published var isRecording = false
 
     init(messages: [Message] = [
-        Message(role: .user, body: "Hai namaku kurnia "),
     ], inputValue: String = "", role: Role = .user, isRecording: Bool = false) {
         self.messages = messages
         self.inputValue = inputValue

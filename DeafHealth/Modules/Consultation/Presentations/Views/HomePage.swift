@@ -90,12 +90,12 @@ struct HomePage: View {
                                         .foregroundStyle(.white)
                                         .fontWeight(.semibold)
                                 }
+                                .frame(maxWidth: .infinity)
+                                .padding(.top, DecimalConstants.d8 * 3)
+                                .padding(.bottom, DecimalConstants.d8 * 3)
+                                .background(.lightBlue)
+                                .clipShape(RoundedRectangle(cornerRadius: 10))
                             }
-                            .frame(maxWidth: .infinity)
-                            .padding(.top, DecimalConstants.d8 * 3)
-                            .padding(.bottom, DecimalConstants.d8 * 3)
-                            .background(.lightBlue)
-                            .clipShape(RoundedRectangle(cornerRadius: 10))
                         }
 
                         HStack {}

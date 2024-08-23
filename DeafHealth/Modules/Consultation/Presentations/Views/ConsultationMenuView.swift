@@ -142,34 +142,35 @@ struct QuestionButtonView: View {
     }
 
     func questionText(for index: Int) -> some View {
-        switch index {
-        case 0:
-            return HStack {
+        HStack {
+            switch index {
+            case 0:
                 Text("\(complaintViewModel.getSummary(for: 0))") + Text("\(complaintViewModel.currentComplaint.answers[0])").bold().underline()
-            }
-        case 1:
-            return HStack {
+            case 1:
                 Text("\(complaintViewModel.getSummary(for: 1))") + Text("\(complaintViewModel.currentComplaint.answers[2])").bold().underline() + Text("\(complaintViewModel.getSummary(for: 2))")
-            }
-        case 2:
-            return HStack {
+            case 2:
                 Text("\(complaintViewModel.getSummary(for: 3))") + Text("\(complaintViewModel.currentComplaint.answers[3])").bold().underline() + Text("\(complaintViewModel.getSummary(for: 4))")
-            }
-        case 3:
-            return HStack {
-                Text("\(complaintViewModel.getSummary(for: 5))") + Text("\(complaintViewModel.currentComplaint.answers[4])").bold().underline()
-            }
-        case 4:
-            return HStack {
-                Text("\(complaintViewModel.getSummary(for: 6))") + Text("\(complaintViewModel.currentComplaint.answers[5])").bold().underline()
-            }
-        case 5:
-            return HStack {
-                Text("\(complaintViewModel.getSummary(for: 7))") + Text("\(complaintViewModel.currentComplaint.answers[6])").bold().underline()
-            }
-        default:
-            return HStack {
-                Text("") // Ensure the default case also returns an HStack
+            case 3:
+                if complaintViewModel.currentComplaint.answers[4] == "Tidak ada faktor yang membuat gejala semakin memburuk" {
+                    Text("Tidak ada faktor yang membuat gejala semakin memburuk").bold().underline()
+                } else {
+                    Text(" \(complaintViewModel.getSummary(for: 5))") + Text("\(complaintViewModel.currentComplaint.answers[4])").bold().underline()
+                }
+            case 4:
+                if complaintViewModel.currentComplaint.answers[5] == "Tidak ada faktor yang membuat gejala semakin membaik" {
+                    Text("Tidak ada faktor yang membuat gejala semakin membaik").bold().underline()
+                } else {
+                    Text(" \(complaintViewModel.getSummary(for: 6))") + Text("\(complaintViewModel.currentComplaint.answers[5])").bold().underline()
+                }
+            case 5:
+                if complaintViewModel.currentComplaint.answers[5] == "Tidak ada riwayat konsultasi sebelumnya" {
+                    Text("Tidak ada riwayat konsultasi sebelumnya").bold().underline()
+
+                } else {
+                    Text("\(complaintViewModel.getSummary(for: 7))") + Text("\(complaintViewModel.currentComplaint.answers[6])").bold().underline()
+                }
+            default:
+                Text("") // Provide a default case to handle any unexpected index values
             }
         }
     }
@@ -177,11 +178,9 @@ struct QuestionButtonView: View {
     func isQuestionActive(at index: Int) -> Bool {
         if index == 0 {
             return true
-        }
-        else if index == 2 && complaintViewModel.currentComplaint.answers[2].contains("_____") {
+        } else if index == 2 && complaintViewModel.currentComplaint.answers[2].contains("_____") {
             return false
-        }
-        else if index == 1 && complaintViewModel.currentComplaint.answers[2] != "_____" {
+        } else if index == 1 && complaintViewModel.currentComplaint.answers[2] != "_____" {
             return true
         }
         return !(complaintViewModel.currentComplaint.answers[index] == "_____")

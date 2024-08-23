@@ -14,6 +14,9 @@ struct SelectBodyPartView: View {
     @State private var selectedBodyPart: String = ""
     @State private var isAnswerProvided: Bool = false
     @State private var isFrontView: Bool = true
+    @State private var showSideSelection: Bool = false
+    @State private var tappedBodyPart: String = ""
+    @State private var menuPosition: CGPoint = .zero
 
     var body: some View {
         VStack(spacing: DecimalConstants.zeros) {
@@ -54,30 +57,33 @@ struct SelectBodyPartView: View {
                         .overlay(backBodyCircles())
                 }
 
-                // Left arrow for flipping to back view
+                // Left arrow for flipping the view
                 Button(action: {
                     withAnimation {
-                        isFrontView = false
+                        isFrontView.toggle()
                     }
                 }) {
                     Image(ImageLabel.leftArrow)
                 }
-                .position(x: 30, y: UIScreen.main.bounds.height / 2)
-                .opacity(isFrontView ? 1 : 0)
+                .position(x: UIScreen.main.bounds.width * 0.1, y: UIScreen.main.bounds.height * 0.3)
 
-                // Right arrow for flipping to front view
+                // Right arrow for flipping the view
                 Button(action: {
                     withAnimation {
-                        isFrontView = true
+                        isFrontView.toggle()
                     }
                 }) {
                     Image(ImageLabel.rightArrow)
                 }
-                .position(x: UIScreen.main.bounds.width - 30, y: UIScreen.main.bounds.height / 2)
-                .opacity(isFrontView ? 0 : 1)
+                .position(x: UIScreen.main.bounds.width * 0.8, y: UIScreen.main.bounds.height * 0.3)
+
+//                if showSideSelection {
+//                    compactMenu
+//                        .position(menuPosition)
+//                        .animation(.easeInOut, value: showSideSelection)
+//                }
             }
             .padding()
-
             Spacer()
 
             Button {
@@ -131,15 +137,15 @@ struct SelectBodyPartView: View {
     func backBodyCircles() -> some View {
         ZStack {
             Circle().positionedCircle(x: 96, y: 86, bodyPart: "Tengkuk", selectedBodyPart: $selectedBodyPart, isAnswerProvided: $isAnswerProvided)
-            Circle().positionedCircle(x: 31, y: 126, bodyPart: "Pundak", selectedBodyPart: $selectedBodyPart, isAnswerProvided: $isAnswerProvided)
-            Circle().positionedCircle(x: 130, y: 135, bodyPart: "Punggung Atas", selectedBodyPart: $selectedBodyPart, isAnswerProvided: $isAnswerProvided)
-            Circle().positionedCircle(x: 79, y: 172, bodyPart: "Punggung Bawah", selectedBodyPart: $selectedBodyPart, isAnswerProvided: $isAnswerProvided)
+            Circle().positionedCircle(x: 45, y: 110, bodyPart: "Pundak", selectedBodyPart: $selectedBodyPart, isAnswerProvided: $isAnswerProvided)
+            Circle().positionedCircle(x: 125, y: 145, bodyPart: "Punggung Atas", selectedBodyPart: $selectedBodyPart, isAnswerProvided: $isAnswerProvided)
+            Circle().positionedCircle(x: 70, y: 172, bodyPart: "Punggung Bawah", selectedBodyPart: $selectedBodyPart, isAnswerProvided: $isAnswerProvided)
             Circle().positionedCircle(x: 54, y: 245, bodyPart: "Pinggul", selectedBodyPart: $selectedBodyPart, isAnswerProvided: $isAnswerProvided)
-            Circle().positionedCircle(x: 20, y: 302, bodyPart: "Jari dan Telapak Tangan", selectedBodyPart: $selectedBodyPart, isAnswerProvided: $isAnswerProvided)
-            Circle().positionedCircle(x: 125, y: 280, bodyPart: "Pantat", selectedBodyPart: $selectedBodyPart, isAnswerProvided: $isAnswerProvided)
-            Circle().positionedCircle(x: 72, y: 350, bodyPart: "Belakang Paha", selectedBodyPart: $selectedBodyPart, isAnswerProvided: $isAnswerProvided)
-            Circle().positionedCircle(x: 125, y: 445, bodyPart: "Betis", selectedBodyPart: $selectedBodyPart, isAnswerProvided: $isAnswerProvided)
-            Circle().positionedCircle(x: 72, y: 520, bodyPart: "Pergelangan Kaki", selectedBodyPart: $selectedBodyPart, isAnswerProvided: $isAnswerProvided)
+            Circle().positionedCircle(x: 15, y: 302, bodyPart: "Jari dan Telapak Tangan", selectedBodyPart: $selectedBodyPart, isAnswerProvided: $isAnswerProvided)
+            Circle().positionedCircle(x: 120, y: 280, bodyPart: "Pantat", selectedBodyPart: $selectedBodyPart, isAnswerProvided: $isAnswerProvided)
+            Circle().positionedCircle(x: 65, y: 350, bodyPart: "Belakang Paha", selectedBodyPart: $selectedBodyPart, isAnswerProvided: $isAnswerProvided)
+            Circle().positionedCircle(x: 115, y: 455, bodyPart: "Betis", selectedBodyPart: $selectedBodyPart, isAnswerProvided: $isAnswerProvided)
+            Circle().positionedCircle(x: 60, y: 540, bodyPart: "Pergelangan Kaki", selectedBodyPart: $selectedBodyPart, isAnswerProvided: $isAnswerProvided)
         }
     }
 }

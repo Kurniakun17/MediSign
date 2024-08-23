@@ -72,8 +72,11 @@ struct SymptomImprovementFactorsView: View {
                             RoundedRectangle(cornerRadius: 25)
                                 .stroke(Color.gray, lineWidth: DecimalConstants.d1)
                         )
-                        .onChange(of: factor) { newValue in
+                        .onChange(of: factor) {
+                            newValue in
+
                             selectedFactor = newValue
+                            print(selectedFactor)
                             complaintViewModel.updateAnswer(for: 5, with: selectedFactor)
                             isAnswerProvided = true
                         }
@@ -126,6 +129,9 @@ struct SymptomImprovementFactorsView: View {
 
                     if !isNotAvailable {
                         isAnswerProvided = false
+                        complaintViewModel.updateAnswer(for: 5, with: factor)
+                    } else {
+                        complaintViewModel.updateAnswer(for: 5, with: "Tidak ada faktor yang membuat gejala semakin membaik")
                     }
                 } label: {
                     if isNotAvailable {
@@ -154,8 +160,10 @@ struct SymptomImprovementFactorsView: View {
                     selectedFactor = ""
                 }
 
-                Text("Tidak ada faktor yang membuat gejala membaik").font(Font.custom("SF Pro Bold", size: 14))
+                Text("Tidak ada faktor yang membuat gejala semakin membaik")
+                    .font(Font.custom("SF Pro Bold", size: 14))
             }
+            .padding(.horizontal, 24)
 
             Spacer().frame(height: DecimalConstants.d8 * 2.25)
 
@@ -179,8 +187,14 @@ struct SymptomImprovementFactorsView: View {
 //            .foregroundColor(Color("FFFFFF"))
 //            .disabled(!isAnswerProvided)
         }
-        .onAppear() {
+        .onAppear {
             selectedFactor = complaintViewModel.currentComplaint.answers[5]
+            factor = complaintViewModel.currentComplaint.answers[5]
+
+            if complaintViewModel.currentComplaint.answers[5] == "-" {
+                isNotAvailable = true
+                isAnswerProvided = true
+            }
         }
         .background {
             Image(ImageLabel.sheetBackground)

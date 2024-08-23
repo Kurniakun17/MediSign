@@ -17,7 +17,6 @@ struct SymptomWorseningFactorsView: View {
     @State private var selectedFactor: String = "_____"
     @State private var factor: String = ""
     @State private var isAnswerProvided: Bool = false
-
     @State private var isNotAvailable = false
 
     var body: some View {
@@ -76,7 +75,9 @@ struct SymptomWorseningFactorsView: View {
                             )
                             .disabled(isNotAvailable)
                             .onChange(of: factor) { newValue in
+                                print("hai")
                                 selectedFactor = newValue
+
                                 complaintViewModel.updateAnswer(for: 4, with: selectedFactor)
                                 isAnswerProvided = true
                             }
@@ -148,9 +149,13 @@ struct SymptomWorseningFactorsView: View {
                 Button {
                     isAnswerProvided = true
                     isNotAvailable.toggle()
+                    print("clicked: \(isNotAvailable)")
 
                     if !isNotAvailable {
                         isAnswerProvided = false
+                        complaintViewModel.updateAnswer(for: 4, with: factor)
+                    } else {
+                        complaintViewModel.updateAnswer(for: 4, with: "Tidak ada faktor yang membuat gejala semakin memburuk")
                     }
 
                 } label: {
@@ -188,26 +193,21 @@ struct SymptomWorseningFactorsView: View {
             Button {
                 coordinator.present(sheet: .symptomImprovementFactors)
             } label: {
-                Text(AppLabel.continueButton).frame(width: 363, height: 52)
+                Text(AppLabel.continueButton)
+                    .frame(width: 363, height: 52)
                     .background(isAnswerProvided ? Color(red: 0.25, green: 0.48, blue: 0.68) : Color.gray)
                     .cornerRadius(25)
                     .foregroundColor(Color("FFFFFF"))
                     .disabled(!isAnswerProvided)
                     .padding(.bottom, DecimalConstants.d16 * 2)
             }
-
-//            Button(AppLabel.continueButton) {
-//                coordinator.present(sheet: .symptomImprovementFactors)
-//            }
-//            .frame(width: 363, height: 52)
-//            .background(isAnswerProvided ? Color(red: 0.25, green: 0.48, blue: 0.68) : Color.gray)
-//            .cornerRadius(25)
-//            .foregroundColor(Color("FFFFFF"))
-//            .disabled(!isAnswerProvided)
         }.onAppear {
             selectedFactor = complaintViewModel.currentComplaint.answers[4]
-        }
-        .background {
+
+            if complaintViewModel.currentComplaint.answers[4] == "-" {
+                isNotAvailable = true
+            }
+        }.background {
             Image(ImageLabel.sheetBackground)
         }
     }
