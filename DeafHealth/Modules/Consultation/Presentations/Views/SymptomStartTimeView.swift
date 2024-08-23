@@ -121,10 +121,10 @@ struct SymptomStartTimeView: View {
 //            .disabled(!isAnswerProvided)
         }
         .onAppear {
-            selectedNumber = String(complaintViewModel.answers[2].split(separator: " ")[0])
+            selectedNumber = String(complaintViewModel.currentComplaint.answers[2].split(separator: " ")[0])
             
-            if complaintViewModel.answers[2].contains(" ") {
-                selectedUnit = String(complaintViewModel.answers[2].split(separator: " ")[1])
+            if complaintViewModel.currentComplaint.answers[2].contains(" ") {
+                selectedUnit = String(complaintViewModel.currentComplaint.answers[2].split(separator: " ")[1])
 
             }
         }

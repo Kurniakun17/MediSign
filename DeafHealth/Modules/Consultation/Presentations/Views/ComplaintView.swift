@@ -35,7 +35,7 @@ struct ComplaintView: View {
                 Text("\(AppLabel.complaintStatement) ")
                     .font(Font.system(size: 20)) +
 
-                    Text(complaintViewModel.answers[0].isEmpty ? "____." : "\(complaintViewModel.answers[0].lowercased()).")
+                    Text(complaintViewModel.currentComplaint.answers[0].isEmpty ? "____." : "\(complaintViewModel.currentComplaint.answers[0].lowercased()).")
                     .font(.title3)
                     .foregroundColor(.darkBlue).bold()
             }

@@ -51,7 +51,7 @@ struct SymptomWorseningFactorsView: View {
                         Text("\(AppLabel.worseningFactors) ").font(Font.system(size: 20))
 
                             +
-                            Text("\(complaintViewModel.answers[4] == "" ? "_____" : complaintViewModel.answers[4].lowercased())").font(Font.system(size: 20)).bold().foregroundColor(.darkBlue)
+                            Text("\(complaintViewModel.currentComplaint.answers[4] == "" ? "_____" : complaintViewModel.currentComplaint.answers[4].lowercased())").font(Font.system(size: 20)).bold().foregroundColor(.darkBlue)
 
                             + Text(".").font(Font.custom("SF Pro", size: 20))
                     }
@@ -205,7 +205,7 @@ struct SymptomWorseningFactorsView: View {
 //            .foregroundColor(Color("FFFFFF"))
 //            .disabled(!isAnswerProvided)
         }.onAppear {
-            selectedFactor = complaintViewModel.answers[4]
+            selectedFactor = complaintViewModel.currentComplaint.answers[4]
         }
         .background {
             Image(ImageLabel.sheetBackground)

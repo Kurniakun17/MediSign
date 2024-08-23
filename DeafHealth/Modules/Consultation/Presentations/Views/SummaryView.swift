@@ -31,7 +31,7 @@ struct SummaryView: View {
             HStack {
                 VStack(alignment: .trailing) {
                     VStack {
-                        Text(complaintViewModel.answers[0])
+                        Text(complaintViewModel.currentComplaint.answers[0])
                     }.padding(.horizontal, 10)
                         .padding(.vertical, 5)
                         .background(AppColors.blueMedium)
@@ -40,9 +40,9 @@ struct SummaryView: View {
 
                     // TODO: body part
 
-                    if complaintViewModel.answers[1] != "" {
+                    if complaintViewModel.currentComplaint.answers[1] != "" {
                         VStack {
-                            Text(complaintViewModel.answers[1])
+                            Text(complaintViewModel.currentComplaint.answers[1])
                         }.padding(.horizontal, 10)
                             .padding(.vertical, 5)
                             .background(AppColors.blueMedium)
@@ -50,7 +50,7 @@ struct SummaryView: View {
                             .foregroundColor(.white)
                     }
 
-                    Text("Rasa sakit \n\(painSeverity) (\(complaintViewModel.answers[3]) / 10)").padding(.horizontal, 10)
+                    Text("Rasa sakit \n\(painSeverity) (\(complaintViewModel.currentComplaint.answers[3]) / 10)").padding(.horizontal, 10)
                         .padding(.vertical, 5)
                         .background(AppColors.blueMedium)
                         .cornerRadius(5)
@@ -59,11 +59,11 @@ struct SummaryView: View {
 
                 // TODO: body part
 
-                if complaintViewModel.answers[1] == "" {
-//                    Image("\(complaintViewModel.answers[0])")
+                if complaintViewModel.currentComplaint.answers[1] == "" {
+//                    Image("\(complaintViewModel.currentComplaint.answers[0])")
                     Image("Pusing").resizable().aspectRatio(contentMode: .fit).frame(width: 185)
                 } else {
-                    Image("LK \(complaintViewModel.answers[1])").resizable().aspectRatio(contentMode: .fit).frame(width: 185)
+                    Image("LK \(complaintViewModel.currentComplaint.answers[1])").resizable().aspectRatio(contentMode: .fit).frame(width: 185)
                 }
 
             }.padding(.horizontal, 10)
@@ -90,35 +90,35 @@ struct SummaryView: View {
                     HStack(alignment: .top) {
                         Text("•")
                         Text("\(complaintViewModel.getSummary(for: 0))")
-                            + Text("\(complaintViewModel.answers[0]).".lowercased()).bold().foregroundColor(AppColors.blueMedium)
+                            + Text("\(complaintViewModel.currentComplaint.answers[0]).".lowercased()).bold().foregroundColor(AppColors.blueMedium)
                     }
 
                     HStack(alignment: .top) {
                         Text("•")
-                        Text("\(complaintViewModel.getSummary(for: 1))") + Text("\(complaintViewModel.answers[2])".lowercased()).bold().foregroundColor(AppColors.blueMedium) + Text("\(complaintViewModel.getSummary(for: 2))")
+                        Text("\(complaintViewModel.getSummary(for: 1))") + Text("\(complaintViewModel.currentComplaint.answers[2])".lowercased()).bold().foregroundColor(AppColors.blueMedium) + Text("\(complaintViewModel.getSummary(for: 2))")
                     }
 
                     HStack(alignment: .top) {
                         Text("•")
-                        Text("\(complaintViewModel.getSummary(for: 3))") + Text("\(complaintViewModel.answers[3])".lowercased()).bold().foregroundColor(AppColors.blueMedium) + Text("\(complaintViewModel.getSummary(for: 4))")
+                        Text("\(complaintViewModel.getSummary(for: 3))") + Text("\(complaintViewModel.currentComplaint.answers[3])".lowercased()).bold().foregroundColor(AppColors.blueMedium) + Text("\(complaintViewModel.getSummary(for: 4))")
                     }
 
                     HStack(alignment: .top) {
                         Text("•")
-                        Text("\(complaintViewModel.getSummary(for: 5))") + Text("\(complaintViewModel.answers[4])".lowercased()).bold().foregroundColor(AppColors.blueMedium)
+                        Text("\(complaintViewModel.getSummary(for: 5))") + Text("\(complaintViewModel.currentComplaint.answers[4])".lowercased()).bold().foregroundColor(AppColors.blueMedium)
                     }
 
                     HStack(alignment: .top) {
                         Text("•")
-                        Text("\(complaintViewModel.getSummary(for: 6))") + Text("\(complaintViewModel.answers[5])".lowercased()).bold().foregroundColor(AppColors.blueMedium)
+                        Text("\(complaintViewModel.getSummary(for: 6))") + Text("\(complaintViewModel.currentComplaint.answers[5])".lowercased()).bold().foregroundColor(AppColors.blueMedium)
                     }
 
                     HStack(alignment: .top) {
                         Text("•")
-                        if complaintViewModel.answers[6] == "Tidak ada riwayat konsultasi sebelumnya" {
-                            Text("\(complaintViewModel.answers[6])".lowercased()).bold().foregroundColor(AppColors.blueMedium)
+                        if complaintViewModel.currentComplaint.answers[6] == "Tidak ada riwayat konsultasi sebelumnya" {
+                            Text("\(complaintViewModel.currentComplaint.answers[6])".lowercased()).bold().foregroundColor(AppColors.blueMedium)
                         } else {
-                            Text("\(complaintViewModel.getSummary(for: 7))") + Text("\(complaintViewModel.answers[6])".lowercased()).bold().foregroundColor(AppColors.blueMedium)
+                            Text("\(complaintViewModel.getSummary(for: 7))") + Text("\(complaintViewModel.currentComplaint.answers[6])".lowercased()).bold().foregroundColor(AppColors.blueMedium)
                         }
                     }
                 }
@@ -155,7 +155,11 @@ struct SummaryView: View {
             Spacer()
 
             Button(AppLabel.saveButton) {
-                showingSaveModal = true
+                if complaintViewModel.isUpdating {
+                    coordinator.popToRoot()
+                } else {
+                    showingSaveModal = true
+                }
             }
             .frame(width: 363, height: 52)
             .background(Color(red: 0.25, green: 0.48, blue: 0.68))
@@ -163,9 +167,9 @@ struct SummaryView: View {
             .foregroundColor(Color("FFFFFF"))
         }
         .onAppear {
-            if complaintViewModel.answers[3] == "1" || complaintViewModel.answers[3] == "2" || complaintViewModel.answers[3] == "3" {
+            if complaintViewModel.currentComplaint.answers[3] == "1" || complaintViewModel.currentComplaint.answers[3] == "2" || complaintViewModel.currentComplaint.answers[3] == "3" {
                 painSeverity = "Rendah"
-            } else if complaintViewModel.answers[3] == "4" || complaintViewModel.answers[3] == "5" || complaintViewModel.answers[3] == "6" {
+            } else if complaintViewModel.currentComplaint.answers[3] == "4" || complaintViewModel.currentComplaint.answers[3] == "5" || complaintViewModel.currentComplaint.answers[3] == "6" {
                 painSeverity = "Sedang"
             } else {
                 painSeverity = "Tinggi"
@@ -174,7 +178,8 @@ struct SummaryView: View {
         .sheet(isPresented: $showingSaveModal) {
             SaveComplaintModal(complaintName: $complaintName) {
                 // Action for saving the complaint
-                complaintViewModel.saveComplaint(userData: userDataViewModel.currentUser!, name: complaintName)
+
+                complaintViewModel.saveComplaint(name: complaintName)
                 coordinator.popToRoot()
             }
         }

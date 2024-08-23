@@ -47,7 +47,7 @@ struct PreviousConsultationView: View {
                 HStack {
                     Text("\(AppLabel.previousConsultation) ").font(Font.custom("SF Pro", size: 20))
 
-                        + Text("\(complaintViewModel.answers[6].lowercased() == "" ? "_____" : complaintViewModel.answers[6].lowercased())").font(Font.system(size: 20)).bold().foregroundColor(.darkBlue)
+                        + Text("\(complaintViewModel.currentComplaint.answers[6].lowercased() == "" ? "_____" : complaintViewModel.currentComplaint.answers[6].lowercased())").font(Font.system(size: 20)).bold().foregroundColor(.darkBlue)
 
                         + Text(".").font(Font.custom("SF Pro", size: 20))
                 }

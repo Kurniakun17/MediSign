@@ -180,7 +180,7 @@ struct SymptomImprovementFactorsView: View {
 //            .disabled(!isAnswerProvided)
         }
         .onAppear() {
-            selectedFactor = complaintViewModel.answers[5]
+            selectedFactor = complaintViewModel.currentComplaint.answers[5]
         }
         .background {
             Image(ImageLabel.sheetBackground)

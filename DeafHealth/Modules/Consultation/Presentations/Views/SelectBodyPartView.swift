@@ -31,7 +31,7 @@ struct SelectBodyPartView: View {
             }
 
             HStack(spacing: DecimalConstants.d8) {
-                Text("\(AppLabel.complaintStatement)") + Text(" \(complaintViewModel.answers[0].lowercased())").bold().foregroundColor(AppColors.blueMedium) + Text(" di bagian ") + Text("\(complaintViewModel.answers[1].isEmpty ? "____" : complaintViewModel.answers[1].lowercased()).")
+                Text("\(AppLabel.complaintStatement)") + Text(" \(complaintViewModel.currentComplaint.answers[0].lowercased())").bold().foregroundColor(AppColors.blueMedium) + Text(" di bagian ") + Text("\(complaintViewModel.currentComplaint.answers[1].isEmpty ? "____" : complaintViewModel.currentComplaint.answers[1].lowercased()).")
                     .foregroundColor(AppColors.blueMedium).bold()
             }
             .padding(.horizontal)

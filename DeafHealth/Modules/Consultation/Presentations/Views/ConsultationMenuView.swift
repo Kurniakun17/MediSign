@@ -73,13 +73,13 @@ struct ConsultationMenuView: View {
     }
 
     func allQuestionsAnswered() -> Bool {
-        for answer in complaintViewModel.answers {
+        for answer in complaintViewModel.currentComplaint.answers {
             if answer == "_____" {
                 return false
             }
         }
         return true
-//        return complaintViewModel.answers.allSatisfy { !$0.isEmpty }
+//        return complaintViewModel.currentComplaint.answers.allSatisfy { !$0.isEmpty }
     }
 
     @ViewBuilder
@@ -145,27 +145,27 @@ struct QuestionButtonView: View {
         switch index {
         case 0:
             return HStack {
-                Text("\(complaintViewModel.getSummary(for: 0))") + Text("\(complaintViewModel.answers[0])").bold().underline()
+                Text("\(complaintViewModel.getSummary(for: 0))") + Text("\(complaintViewModel.currentComplaint.answers[0])").bold().underline()
             }
         case 1:
             return HStack {
-                Text("\(complaintViewModel.getSummary(for: 1))") + Text("\(complaintViewModel.answers[2])").bold().underline() + Text("\(complaintViewModel.getSummary(for: 2))")
+                Text("\(complaintViewModel.getSummary(for: 1))") + Text("\(complaintViewModel.currentComplaint.answers[2])").bold().underline() + Text("\(complaintViewModel.getSummary(for: 2))")
             }
         case 2:
             return HStack {
-                Text("\(complaintViewModel.getSummary(for: 3))") + Text("\(complaintViewModel.answers[3])").bold().underline() + Text("\(complaintViewModel.getSummary(for: 4))")
+                Text("\(complaintViewModel.getSummary(for: 3))") + Text("\(complaintViewModel.currentComplaint.answers[3])").bold().underline() + Text("\(complaintViewModel.getSummary(for: 4))")
             }
         case 3:
             return HStack {
-                Text("\(complaintViewModel.getSummary(for: 5))") + Text("\(complaintViewModel.answers[4])").bold().underline()
+                Text("\(complaintViewModel.getSummary(for: 5))") + Text("\(complaintViewModel.currentComplaint.answers[4])").bold().underline()
             }
         case 4:
             return HStack {
-                Text("\(complaintViewModel.getSummary(for: 6))") + Text("\(complaintViewModel.answers[5])").bold().underline()
+                Text("\(complaintViewModel.getSummary(for: 6))") + Text("\(complaintViewModel.currentComplaint.answers[5])").bold().underline()
             }
         case 5:
             return HStack {
-                Text("\(complaintViewModel.getSummary(for: 7))") + Text("\(complaintViewModel.answers[6])").bold().underline()
+                Text("\(complaintViewModel.getSummary(for: 7))") + Text("\(complaintViewModel.currentComplaint.answers[6])").bold().underline()
             }
         default:
             return HStack {
@@ -178,13 +178,13 @@ struct QuestionButtonView: View {
         if index == 0 {
             return true
         }
-        else if index == 2 && complaintViewModel.answers[2].contains("_____") {
+        else if index == 2 && complaintViewModel.currentComplaint.answers[2].contains("_____") {
             return false
         }
-        else if index == 1 && complaintViewModel.answers[2] != "_____" {
+        else if index == 1 && complaintViewModel.currentComplaint.answers[2] != "_____" {
             return true
         }
-        return !(complaintViewModel.answers[index] == "_____")
+        return !(complaintViewModel.currentComplaint.answers[index] == "_____")
     }
 }
 

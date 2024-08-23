@@ -240,7 +240,7 @@ struct SymptomSeverityView: View {
             }
         }
         .onAppear {
-            selectedSeverity = complaintViewModel.answers[3]
+            selectedSeverity = complaintViewModel.currentComplaint.answers[3]
         }
         .background {
             Image(ImageLabel.sheetBackground)
