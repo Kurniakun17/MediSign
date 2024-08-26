@@ -75,7 +75,6 @@ struct SymptomWorseningFactorsView: View {
                             )
                             .disabled(isNotAvailable)
                             .onChange(of: factor) { newValue in
-                                print("hai")
                                 selectedFactor = newValue
 
                                 complaintViewModel.updateAnswer(for: 4, with: selectedFactor)
@@ -149,7 +148,6 @@ struct SymptomWorseningFactorsView: View {
                 Button {
                     isAnswerProvided = true
                     isNotAvailable.toggle()
-                    print("clicked: \(isNotAvailable)")
 
                     if !isNotAvailable {
                         isAnswerProvided = false

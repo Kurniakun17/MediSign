@@ -15,11 +15,14 @@ struct ContentView: View {
     var body: some View {
         NavigationStack(path: $coordinator.path) {
             Group {
-                if userDataViewModel.currentUser != nil {
+                if userDataViewModel.currentUser?.name != nil {
                     coordinator.build(page: .homepage)
                 } else {
                     coordinator.build(page: .onboardingWelcome)
                 }
+            }
+            .onAppear {
+                print(userDataViewModel.currentUser?.name)
             }
             .navigationDestination(for: Page.self) { page in
                 coordinator.build(page: page)
@@ -38,5 +41,14 @@ struct ContentView: View {
 }
 
 #Preview {
-    ContentView()
+    do {
+        @StateObject var coordinator = Coordinator()
+        @StateObject var complaintViewModel = ComplaintViewModel(datasource: .shared)
+        @StateObject var userDataViewModel = UserDataViewModel(datasource: .shared)
+
+        return ContentView()
+            .environmentObject(coordinator)
+            .environmentObject(complaintViewModel)
+            .environmentObject(userDataViewModel)
+    } catch {}
 }

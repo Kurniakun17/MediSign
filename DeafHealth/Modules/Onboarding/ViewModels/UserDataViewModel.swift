@@ -9,6 +9,7 @@ import Foundation
 
 class UserDataViewModel: ObservableObject {
     @Published var currentUser: UserData? = nil
+    @Published var users: [UserData]
     private var datasource: LocalDataSource
 
     @MainActor
@@ -19,5 +20,14 @@ class UserDataViewModel: ObservableObject {
                 currentUser = newData
             }
         }
+
+        users = datasource.fetchAllUserData()
+    }
+
+    func deleteAllData() {
+        for user in users{
+            datasource.delete(userData: user)
+        }
+        currentUser = nil
     }
 }

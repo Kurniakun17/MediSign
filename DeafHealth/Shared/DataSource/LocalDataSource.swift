@@ -20,10 +20,8 @@ class LocalDataSource {
         self.modelContainer = try! ModelContainer(for: Complaint.self, SymptomsDetail.self, UserData.self, configurations: ModelConfiguration(isStoredInMemoryOnly: false))
         self.modelContext = modelContainer.mainContext
     }
-    
-    func removeData(){
-        
-    }
+
+    func removeData() {}
 
     func fetchSymptomsDetail() -> [SymptomsDetail] {
         do {
@@ -105,6 +103,14 @@ class LocalDataSource {
     func fetchUserData() -> UserData? {
         do {
             return try modelContext.fetch(FetchDescriptor<UserData>()).first
+        } catch {
+            fatalError("Failed to fetch user data: \(error.localizedDescription)")
+        }
+    }
+
+    func fetchAllUserData() -> [UserData] {
+        do {
+            return try modelContext.fetch(FetchDescriptor<UserData>())
         } catch {
             fatalError("Failed to fetch user data: \(error.localizedDescription)")
         }

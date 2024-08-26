@@ -7,6 +7,7 @@
 
 import Foundation
 import SwiftData
+import SwiftUI
 
 class ComplaintViewModel: ObservableObject {
     @Published var complaints: [Complaint] = []
@@ -20,7 +21,7 @@ class ComplaintViewModel: ObservableObject {
 
     init(datasource: LocalDataSource) {
         dataSource = datasource
-        currentComplaint = Complaint(user: dataSource.fetchUserData()!, symptoms: [SymptomsDetail](), summary: "Halo Dokter. Saya merasakan _____.", answers: ["_____", "_____", "_____", "_____", "_____", "_____", "_____"])
+        currentComplaint = Complaint(user: dataSource.fetchUserData() ?? UserData(name: "Ibun Nawawi", age: "18", gender: .male), symptoms: [SymptomsDetail](), summary: "Halo Dokter. Saya merasakan _____.", answers: ["_____", "_____", "_____", "_____", "_____", "_____", "_____"])
         updateComplaintSummary(for: 0)
         complaints = datasource.fetchComplaint()
     }
@@ -34,10 +35,6 @@ class ComplaintViewModel: ObservableObject {
     func getSummary(for questionIndex: Int) -> String {
         return summary[questionIndex]
     }
-
-//    func getSummary(for questionIndex: Int) -> String {
-//        return buildComplaintSummary(upTo: questionIndex)
-//    }
 
     private func buildComplaintSummary(upTo currentQuestionIndex: Int) -> String {
         var summaryParts: [String] = []
@@ -115,5 +112,11 @@ class ComplaintViewModel: ObservableObject {
     func deleteComplaint(complaint: Complaint) {
         dataSource.delete(complaint: complaint)
         complaints.removeAll(where: { $0.id == complaint.id })
+    }
+
+    func deleteAllData() {
+        for complaint in complaints {
+            deleteComplaint(complaint: complaint)
+        }
     }
 }

@@ -10,6 +10,7 @@ import SwiftUI
 struct HomePage: View {
     @EnvironmentObject var coordinator: Coordinator
     @EnvironmentObject var complaintViewModel: ComplaintViewModel
+    @EnvironmentObject var userDataViewModel: UserDataViewModel
     @State private var userName: String = ""
     @State private var profileImage: UIImage? = nil
 
@@ -34,23 +35,32 @@ struct HomePage: View {
 
                             Spacer()
 
-                            Button(action: {
-                                coordinator.push(page: .userProfile)
-                            }) {
-                                if let profileImage = profileImage {
-                                    Image(uiImage: profileImage)
-                                        .resizable()
-                                        .scaledToFill()
-                                        .frame(width: 40, height: 40)
-                                        .clipShape(Circle())
-                                } else {
-                                    Circle()
-                                        .fill(Color.gray.opacity(DecimalConstants.d2 * 0.15))
-                                        .frame(width: 40, height: 40)
-                                        .overlay(
-                                            Image(systemName: "person.fill")
-                                                .foregroundColor(.white)
-                                        )
+                            HStack {
+                                Button(action: {
+                                    coordinator.push(page: .userProfile)
+                                }) {
+                                    if let profileImage = profileImage {
+                                        Image(uiImage: profileImage)
+                                            .resizable()
+                                            .scaledToFill()
+                                            .frame(width: 40, height: 40)
+                                            .clipShape(Circle())
+                                    } else {
+                                        Circle()
+                                            .fill(Color.gray.opacity(DecimalConstants.d2 * 0.15))
+                                            .frame(width: 40, height: 40)
+                                            .overlay(
+                                                Image(systemName: "person.fill")
+                                                    .foregroundColor(.white)
+                                            )
+                                    }
+                                }
+
+                                Button(action: {
+                                    userDataViewModel.deleteAllData()
+                                    complaintViewModel.deleteAllData()
+                                }) {
+                                    Image(systemName: "trash")
                                 }
                             }
                         }
